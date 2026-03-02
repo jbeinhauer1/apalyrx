@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Column 1 */}
           <div>
             <Image
-              src="/Logo WhiteOrange.png"
+              src="/apalyrx-logo-white-orange.png"
               alt="ApalyRx"
               width={160}
               height={44}

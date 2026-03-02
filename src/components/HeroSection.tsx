@@ -33,7 +33,7 @@ export default function HeroSection({
       <div className="relative max-w-content mx-auto px-6 pt-36 pb-24 md:pt-44 md:pb-32">
         <div className="max-w-3xl">
           <Image
-            src="/Logo WhiteOrange.png"
+            src="/apalyrx-logo-white-orange.png"
             alt=""
             width={180}
             height={48}

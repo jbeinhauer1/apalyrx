@@ -43,7 +43,7 @@ export default function Header() {
       <div className="max-w-content mx-auto px-6 flex items-center justify-between h-[72px]">
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/Logo Full Color.png"
+            src="/apalyrx-logo-full-color.png"
             alt="ApalyRx"
             width={150}
             height={40}
