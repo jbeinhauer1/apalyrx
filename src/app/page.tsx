@@ -135,7 +135,7 @@ export default function Home() {
       {/* Hero */}
       <HeroSection
         headline="Real-Time Prescription Routing. Independent Proof."
-        subtitle="ApalyRx works alongside your PBM to independently route every high-cost prescription in real time to the lowest net cost supplier — and produces decision-level documentation to prove it."
+        subtitle="ApalyRx works alongside PBMs to independently route every high-cost prescription in real time to the lowest net-cost supplier, and produces decision-level documentation to prove it."
         primaryCta={{ label: "See How It Works", href: "#how-it-works" }}
         secondaryCta={{ label: "Request a Conversation", href: "/contact" }}
       />
