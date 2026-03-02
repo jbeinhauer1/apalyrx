@@ -6,7 +6,8 @@
       "Bash(npm install:*)",
       "Bash(npx next:*)",
       "Bash(mv:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(xargs grep:*)"
     ]
   }
 }

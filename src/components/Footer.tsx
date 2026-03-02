@@ -44,6 +44,9 @@ export default function Footer() {
               <Link href="/pharmacies" className="text-white/80 hover:text-orange transition-colors text-[15px]">
                 Pharmacies
               </Link>
+              <Link href="/plan-members" className="text-white/80 hover:text-orange transition-colors text-[15px]">
+                Plan Members
+              </Link>
               <Link href="/contact" className="text-white/80 hover:text-orange transition-colors text-[15px]">
                 Contact
               </Link>

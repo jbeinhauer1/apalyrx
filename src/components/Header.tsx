@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/pbms", label: "PBMs" },
   { href: "/manufacturers", label: "Manufacturers" },
   { href: "/pharmacies", label: "Pharmacies" },
+  { href: "/plan-members", label: "Plan Members" },
   { href: "/contact", label: "Contact" },
 ];
 
