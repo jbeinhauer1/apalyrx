@@ -52,7 +52,7 @@ const problemCards = [
     icon: DollarSign,
     num: 2,
     title: "Retroactive Adjustments and Clawbacks",
-    desc: "After dispensing a prescription and believing the economics are workable, pharmacies face retroactive reductions \u2014 DIR fees, post-sale adjustments, and clawbacks that erode margins months after the fact. These make it nearly impossible to predict revenue, manage cash flow, or plan for growth. The uncertainty is as damaging as the dollar amount.",
+    desc: "After dispensing a prescription and believing the economics are workable, pharmacies face retroactive reductions - DIR fees, post-sale adjustments, and clawbacks that erode margins months after the fact. These make it nearly impossible to predict revenue, manage cash flow, or plan for growth. The uncertainty is as damaging as the dollar amount.",
   },
   {
     icon: XCircle,
@@ -64,7 +64,7 @@ const problemCards = [
     icon: PackageX,
     num: 4,
     title: "Cut Out of Emerging Supply Chains",
-    desc: "Manufacturer-direct programs like LillyDirect and NovoCare route prescriptions through one or two nationally contracted mail-order pharmacies \u2014 cutting local independents out of the supply chain entirely. As direct-to-consumer pharmacy grows and platforms like TrumpRx accelerate the trend, independent pharmacies risk being bypassed by the very models reshaping how high-cost medications reach patients.",
+    desc: "Manufacturer-direct programs like LillyDirect and NovoCare route prescriptions through one or two nationally contracted mail-order pharmacies - cutting local independents out of the supply chain entirely. As direct-to-consumer pharmacy grows and platforms like TrumpRx accelerate the trend, independent pharmacies risk being bypassed by the very models reshaping how high-cost medications reach patients.",
   },
 ];
 
@@ -75,7 +75,7 @@ const solutionCards = [
     subtitle: "From a Growing Platform",
     stat: "500K+",
     statLabel: "lives today",
-    desc: "As PBMs, employers, health plans, and manufacturers deploy programs through ApalyRx, prescriptions flow to independent pharmacy partners. You receive volume because your pricing and service earned it. The platform currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline \u2014 every new client means more prescriptions routed to independent pharmacies.",
+    desc: "As PBMs, employers, health plans, and manufacturers deploy programs through ApalyRx, prescriptions flow to independent pharmacy partners. You receive volume because your pricing and service earned it. The platform currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline - every new client means more prescriptions routed to independent pharmacies.",
   },
   {
     icon: DollarSign,
@@ -83,7 +83,7 @@ const solutionCards = [
     subtitle: "No Hidden Spreads or Clawbacks",
     stat: "$0",
     statLabel: "DIR fees",
-    desc: "ApalyRx operates on a pass-through model. Reimbursement is based on actual acquisition cost plus a fair dispensing fee \u2014 agreed upon upfront, not adjusted retroactively. No hidden spreads. No DIR fees. No clawbacks. No post-sale adjustments. You know exactly what you will be paid before you fill the prescription.",
+    desc: "ApalyRx operates on a pass-through model. Reimbursement is based on actual acquisition cost plus a fair dispensing fee - agreed upon upfront, not adjusted retroactively. No hidden spreads. No DIR fees. No clawbacks. No post-sale adjustments. You know exactly what you will be paid before you fill the prescription.",
   },
   {
     icon: Shield,
@@ -91,7 +91,7 @@ const solutionCards = [
     subtitle: "Structurally Independent",
     stat: "0",
     statLabel: "owned pharmacies",
-    desc: "ApalyRx has no ownership in any dispensing channel. There is no affiliated mail pharmacy, no owned specialty pharmacy, no retail chain competing for the same prescriptions. When ApalyRx routes a prescription to your pharmacy, it is because you were the best option \u2014 not because someone upstream has a financial interest in sending it elsewhere.",
+    desc: "ApalyRx has no ownership in any dispensing channel. There is no affiliated mail pharmacy, no owned specialty pharmacy, no retail chain competing for the same prescriptions. When ApalyRx routes a prescription to your pharmacy, it is because you were the best option - not because someone upstream has a financial interest in sending it elsewhere.",
   },
   {
     icon: Package,
@@ -99,7 +99,7 @@ const solutionCards = [
     subtitle: "Don\u2019t Get Left Behind",
     stat: "2",
     statLabel: "revenue roles",
-    desc: "While manufacturer-direct models typically contract with one or two national mail-order pharmacies, ApalyRx brings those programs to local independent pharmacies. You can serve as the dispensing pharmacy filling prescriptions directly, or as the pharmacy of record in manufacturer-direct models \u2014 conducting drug utilization review while product ships from manufacturer logistics. Either way, you are inside the supply chain, not watching it from the outside.",
+    desc: "While manufacturer-direct models typically contract with one or two national mail-order pharmacies, ApalyRx brings those programs to local independent pharmacies. You can serve as the dispensing pharmacy filling prescriptions directly, or as the pharmacy of record in manufacturer-direct models - conducting drug utilization review while product ships from manufacturer logistics. Either way, you are inside the supply chain, not watching it from the outside.",
   },
 ];
 
@@ -121,12 +121,12 @@ const whyDifferentCards = [
   {
     icon: Scale,
     title: "Merit-Based Routing",
-    desc: "Prescriptions route to your pharmacy because you offered the best net cost and service \u2014 not because of network tier, channel affiliation, or volume guarantees to a competing pharmacy. Every routing decision is based on actual economics, and you can see exactly why you won or did not win a given prescription.",
+    desc: "Prescriptions route to your pharmacy because you offered the best net cost and service - not because of network tier, channel affiliation, or volume guarantees to a competing pharmacy. Every routing decision is based on actual economics, and you can see exactly why you won or did not win a given prescription.",
   },
   {
     icon: Eye,
     title: "Full Transparency",
-    desc: "You see the reimbursement before you fill. The economics are agreed upon upfront. There is no hidden spread between what the plan pays and what you receive. ApalyRx passes through the actual cost \u2014 your dispensing fee is your dispensing fee.",
+    desc: "You see the reimbursement before you fill. The economics are agreed upon upfront. There is no hidden spread between what the plan pays and what you receive. ApalyRx passes through the actual cost - your dispensing fee is your dispensing fee.",
   },
   {
     icon: Ban,
@@ -170,7 +170,7 @@ const faqItems = [
   {
     question: "What types of prescriptions will I receive through ApalyRx?",
     answer:
-      "ApalyRx programs typically focus on high-cost, high-variability medications \u2014 approximately 30 drugs that represent 40% or more of employer and health plan pharmacy spend. These are often specialty and branded medications where net cost differences across channels are significant. As the platform grows and more clients deploy programs, the scope of medications routed to pharmacy partners expands.",
+      "ApalyRx programs typically focus on high-cost, high-variability medications - approximately 30 drugs that represent 40% or more of employer and health plan pharmacy spend. These are often specialty and branded medications where net cost differences across channels are significant. As the platform grows and more clients deploy programs, the scope of medications routed to pharmacy partners expands.",
   },
   {
     question: "How is reimbursement calculated?",
@@ -188,19 +188,19 @@ const faqItems = [
       "ApalyRx provides the technology integration for prescription intake, routing confirmation, and fulfillment coordination. Specific requirements will be reviewed during onboarding. The integration is designed to work with your existing pharmacy management systems without requiring major technology investments.",
   },
   {
-    question: "Can I participate in both roles \u2014 dispensing and pharmacy of record?",
+    question: "Can I participate in both roles - dispensing and pharmacy of record?",
     answer:
       "Yes. Many ApalyRx pharmacy partners serve in both capacities. For some programs and products, you will be the dispensing pharmacy filling prescriptions directly. For manufacturer-direct programs, you may serve as pharmacy of record. Your role depends on the specific program, product, and routing outcome.",
   },
   {
     question: "What are the ownership requirements?",
     answer:
-      "ApalyRx requires independent ownership \u2014 no vertical ties to PBMs, insurers, or GPOs. This is a structural requirement, not an arbitrary preference. The independence of the dispensing pharmacy is one of the five requirements of Drug Benefit Integrity. If your pharmacy has no upstream ownership by entities that also make routing decisions, you qualify.",
+      "ApalyRx requires independent ownership - no vertical ties to PBMs, insurers, or GPOs. This is a structural requirement, not an arbitrary preference. The independence of the dispensing pharmacy is one of the five requirements of Drug Benefit Integrity. If your pharmacy has no upstream ownership by entities that also make routing decisions, you qualify.",
   },
   {
     question: "How does this compare to my current PBM network contracts?",
     answer:
-      "ApalyRx is not a replacement for your existing PBM contracts. It is an additional volume channel. You continue participating in whatever PBM networks you currently contract with. ApalyRx adds a new source of prescriptions with different economics \u2014 transparent pass-through reimbursement, fair dispensing fees, no DIR fees, and no retroactive adjustments. Think of it as supplemental volume with better terms.",
+      "ApalyRx is not a replacement for your existing PBM contracts. It is an additional volume channel. You continue participating in whatever PBM networks you currently contract with. ApalyRx adds a new source of prescriptions with different economics - transparent pass-through reimbursement, fair dispensing fees, no DIR fees, and no retroactive adjustments. Think of it as supplemental volume with better terms.",
   },
   {
     question: "How much volume can I expect?",
@@ -210,12 +210,12 @@ const faqItems = [
   {
     question: "What about manufacturer-direct models that currently bypass local pharmacies?",
     answer:
-      "This is one of the most important reasons to become an ApalyRx pharmacy partner. Manufacturer-direct programs like LillyDirect and NovoCare typically contract with one or two nationally licensed mail-order pharmacies, cutting local independents out entirely. ApalyRx\u2019s model is different \u2014 we bring manufacturer-direct programs to local independent pharmacies through the pharmacy of record structure. You provide the clinical oversight; the product ships from manufacturer logistics. Without this model, those prescriptions go to a mail-order pharmacy that has no relationship with the patient or the community.",
+      "This is one of the most important reasons to become an ApalyRx pharmacy partner. Manufacturer-direct programs like LillyDirect and NovoCare typically contract with one or two nationally licensed mail-order pharmacies, cutting local independents out entirely. ApalyRx\u2019s model is different - we bring manufacturer-direct programs to local independent pharmacies through the pharmacy of record structure. You provide the clinical oversight; the product ships from manufacturer logistics. Without this model, those prescriptions go to a mail-order pharmacy that has no relationship with the patient or the community.",
   },
   {
     question: "What is Drug Benefit Integrity and why does it matter for my pharmacy?",
     answer:
-      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements \u2014 one of which is that prescriptions are fulfilled through independent pharmacies with no vertical ownership. This means the DBI model structurally requires independent pharmacies to function. As more employers, consultants, and health plans adopt the DBI standard, the demand for independent pharmacy fulfillment grows. Your participation as an ApalyRx pharmacy partner is not just a business decision \u2014 it is part of a structural shift that positions independent pharmacy at the center of how high-cost medications should be routed and verified. Learn more at drugbenefitintegrity.com.",
+      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements - one of which is that prescriptions are fulfilled through independent pharmacies with no vertical ownership. This means the DBI model structurally requires independent pharmacies to function. As more employers, consultants, and health plans adopt the DBI standard, the demand for independent pharmacy fulfillment grows. Your participation as an ApalyRx pharmacy partner is not just a business decision - it is part of a structural shift that positions independent pharmacy at the center of how high-cost medications should be routed and verified. Learn more at drugbenefitintegrity.com.",
   },
 ];
 
@@ -471,7 +471,7 @@ export default function PharmaciesPage() {
           <p className="font-body text-sm md:text-base text-muted-foreground text-center max-w-4xl mx-auto mt-10">
             Both roles are critical to maintaining the structural independence that the ApalyRx model
             requires. Independent pharmacies - with no upstream ownership by PBMs, insurers, or GPOs
-            - are what make the model work.
+           - are what make the model work.
           </p>
         </div>
       </section>

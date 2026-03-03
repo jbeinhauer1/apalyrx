@@ -178,29 +178,29 @@ const faqItems = [
       "ApalyRx is a prescription routing and benefit operations platform that helps employers and health plans access manufacturer-direct, lowest net-cost drugs by operationalizing targeted carve-out programs alongside their PBM. We provide real-time independent routing, transparent economics, and decision-level documentation for every script.",
   },
   {
-    question: "Our PBM reports very low 'net' GLP-1 costs\u2014can Apaly still help?",
+    question: "Our PBM reports very low 'net' GLP-1 costs - can Apaly still help?",
     answer:
-      "Yes. Claim files can show \u2018net\u2019 costs differently depending on rebate timing, guarantees, and fee allocations. We provide an all-in comparison based on reconciled data. More importantly, ApalyRx provides independent, decision-level documentation for every prescription \u2014 showing which channels were evaluated and why the winning channel was selected. If your current routing is already optimal, the documentation proves it. If it is not, the savings speak for themselves.",
+      "Yes. Claim files can show \u2018net\u2019 costs differently depending on rebate timing, guarantees, and fee allocations. We provide an all-in comparison based on reconciled data. More importantly, ApalyRx provides independent, decision-level documentation for every prescription - showing which channels were evaluated and why the winning channel was selected. If your current routing is already optimal, the documentation proves it. If it is not, the savings speak for themselves.",
   },
   {
     question: "How does the routing actually work?",
     answer:
-      "When a prescriber sends an e-prescription for an in-scope medication, ApalyRx evaluates it across all available channels in real time \u2014 PBM specialty, PBM mail, retail, manufacturer-direct, and independent pharmacy. The platform applies your program rules (cost share, PA/UM, channel controls) and routes to the lowest net cost. Every decision is documented with a complete audit trail.",
+      "When a prescriber sends an e-prescription for an in-scope medication, ApalyRx evaluates it across all available channels in real time - PBM specialty, PBM mail, retail, manufacturer-direct, and independent pharmacy. The platform applies your program rules (cost share, PA/UM, channel controls) and routes to the lowest net cost. Every decision is documented with a complete audit trail.",
   },
   {
     question: "What drugs does ApalyRx focus on?",
     answer:
-      "ApalyRx focuses on the highest-impact medications \u2014 typically approximately 30 high-cost drugs that represent 40-50% of employer pharmacy spend. These are the drugs where net cost varies most across channels and where optimized routing has the greatest financial impact. The platform extends to additional therapeutic categories as your program evolves.",
+      "ApalyRx focuses on the highest-impact medications - typically approximately 30 high-cost drugs that represent 40-50% of employer pharmacy spend. These are the drugs where net cost varies most across channels and where optimized routing has the greatest financial impact. The platform extends to additional therapeutic categories as your program evolves.",
   },
   {
     question: "What does the member experience look like?",
     answer:
-      "Members create an account on the ApalyRx platform and direct their prescribers to send in-scope prescriptions to ApalyRx. From there, the platform handles everything \u2014 eligibility validation, routing, fulfillment coordination, and concierge support. Medications ship directly to the member\u2019s home with real-time status updates and a dedicated support team.",
+      "Members create an account on the ApalyRx platform and direct their prescribers to send in-scope prescriptions to ApalyRx. From there, the platform handles everything - eligibility validation, routing, fulfillment coordination, and concierge support. Medications ship directly to the member\u2019s home with real-time status updates and a dedicated support team.",
   },
   {
     question: "How does billing and settlement work?",
     answer:
-      "ApalyRx collects member cost share at the point of service and reports to plan accumulators. The plan portion is submitted as a medical claim to your TPA for data continuity. Suppliers are paid via ACH with transparent, pass-through economics \u2014 no spread, no markup. Every transaction is reconciled in the decision-level record.",
+      "ApalyRx collects member cost share at the point of service and reports to plan accumulators. The plan portion is submitted as a medical claim to your TPA for data continuity. Suppliers are paid via ACH with transparent, pass-through economics - no spread, no markup. Every transaction is reconciled in the decision-level record.",
   },
   {
     question: "What reporting and documentation do we get?",
@@ -215,27 +215,27 @@ const faqItems = [
   {
     question: "What if we change PBMs or TPAs?",
     answer:
-      "ApalyRx operates independently of your PBM and TPA. If you switch either one, your ApalyRx carve-out programs continue to run \u2014 we simply connect to your new TPA for claims submission and accumulator reporting. Your program rules, pricing, and documentation history are unaffected.",
+      "ApalyRx operates independently of your PBM and TPA. If you switch either one, your ApalyRx carve-out programs continue to run - we simply connect to your new TPA for claims submission and accumulator reporting. Your program rules, pricing, and documentation history are unaffected.",
   },
   {
     question: "Will this conflict with our existing PBM contract or guarantees?",
     answer:
-      "ApalyRx does not require replacing your PBM. We implement carved-out programs with a clear scope and documentation so your PBM can continue managing the remainder of the pharmacy benefit. We support a structured review of relevant contract provisions and coordinate implementation steps to keep the program compliant. Many PBMs are choosing to offer ApalyRx as part of their own program \u2014 independent routing strengthens their client relationships rather than conflicting with them.",
+      "ApalyRx does not require replacing your PBM. We implement carved-out programs with a clear scope and documentation so your PBM can continue managing the remainder of the pharmacy benefit. We support a structured review of relevant contract provisions and coordinate implementation steps to keep the program compliant. Many PBMs are choosing to offer ApalyRx as part of their own program - independent routing strengthens their client relationships rather than conflicting with them.",
   },
   {
     question: "Is ApalyRx pharmacy-licensed?",
     answer:
-      "Yes. ApalyRx is a pharmacy-licensed operator with no ownership in any dispensing channel. This structural independence ensures that routing decisions are made solely based on lowest net cost \u2014 the evaluation has no financial interest in the outcome.",
+      "Yes. ApalyRx is a pharmacy-licensed operator with no ownership in any dispensing channel. This structural independence ensures that routing decisions are made solely based on lowest net cost - the evaluation has no financial interest in the outcome.",
   },
   {
     question: "What is Drug Benefit Integrity and how does it relate to ApalyRx?",
     answer:
-      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx is the only entity that meets all five requirements \u2014 real-time all-channel routing, pharmacy-licensed operator with no channel ownership, manufacturer-direct programs built into the benefit, independent pharmacy fulfillment, and decision-level records for every script. Learn more at drugbenefitintegrity.com.",
+      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx is the only entity that meets all five requirements - real-time all-channel routing, pharmacy-licensed operator with no channel ownership, manufacturer-direct programs built into the benefit, independent pharmacy fulfillment, and decision-level records for every script. Learn more at drugbenefitintegrity.com.",
   },
   {
     question: "Does ApalyRx help with ERISA and CAA fiduciary requirements?",
     answer:
-      "Yes. The Consolidated Appropriations Act of 2026 designates PBMs as ERISA covered service providers with significant noncompliance penalties. Plan fiduciaries face personal liability for drug benefit decisions. ApalyRx produces decision-level documentation for every in-scope prescription \u2014 showing which channels were evaluated, what rules were applied, and why the winning channel was selected. This provides fiduciary-grade proof that can be presented to auditors, regulators, and beneficiaries.",
+      "Yes. The Consolidated Appropriations Act of 2026 designates PBMs as ERISA covered service providers with significant noncompliance penalties. Plan fiduciaries face personal liability for drug benefit decisions. ApalyRx produces decision-level documentation for every in-scope prescription - showing which channels were evaluated, what rules were applied, and why the winning channel was selected. This provides fiduciary-grade proof that can be presented to auditors, regulators, and beneficiaries.",
   },
 ];
 
@@ -547,7 +547,7 @@ export default function EmployersPage() {
                 </blockquote>
               </div>
               <p className="font-body text-sm text-muted-foreground mb-8 pl-14">
-                - Benefits Director, Self-Funded Employer
+               - Benefits Director, Self-Funded Employer
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-border">

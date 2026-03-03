@@ -8,7 +8,9 @@
       "Bash(mv:*)",
       "Bash(ls:*)",
       "Bash(xargs grep:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(node:*)",
+      "Bash(grep:*)"
     ]
   }
 }
