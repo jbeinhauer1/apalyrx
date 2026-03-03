@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import FaqAccordion from "@/components/FaqAccordion";
 import {
   Smile,
@@ -300,14 +301,13 @@ export default function PlanMembersPage() {
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
             {/* Image placeholder */}
             <div className="order-2 lg:order-1 relative">
-              <div className="rounded-xl bg-[#f4f5f7] bg-gradient-to-br from-[#f4f5f7] to-[#e8eaed] aspect-[4/3] flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
-                    <Smile className="w-8 h-8 text-orange" />
-                  </div>
-                  <p className="font-heading text-sm font-medium">Member Portal</p>
-                </div>
-              </div>
+              <Image
+                src="/member-phone-happy.jpg"
+                alt="Happy plan member using ApalyRx on their phone"
+                width={600}
+                height={450}
+                className="rounded-xl object-cover w-full aspect-[4/3]"
+              />
               {/* Floating badge */}
               <div className="absolute bottom-4 right-4 bg-white rounded-lg shadow-lg p-3 flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-success" />
