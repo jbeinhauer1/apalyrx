@@ -19,9 +19,16 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ApalyRx | Direct Drug Access — Simplified",
+  metadataBase: new URL("https://www.apalyrx.com"),
+  title: {
+    default: "ApalyRx | Direct Drug Access — Simplified",
+    template: "%s | ApalyRx",
+  },
   description:
     "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     title: "ApalyRx | Direct Drug Access — Simplified",
     description:
@@ -39,28 +46,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${quicksand.variable} ${openSans.variable}`}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "ApalyRx",
-              description:
-                "Real-time prescription routing and benefit operations platform",
-              url: "https://apalyrx.com",
-              email: "sales@apalyrx.com",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Tampa",
-                addressRegion: "FL",
-                addressCountry: "US",
-              },
-            }),
-          }}
-        />
-      </head>
       <body className="font-body antialiased">
         <Header />
         <main>{children}</main>

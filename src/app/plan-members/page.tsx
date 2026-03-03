@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import FaqAccordion from "@/components/FaqAccordion";
+import WebPageSchema from "@/components/WebPageSchema";
+import FaqSchema from "@/components/FaqSchema";
 import {
   Smile,
   AlertTriangle,
@@ -154,6 +156,12 @@ const faqItems = [
 export default function PlanMembersPage() {
   return (
     <>
+      <WebPageSchema
+        title="ApalyRx for Plan Members"
+        description="VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team — covered by your employer."
+        url="https://www.apalyrx.com/plan-members"
+      />
+      <FaqSchema items={faqItems} />
       {/* ── Section 1: Hero ── */}
       <section className="relative bg-[#0F1C2E] overflow-hidden pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/4" />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import ContactForm from "@/components/ContactForm";
+import WebPageSchema from "@/components/WebPageSchema";
 
 export const metadata: Metadata = {
   title: "Contact ApalyRx | Request a Conversation",
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <WebPageSchema
+        title="Contact ApalyRx"
+        description="Reach out to learn how ApalyRx provides real-time independent prescription routing for PBMs, employers, health plans, consultants, manufacturers, and pharmacies."
+        url="https://www.apalyrx.com/contact"
+      />
       <HeroSection
         headline="Let's Talk"
         subtitle="Whether you are a PBM, employer, health plan, consultant, manufacturer, or pharmacy — we welcome the conversation."

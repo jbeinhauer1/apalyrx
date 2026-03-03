@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
+import WebPageSchema from "@/components/WebPageSchema";
+import FaqSchema from "@/components/FaqSchema";
 import {
   MessageSquare,
   AlertTriangle,
@@ -186,6 +188,12 @@ const faqItems = [
 export default function ConsultantsPage() {
   return (
     <>
+      <WebPageSchema
+        title="ApalyRx for Benefits Consultants"
+        description="Transform PBM evaluations with real-time independent routing. Give clients a structural standard that changes the pharmacy benefit conversation."
+        url="https://www.apalyrx.com/consultants"
+      />
+      <FaqSchema items={faqItems} />
       {/* ── SECTION 1: HERO ── */}
       <section className="relative bg-[#0F1C2E] overflow-hidden">
         <div

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SectionWrapper from "@/components/SectionWrapper";
+import OrganizationSchema from "@/components/OrganizationSchema";
 import {
   Users,
   Star,
@@ -193,6 +194,7 @@ const dbiRequirements = [
 export default function HomePage() {
   return (
     <>
+      <OrganizationSchema />
       {/* ── SECTION 1: HERO ── */}
       <section className="relative bg-[#0F1C2E] overflow-hidden">
         <div

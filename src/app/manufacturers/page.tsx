@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
+import WebPageSchema from "@/components/WebPageSchema";
+import FaqSchema from "@/components/FaqSchema";
 import {
   Rocket,
   EyeOff,
@@ -202,6 +204,12 @@ const faqItems = [
 export default function ManufacturersPage() {
   return (
     <>
+      <WebPageSchema
+        title="ApalyRx for Manufacturers"
+        description="Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation."
+        url="https://www.apalyrx.com/manufacturers"
+      />
+      <FaqSchema items={faqItems} />
       {/* ── SECTION 1: HERO ── */}
       <section className="relative bg-[#0F1C2E] overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/4" />

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
+import WebPageSchema from "@/components/WebPageSchema";
+import FaqSchema from "@/components/FaqSchema";
 import {
   Store,
   AlertTriangle,
@@ -27,13 +29,13 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record Network",
+  title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record",
   description:
-    "Join a pharmacy network where prescriptions are routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
+    "Partner with ApalyRx — prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
   openGraph: {
-    title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record Network",
+    title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record",
     description:
-      "Join a pharmacy network where prescriptions are routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
+      "Partner with ApalyRx — prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
   },
 };
 
@@ -70,10 +72,10 @@ const solutionCards = [
   {
     icon: TrendingUp,
     title: "New Prescription Volume",
-    subtitle: "From a Growing Network",
+    subtitle: "From a Growing Platform",
     stat: "500K+",
     statLabel: "lives today",
-    desc: "As PBMs, employers, health plans, and manufacturers deploy programs through ApalyRx, prescriptions flow to independent pharmacies in the network. You receive volume because your pricing and service earned it. The network currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline \u2014 every new client means more prescriptions routed to independent pharmacies.",
+    desc: "As PBMs, employers, health plans, and manufacturers deploy programs through ApalyRx, prescriptions flow to independent pharmacy partners. You receive volume because your pricing and service earned it. The platform currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline \u2014 every new client means more prescriptions routed to independent pharmacies.",
   },
   {
     icon: DollarSign,
@@ -139,7 +141,7 @@ const whyDifferentCards = [
   {
     icon: Rocket,
     title: "Growing Volume",
-    desc: "ApalyRx currently serves 500K+ covered lives, growing to 1M+ by Q2 with 5M+ in the pipeline. Every new PBM, employer, health plan, or manufacturer that deploys programs through ApalyRx adds prescription volume to the independent pharmacy network. The more the platform grows, the more prescriptions flow to you.",
+    desc: "ApalyRx currently serves 500K+ covered lives, growing to 1M+ by Q2 with 5M+ in the pipeline. Every new PBM, employer, health plan, or manufacturer that deploys programs through ApalyRx adds prescription volume flowing to independent pharmacy partners. The more the platform grows, the more prescriptions flow to you.",
   },
 ];
 
@@ -148,7 +150,7 @@ const joinSteps = [
     num: 1,
     icon: ClipboardCheck,
     title: "Apply",
-    desc: "Complete the pharmacy network application. Requirements include independent ownership with no vertical ties to PBMs, insurers, or GPOs, and active state pharmacy licensure.",
+    desc: "Complete the pharmacy partner application. Requirements include independent ownership with no vertical ties to PBMs, insurers, or GPOs, and active state pharmacy licensure.",
   },
   {
     num: 2,
@@ -160,7 +162,7 @@ const joinSteps = [
     num: 3,
     icon: CheckCircle2,
     title: "Start Receiving Prescriptions",
-    desc: "Once onboarded, your pharmacy is live in the network. Prescriptions begin routing to you based on your pricing, service area, and program eligibility. Volume grows as the network grows.",
+    desc: "Once onboarded, your pharmacy is live on the platform. Prescriptions begin routing to you based on your pricing, service area, and program eligibility. Volume grows as the platform grows.",
   },
 ];
 
@@ -168,12 +170,12 @@ const faqItems = [
   {
     question: "What types of prescriptions will I receive through ApalyRx?",
     answer:
-      "ApalyRx programs typically focus on high-cost, high-variability medications \u2014 approximately 30 drugs that represent 40% or more of employer and health plan pharmacy spend. These are often specialty and branded medications where net cost differences across channels are significant. As the platform grows and more clients deploy programs, the scope of medications routed through the network expands.",
+      "ApalyRx programs typically focus on high-cost, high-variability medications \u2014 approximately 30 drugs that represent 40% or more of employer and health plan pharmacy spend. These are often specialty and branded medications where net cost differences across channels are significant. As the platform grows and more clients deploy programs, the scope of medications routed to pharmacy partners expands.",
   },
   {
     question: "How is reimbursement calculated?",
     answer:
-      "Reimbursement is based on actual acquisition cost plus a fair dispensing fee, agreed upon upfront in your network agreement. There are no hidden spreads between what the plan pays and what you receive. No DIR fees. No post-sale clawbacks. No retroactive MAC adjustments. The economics you see before you fill are the economics you keep.",
+      "Reimbursement is based on actual acquisition cost plus a fair dispensing fee, agreed upon upfront in your partner agreement. There are no hidden spreads between what the plan pays and what you receive. No DIR fees. No post-sale clawbacks. No retroactive MAC adjustments. The economics you see before you fill are the economics you keep.",
   },
   {
     question: "What does the pharmacy of record role involve?",
@@ -188,7 +190,7 @@ const faqItems = [
   {
     question: "Can I participate in both roles \u2014 dispensing and pharmacy of record?",
     answer:
-      "Yes. Many pharmacies in the ApalyRx network serve in both capacities. For some programs and products, you will be the dispensing pharmacy filling prescriptions directly. For manufacturer-direct programs, you may serve as pharmacy of record. Your role depends on the specific program, product, and routing outcome.",
+      "Yes. Many ApalyRx pharmacy partners serve in both capacities. For some programs and products, you will be the dispensing pharmacy filling prescriptions directly. For manufacturer-direct programs, you may serve as pharmacy of record. Your role depends on the specific program, product, and routing outcome.",
   },
   {
     question: "What are the ownership requirements?",
@@ -203,17 +205,17 @@ const faqItems = [
   {
     question: "How much volume can I expect?",
     answer:
-      "Volume depends on your geography, pricing, and the number of ApalyRx programs active in your service area. ApalyRx currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline. As more employers, health plans, PBMs, and manufacturers deploy programs, prescription volume flowing through the independent pharmacy network increases. Early participants are positioned for the greatest volume growth.",
+      "Volume depends on your geography, pricing, and the number of ApalyRx programs active in your service area. ApalyRx currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline. As more employers, health plans, PBMs, and manufacturers deploy programs, prescription volume flowing to independent pharmacy partners increases. Early participants are positioned for the greatest volume growth.",
   },
   {
     question: "What about manufacturer-direct models that currently bypass local pharmacies?",
     answer:
-      "This is one of the most important reasons to join the ApalyRx network. Manufacturer-direct programs like LillyDirect and NovoCare typically contract with one or two nationally licensed mail-order pharmacies, cutting local independents out entirely. ApalyRx\u2019s model is different \u2014 we bring manufacturer-direct programs to local independent pharmacies through the pharmacy of record structure. You provide the clinical oversight; the product ships from manufacturer logistics. Without this model, those prescriptions go to a mail-order pharmacy that has no relationship with the patient or the community.",
+      "This is one of the most important reasons to become an ApalyRx pharmacy partner. Manufacturer-direct programs like LillyDirect and NovoCare typically contract with one or two nationally licensed mail-order pharmacies, cutting local independents out entirely. ApalyRx\u2019s model is different \u2014 we bring manufacturer-direct programs to local independent pharmacies through the pharmacy of record structure. You provide the clinical oversight; the product ships from manufacturer logistics. Without this model, those prescriptions go to a mail-order pharmacy that has no relationship with the patient or the community.",
   },
   {
     question: "What is Drug Benefit Integrity and why does it matter for my pharmacy?",
     answer:
-      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements \u2014 one of which is that prescriptions are fulfilled through independent pharmacies with no vertical ownership. This means the DBI model structurally requires independent pharmacies to function. As more employers, consultants, and health plans adopt the DBI standard, the demand for independent pharmacy fulfillment grows. Your participation in the ApalyRx network is not just a business decision \u2014 it is part of a structural shift that positions independent pharmacy at the center of how high-cost medications should be routed and verified. Learn more at drugbenefitintegrity.com.",
+      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements \u2014 one of which is that prescriptions are fulfilled through independent pharmacies with no vertical ownership. This means the DBI model structurally requires independent pharmacies to function. As more employers, consultants, and health plans adopt the DBI standard, the demand for independent pharmacy fulfillment grows. Your participation as an ApalyRx pharmacy partner is not just a business decision \u2014 it is part of a structural shift that positions independent pharmacy at the center of how high-cost medications should be routed and verified. Learn more at drugbenefitintegrity.com.",
   },
 ];
 
@@ -222,6 +224,12 @@ const faqItems = [
 export default function PharmaciesPage() {
   return (
     <>
+      <WebPageSchema
+        title="ApalyRx for Independent Pharmacies"
+        description="Partner with ApalyRx — prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests."
+        url="https://www.apalyrx.com/pharmacies"
+      />
+      <FaqSchema items={faqItems} />
       {/* ── SECTION 1: HERO ── */}
       <section className="relative bg-[#0F1C2E] overflow-hidden">
         <div
@@ -238,23 +246,24 @@ export default function PharmaciesPage() {
             <span className="font-heading">For Independent Pharmacies</span>
           </div>
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
-            Prescriptions Routed on Merit
+            New Prescriptions. Fair Pay. No Clawbacks.
           </h1>
           <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
-            A New Volume Channel With Fair Economics and No Competing Interests
+            A New Revenue Channel Built for Independent Pharmacy
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-            ApalyRx routes prescriptions to independent community pharmacies because your pricing and
-            service earned it — not because of channel ownership or network steering. As PBMs,
-            employers, health plans, and manufacturers deploy programs through ApalyRx, a growing
-            stream of prescriptions flows to independent pharmacies with transparent reimbursement,
-            fair dispensing fees, and no retroactive adjustments.
+            ApalyRx partners with independent community pharmacies to fulfill prescriptions that are
+            independently routed to the lowest net cost. As PBMs, employers, health plans, and
+            manufacturers deploy programs through ApalyRx, a growing stream of prescriptions flows to
+            independent pharmacy partners — with transparent reimbursement, fair dispensing fees, and
+            no retroactive adjustments. Your pharmacy earns volume because your pricing and service
+            earned it — not because of channel ownership or steering.
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
           >
-            Join the Network
+            Become a Pharmacy Partner
           </Link>
         </div>
       </section>
@@ -331,13 +340,13 @@ export default function PharmaciesPage() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/20">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span className="font-heading">The ApalyRx Network</span>
+              <span className="font-heading">The ApalyRx Platform</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
               What ApalyRx Means for Your Pharmacy
             </h2>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              A network built to route prescriptions to independent pharmacies — not away from them
+              A platform built to route prescriptions to independent pharmacies — not away from them
             </p>
           </div>
 
@@ -396,8 +405,8 @@ export default function PharmaciesPage() {
               Dispense Directly or Serve as Pharmacy of Record
             </h2>
             <p className="font-body text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              Independent pharmacies in the ApalyRx network can serve in two capacities depending on
-              the program and product
+              ApalyRx pharmacy partners can serve in two capacities depending on the program and
+              product
             </p>
           </div>
 
@@ -467,7 +476,7 @@ export default function PharmaciesPage() {
         </div>
       </section>
 
-      {/* ── SECTION 5: WHY THIS NETWORK IS DIFFERENT ── */}
+      {/* ── SECTION 5: WHY THIS IS DIFFERENT ── */}
       <section className="bg-[#0F1C2E]/5 py-16 md:py-24">
         <div className="max-w-content mx-auto px-4">
           <div className="text-center mb-14">
@@ -476,7 +485,7 @@ export default function PharmaciesPage() {
               <span className="font-heading">Why ApalyRx</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy leading-tight">
-              Why This Network Is Different
+              Why This Is Different
             </h2>
           </div>
 
@@ -505,19 +514,19 @@ export default function PharmaciesPage() {
         </div>
       </section>
 
-      {/* ── SECTION 6: HOW TO JOIN ── */}
+      {/* ── SECTION 6: BECOME A PARTNER ── */}
       <section className="bg-white py-16 md:py-24">
         <div className="max-w-content mx-auto px-4">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 bg-[#0F1C2E] text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
               <UserPlus className="w-4 h-4" />
-              <span className="font-heading">Join the Network</span>
+              <span className="font-heading">Partner With ApalyRx</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy leading-tight mb-4">
-              Join the ApalyRx Pharmacy Network
+              Become an ApalyRx Pharmacy Partner
             </h2>
             <p className="font-body text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              Independent community pharmacies interested in participating can begin onboarding now
+              Independent community pharmacies can apply to become fulfillment partners now
             </p>
           </div>
 
@@ -559,7 +568,7 @@ export default function PharmaciesPage() {
               href="/contact"
               className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-lg px-8 py-4 rounded-xl transition-all duration-300"
             >
-              Apply to Join the Network
+              Apply to Partner
             </Link>
           </div>
         </div>
@@ -583,7 +592,7 @@ export default function PharmaciesPage() {
       <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-            Your Pharmacy Belongs in This Network
+            Your Pharmacy Belongs on This Platform
           </h2>
           <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
             Fair Reimbursement. Growing Volume. No Competing Interests.
@@ -591,8 +600,8 @@ export default function PharmaciesPage() {
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Independent community pharmacies are the backbone of the ApalyRx model. As more PBMs,
             employers, health plans, and manufacturers deploy programs through our platform, the
-            prescription volume flowing to independent pharmacies grows. Join the network and start
-            receiving prescriptions routed on merit — with economics that work for your business.
+            prescription volume flowing to independent pharmacy partners grows. Apply to partner and
+            start receiving prescriptions — with economics that work for your business.
           </p>
           <Link
             href="/contact"

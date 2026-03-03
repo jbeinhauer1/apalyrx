@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
+import WebPageSchema from "@/components/WebPageSchema";
+import FaqSchema from "@/components/FaqSchema";
 import {
   GitMerge,
   AlertTriangle,
@@ -207,6 +209,12 @@ const faqItems = [
 export default function PBMsPage() {
   return (
     <>
+      <WebPageSchema
+        title="ApalyRx for PBMs"
+        description="Strengthen your PBM program with real-time independent routing. ApalyRx evaluates every high-cost prescription across all channels and produces decision-level documentation for your clients."
+        url="https://www.apalyrx.com/pbms"
+      />
+      <FaqSchema items={faqItems} />
       {/* ── SECTION 1: HERO ── */}
       <section className="relative bg-[#0F1C2E] overflow-hidden">
         <div
