@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import { Quicksand, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-quicksand",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-opensans",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={quicksand.variable}>
+    <html lang="en" className={`${quicksand.variable} ${openSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -54,7 +61,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-quicksand antialiased">
+      <body className="font-body antialiased">
         <Header />
         <main>{children}</main>
         <Footer />

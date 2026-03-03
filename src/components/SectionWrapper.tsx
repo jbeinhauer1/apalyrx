@@ -18,14 +18,14 @@ export default function SectionWrapper({
   const ref = useAnimateOnScroll();
   const bgClass =
     bg === "navy"
-      ? "bg-navy text-white"
+      ? "bg-[#0F1C2E] text-white"
       : bg === "light"
       ? "bg-light-bg"
       : "bg-white";
 
   return (
     <section id={id} ref={ref} className={`${bgClass} ${className}`}>
-      <div className="max-w-content mx-auto px-6 py-20 md:py-24">
+      <div className="max-w-content mx-auto px-4 py-16 md:py-24">
         {children}
       </div>
     </section>

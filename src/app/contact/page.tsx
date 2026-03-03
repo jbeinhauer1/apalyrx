@@ -21,16 +21,18 @@ export default function ContactPage() {
         subtitle="Whether you are a PBM, employer, health plan, consultant, manufacturer, or pharmacy — we welcome the conversation."
       />
 
-      <section className="bg-white">
-        <div className="max-w-[600px] mx-auto px-6 py-20 md:py-24">
-          <ContactForm />
+      <section className="bg-[#f8f9fb]">
+        <div className="max-w-2xl mx-auto px-4 py-16 md:py-24">
+          <div className="bg-white border border-gray-200 rounded-lg p-5 sm:p-8 shadow-elevated">
+            <ContactForm />
+          </div>
 
           <div className="mt-12 text-center space-y-4">
-            <p className="text-secondary-text">
+            <p className="font-body text-muted-foreground">
               Or reach us directly:{" "}
               <a
                 href="mailto:sales@apalyrx.com"
-                className="text-orange hover:text-orange-hover font-semibold transition-colors"
+                className="font-heading text-[#F26522] hover:text-orange-hover font-semibold transition-all duration-300"
               >
                 sales@apalyrx.com
               </a>
@@ -40,7 +42,7 @@ export default function ContactPage() {
                 href="https://drugbenefitintegrity.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-orange hover:text-orange-hover font-semibold transition-colors"
+                className="font-heading text-[#F26522] hover:text-orange-hover font-semibold transition-all duration-300"
               >
                 Learn about the Drug Benefit Integrity standard &rarr;
               </a>

@@ -12,17 +12,14 @@ export default function CtaSection({
   buttonHref = "/contact",
 }: CtaSectionProps) {
   return (
-    <section className="relative bg-navy overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-gradient-to-r from-orange to-orange/0 blur-3xl" />
-      </div>
-      <div className="relative max-w-content mx-auto px-6 py-20 md:py-24 text-center">
-        <p className="text-2xl md:text-3xl font-bold text-white mb-8 max-w-2xl mx-auto text-balance">
+    <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
+      <div className="max-w-3xl mx-auto px-4 text-center">
+        <p className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-balance">
           {text}
         </p>
         <Link
           href={buttonHref}
-          className="inline-flex items-center justify-center bg-orange hover:bg-orange-hover text-white font-semibold px-10 py-4 rounded-lg transition-colors text-lg"
+          className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-lg px-8 py-6 rounded-lg transition-all duration-300"
         >
           {buttonLabel}
         </Link>

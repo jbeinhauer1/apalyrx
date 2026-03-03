@@ -30,7 +30,7 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
           >
             <button
               onClick={() => toggle(i)}
-              className="w-full flex items-center justify-between text-left text-sm font-medium py-3"
+              className="w-full flex items-center justify-between text-left font-heading text-sm font-medium py-3"
             >
               <span>{item.question}</span>
               <ChevronDown
@@ -44,7 +44,7 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
               style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
             >
               <div className="overflow-hidden">
-                <p className="text-gray-600 text-sm pb-3">{item.answer}</p>
+                <p className="font-body text-gray-600 text-sm pb-3">{item.answer}</p>
               </div>
             </div>
           </div>

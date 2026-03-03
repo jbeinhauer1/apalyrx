@@ -1,11 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 
 interface HeroSectionProps {
   headline: string;
   subtitle: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  pattern?: "dots" | "blur";
 }
 
 export default function HeroSection({
@@ -13,37 +13,30 @@ export default function HeroSection({
   subtitle,
   primaryCta,
   secondaryCta,
+  pattern = "dots",
 }: HeroSectionProps) {
   return (
-    <section className="relative bg-navy overflow-hidden">
-      {/* Abstract background pattern */}
-      <div className="absolute inset-0 opacity-[0.07]">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange to-transparent blur-3xl translate-x-1/3 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-blue-400 to-transparent blur-3xl -translate-x-1/4 translate-y-1/4" />
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
+    <section className="relative bg-[#0F1C2E] overflow-hidden">
+      {/* Background pattern */}
+      {pattern === "dots" ? (
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(242, 101, 34, 0.3) 1px, transparent 0)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+      ) : (
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/4" />
+      )}
 
-      <div className="relative max-w-content mx-auto px-6 pt-36 pb-24 md:pt-44 md:pb-32">
+      <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20">
         <div className="max-w-3xl">
-          <Image
-            src="/apalyrx-logo-white-orange.png"
-            alt=""
-            width={180}
-            height={48}
-            className="h-12 w-auto mb-8 hidden"
-            aria-hidden
-          />
-          <h1 className="text-[2.5rem] md:text-[3.25rem] leading-tight font-bold text-white mb-6 text-balance">
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-bold text-white mb-6 text-balance">
             {headline}
           </h1>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl">
+          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl">
             {subtitle}
           </p>
           {(primaryCta || secondaryCta) && (
@@ -51,7 +44,7 @@ export default function HeroSection({
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex items-center justify-center bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-3.5 rounded-lg transition-colors text-[16px]"
+                  className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-lg px-8 py-6 rounded-lg transition-all duration-300"
                 >
                   {primaryCta.label}
                 </Link>
@@ -59,7 +52,7 @@ export default function HeroSection({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex items-center justify-center border-2 border-white/30 hover:border-white/60 text-white font-semibold px-8 py-3.5 rounded-lg transition-colors text-[16px]"
+                  className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white border border-white/30 font-heading font-semibold text-lg px-8 py-6 rounded-lg transition-all duration-300"
                 >
                   {secondaryCta.label}
                 </Link>

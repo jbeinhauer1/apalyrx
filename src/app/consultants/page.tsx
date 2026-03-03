@@ -18,14 +18,17 @@ const offerCards = [
   {
     title: "Real-Time Independent Routing",
     desc: "Recommend ApalyRx as a routing layer that works alongside any PBM. Your client gets real-time lowest-net-cost routing and decision-level documentation for every high-cost script.",
+    borderColor: "border-t-[#F26522]",
   },
   {
     title: "Fiduciary Protection",
     desc: "In an environment of increasing fiduciary scrutiny, recommending independent routing and documentation demonstrates your commitment to your client's best interest and strengthens your advisory position.",
+    borderColor: "border-t-[#0F1C2E]",
   },
   {
     title: "Differentiation",
     desc: "Be the consultant who introduces real-time independent routing to your market. The first consultants to adopt this approach will define how their clients evaluate pharmacy benefits.",
+    borderColor: "border-t-[#F26522]",
   },
 ];
 
@@ -40,11 +43,11 @@ export default function ConsultantsPage() {
 
       {/* The Consultant Opportunity */}
       <SectionWrapper bg="light">
-        <div className="max-w-3xl mx-auto animate-fade-up">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
+        <div className="max-w-4xl mx-auto animate-fade-up">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
             A New Dimension for PBM Evaluations
           </h2>
-          <p className="text-[17px] md:text-lg text-body leading-relaxed text-center">
+          <p className="font-body text-[17px] md:text-lg text-muted-foreground leading-relaxed text-center">
             Every renewal cycle, you evaluate PBM proposals on pricing, rebate guarantees, and service levels. These matter. But the data comes from the PBM being evaluated. Real-time independent routing adds a new dimension: can the PBM demonstrate, through an independent party, that each high-cost prescription was routed to the lowest net cost in real time? If not, there is a gap your client should know about.
           </p>
         </div>
@@ -53,19 +56,19 @@ export default function ConsultantsPage() {
       {/* What You Can Offer Clients */}
       <SectionWrapper bg="white">
         <div className="text-center mb-14 animate-fade-up">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold text-navy leading-tight">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy leading-tight">
             What You Can Offer Clients
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 stagger-children">
           {offerCards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-xl p-7 shadow-sm border border-gray-100 border-t-4 border-t-orange"
+              className={`group bg-white rounded-xl p-6 shadow-lg border border-gray-100 border-t-4 ${card.borderColor} hover:border-[#F26522]/30 hover:shadow-xl transition-all duration-300`}
             >
-              <h3 className="text-xl font-bold text-navy mb-3">{card.title}</h3>
-              <p className="text-[16px] text-body leading-relaxed">{card.desc}</p>
+              <h3 className="font-heading text-xl md:text-2xl font-semibold text-navy mb-3">{card.title}</h3>
+              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">{card.desc}</p>
             </div>
           ))}
         </div>
@@ -73,11 +76,11 @@ export default function ConsultantsPage() {
 
       {/* The DBI Framework */}
       <SectionWrapper bg="light">
-        <div className="max-w-3xl mx-auto animate-fade-up">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
+        <div className="max-w-4xl mx-auto animate-fade-up">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
             Use the Drug Benefit Integrity Framework
           </h2>
-          <p className="text-[17px] md:text-lg text-body leading-relaxed text-center mb-8">
+          <p className="font-body text-[17px] md:text-lg text-muted-foreground leading-relaxed text-center mb-8">
             The DBI Framework is a free, one-page evaluation tool with five binary requirements. Use it in RFP evaluations, PBM reviews, and strategy meetings. It gives you a structured, defensible way to evaluate whether a pharmacy benefit program has structural integrity.
           </p>
           <div className="text-center">
@@ -85,7 +88,7 @@ export default function ConsultantsPage() {
               href="https://drugbenefitintegrity.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-3.5 rounded-lg transition-colors text-[16px]"
+              className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-lg px-8 py-6 rounded-lg transition-all duration-300"
             >
               Download the Framework at drugbenefitintegrity.com &rarr;
             </a>

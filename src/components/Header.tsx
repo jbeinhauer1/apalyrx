@@ -37,36 +37,36 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-        scrolled ? "shadow-md" : ""
+      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-border transition-shadow duration-300 ${
+        scrolled ? "shadow-sm" : ""
       }`}
     >
-      <div className="max-w-content mx-auto px-6 flex items-center justify-between h-[72px]">
+      <div className="max-w-content mx-auto px-4 flex items-center justify-between h-20 md:h-24 lg:h-28">
         <Link href="/" className="flex-shrink-0">
           <Image
             src="/apalyrx-logo-full-color.png"
             alt="ApalyRx"
-            width={150}
-            height={40}
-            className="h-10 w-auto"
+            width={240}
+            height={96}
+            className="h-12 md:h-20 lg:h-24 w-auto"
             priority
           />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-[15px] font-semibold text-body hover:text-orange transition-colors"
+              className="font-heading text-sm lg:text-[15px] font-medium text-muted-foreground hover:text-navy transition-all duration-300"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="/contact"
-            className="ml-2 bg-orange hover:bg-orange-hover text-white font-semibold text-[15px] px-5 py-2.5 rounded-lg transition-colors"
+            className="ml-2 bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-medium text-sm lg:text-[15px] px-5 py-2.5 rounded-lg transition-all duration-300"
           >
             Request a Conversation
           </Link>
@@ -74,7 +74,7 @@ export default function Header() {
 
         {/* Mobile Hamburger */}
         <button
-          className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -96,18 +96,34 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — slide-in drawer */}
+      {mobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 top-20 bg-black/30 z-40"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
       <div
-        className={`lg:hidden fixed inset-0 top-[72px] bg-white transition-transform duration-300 ${
+        className={`md:hidden fixed top-0 right-0 h-full w-[300px] bg-white shadow-xl z-50 transition-transform duration-300 ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav className="flex flex-col items-center gap-6 pt-12">
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+            className="w-10 h-10 flex items-center justify-center"
+          >
+            <span className="block w-6 h-0.5 bg-navy rotate-45 absolute" />
+            <span className="block w-6 h-0.5 bg-navy -rotate-45 absolute" />
+          </button>
+        </div>
+        <nav className="flex flex-col gap-5 px-6 pt-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-lg font-semibold text-body hover:text-orange transition-colors"
+              className="font-heading text-lg font-medium text-muted-foreground hover:text-navy transition-all duration-300"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
@@ -115,7 +131,7 @@ export default function Header() {
           ))}
           <Link
             href="/contact"
-            className="mt-4 bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+            className="mt-4 bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-medium px-8 py-3 rounded-lg transition-all duration-300 text-center"
             onClick={() => setMobileOpen(false)}
           >
             Request a Conversation

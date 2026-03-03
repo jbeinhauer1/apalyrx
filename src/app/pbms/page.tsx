@@ -18,14 +18,17 @@ const valueCards = [
   {
     title: "Client Retention",
     desc: "Employers need detailed fiduciary documentation. Offering independent routing and decision-level reporting proactively demonstrates that you welcome scrutiny and strengthens renewal conversations.",
+    borderColor: "border-t-[#F26522]",
   },
   {
     title: "Consultant Confidence",
     desc: "When consultants evaluate your program, a real-time independent routing layer already in place sets you apart from competitors who cannot demonstrate the same level of accountability.",
+    borderColor: "border-t-[#0F1C2E]",
   },
   {
     title: "Regulatory Readiness",
     desc: "CAA reporting requirements, FTC enforcement, and DOL proposed rules are all moving toward greater PBM accountability. Independent routing and documentation positions you ahead of these requirements.",
+    borderColor: "border-t-[#F26522]",
   },
 ];
 
@@ -40,11 +43,11 @@ export default function PBMsPage() {
 
       {/* The Market Reality */}
       <SectionWrapper bg="light">
-        <div className="max-w-3xl mx-auto animate-fade-up">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
+        <div className="max-w-4xl mx-auto animate-fade-up">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
             Your Clients Are Asking Harder Questions
           </h2>
-          <p className="text-[17px] md:text-lg text-body leading-relaxed text-center">
+          <p className="font-body text-[17px] md:text-lg text-muted-foreground leading-relaxed text-center">
             Benefits consultants are putting alternative PBM models on every finalist slate. Employers are demanding documentation beyond aggregate reporting. The CAA now designates PBMs as ERISA covered service providers. The FTC is expanding enforcement. In this environment, the ability to offer independent routing and decision-level documentation will become the standard — and PBMs that adopt it proactively will define the next generation of client trust rather than reacting to mandates.
           </p>
         </div>
@@ -52,11 +55,11 @@ export default function PBMsPage() {
 
       {/* How It Works With Your Program */}
       <SectionWrapper bg="white">
-        <div className="max-w-3xl mx-auto animate-fade-up">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
+        <div className="max-w-4xl mx-auto animate-fade-up">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
             ApalyRx Complements Your PBM — It Does Not Replace It
           </h2>
-          <p className="text-[17px] md:text-lg text-body leading-relaxed text-center">
+          <p className="font-body text-[17px] md:text-lg text-muted-foreground leading-relaxed text-center">
             Your PBM continues to manage formularies, negotiate contracts, process claims, and administer the benefit. ApalyRx operates as a real-time routing layer for high-cost, high-variability prescriptions. Our routing logic evaluates every in-scope eRx across all available channels in real time — including manufacturer-direct options and your PBM&apos;s own pharmacies — and routes to the lowest net cost. The winning channel may be your specialty pharmacy, your mail operation, a manufacturer-direct program, or an independent pharmacy. The routing is based on actual net cost, and every decision is documented with a complete audit trail.
           </p>
         </div>
@@ -65,19 +68,19 @@ export default function PBMsPage() {
       {/* Value to Your Business */}
       <SectionWrapper bg="light">
         <div className="text-center mb-14 animate-fade-up">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold text-navy leading-tight">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy leading-tight">
             Value to Your Business
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 stagger-children">
           {valueCards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-xl p-7 shadow-sm border border-gray-100 border-t-4 border-t-orange"
+              className={`group bg-white rounded-xl p-6 shadow-lg border border-gray-100 border-t-4 ${card.borderColor} hover:border-[#F26522]/30 hover:shadow-xl transition-all duration-300`}
             >
-              <h3 className="text-xl font-bold text-navy mb-3">{card.title}</h3>
-              <p className="text-[16px] text-body leading-relaxed">{card.desc}</p>
+              <h3 className="font-heading text-xl md:text-2xl font-semibold text-navy mb-3">{card.title}</h3>
+              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">{card.desc}</p>
             </div>
           ))}
         </div>
@@ -85,11 +88,11 @@ export default function PBMsPage() {
 
       {/* Implementation */}
       <SectionWrapper bg="white">
-        <div className="max-w-3xl mx-auto animate-fade-up">
-          <h2 className="text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
+        <div className="max-w-4xl mx-auto animate-fade-up">
+          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy mb-6 leading-tight text-center">
             Designed for Easy Integration
           </h2>
-          <p className="text-[17px] md:text-lg text-body leading-relaxed text-center">
+          <p className="font-body text-[17px] md:text-lg text-muted-foreground leading-relaxed text-center">
             ApalyRx integrates with existing PBM workflows without disrupting operations. Implementation targets the approximately 30 high-cost medications that typically account for 40% or more of employer and health plan pharmacy spend — where net cost variability across channels is greatest and the impact of optimized routing is most significant. Integration is technical and straightforward — we work with your team to connect to existing data flows and begin routing.
           </p>
         </div>

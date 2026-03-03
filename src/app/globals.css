@@ -9,7 +9,6 @@ html {
 body {
   color: #333333;
   background: #ffffff;
-  font-family: var(--font-quicksand), "Quicksand", sans-serif;
 }
 
 @layer utilities {
