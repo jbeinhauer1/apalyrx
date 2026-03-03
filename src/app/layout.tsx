@@ -19,13 +19,13 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ApalyRx | Real-Time Prescription Routing & Benefit Operations Platform",
+  title: "ApalyRx | Direct Drug Access — Simplified",
   description:
-    "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost — and documents every decision.",
+    "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
   openGraph: {
-    title: "ApalyRx | Real-Time Prescription Routing & Benefit Operations Platform",
+    title: "ApalyRx | Direct Drug Access — Simplified",
     description:
-      "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost — and documents every decision.",
+      "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
     type: "website",
     locale: "en_US",
     siteName: "ApalyRx",
