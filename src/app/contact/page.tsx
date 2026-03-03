@@ -24,7 +24,7 @@ export default function ContactPage() {
       />
       <HeroSection
         headline="Let's Talk"
-        subtitle="Whether you are a PBM, employer, health plan, consultant, manufacturer, or pharmacy — we welcome the conversation."
+        subtitle="Whether you are a PBM, employer, health plan, consultant, manufacturer, or pharmacy - we welcome the conversation."
       />
 
       <section className="bg-[#f8f9fb]">

@@ -25,11 +25,11 @@ import {
 export const metadata: Metadata = {
   title: "ApalyRx for PBMs | Real-Time Independent Prescription Routing",
   description:
-    "Strengthen your PBM program with real-time independent routing. ApalyRx evaluates every high-cost prescription across all channels — including yours — and produces decision-level documentation for your clients.",
+    "Strengthen your PBM program with real-time independent routing. ApalyRx evaluates every high-cost prescription across all channels - including yours - and produces decision-level documentation for your clients.",
   openGraph: {
     title: "ApalyRx for PBMs | Real-Time Independent Prescription Routing",
     description:
-      "Strengthen your PBM program with real-time independent routing. ApalyRx evaluates every high-cost prescription across all channels — including yours — and produces decision-level documentation for your clients.",
+      "Strengthen your PBM program with real-time independent routing. ApalyRx evaluates every high-cost prescription across all channels - including yours - and produces decision-level documentation for your clients.",
   },
 };
 
@@ -238,7 +238,7 @@ export default function PBMsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             ApalyRx works alongside your program to give clients what they are increasingly asking
-            for — real-time, independent routing of high-cost prescriptions to the lowest net cost,
+            for - real-time, independent routing of high-cost prescriptions to the lowest net cost,
             with decision-level documentation for every script. Your PBM continues to manage
             formularies, negotiate contracts, and administer the benefit. ApalyRx adds a structural
             layer that makes your program stronger.
@@ -272,7 +272,7 @@ export default function PBMsPage() {
               Your Clients Are Asking Harder Questions
             </h2>
             <p className="font-body text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              The expectations facing PBMs are shifting — and the PBMs that move first will define
+              The expectations facing PBMs are shifting - and the PBMs that move first will define
               the standard.
             </p>
           </div>
@@ -309,7 +309,7 @@ export default function PBMsPage() {
           <div className="text-center mt-12">
             <p className="inline-block font-heading text-base md:text-lg font-semibold text-white bg-[#0F1C2E] px-8 py-4 rounded-xl shadow-lg">
               The PBMs that adopt independent routing proactively will define the next generation of
-              client trust — rather than reacting to mandates.
+              client trust - rather than reacting to mandates.
             </p>
           </div>
         </div>
@@ -329,7 +329,7 @@ export default function PBMsPage() {
               What ApalyRx Adds to Your Program
             </h2>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              ApalyRx complements your PBM — it does not replace it
+              ApalyRx complements your PBM - it does not replace it
             </p>
           </div>
 
@@ -519,7 +519,7 @@ export default function PBMsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Tell us about your program and client base. We will show you how ApalyRx integrates with
-            your existing workflows — strengthening client relationships with independent routing and
+            your existing workflows - strengthening client relationships with independent routing and
             decision-level documentation for every high-cost prescription.
           </p>
           <Link

@@ -31,11 +31,11 @@ import {
 export const metadata: Metadata = {
   title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record",
   description:
-    "Partner with ApalyRx — prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
+    "Partner with ApalyRx - prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
   openGraph: {
     title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record",
     description:
-      "Partner with ApalyRx — prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
+      "Partner with ApalyRx - prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
   },
 };
 
@@ -226,7 +226,7 @@ export default function PharmaciesPage() {
     <>
       <WebPageSchema
         title="ApalyRx for Independent Pharmacies"
-        description="Partner with ApalyRx — prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests."
+        description="Partner with ApalyRx - prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests."
         url="https://www.apalyrx.com/pharmacies"
       />
       <FaqSchema items={faqItems} />
@@ -255,9 +255,9 @@ export default function PharmaciesPage() {
             ApalyRx partners with independent community pharmacies to fulfill prescriptions that are
             independently routed to the lowest net cost. As PBMs, employers, health plans, and
             manufacturers deploy programs through ApalyRx, a growing stream of prescriptions flows to
-            independent pharmacy partners — with transparent reimbursement, fair dispensing fees, and
+            independent pharmacy partners - with transparent reimbursement, fair dispensing fees, and
             no retroactive adjustments. Your pharmacy earns volume because your pricing and service
-            earned it — not because of channel ownership or steering.
+            earned it - not because of channel ownership or steering.
           </p>
           <Link
             href="/contact"
@@ -288,7 +288,7 @@ export default function PharmaciesPage() {
               Independent Pharmacy Is Under Structural Pressure
             </h2>
             <p className="font-body text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              The economics that sustained community pharmacy for decades are changing — and
+              The economics that sustained community pharmacy for decades are changing - and
               independent pharmacies are bearing the greatest burden.
             </p>
           </div>
@@ -325,7 +325,7 @@ export default function PharmaciesPage() {
           <div className="text-center mt-12">
             <p className="inline-block font-heading text-base md:text-lg font-semibold text-white bg-[#0F1C2E] px-8 py-4 rounded-xl shadow-lg">
               Independent pharmacies are closing at a rate of roughly one per day. The economics have
-              to change — and the supply chain has to{" "}
+              to change - and the supply chain has to{" "}
               <span className="text-[#F26522]">include you</span>.
             </p>
           </div>
@@ -346,7 +346,7 @@ export default function PharmaciesPage() {
               What ApalyRx Means for Your Pharmacy
             </h2>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              A platform built to route prescriptions to independent pharmacies — not away from them
+              A platform built to route prescriptions to independent pharmacies - not away from them
             </p>
           </div>
 
@@ -451,7 +451,7 @@ export default function PharmaciesPage() {
                 Manufacturer-Direct Model
               </p>
               <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-                In manufacturer-direct programs, you serve as the pharmacy of record — the licensed
+                In manufacturer-direct programs, you serve as the pharmacy of record - the licensed
                 pharmacist in the workflow. You conduct drug utilization review, verify the
                 prescription, and provide clinical oversight. The physical product ships directly to
                 the member from the manufacturer&apos;s designated logistics provider or a
@@ -470,8 +470,8 @@ export default function PharmaciesPage() {
 
           <p className="font-body text-sm md:text-base text-muted-foreground text-center max-w-4xl mx-auto mt-10">
             Both roles are critical to maintaining the structural independence that the ApalyRx model
-            requires. Independent pharmacies — with no upstream ownership by PBMs, insurers, or GPOs
-            — are what make the model work.
+            requires. Independent pharmacies - with no upstream ownership by PBMs, insurers, or GPOs
+            - are what make the model work.
           </p>
         </div>
       </section>
@@ -601,7 +601,7 @@ export default function PharmaciesPage() {
             Independent community pharmacies are the backbone of the ApalyRx model. As more PBMs,
             employers, health plans, and manufacturers deploy programs through our platform, the
             prescription volume flowing to independent pharmacy partners grows. Apply to partner and
-            start receiving prescriptions — with economics that work for your business.
+            start receiving prescriptions - with economics that work for your business.
           </p>
           <Link
             href="/contact"

@@ -27,11 +27,11 @@ import {
 export const metadata: Metadata = {
   title: "ApalyRx for Benefits Consultants | Drug Benefit Integrity",
   description:
-    "Transform PBM evaluations with real-time independent routing. Give clients a structural standard that changes the pharmacy benefit conversation — from pricing comparisons to accountability and integrity.",
+    "Transform PBM evaluations with real-time independent routing. Give clients a structural standard that changes the pharmacy benefit conversation - from pricing comparisons to accountability and integrity.",
   openGraph: {
     title: "ApalyRx for Benefits Consultants | Drug Benefit Integrity",
     description:
-      "Transform PBM evaluations with real-time independent routing. Give clients a structural standard that changes the pharmacy benefit conversation — from pricing comparisons to accountability and integrity.",
+      "Transform PBM evaluations with real-time independent routing. Give clients a structural standard that changes the pharmacy benefit conversation - from pricing comparisons to accountability and integrity.",
   },
 };
 
@@ -217,8 +217,8 @@ export default function ConsultantsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             Real-time independent routing gives benefits consultants a structural standard that moves
-            the conversation beyond pricing, rebates, and service levels. Can the PBM demonstrate —
-            through an independent party — that each high-cost prescription was routed to the lowest
+            the conversation beyond pricing, rebates, and service levels. Can the PBM demonstrate -
+            through an independent party - that each high-cost prescription was routed to the lowest
             net cost? If not, there is a gap your client should know about.
           </p>
           <Link
@@ -369,7 +369,7 @@ export default function ConsultantsPage() {
               The DBI Framework is a free, one-page evaluation tool with five binary requirements.
               Use it in RFP evaluations, PBM reviews, and strategy meetings. It gives you a
               structured, defensible way to evaluate whether a pharmacy benefit program has structural
-              integrity — and to document that evaluation for your client&apos;s fiduciary records.
+              integrity - and to document that evaluation for your client&apos;s fiduciary records.
             </p>
           </div>
 
@@ -464,7 +464,7 @@ export default function ConsultantsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Tell us about your client base and how you approach PBM evaluations. We will show you how
-            ApalyRx fits alongside your clients&apos; existing programs — and how the DBI Framework
+            ApalyRx fits alongside your clients&apos; existing programs - and how the DBI Framework
             can become part of your evaluation toolkit.
           </p>
           <Link

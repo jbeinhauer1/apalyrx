@@ -29,7 +29,7 @@ export default function Footer() {
     <footer className="bg-[#0F1C2E] text-white">
       <div className="max-w-content mx-auto px-4 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-          {/* Column 1 — Brand */}
+          {/* Column 1 - Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Image
               src="/apalyrx-logo-white-orange.png"
@@ -48,7 +48,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2 — Solutions */}
+          {/* Column 2 - Solutions */}
           <div>
             <h4 className="font-heading font-bold text-lg mb-5">Solutions</h4>
             <nav className="flex flex-col gap-3">
@@ -60,7 +60,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 3 — Company */}
+          {/* Column 3 - Company */}
           <div>
             <h4 className="font-heading font-bold text-lg mb-5">Company</h4>
             <nav className="flex flex-col gap-3">
@@ -84,7 +84,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 4 — Resources */}
+          {/* Column 4 - Resources */}
           <div>
             <h4 className="font-heading font-bold text-lg mb-5">Resources</h4>
             <nav className="flex flex-col gap-3">
@@ -99,7 +99,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 5 — Legal */}
+          {/* Column 5 - Legal */}
           <div>
             <h4 className="font-heading font-bold text-lg mb-5">Legal</h4>
             <nav className="flex flex-col gap-3">

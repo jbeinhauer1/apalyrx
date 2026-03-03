@@ -25,11 +25,11 @@ import {
 export const metadata: Metadata = {
   title: "ApalyRx for Manufacturers | Direct-to-Employer Infrastructure",
   description:
-    "Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation — without building it yourself.",
+    "Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation - without building it yourself.",
   openGraph: {
     title: "ApalyRx for Manufacturers | Direct-to-Employer Infrastructure",
     description:
-      "Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation — without building it yourself.",
+      "Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation - without building it yourself.",
   },
 };
 
@@ -219,13 +219,13 @@ export default function ManufacturersPage() {
             <span className="font-heading">For Manufacturers</span>
           </div>
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
-            Employer Direct — Operationally Simple
+            Employer Direct - Operationally Simple
           </h1>
           <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
             Without Disrupting Your Existing Channel Strategy
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-            ApalyRx is the operational layer for manufacturer direct-to-employer programs —
+            ApalyRx is the operational layer for manufacturer direct-to-employer programs -
             configurable rules, eRx intake, real-time fulfillment routing, medical claims settlement,
             accumulator reporting, and decision-level documentation. Your programs run inside the
             benefit, not outside it.
@@ -292,7 +292,7 @@ export default function ManufacturersPage() {
           <div className="text-center mt-12">
             <p className="inline-block font-body text-sm md:text-base text-muted-foreground bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border">
               💸 Result: Billions invested in patient access programs that remain{" "}
-              <span className="text-[#F26522] font-semibold">invisible to the benefit</span> — and
+              <span className="text-[#F26522] font-semibold">invisible to the benefit</span> - and
               no operational infrastructure to change it.
             </p>
           </div>
@@ -313,7 +313,7 @@ export default function ManufacturersPage() {
               Why Manufacturers Use ApalyRx
             </h2>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              The infrastructure you&apos;d have to build — but don&apos;t have to
+              The infrastructure you&apos;d have to build - but don&apos;t have to
             </p>
           </div>
 
@@ -484,7 +484,7 @@ export default function ManufacturersPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Tell us about your product portfolio and employer-direct objectives. We will show you how
-            ApalyRx can operationalize your programs at scale — with transparent economics,
+            ApalyRx can operationalize your programs at scale - with transparent economics,
             decision-level documentation, and access to a growing network of employer and health plan
             clients.
           </p>

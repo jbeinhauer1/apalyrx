@@ -49,25 +49,25 @@ const problemCards = [
     icon: EyeOff,
     num: 1,
     title: "Opaque Pricing",
-    desc: "Rebate structures are completely opaque — you never know your true net cost until months later, if ever. No independent party verifies that each prescription reached the lowest available price.",
+    desc: "Rebate structures are completely opaque - you never know your true net cost until months later, if ever. No independent party verifies that each prescription reached the lowest available price.",
   },
   {
     icon: Lock,
     num: 2,
     title: "Loss of Control",
-    desc: "Formulary choices are often shaped by contracts outside your control — reducing transparency and limiting your options on high-cost drugs. The entity making routing decisions has financial relationships with the dispensing channels being evaluated.",
+    desc: "Formulary choices are often shaped by contracts outside your control - reducing transparency and limiting your options on high-cost drugs. The entity making routing decisions has financial relationships with the dispensing channels being evaluated.",
   },
   {
     icon: DollarSign,
     num: 3,
     title: "Limited Access to Best Pricing",
-    desc: "You can\u2019t access manufacturer-direct pricing or direct-to-consumer rates — those programs sit outside PBM adjudication, invisible to your benefit. Billions in manufacturer value goes unrecognized.",
+    desc: "You can\u2019t access manufacturer-direct pricing or direct-to-consumer rates - those programs sit outside PBM adjudication, invisible to your benefit. Billions in manufacturer value goes unrecognized.",
   },
   {
     icon: UserX,
     num: 4,
     title: "Poor Member Experience",
-    desc: "Members want clarity and momentum — clear expectations, timely updates, and fewer steps between prescription and delivery. Instead they navigate a fragmented system with no coordination.",
+    desc: "Members want clarity and momentum - clear expectations, timely updates, and fewer steps between prescription and delivery. Instead they navigate a fragmented system with no coordination.",
   },
 ];
 
@@ -78,7 +78,7 @@ const solutionCards = [
     subtitle: "Access Direct, Net Preferred Pricing",
     stat: "20-40%",
     statLabel: "cost reduction",
-    desc: "ApalyRx focuses on the highest-impact medications — often approximately 30 drugs that represent 40-50% of pharmacy spend. Every prescription independently routed to the lowest net cost across all available channels.",
+    desc: "ApalyRx focuses on the highest-impact medications - often approximately 30 drugs that represent 40-50% of pharmacy spend. Every prescription independently routed to the lowest net cost across all available channels.",
   },
   {
     icon: Settings,
@@ -94,7 +94,7 @@ const solutionCards = [
     subtitle: "No PBM or TPA Rip-and-Replace",
     stat: "0",
     statLabel: "disruption",
-    desc: "ApalyRx works alongside your PBM and TPA — carved-out drugs run through ApalyRx with independent routing and documentation; everything else stays in your existing pharmacy benefit flow.",
+    desc: "ApalyRx works alongside your PBM and TPA - carved-out drugs run through ApalyRx with independent routing and documentation; everything else stays in your existing pharmacy benefit flow.",
   },
   {
     icon: Zap,
@@ -102,7 +102,7 @@ const solutionCards = [
     subtitle: "Automatic Adaptation",
     stat: "\u221E",
     statLabel: "scalability",
-    desc: "As new drugs, biosimilars, and lower-cost alternatives emerge, ApalyRx automatically adapts routing through your existing connection — evaluating all channels in real time, no additional integration needed.",
+    desc: "As new drugs, biosimilars, and lower-cost alternatives emerge, ApalyRx automatically adapts routing through your existing connection - evaluating all channels in real time, no additional integration needed.",
   },
 ];
 
@@ -125,22 +125,22 @@ const howItWorksSteps = [
   {
     num: 4,
     title: "Eligibility Validation",
-    desc: "ApalyRx validates member eligibility and applies your program rules in real time — PA requirements, cost-share calculations, and channel controls",
+    desc: "ApalyRx validates member eligibility and applies your program rules in real time - PA requirements, cost-share calculations, and channel controls",
   },
   {
     num: 5,
     title: "Independent Routing to Lowest Net Cost",
-    desc: "Every in-scope prescription is evaluated across all available channels — PBM specialty, PBM mail, retail, manufacturer-direct, and independent pharmacy — and routed in real time to the lowest net cost",
+    desc: "Every in-scope prescription is evaluated across all available channels - PBM specialty, PBM mail, retail, manufacturer-direct, and independent pharmacy - and routed in real time to the lowest net cost",
   },
   {
     num: 6,
     title: "Collection & Settlement",
-    desc: "ApalyRx collects member cost share, reports to accumulators, submits charges as medical claims to your TPA, and settles with suppliers via ACH — closed-loop financial reconciliation",
+    desc: "ApalyRx collects member cost share, reports to accumulators, submits charges as medical claims to your TPA, and settles with suppliers via ACH - closed-loop financial reconciliation",
   },
   {
     num: 7,
     title: "Delivery, Support & Documentation",
-    desc: "Medication ships to member\u2019s home with concierge support. Every prescription generates a decision-level record — channels compared, rules applied, routing rationale, and net cost components. Audit-ready by default.",
+    desc: "Medication ships to member\u2019s home with concierge support. Every prescription generates a decision-level record - channels compared, rules applied, routing rationale, and net cost components. Audit-ready by default.",
   },
 ];
 
@@ -274,7 +274,7 @@ export default function EmployersPage() {
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             ApalyRx is a prescription routing and benefit operations platform that helps employers
             and health plans access manufacturer-direct, lowest net-cost drugs by operationalizing
-            targeted carve-out programs alongside their PBM — with real-time independent routing,
+            targeted carve-out programs alongside their PBM - with real-time independent routing,
             transparent economics, and decision-level documentation for every script.
           </p>
           <Link
@@ -547,7 +547,7 @@ export default function EmployersPage() {
                 </blockquote>
               </div>
               <p className="font-body text-sm text-muted-foreground mb-8 pl-14">
-                — Benefits Director, Self-Funded Employer
+                - Benefits Director, Self-Funded Employer
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-border">
@@ -592,7 +592,7 @@ export default function EmployersPage() {
             Ready to Take Control of Your High-Cost Drug Spend?
           </h2>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            We&apos;ll propose a carve-out program design that fits your plan — with real savings
+            We&apos;ll propose a carve-out program design that fits your plan - with real savings
             projections based on your population, independent routing across all channels, and
             decision-level documentation for every script.
           </p>

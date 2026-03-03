@@ -26,11 +26,11 @@ import {
 export const metadata: Metadata = {
   title: "ApalyRx for Plan Members | Your Medications, Simplified",
   description:
-    "VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team — covered by your employer.",
+    "VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team - covered by your employer.",
   openGraph: {
     title: "ApalyRx for Plan Members | Your Medications, Simplified",
     description:
-      "VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team — covered by your employer.",
+      "VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team - covered by your employer.",
   },
 };
 
@@ -82,19 +82,19 @@ const benefitCards = [
 const additionalFeatures = [
   {
     icon: FileCheck,
-    text: "Full prescription visibility — status, requirements, shipping",
+    text: "Full prescription visibility - status, requirements, shipping",
   },
   {
     icon: Headphones,
-    text: "PA support — we have automated the process",
+    text: "PA support - we have automated the process",
   },
   {
     icon: Bell,
-    text: "Proactive notifications — status updates, refill reminders",
+    text: "Proactive notifications - status updates, refill reminders",
   },
   {
     icon: UserCheck,
-    text: "Member choice — select your preferred options",
+    text: "Member choice - select your preferred options",
   },
 ];
 
@@ -158,7 +158,7 @@ export default function PlanMembersPage() {
     <>
       <WebPageSchema
         title="ApalyRx for Plan Members"
-        description="VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team — covered by your employer."
+        description="VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team - covered by your employer."
         url="https://www.apalyrx.com/plan-members"
       />
       <FaqSchema items={faqItems} />
@@ -177,7 +177,7 @@ export default function PlanMembersPage() {
             VIP Care. Clear Pricing. Home Delivery.
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Concierge support for certain high-cost medications — covered by
+            Concierge support for certain high-cost medications - covered by
             your employer, with clear costs and home delivery.
           </p>
           <a

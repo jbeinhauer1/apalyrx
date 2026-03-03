@@ -21,7 +21,7 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.apalyrx.com"),
   title: {
-    default: "ApalyRx | Direct Drug Access — Simplified",
+    default: "ApalyRx | Direct Drug Access - Simplified",
     template: "%s | ApalyRx",
   },
   description:
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     canonical: "./",
   },
   openGraph: {
-    title: "ApalyRx | Direct Drug Access — Simplified",
+    title: "ApalyRx | Direct Drug Access - Simplified",
     description:
       "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
     type: "website",

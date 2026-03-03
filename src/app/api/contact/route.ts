@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       from: "ApalyRx Website <noreply@apalyrx.com>",
       to: "sales@apalyrx.com",
       replyTo: email,
-      subject: `New Contact: ${name}${organization ? ` — ${organization}` : ""}`,
+      subject: `New Contact: ${name}${organization ? ` - ${organization}` : ""}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>

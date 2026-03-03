@@ -28,11 +28,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx | Direct Drug Access — Simplified",
+  title: "ApalyRx | Direct Drug Access - Simplified",
   description:
     "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
   openGraph: {
-    title: "ApalyRx | Direct Drug Access — Simplified",
+    title: "ApalyRx | Direct Drug Access - Simplified",
     description:
       "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
     type: "website",
@@ -60,7 +60,7 @@ const problemCards = [
     icon: Factory,
     audience: "Manufacturers",
     title: "Lose Market Share",
-    desc: "Billions invested in copay programs, patient assistance, and direct pricing — but these programs sit outside PBM adjudication, invisible to the benefit. Channel access is driven by PBM economics instead of clinical value. No infrastructure exists to bring these programs inside the benefit at scale.",
+    desc: "Billions invested in copay programs, patient assistance, and direct pricing - but these programs sit outside PBM adjudication, invisible to the benefit. Channel access is driven by PBM economics instead of clinical value. No infrastructure exists to bring these programs inside the benefit at scale.",
   },
   {
     icon: Users,
@@ -77,7 +77,7 @@ const stakeholders = [
     borderColor: "border-l-[#0F1C2E]",
     tag: "For PBMs",
     title: "Strengthen Your Program With Independent Routing",
-    desc: "Add a real-time independent routing layer that evaluates every high-cost prescription across all channels — including your own pharmacies — and produces decision-level documentation for your clients.",
+    desc: "Add a real-time independent routing layer that evaluates every high-cost prescription across all channels - including your own pharmacies - and produces decision-level documentation for your clients.",
     href: "/pbms",
   },
   {
@@ -86,7 +86,7 @@ const stakeholders = [
     borderColor: "border-l-[#F26522]",
     tag: "For Health Plans",
     title: "Operate Targeted Drug Carve-Out Programs",
-    desc: "You select what drugs are included in your drug programs. Set your own program rules and controls. Access direct, pass-through, net pricing — no rebates, no hidden spread. Every routing decision independently documented with full audit trail.",
+    desc: "You select what drugs are included in your drug programs. Set your own program rules and controls. Access direct, pass-through, net pricing - no rebates, no hidden spread. Every routing decision independently documented with full audit trail.",
     href: "/employers",
   },
   {
@@ -104,7 +104,7 @@ const stakeholders = [
     borderColor: "border-l-[#F26522]",
     tag: "For Manufacturers",
     title: "Turn-Key Direct-to-Employer Infrastructure",
-    desc: "Deploy direct-to-employer drug access programs at scale — eRx intake, eligibility, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. No need to build the plumbing.",
+    desc: "Deploy direct-to-employer drug access programs at scale - eRx intake, eligibility, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. No need to build the plumbing.",
     href: "/manufacturers",
   },
   {
@@ -124,7 +124,7 @@ const howItWorksSteps = [
     title: "Configure Programs & Pricing",
     subtitle: "Set up your customized drug program",
     bullets: [
-      { icon: ClipboardCheck, text: "Employers and health plans define drug programs — scope, eligibility, cost-share, PA requirements, and channel controls" },
+      { icon: ClipboardCheck, text: "Employers and health plans define drug programs - scope, eligibility, cost-share, PA requirements, and channel controls" },
       { icon: Factory, text: "Manufacturers integrate direct pricing, copay programs, and patient assistance into the routing evaluation" },
       { icon: Settings, text: "Platform configured and ready to receive prescriptions through the e-prescribing workflow" },
     ],
@@ -135,7 +135,7 @@ const howItWorksSteps = [
     subtitle: "Real-time all-channel eRx routing",
     bullets: [
       { icon: Send, text: "Prescriptions received directly through the e-prescribing workflow" },
-      { icon: CheckCircle2, text: "Every in-scope eRx evaluated across all available channels — PBM specialty, PBM mail, retail, manufacturer-direct, and independent pharmacy" },
+      { icon: CheckCircle2, text: "Every in-scope eRx evaluated across all available channels - PBM specialty, PBM mail, retail, manufacturer-direct, and independent pharmacy" },
       { icon: Route, text: "Routed in real time to the lowest net cost based on actual pricing across all channels" },
       { icon: Package, text: "Fulfilled through independent community pharmacies or shipped direct to member in manufacturer-direct models" },
     ],
@@ -148,7 +148,7 @@ const howItWorksSteps = [
       { icon: DollarSign, text: "Collect member cost share and report to plan accumulators" },
       { icon: CreditCard, text: "Bill plan portion through medical claim to TPA for data continuity" },
       { icon: Building2, text: "Pay suppliers via ACH with transparent, pass-through economics" },
-      { icon: BarChart3, text: "Decision-level record produced for every prescription — channels compared, rules applied, routing rationale, net cost components" },
+      { icon: BarChart3, text: "Decision-level record produced for every prescription - channels compared, rules applied, routing rationale, net cost components" },
     ],
   },
 ];
@@ -157,17 +157,17 @@ const whyCards = [
   {
     icon: GitMerge,
     title: "Independent",
-    desc: "No ownership in any dispensing channel. Routing decisions are structurally independent — the evaluation has no financial interest in the outcome.",
+    desc: "No ownership in any dispensing channel. Routing decisions are structurally independent - the evaluation has no financial interest in the outcome.",
   },
   {
     icon: Zap,
     title: "Real-Time",
-    desc: "Every prescription routed at the point of decision — not sampled retrospectively, not reported after the fact. Real-time all-channel evaluation.",
+    desc: "Every prescription routed at the point of decision - not sampled retrospectively, not reported after the fact. Real-time all-channel evaluation.",
   },
   {
     icon: FileCheck,
     title: "Documented",
-    desc: "Decision-level records for every script — channels compared, rules applied, routing rationale, and closed-loop financial reconciliation. Audit-ready by default.",
+    desc: "Decision-level records for every script - channels compared, rules applied, routing rationale, and closed-loop financial reconciliation. Audit-ready by default.",
   },
   {
     icon: Puzzle,
@@ -177,7 +177,7 @@ const whyCards = [
   {
     icon: Factory,
     title: "Manufacturer-Ready",
-    desc: "Turn-key infrastructure for manufacturer direct-to-employer programs — eRx intake, eligibility, billing, settlement, and accumulator reporting built in.",
+    desc: "Turn-key infrastructure for manufacturer direct-to-employer programs - eRx intake, eligibility, billing, settlement, and accumulator reporting built in.",
   },
 ];
 
@@ -207,10 +207,10 @@ export default function HomePage() {
         />
         <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
-            Direct Drug Access — Simplified.
+            Direct Drug Access - Simplified.
           </h1>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-            The drug program operating system with configurable rules, real-time eRx routing to the lowest net cost across all channels, medical claims settlement, decision-level reporting, and VIP member experience — built to work alongside your PBM and TPA with full structural independence.
+            The drug program operating system with configurable rules, real-time eRx routing to the lowest net cost across all channels, medical claims settlement, decision-level reporting, and VIP member experience - built to work alongside your PBM and TPA with full structural independence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -389,7 +389,7 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto mt-10">
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
               <p className="font-body text-sm md:text-base text-white/80">
-                Your PBM and plan stay untouched. ApalyRx operates alongside existing infrastructure — routing high-cost prescriptions to the lowest net cost and documenting every decision.
+                Your PBM and plan stay untouched. ApalyRx operates alongside existing infrastructure - routing high-cost prescriptions to the lowest net cost and documenting every decision.
               </p>
             </div>
           </div>
@@ -475,7 +475,7 @@ export default function HomePage() {
             Let&apos;s Define Your Key Problem Drugs.
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Tell us which drug categories are driving your costs. We will show you how ApalyRx can route those prescriptions to the lowest net cost alongside your existing PBM and TPA — with decision-level documentation for every script and real savings projections based on your population.
+            Tell us which drug categories are driving your costs. We will show you how ApalyRx can route those prescriptions to the lowest net cost alongside your existing PBM and TPA - with decision-level documentation for every script and real savings projections based on your population.
           </p>
           <Link
             href="/contact"
