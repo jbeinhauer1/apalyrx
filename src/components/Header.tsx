@@ -48,7 +48,7 @@ export default function Header() {
             alt="ApalyRx"
             width={240}
             height={96}
-            className="h-12 md:h-20 lg:h-24 w-auto"
+            className="h-10 md:h-12 w-auto"
             priority
           />
         </Link>
