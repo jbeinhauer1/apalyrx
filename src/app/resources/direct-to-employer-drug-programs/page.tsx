@@ -95,9 +95,9 @@ export default function DTEPage() {
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             The pharmaceutical supply chain is changing. Manufacturers are building direct channels
             to reach patients - and increasingly, to reach the employers who fund their benefits.
-            Direct-to-Employer (DTE) programs represent a structural shift in how high-cost
-            medications are priced, accessed, and delivered. For employers managing pharmacy spend,
-            understanding this shift is no longer optional.
+            But most of what the market calls &quot;Direct-to-Employer&quot; today is clinical program
+            management layered on top of manufacturer pricing - not true benefit integration. For
+            employers managing pharmacy spend, understanding this distinction is critical.
           </p>
         </div>
       </section>
@@ -145,16 +145,26 @@ export default function DTEPage() {
             </h3>
             <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed mb-8">
               <p>
-                DTE programs contract directly with employer-sponsored health plans, offering
-                manufacturer pricing that bypasses traditional PBM adjudication. The employer gets a
-                negotiated price - often significantly below the PBM net cost - and the transaction
-                is integrated into the benefit. Member cost-share applies to deductibles and
-                accumulators. The plan sponsor has visibility into the actual cost.
+                DTE programs bring manufacturer pricing inside employer-sponsored health plans,
+                bypassing traditional PBM adjudication for targeted drug categories. Unlike DTC and
+                DTP, the transaction is integrated into the benefit - member cost-share applies to
+                deductibles and accumulators, and the plan sponsor has visibility into the actual
+                cost.
               </p>
               <p>
-                DTE is the model with the most significant implications for employer pharmacy
-                benefits because it brings manufacturer pricing inside the benefit structure rather
-                than operating as a parallel cash-pay workaround.
+                In practice, most manufacturers will not contract directly with individual employers.
+                Doing so risks creating channel conflict with their existing PBM relationships - the
+                same PBMs that control formulary access for the manufacturer&apos;s broader portfolio.
+                Instead, manufacturers typically work through benefit administrators that can
+                facilitate a compliant DTE model - handling eRx intake, eligibility, cost-share,
+                accumulator reporting, and claims settlement on behalf of the employer plan while
+                maintaining the manufacturer&apos;s pricing structure.
+              </p>
+              <p>
+                This is an important distinction: DTE does not necessarily mean the manufacturer and
+                the employer sign a direct contract. It means the manufacturer&apos;s pricing reaches
+                the employer&apos;s benefit through infrastructure that sits outside traditional PBM
+                adjudication.
               </p>
             </div>
           </div>
@@ -191,11 +201,11 @@ export default function DTEPage() {
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">The economics are compelling.</strong> When a
-                manufacturer sells a GLP-1 medication through the traditional PBM channel, the list
-                price may be $1,000+ per month, with a rebate returning 50-70% to the plan. The
-                employer&apos;s net cost after rebate might be $400. Through a DTE program, the
-                manufacturer might offer the same medication at $350 with no rebate - a lower net
-                cost with complete price transparency and no reconciliation required.
+                manufacturer sells a GLP-1 medication through the traditional PBM channel, the
+                employer&apos;s net cost after rebate may still be $750+ per month - and that
+                number is difficult to verify in real time. Through a DTE program, the manufacturer
+                might offer the same medication at ~$550 with no rebate - a lower net cost with
+                complete price transparency and no reconciliation required.
               </p>
             </div>
           </div>
@@ -231,9 +241,9 @@ export default function DTEPage() {
               <p>
                 <strong className="text-[#0F1C2E]">Pharmacy exclusion.</strong> Most
                 manufacturer-direct models use one or two nationally contracted mail-order
-                pharmacies - typically CenterWell or CoAssist. Independent community pharmacies are
-                cut out of the supply chain entirely, even though they are often the patient&apos;s
-                preferred and most accessible dispensing point.
+                pharmacies. Independent community pharmacies are cut out of the supply chain
+                entirely, even though they are often the patient&apos;s preferred and most
+                accessible dispensing point.
               </p>
             </div>
           </div>
