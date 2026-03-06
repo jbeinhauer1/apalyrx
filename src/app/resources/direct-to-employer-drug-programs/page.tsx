@@ -25,7 +25,19 @@ const faqItems = [
   {
     question: 'What does "Direct-to-Employer" (DTE) mean in pharmacy benefits?',
     answer:
-      "DTE is a model where pharmaceutical manufacturers contract directly with employer-sponsored health plans to offer medication pricing that bypasses traditional PBM adjudication. The employer gets a negotiated price, and the transaction is integrated into the benefit so member cost-share applies to deductibles and accumulators.",
+      "DTE is a model where manufacturer pricing reaches employer-sponsored health plans through infrastructure that bypasses traditional PBM adjudication. In practice, most manufacturers do not contract directly with individual employers - they work through benefit administrators that facilitate a compliant DTE model. The employer gets a negotiated price, and the transaction is integrated into the benefit so member cost-share applies to deductibles and accumulators.",
+  },
+  {
+    question:
+      "Do manufacturers contract directly with employers in DTE programs?",
+    answer:
+      "Usually not. Most manufacturers avoid direct contracts with individual employers because doing so risks creating channel conflict with their existing PBM relationships - the same PBMs that control formulary access for the manufacturer's broader portfolio. Instead, manufacturers typically work through benefit administrators that can facilitate DTE pricing while handling eRx intake, eligibility, cost-share, accumulator reporting, and claims settlement on behalf of the employer plan.",
+  },
+  {
+    question:
+      "What is the difference between a DTE clinical vendor and DTE benefit infrastructure?",
+    answer:
+      "A DTE clinical vendor provides clinical program management - prior authorization, adherence monitoring, patient onboarding, outcomes tracking - but does not integrate the transaction into the employer's benefit. DTE benefit infrastructure handles the operational requirements to make the transaction part of the covered benefit: eRx intake, eligibility verification, cost-share collection, accumulator reporting, claims settlement, and supplier payment. Clinical management and benefit infrastructure are complementary but distinct - and without the infrastructure, the program is still outside the plan.",
   },
   {
     question: "How is DTE different from DTC and DTP?",
@@ -45,7 +57,7 @@ const faqItems = [
   {
     question: "How does ApalyRx enable DTE programs?",
     answer:
-      "ApalyRx provides the turn-key infrastructure to bring DTE programs inside the benefit - eRx intake, eligibility verification, cost-share collection, accumulator reporting, medical claim billing, and supplier settlement. It evaluates DTE alongside all other channels in real time and documents every routing decision.",
+      "ApalyRx provides the turn-key infrastructure to bring DTE programs inside the benefit - eRx intake, eligibility verification, cost-share collection, accumulator reporting, claims settlement through either the TPA or PBM, and supplier settlement. It evaluates DTE alongside all other channels in real time and documents every routing decision.",
   },
   {
     question: "What is the Pharmacy of Record model?",
@@ -221,6 +233,16 @@ export default function DTEPage() {
             </p>
             <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
               <p>
+                <strong className="text-[#0F1C2E]">
+                  Clinical management is not benefit integration.
+                </strong>{" "}
+                Many vendors marketed as &quot;DTE&quot; provide clinical program management -
+                prior authorization, adherence monitoring, patient onboarding - but do not integrate
+                the transaction into the employer&apos;s benefit. Clinical wrapping does not make a
+                program part of the benefit. Without eRx intake, cost-share collection, accumulator
+                reporting, and claims settlement, the program is still outside the plan.
+              </p>
+              <p>
                 <strong className="text-[#0F1C2E]">Accumulator disconnection.</strong> If a
                 member&apos;s cost-share for a DTE prescription does not apply to their deductible or
                 out-of-pocket maximum, the member is effectively paying twice - once for the DTE
@@ -280,9 +302,11 @@ export default function DTEPage() {
                 maximum - so it is reflected in their benefit status across all providers.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Medical claim billing.</strong> The plan&apos;s
-                portion must be billed through the TPA&apos;s medical claims system for data continuity,
-                stop-loss reporting, and financial reconciliation.
+                <strong className="text-[#0F1C2E]">Claims settlement.</strong> The plan&apos;s
+                portion must be settled through either the TPA&apos;s medical claims system or the
+                PBM&apos;s pharmacy claims system - depending on the employer&apos;s plan
+                administration model. Both paths require data continuity, stop-loss reporting, and
+                financial reconciliation.
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Supplier settlement.</strong> Payment to the
