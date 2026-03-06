@@ -21,7 +21,7 @@ const mobileLinks = [
   { href: "/consultants", label: "Benefits Consultants" },
   { href: "/manufacturers", label: "Manufacturers" },
   { href: "/pharmacies", label: "Independent Pharmacies" },
-  { href: "/plan-members", label: "Plan Members" },
+  { href: "/members", label: "Plan Members" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -128,7 +128,7 @@ export default function Header() {
           </div>
 
           <Link
-            href="/plan-members"
+            href="/members"
             className="font-heading text-sm lg:text-[15px] font-medium text-muted-foreground hover:text-navy transition-all duration-300"
           >
             Plan Members

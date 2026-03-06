@@ -200,7 +200,7 @@ const faqItems = [
   {
     question: "How does billing and settlement work?",
     answer:
-      "ApalyRx collects member cost share at the point of service and reports to plan accumulators. The plan portion is submitted as a medical claim to your TPA for data continuity. Suppliers are paid via ACH with transparent, pass-through economics - no spread, no markup. Every transaction is reconciled in the decision-level record.",
+      "ApalyRx collects member cost share at the point of service and reports to plan accumulators. The plan portion is submitted either as a medical claim to your TPA or pharmacy claims to your PBM (depending on your specific configuration) for data continuity. Suppliers are paid via ACH with transparent, pass-through economics - no spread, no markup. Every transaction is reconciled in the decision-level record.",
   },
   {
     question: "What reporting and documentation do we get?",
@@ -340,7 +340,7 @@ export default function EmployersPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="inline-block font-body text-sm md:text-base text-muted-foreground bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border">
+            <p className="inline-block font-body text-sm md:text-base text-white bg-[#0F1C2E] rounded-full px-6 py-3">
               💸 Result: Overpaying by{" "}
               <span className="text-[#F26522] font-semibold">20-40%</span> on your highest-cost
               drugs,{" "}

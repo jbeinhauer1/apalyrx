@@ -159,7 +159,7 @@ export default function PlanMembersPage() {
       <WebPageSchema
         title="ApalyRx for Plan Members"
         description="VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team - covered by your employer."
-        url="https://www.apalyrx.com/plan-members"
+        url="https://www.apalyrx.com/members"
       />
       <FaqSchema items={faqItems} />
       {/* ── Section 1: Hero ── */}

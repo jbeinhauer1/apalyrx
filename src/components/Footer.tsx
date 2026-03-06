@@ -8,7 +8,7 @@ const solutionsLinks = [
   { href: "/consultants", label: "Benefits Consultants" },
   { href: "/manufacturers", label: "Manufacturers" },
   { href: "/pharmacies", label: "Independent Pharmacies" },
-  { href: "/plan-members", label: "Plan Members" },
+  { href: "/members", label: "Plan Members" },
 ];
 
 const companyLinks = [

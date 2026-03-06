@@ -121,7 +121,7 @@ const whyDifferentCards = [
   {
     icon: Scale,
     title: "Merit-Based Routing",
-    desc: "Prescriptions route to your pharmacy because you offered the best net cost and service - not because of network tier, channel affiliation, or volume guarantees to a competing pharmacy. Every routing decision is based on actual economics, and you can see exactly why you won or did not win a given prescription.",
+    desc: "Prescriptions route to your pharmacy because you offered the best net cost and service - not because of network tier, channel affiliation, or volume guarantees to a competing pharmacy. Every routing decision is based on actual economics.",
   },
   {
     icon: Eye,

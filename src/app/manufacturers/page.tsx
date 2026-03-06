@@ -290,7 +290,7 @@ export default function ManufacturersPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="inline-block font-body text-sm md:text-base text-muted-foreground bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border">
+            <p className="inline-block font-body text-sm md:text-base text-white bg-[#0F1C2E] rounded-full px-6 py-3">
               💸 Result: Billions invested in patient access programs that remain{" "}
               <span className="text-[#F26522] font-semibold">invisible to the benefit</span> - and
               no operational infrastructure to change it.
