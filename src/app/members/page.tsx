@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Prescription Drug Benefits Made Simple for Plan Members | ApalyRx",
+  title: "Prescription Drug Benefits Made Simple for Plan Members",
   description:
     "One point of contact for your high-cost prescriptions. ApalyRx handles insurance verification, cost-share calculation, prior authorizations, and delivery coordination - so you get your medication without the runaround.",
   openGraph: {

@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Independent Routing Layer for PBMs | Strengthen Client Retention | ApalyRx",
+  title: "Independent Routing Layer for PBMs | Strengthen Client Retention",
   description:
     "Add an independent, real-time prescription routing and verification layer to your PBM services. Produce decision-level documentation that proves lowest-net-cost routing for every high-cost script. Help your clients meet fiduciary obligations and differentiate in competitive RFPs.",
   openGraph: {

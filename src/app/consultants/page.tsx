@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "PBM Evaluation & Drug Benefit Integrity for Benefits Consultants | ApalyRx",
+  title: "PBM Evaluation & Drug Benefit Integrity for Benefits Consultants",
   description:
     "Move client conversations from PBM pricing comparisons to structural accountability. Introduce the Drug Benefit Integrity standard - independent verification that every prescription routing decision is made in the plan's interest. Differentiate your advisory practice.",
   openGraph: {

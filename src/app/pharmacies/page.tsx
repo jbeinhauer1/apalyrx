@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Fair Reimbursement & New Revenue for Independent Pharmacies | ApalyRx",
+  title: "Fair Reimbursement & New Revenue for Independent Pharmacies",
   description:
     "Dispense prescriptions or serve as pharmacy of record in manufacturer-direct models. Fair reimbursement at acquisition cost plus dispensing fee. No DIR fees, no clawbacks, no retroactive adjustments. From a platform with no competing pharmacy channel.",
   openGraph: {

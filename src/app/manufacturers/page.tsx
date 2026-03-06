@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Direct-to-Employer Drug Program Infrastructure for Manufacturers | ApalyRx",
+  title: "Direct-to-Employer Drug Program Infrastructure for Manufacturers",
   description:
     "Deploy copay programs, patient assistance, and direct pricing into employer-sponsored benefits at scale. Turn-key infrastructure for eRx intake, eligibility verification, cost-share collection, accumulator reporting, and medical-claim billing. No need to build the plumbing.",
   openGraph: {

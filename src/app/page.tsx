@@ -28,7 +28,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx | Independent Prescription Routing for Self-Funded Employers",
+  title: {
+    absolute: "ApalyRx | Independent Prescription Routing for Self-Funded Employers",
+  },
   description:
     "ApalyRx works alongside your PBM and TPA to independently route high-cost prescriptions to the lowest net cost in real time. Decision-level documentation for every script. Pharmacy-licensed. No channel ownership. Built on the Drug Benefit Integrity standard.",
   openGraph: {

@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Pharmacy Benefit Cost Reduction for Self-Funded Employers | ApalyRx",
+  title: "Pharmacy Benefit Cost Reduction for Self-Funded Employers",
   description:
     "Reduce high-cost drug spend 20%+ with independent, real-time prescription routing alongside your existing PBM and TPA. Carve out specialty and GLP-1 drugs. Every routing decision independently documented with full audit trail for ERISA fiduciary compliance.",
   openGraph: {
