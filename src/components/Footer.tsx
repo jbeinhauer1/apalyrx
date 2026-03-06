@@ -88,14 +88,12 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-bold text-lg mb-5">Resources</h4>
             <nav className="flex flex-col gap-3">
-              <a
-                href="https://drugbenefitintegrity.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkClass}
-              >
+              <Link href="/resources" className={linkClass}>
+                All Resources
+              </Link>
+              <Link href="/resources/drug-benefit-integrity" className={linkClass}>
                 Drug Benefit Integrity Standard
-              </a>
+              </Link>
             </nav>
           </div>
 

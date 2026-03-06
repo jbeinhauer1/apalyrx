@@ -456,14 +456,12 @@ export default function HomePage() {
             </p>
           </div>
           <div className="text-center">
-            <a
-              href="https://drugbenefitintegrity.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/resources/drug-benefit-integrity"
               className="font-heading text-[#F26522] hover:text-[#F26522]/80 font-semibold transition-all duration-300"
             >
               Learn more about the DBI standard &rarr;
-            </a>
+            </Link>
           </div>
         </div>
       </SectionWrapper>

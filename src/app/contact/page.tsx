@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import ContactForm from "@/components/ContactForm";
 import WebPageSchema from "@/components/WebPageSchema";
@@ -47,14 +48,12 @@ export default function ContactPage() {
               </a>
             </p>
             <p>
-              <a
-                href="https://drugbenefitintegrity.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/resources/drug-benefit-integrity"
                 className="font-heading text-[#F26522] hover:text-orange-hover font-semibold transition-all duration-300"
               >
                 Learn about the Drug Benefit Integrity standard &rarr;
-              </a>
+              </Link>
             </p>
           </div>
         </div>

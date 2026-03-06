@@ -22,6 +22,7 @@ const mobileLinks = [
   { href: "/manufacturers", label: "Manufacturers" },
   { href: "/pharmacies", label: "Independent Pharmacies" },
   { href: "/members", label: "Plan Members" },
+  { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -132,6 +133,13 @@ export default function Header() {
             className="font-heading text-sm lg:text-[15px] font-medium text-muted-foreground hover:text-navy transition-all duration-300"
           >
             Plan Members
+          </Link>
+
+          <Link
+            href="/resources"
+            className="font-heading text-sm lg:text-[15px] font-medium text-muted-foreground hover:text-navy transition-all duration-300"
+          >
+            Resources
           </Link>
 
           <Link
