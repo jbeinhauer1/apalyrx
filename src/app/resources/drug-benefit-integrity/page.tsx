@@ -4,6 +4,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import WebPageSchema from "@/components/WebPageSchema";
 import FaqSchema from "@/components/FaqSchema";
 import ArticleSchema from "@/components/ArticleSchema";
+import RelatedResources from "@/components/RelatedResources";
 import {
   Shield,
   Route,
@@ -380,6 +381,9 @@ export default function DrugBenefitIntegrityPage() {
             </h2>
             <FaqAccordion items={faqItems} />
           </div>
+
+          {/* Related Resources */}
+          <RelatedResources currentHref="/resources/drug-benefit-integrity" />
 
           {/* External resource link */}
           <div className="text-center mb-8">

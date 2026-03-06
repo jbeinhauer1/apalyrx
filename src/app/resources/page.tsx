@@ -25,6 +25,27 @@ const resources = [
       "An independent standard with five structural requirements for ensuring that pharmacy benefit decisions are made in the plan's interest. Learn what DBI means, why it matters, and how it compares to transparency alone.",
     href: "/resources/drug-benefit-integrity",
   },
+  {
+    category: "Education",
+    title: "Direct-to-Employer Drug Programs (DTE): What Employers Need to Know",
+    description:
+      "Manufacturers are going direct. LillyDirect, NovoCare, TrumpRx - the supply chain is shifting. Learn what DTE means, how it works, and what infrastructure is required to bring these programs inside the benefit.",
+    href: "/resources/direct-to-employer-drug-programs",
+  },
+  {
+    category: "Education",
+    title: "What Is Lowest Net Cost Prescription Routing?",
+    description:
+      "Every plan sponsor wants the lowest net cost. But how do you verify it across all channels - PBM, specialty, mail, manufacturer-direct - in real time, at the point of decision? Here's what the term actually means and why it matters.",
+    href: "/resources/lowest-net-cost-routing",
+  },
+  {
+    category: "Compliance",
+    title: "PBM Fiduciary Compliance: How Employers Can Prove Prudent Oversight",
+    description:
+      "CAA 2026, the DOL proposed rule, and ERISA litigation are raising the bar for pharmacy benefit oversight. A practical guide to demonstrating fiduciary prudence - not just transparency, but verifiable decision-level integrity.",
+    href: "/resources/pbm-fiduciary-compliance",
+  },
 ];
 
 export default function ResourcesPage() {
