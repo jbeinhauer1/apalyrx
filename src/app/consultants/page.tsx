@@ -25,13 +25,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx for Benefits Consultants | Drug Benefit Integrity",
+  title: "PBM Evaluation & Drug Benefit Integrity for Benefits Consultants | ApalyRx",
   description:
-    "Transform PBM evaluations with real-time independent routing. Give clients a structural standard that changes the pharmacy benefit conversation - from pricing comparisons to accountability and integrity.",
+    "Move client conversations from PBM pricing comparisons to structural accountability. Introduce the Drug Benefit Integrity standard - independent verification that every prescription routing decision is made in the plan's interest. Differentiate your advisory practice.",
   openGraph: {
-    title: "ApalyRx for Benefits Consultants | Drug Benefit Integrity",
+    title: "Drug Benefit Integrity for Benefits Consultants | ApalyRx",
     description:
-      "Transform PBM evaluations with real-time independent routing. Give clients a structural standard that changes the pharmacy benefit conversation - from pricing comparisons to accountability and integrity.",
+      "Move beyond PBM pricing comparisons. Introduce structural accountability with independent routing verification and decision-level documentation.",
+    url: "https://www.apalyrx.com/consultants",
+    siteName: "ApalyRx",
+    type: "website",
   },
 };
 

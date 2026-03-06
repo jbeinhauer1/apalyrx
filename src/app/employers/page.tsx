@@ -30,15 +30,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title:
-    "ApalyRx for Employers & Health Plans | Independent Prescription Routing & Carve-Out Programs",
+  title: "Pharmacy Benefit Cost Reduction for Self-Funded Employers | ApalyRx",
   description:
-    "Fix the drugs driving your spend without replacing your PBM. ApalyRx operationalizes targeted carve-out programs with real-time independent routing, transparent pricing, and decision-level documentation.",
+    "Reduce high-cost drug spend 20%+ with independent, real-time prescription routing alongside your existing PBM and TPA. Carve out specialty and GLP-1 drugs. Every routing decision independently documented with full audit trail for ERISA fiduciary compliance.",
   openGraph: {
-    title:
-      "ApalyRx for Employers & Health Plans | Independent Prescription Routing & Carve-Out Programs",
+    title: "Pharmacy Benefit Cost Reduction for Self-Funded Employers",
     description:
-      "Fix the drugs driving your spend without replacing your PBM. ApalyRx operationalizes targeted carve-out programs with real-time independent routing, transparent pricing, and decision-level documentation.",
+      "Reduce high-cost drug spend 20%+ with independent real-time prescription routing. Works alongside your PBM and TPA. Full audit trail for fiduciary compliance.",
+    url: "https://www.apalyrx.com/employers",
+    siteName: "ApalyRx",
+    type: "website",
   },
 };
 

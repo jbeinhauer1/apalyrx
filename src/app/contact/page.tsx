@@ -4,13 +4,16 @@ import ContactForm from "@/components/ContactForm";
 import WebPageSchema from "@/components/WebPageSchema";
 
 export const metadata: Metadata = {
-  title: "Contact ApalyRx | Request a Conversation",
+  title: "Contact ApalyRx | Request a Conversation About Pharmacy Benefit Solutions",
   description:
-    "Reach out to learn how ApalyRx provides real-time independent prescription routing for PBMs, employers, health plans, consultants, manufacturers, and pharmacies.",
+    "Talk to ApalyRx about reducing high-cost drug spend, independent prescription routing, manufacturer-direct programs, or the Drug Benefit Integrity standard. We'll show you real savings projections based on your population.",
   openGraph: {
     title: "Contact ApalyRx | Request a Conversation",
     description:
-      "Reach out to learn how ApalyRx provides real-time independent prescription routing for PBMs, employers, health plans, consultants, manufacturers, and pharmacies.",
+      "Talk to us about reducing high-cost drug spend with independent prescription routing. We'll show you real savings projections based on your population.",
+    url: "https://www.apalyrx.com/contact",
+    siteName: "ApalyRx",
+    type: "website",
   },
 };
 

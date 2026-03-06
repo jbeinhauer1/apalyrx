@@ -23,13 +23,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx for Manufacturers | Direct-to-Employer Infrastructure",
+  title: "Direct-to-Employer Drug Program Infrastructure for Manufacturers | ApalyRx",
   description:
-    "Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation - without building it yourself.",
+    "Deploy copay programs, patient assistance, and direct pricing into employer-sponsored benefits at scale. Turn-key infrastructure for eRx intake, eligibility verification, cost-share collection, accumulator reporting, and medical-claim billing. No need to build the plumbing.",
   openGraph: {
-    title: "ApalyRx for Manufacturers | Direct-to-Employer Infrastructure",
+    title: "Direct-to-Employer Drug Program Infrastructure | ApalyRx",
     description:
-      "Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation - without building it yourself.",
+      "Bring manufacturer copay programs and direct pricing inside employer benefits at scale. Turn-key eRx intake, eligibility, billing, and settlement infrastructure.",
+    url: "https://www.apalyrx.com/manufacturers",
+    siteName: "ApalyRx",
+    type: "website",
   },
 };
 

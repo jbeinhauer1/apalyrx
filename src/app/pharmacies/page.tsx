@@ -29,13 +29,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record",
+  title: "Fair Reimbursement & New Revenue for Independent Pharmacies | ApalyRx",
   description:
-    "Partner with ApalyRx - prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
+    "Dispense prescriptions or serve as pharmacy of record in manufacturer-direct models. Fair reimbursement at acquisition cost plus dispensing fee. No DIR fees, no clawbacks, no retroactive adjustments. From a platform with no competing pharmacy channel.",
   openGraph: {
-    title: "ApalyRx for Independent Pharmacies | Dispensing & Pharmacy of Record",
+    title: "Fair Reimbursement for Independent Pharmacies | ApalyRx",
     description:
-      "Partner with ApalyRx - prescriptions routed on merit. Fair dispensing fees, no DIR fees, no clawbacks, and no competing channel interests. Dispense directly or serve as pharmacy of record in manufacturer-direct models.",
+      "New prescription volume with fair reimbursement. No DIR fees, no clawbacks. Dispense directly or serve as pharmacy of record. No competing channel interests.",
+    url: "https://www.apalyrx.com/pharmacies",
+    siteName: "ApalyRx",
+    type: "website",
   },
 };
 

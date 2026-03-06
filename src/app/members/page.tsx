@@ -24,13 +24,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx for Plan Members | Your Medications, Simplified",
+  title: "Prescription Drug Benefits Made Simple for Plan Members | ApalyRx",
   description:
-    "VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team - covered by your employer.",
+    "One point of contact for your high-cost prescriptions. ApalyRx handles insurance verification, cost-share calculation, prior authorizations, and delivery coordination - so you get your medication without the runaround.",
   openGraph: {
-    title: "ApalyRx for Plan Members | Your Medications, Simplified",
+    title: "Prescription Drug Benefits Made Simple | ApalyRx",
     description:
-      "VIP concierge support for your high-cost medications. Clear pricing, home delivery, and a dedicated support team - covered by your employer.",
+      "One point of contact for high-cost prescriptions. We handle insurance, cost-share, prior auth, and delivery so you get your medication without the runaround.",
+    url: "https://www.apalyrx.com/members",
+    siteName: "ApalyRx",
+    type: "website",
   },
 };
 

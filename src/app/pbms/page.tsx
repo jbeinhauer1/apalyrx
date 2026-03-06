@@ -23,13 +23,16 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx for PBMs | Real-Time Independent Prescription Routing",
+  title: "Independent Routing Layer for PBMs | Strengthen Client Retention | ApalyRx",
   description:
-    "Strengthen your PBM program with real-time independent routing. ApalyRx evaluates every high-cost prescription across all channels - including yours - and produces decision-level documentation for your clients.",
+    "Add an independent, real-time prescription routing and verification layer to your PBM services. Produce decision-level documentation that proves lowest-net-cost routing for every high-cost script. Help your clients meet fiduciary obligations and differentiate in competitive RFPs.",
   openGraph: {
-    title: "ApalyRx for PBMs | Real-Time Independent Prescription Routing",
+    title: "Independent Routing Layer for PBMs | ApalyRx",
     description:
-      "Strengthen your PBM program with real-time independent routing. ApalyRx evaluates every high-cost prescription across all channels - including yours - and produces decision-level documentation for your clients.",
+      "Add independent prescription routing verification to your PBM. Decision-level documentation for every script. Differentiate in competitive RFPs.",
+    url: "https://www.apalyrx.com/pbms",
+    siteName: "ApalyRx",
+    type: "website",
   },
 };
 

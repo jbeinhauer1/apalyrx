@@ -28,16 +28,17 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ApalyRx | Direct Drug Access - Simplified",
+  title: "ApalyRx | Independent Prescription Routing for Self-Funded Employers",
   description:
-    "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
+    "ApalyRx works alongside your PBM and TPA to independently route high-cost prescriptions to the lowest net cost in real time. Decision-level documentation for every script. Pharmacy-licensed. No channel ownership. Built on the Drug Benefit Integrity standard.",
   openGraph: {
-    title: "ApalyRx | Direct Drug Access - Simplified",
+    title: "ApalyRx | Independent Prescription Routing for Self-Funded Employers",
     description:
-      "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
+      "Real-time prescription routing to the lowest net cost across all channels - PBM, specialty, mail, manufacturer-direct. Decision-level documentation for every script.",
+    url: "https://www.apalyrx.com",
+    siteName: "ApalyRx",
     type: "website",
     locale: "en_US",
-    siteName: "ApalyRx",
   },
 };
 
