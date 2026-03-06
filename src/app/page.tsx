@@ -54,13 +54,13 @@ const problemCards = [
     icon: Building2,
     audience: "Employers & Health Plans",
     title: "Overpay by 20-40%",
-    desc: "Limited transparency, complex rebate mechanics, and no independent way to verify that each prescription was routed to the lowest net cost. Plan fiduciaries face personal liability for drug benefit decisions they cannot independently prove were optimal.",
+    desc: "Complex benefit structures, multiple pricing layers, and no independent way to verify that each prescription was routed to the lowest net cost across all available channels. Plan fiduciaries face personal liability for drug benefit decisions they cannot independently prove were optimal.",
   },
   {
     icon: Factory,
     audience: "Manufacturers",
     title: "Lose Market Share",
-    desc: "Billions invested in copay programs, patient assistance, and direct pricing - but these programs sit outside PBM adjudication, invisible to the benefit. Channel access is driven by PBM economics instead of clinical value. No infrastructure exists to bring these programs inside the benefit at scale.",
+    desc: "Manufacturers invest billions in copay programs, patient assistance, and direct pricing, but these programs sit outside the benefit, with no way to evaluate them alongside traditional channels at the point of decision. Clinically valuable options go unused because no infrastructure exists to bring these programs inside the benefit at scale.",
   },
   {
     icon: Users,
@@ -112,8 +112,8 @@ const stakeholders = [
     iconBg: "bg-[#0F1C2E]",
     borderColor: "border-l-[#0F1C2E]",
     tag: "For Independent Pharmacies",
-    title: "Prescriptions Routed on Merit",
-    desc: "Dispense prescriptions or serve as pharmacy of record in manufacturer-direct models. Fair reimbursement from a network with no competing channel interests.",
+    title: "New Revenue. Fair Reimbursement. No Clawbacks.",
+    desc: "Dispense prescriptions or serve as pharmacy of record in manufacturer-direct models. Fair reimbursement from a platform with no competing channel interests.",
     href: "/pharmacies",
   },
 ];
@@ -296,7 +296,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="inline-block font-body text-sm md:text-base text-muted-foreground bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border">
+            <p className="inline-block font-body text-sm md:text-base text-white bg-[#0F1C2E] rounded-full px-6 py-3">
               <span className="text-[#F26522] font-semibold">ApalyRx</span> closes this gap with real-time independent routing, decision-level documentation, and turn-key manufacturer infrastructure
             </p>
           </div>

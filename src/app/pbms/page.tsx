@@ -93,7 +93,7 @@ const solutionCards = [
     subtitle: "Win Against Alternative Models",
     stat: "First",
     statLabel: "mover",
-    desc: "When consultants evaluate your program against transparent PBMs, direct employer models, and carve-out alternatives, having a real-time independent routing layer already in place sets you apart. You are not defending your model - you are demonstrating structural integrity that competitors cannot match.",
+    desc: "When consultants evaluate your program against other PBMs, direct employer models, and carve-out alternatives, having a real-time independent routing layer already in place sets you apart. You are not defending your model - you are demonstrating structural integrity that competitors cannot match.",
   },
 ];
 
@@ -153,9 +153,9 @@ const timelineMilestones = [
 
 const faqItems = [
   {
-    question: "Does ApalyRx replace our PBM?",
+    question: "Does ApalyRx replace us the PBM?",
     answer:
-      "No. Your PBM continues to manage formularies, negotiate contracts, process claims, and administer the benefit. ApalyRx operates as a real-time routing layer for a targeted set of high-cost medications. Everything else stays in your existing pharmacy benefit flow.",
+      "No. You continue to manage formularies, process claims, and administer the benefit. ApalyRx operates as a real-time routing layer for a targeted set of high-cost medications. Everything else stays in your existing flow and control.",
   },
   {
     question: "Will our pharmacies still be in the evaluation?",
@@ -166,11 +166,6 @@ const faqItems = [
     question: "What happens when our channel wins the routing?",
     answer:
       "The prescription fills through your pharmacy as normal. The difference is that the decision is now independently documented - showing which channels were evaluated, what the pricing was, and why your channel was selected. This is valuable documentation for your client relationships.",
-  },
-  {
-    question: "Does this conflict with our PBM contracts or guarantees?",
-    answer:
-      "ApalyRx programs are scoped to a targeted set of high-cost drugs and operate alongside your existing benefit. We support a structured review of relevant contract provisions - definitions, exclusions, guarantee calculations, and notice requirements - to ensure the program is compliant with your broader vendor strategy.",
   },
   {
     question: "What about our rebate arrangements?",
