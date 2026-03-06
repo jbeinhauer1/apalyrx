@@ -264,20 +264,18 @@ export default function ManufacturersPage() {
             {problemCards.map((card) => (
               <div
                 key={card.title}
-                className="group bg-white rounded-xl p-6 md:p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300 relative overflow-hidden"
+                className="relative bg-white rounded-xl p-6 md:p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl group"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-t-xl" />
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
+                  {card.num}
+                </div>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
-                      {card.num}
-                    </div>
+                  <div className="flex-shrink-0 p-3 rounded-xl bg-red-100 group-hover:bg-red-500 transition-colors duration-300">
+                    <card.icon className="h-6 w-6 text-red-600 group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="p-2 rounded-lg bg-red-100 group-hover:bg-red-500 transition-all duration-300 w-fit mb-3">
-                      <card.icon className="w-5 h-5 text-red-600 group-hover:text-white transition-all duration-300" />
-                    </div>
-                    <h3 className="font-heading text-xl md:text-2xl font-bold text-navy mb-2">
+                  <div>
+                    <h3 className="font-heading text-xl md:text-2xl font-bold text-foreground mb-2">
                       {card.title}
                     </h3>
                     <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
