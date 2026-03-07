@@ -13,6 +13,7 @@ const solutionsLinks = [
 
 const companyLinks = [
   { href: "https://apaly.com/about-apaly/", label: "About", external: true },
+  { href: "/partners", label: "Partners", external: false },
   { href: "/contact", label: "Contact", external: false },
 ];
 

@@ -11,7 +11,8 @@
       "Bash(npm run:*)",
       "Bash(node:*)",
       "Bash(grep:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(mkdir:*)"
     ]
   }
 }
