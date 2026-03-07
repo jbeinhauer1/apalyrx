@@ -155,6 +155,25 @@ INSERT INTO portal_settings (key, value) VALUES
 
 -- RLS Policies
 
+-- Helper functions (SECURITY DEFINER bypasses RLS to avoid infinite recursion)
+CREATE OR REPLACE FUNCTION get_my_partner_org_id()
+RETURNS uuid
+LANGUAGE sql
+SECURITY DEFINER
+STABLE
+AS $$
+  SELECT organization_id FROM partner_users WHERE user_id = auth.uid();
+$$;
+
+CREATE OR REPLACE FUNCTION is_apaly_team_member()
+RETURNS boolean
+LANGUAGE sql
+SECURITY DEFINER
+STABLE
+AS $$
+  SELECT COALESCE(is_apaly_team, false) FROM partner_users WHERE user_id = auth.uid();
+$$;
+
 ALTER TABLE partner_organizations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE partner_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
@@ -164,48 +183,49 @@ ALTER TABLE commission_imports ENABLE ROW LEVEL SECURITY;
 ALTER TABLE audit_log ENABLE ROW LEVEL SECURITY;
 ALTER TABLE admin_notification_settings ENABLE ROW LEVEL SECURITY;
 
+-- partner_users: use auth.uid() directly — no subquery back to itself
+CREATE POLICY "Users see own org members" ON partner_users
+  FOR ALL USING (
+    user_id = auth.uid()
+    OR organization_id = get_my_partner_org_id()
+    OR is_apaly_team_member() = true
+  );
+
 -- Partners can only see their own org
 CREATE POLICY "Partners see own org" ON partner_organizations
   FOR ALL USING (
-    id = (SELECT organization_id FROM partner_users WHERE user_id = auth.uid())
-    OR (SELECT is_apaly_team FROM partner_users WHERE user_id = auth.uid()) = true
-  );
-
--- Partners can only see users in their org
-CREATE POLICY "Partners see own org users" ON partner_users
-  FOR ALL USING (
-    organization_id = (SELECT organization_id FROM partner_users WHERE user_id = auth.uid())
-    OR (SELECT is_apaly_team FROM partner_users WHERE user_id = auth.uid()) = true
+    id = get_my_partner_org_id()
+    OR is_apaly_team_member() = true
   );
 
 -- Partners see only their leads; Apaly team sees all
 CREATE POLICY "Partners see own leads" ON leads
   FOR ALL USING (
-    organization_id = (SELECT organization_id FROM partner_users WHERE user_id = auth.uid())
-    OR (SELECT is_apaly_team FROM partner_users WHERE user_id = auth.uid()) = true
+    organization_id = get_my_partner_org_id()
+    OR is_apaly_team_member() = true
   );
 
--- Same for lead activity, commissions
+-- Lead activity scoped to partner's leads
 CREATE POLICY "Partners see own lead activity" ON lead_activity
   FOR ALL USING (
-    (SELECT organization_id FROM leads WHERE id = lead_id) =
-    (SELECT organization_id FROM partner_users WHERE user_id = auth.uid())
-    OR (SELECT is_apaly_team FROM partner_users WHERE user_id = auth.uid()) = true
+    (SELECT organization_id FROM leads WHERE id = lead_id) = get_my_partner_org_id()
+    OR is_apaly_team_member() = true
   );
 
+-- Commission entries scoped to partner's org
 CREATE POLICY "Partners see own commissions" ON commission_entries
   FOR ALL USING (
-    organization_id = (SELECT organization_id FROM partner_users WHERE user_id = auth.uid())
-    OR (SELECT is_apaly_team FROM partner_users WHERE user_id = auth.uid()) = true
+    organization_id = get_my_partner_org_id()
+    OR is_apaly_team_member() = true
   );
 
 -- Only Apaly team can see audit log and notification settings
 CREATE POLICY "Apaly team only - audit" ON audit_log
   FOR ALL USING (
-    (SELECT is_apaly_team FROM partner_users WHERE user_id = auth.uid()) = true
+    is_apaly_team_member() = true
   );
 
 CREATE POLICY "Apaly team only - settings" ON admin_notification_settings
   FOR ALL USING (
-    (SELECT is_apaly_team FROM partner_users WHERE user_id = auth.uid()) = true
+    is_apaly_team_member() = true
   );
