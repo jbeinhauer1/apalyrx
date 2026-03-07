@@ -41,106 +41,150 @@ interface DashboardData {
 export default function DashboardPage() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    let timedOut = false;
+    const timeout = setTimeout(() => {
+      timedOut = true;
+      setLoading(false);
+      setError("Dashboard took too long to load. Please refresh the page or contact support.");
+    }, 5000);
+
     async function load() {
-      const supabase = createPartnerClient();
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) return;
+      try {
+        const supabase = createPartnerClient();
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          setError("No active session. Please log in again.");
+          return;
+        }
 
-      const { data: pu } = await supabase
-        .from("partner_users")
-        .select("organization_id, is_apaly_team, role")
-        .eq("user_id", session.user.id)
-        .maybeSingle();
-
-      if (!pu) { setLoading(false); return; }
-
-      if (pu.is_apaly_team) {
-        // Admin dashboard
-        const [partners, leads, commissions] = await Promise.all([
-          supabase.from("partner_organizations").select("id, status"),
-          supabase.from("leads").select("id, status"),
-          supabase.from("commission_entries").select("commission_amount, period_month"),
-        ]);
-
-        const pendingPartners = partners.data?.filter(p => p.status === "pending").length || 0;
-        const activePartners = partners.data?.filter(p => p.status === "active").length || 0;
-        const pendingLeads = leads.data?.filter(l => l.status === "pending").length || 0;
-        const activeLeads = leads.data?.filter(l => l.status === "qualified").length || 0;
-
-        const now = new Date();
-        const thisMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
-        const monthTotal = commissions.data
-          ?.filter(c => c.period_month?.startsWith(thisMonth))
-          .reduce((sum, c) => sum + (Number(c.commission_amount) || 0), 0) || 0;
-
-        setData({
-          isApalyTeam: true,
-          setupComplete: true,
-          orgStatus: "active",
-          emailVerified: true,
-          hasProfile: true,
-          hasBanking: true,
-          partnerCode: "",
-          companyName: "ApalyRx Admin",
-          totalLeads: leads.data?.length || 0,
-          qualifiedLeads: activeLeads,
-          commissionThisMonth: monthTotal,
-          commissionAllTime: commissions.data?.reduce((s, c) => s + (Number(c.commission_amount) || 0), 0) || 0,
-          expiringLeads: 0,
-          pendingPartners,
-          pendingLeads,
-          activePartners,
-          totalActiveLeads: activeLeads,
-          commissionsPaidThisMonth: monthTotal,
-        });
-      } else {
-        // Partner dashboard
-        const { data: org } = await supabase
-          .from("partner_organizations")
-          .select("*")
-          .eq("id", pu.organization_id)
+        const { data: pu, error: puError } = await supabase
+          .from("partner_users")
+          .select("organization_id, is_apaly_team, role")
+          .eq("user_id", session.user.id)
           .maybeSingle();
 
-        if (!org) { setLoading(false); return; }
+        if (puError) {
+          setError("Failed to load user profile. Please try again.");
+          return;
+        }
 
-        const [leads, commissions] = await Promise.all([
-          supabase.from("leads").select("id, status, acceptance_deadline").eq("organization_id", org.id),
-          supabase.from("commission_entries").select("commission_amount, period_month").eq("organization_id", org.id),
-        ]);
+        if (!pu) {
+          setError("Your user profile was not found. Please contact support.");
+          return;
+        }
 
-        const now = new Date();
-        const thisMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
-        const expiringCount = leads.data?.filter(l => {
-          if (l.status !== "qualified" || !l.acceptance_deadline) return false;
-          const deadline = new Date(l.acceptance_deadline);
-          const daysLeft = Math.ceil((deadline.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-          return daysLeft <= 14 && daysLeft > 0;
-        }).length || 0;
+        if (pu.is_apaly_team) {
+          // Admin dashboard — works even if organization_id is null (super_admin)
+          const [partners, leads, commissions] = await Promise.all([
+            supabase.from("partner_organizations").select("id, status"),
+            supabase.from("leads").select("id, status"),
+            supabase.from("commission_entries").select("commission_amount, period_month"),
+          ]);
 
-        setData({
-          isApalyTeam: false,
-          setupComplete: org.setup_complete,
-          orgStatus: org.status,
-          emailVerified: !!session.user.email_confirmed_at,
-          hasProfile: !!(org.company_name && org.ein && org.address),
-          hasBanking: !!org.account_number_last4,
-          partnerCode: org.partner_code,
-          companyName: org.company_name,
-          totalLeads: leads.data?.length || 0,
-          qualifiedLeads: leads.data?.filter(l => l.status === "qualified").length || 0,
-          commissionThisMonth: commissions.data
+          const pendingPartners = partners.data?.filter(p => p.status === "pending").length || 0;
+          const activePartners = partners.data?.filter(p => p.status === "active").length || 0;
+          const pendingLeads = leads.data?.filter(l => l.status === "pending").length || 0;
+          const activeLeads = leads.data?.filter(l => l.status === "qualified").length || 0;
+
+          const now = new Date();
+          const thisMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+          const monthTotal = commissions.data
             ?.filter(c => c.period_month?.startsWith(thisMonth))
-            .reduce((s, c) => s + (Number(c.commission_amount) || 0), 0) || 0,
-          commissionAllTime: commissions.data?.reduce((s, c) => s + (Number(c.commission_amount) || 0), 0) || 0,
-          expiringLeads: expiringCount,
-        });
+            .reduce((sum, c) => sum + (Number(c.commission_amount) || 0), 0) || 0;
+
+          if (!timedOut) {
+            setData({
+              isApalyTeam: true,
+              setupComplete: true,
+              orgStatus: "active",
+              emailVerified: true,
+              hasProfile: true,
+              hasBanking: true,
+              partnerCode: "",
+              companyName: "ApalyRx Admin",
+              totalLeads: leads.data?.length || 0,
+              qualifiedLeads: activeLeads,
+              commissionThisMonth: monthTotal,
+              commissionAllTime: commissions.data?.reduce((s, c) => s + (Number(c.commission_amount) || 0), 0) || 0,
+              expiringLeads: 0,
+              pendingPartners,
+              pendingLeads,
+              activePartners,
+              totalActiveLeads: activeLeads,
+              commissionsPaidThisMonth: monthTotal,
+            });
+          }
+        } else {
+          // Partner dashboard
+          if (!pu.organization_id) {
+            setError("Your account is not linked to an organization. Please contact support.");
+            return;
+          }
+
+          const { data: org } = await supabase
+            .from("partner_organizations")
+            .select("*")
+            .eq("id", pu.organization_id)
+            .maybeSingle();
+
+          if (!org) {
+            setError("Your organization was not found. Please contact support.");
+            return;
+          }
+
+          const [leads, commissions] = await Promise.all([
+            supabase.from("leads").select("id, status, acceptance_deadline").eq("organization_id", org.id),
+            supabase.from("commission_entries").select("commission_amount, period_month").eq("organization_id", org.id),
+          ]);
+
+          const now = new Date();
+          const thisMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+          const expiringCount = leads.data?.filter(l => {
+            if (l.status !== "qualified" || !l.acceptance_deadline) return false;
+            const deadline = new Date(l.acceptance_deadline);
+            const daysLeft = Math.ceil((deadline.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+            return daysLeft <= 14 && daysLeft > 0;
+          }).length || 0;
+
+          if (!timedOut) {
+            setData({
+              isApalyTeam: false,
+              setupComplete: org.setup_complete,
+              orgStatus: org.status,
+              emailVerified: !!session.user.email_confirmed_at,
+              hasProfile: !!(org.company_name && org.ein && org.address),
+              hasBanking: !!org.account_number_last4,
+              partnerCode: org.partner_code,
+              companyName: org.company_name,
+              totalLeads: leads.data?.length || 0,
+              qualifiedLeads: leads.data?.filter(l => l.status === "qualified").length || 0,
+              commissionThisMonth: commissions.data
+                ?.filter(c => c.period_month?.startsWith(thisMonth))
+                .reduce((s, c) => s + (Number(c.commission_amount) || 0), 0) || 0,
+              commissionAllTime: commissions.data?.reduce((s, c) => s + (Number(c.commission_amount) || 0), 0) || 0,
+              expiringLeads: expiringCount,
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Dashboard load error:", err);
+        if (!timedOut) {
+          setError("Something went wrong loading the dashboard. Please refresh the page.");
+        }
+      } finally {
+        clearTimeout(timeout);
+        if (!timedOut) {
+          setLoading(false);
+        }
       }
-      setLoading(false);
     }
     load();
+
+    return () => clearTimeout(timeout);
   }, []);
 
   function copyLink() {
@@ -153,6 +197,21 @@ export default function DashboardPage() {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="w-8 h-8 border-4 border-[#ff5e00] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="max-w-md mx-auto mt-16 text-center">
+        <AlertTriangle className="w-10 h-10 text-orange-500 mx-auto mb-3" />
+        <p className="text-sm text-gray-700 mb-4">{error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-[#102a4c] text-white rounded-lg text-sm hover:bg-[#102a4c]/90 transition-colors"
+        >
+          Refresh Page
+        </button>
       </div>
     );
   }
