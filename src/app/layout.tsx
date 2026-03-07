@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Quicksand, Open_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import SiteShell from "@/components/SiteShell";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 
 const quicksand = Quicksand({
@@ -204,9 +203,7 @@ document.head.appendChild(o)}initApollo();
       </head>
       <body className="font-body antialiased">
         <AnalyticsProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <SiteShell>{children}</SiteShell>
         </AnalyticsProvider>
       </body>
     </html>
