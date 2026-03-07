@@ -63,16 +63,16 @@ export default function ProfilePage() {
         .from("partner_users")
         .select("organization_id, role")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
-      if (!pu) return;
+      if (!pu) { setLoading(false); return; }
       setIsAdmin(pu.role === "partner_admin");
 
       const { data: orgData } = await supabase
         .from("partner_organizations")
         .select("*")
         .eq("id", pu.organization_id)
-        .single();
+        .maybeSingle();
 
       if (orgData) setOrg(orgData);
 
@@ -141,13 +141,13 @@ export default function ProfilePage() {
           .from("partner_users")
           .select("organization_id")
           .eq("user_id", session.user.id)
-          .single();
+          .maybeSingle();
         if (pu) {
           const { data: orgData } = await supabase
             .from("partner_organizations")
             .select("*")
             .eq("id", pu.organization_id)
-            .single();
+            .maybeSingle();
           if (orgData) setOrg(orgData);
         }
       }

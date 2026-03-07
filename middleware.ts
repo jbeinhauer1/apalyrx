@@ -68,7 +68,7 @@ export async function middleware(request: NextRequest) {
       .from("partner_users")
       .select("role, is_apaly_team")
       .eq("user_id", session.user.id)
-      .single();
+      .maybeSingle();
 
     if (!partnerUser?.is_apaly_team) {
       return NextResponse.redirect(new URL("/partners/dashboard", request.url));

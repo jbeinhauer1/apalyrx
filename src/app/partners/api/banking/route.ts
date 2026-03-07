@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
       .from("partner_users")
       .select("id, organization_id, email")
       .eq("user_id", session.user.id)
-      .single();
+      .maybeSingle();
 
     if (!pu) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });

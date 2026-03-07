@@ -53,9 +53,9 @@ export default function DashboardPage() {
         .from("partner_users")
         .select("organization_id, is_apaly_team, role")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
-      if (!pu) return;
+      if (!pu) { setLoading(false); return; }
 
       if (pu.is_apaly_team) {
         // Admin dashboard
@@ -102,9 +102,9 @@ export default function DashboardPage() {
           .from("partner_organizations")
           .select("*")
           .eq("id", pu.organization_id)
-          .single();
+          .maybeSingle();
 
-        if (!org) return;
+        if (!org) { setLoading(false); return; }
 
         const [leads, commissions] = await Promise.all([
           supabase.from("leads").select("id, status, acceptance_deadline").eq("organization_id", org.id),

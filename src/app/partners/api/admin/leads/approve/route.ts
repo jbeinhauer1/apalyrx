@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     .from("partner_users")
     .select("id, email, is_apaly_team")
     .eq("user_id", session.user.id)
-    .single();
+    .maybeSingle();
 
   if (!pu?.is_apaly_team) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 

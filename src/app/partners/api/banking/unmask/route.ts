@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     .from("partner_users")
     .select("id, email, is_apaly_team, role")
     .eq("user_id", session.user.id)
-    .single();
+    .maybeSingle();
 
   if (!pu?.is_apaly_team || pu.role !== "super_admin") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });

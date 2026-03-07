@@ -41,7 +41,7 @@ export default function ReferralFormPage() {
         .from("partner_organizations")
         .select("company_name, status")
         .eq("partner_code", partnerCode)
-        .single();
+        .maybeSingle();
 
       if (!data || data.status !== "active") {
         setInvalid(true);

@@ -39,13 +39,13 @@ export default function NewLeadPage() {
         .from("partner_users")
         .select("organization_id")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
       if (!pu) return;
       const { data: org } = await supabase
         .from("partner_organizations")
         .select("status, partner_code")
         .eq("id", pu.organization_id)
-        .single();
+        .maybeSingle();
       setOrgActive(org?.status === "active");
       setPartnerCode(org?.partner_code || "");
     }

@@ -115,7 +115,7 @@ export default function LeadDetailPage() {
       .from("partner_users")
       .select("id, is_apaly_team")
       .eq("user_id", session.user.id)
-      .single();
+      .maybeSingle();
 
     await supabase.from("lead_activity").insert({
       lead_id: leadId,

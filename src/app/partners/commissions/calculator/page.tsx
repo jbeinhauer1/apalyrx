@@ -21,14 +21,14 @@ export default function CalculatorPage() {
         .from("partner_users")
         .select("organization_id")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
       if (pu?.organization_id) {
         const { data: org } = await supabase
           .from("partner_organizations")
           .select("commission_rate, commission_duration_months")
           .eq("id", pu.organization_id)
-          .single();
+          .maybeSingle();
 
         if (org?.commission_rate) setCommissionRate(Number(org.commission_rate));
         if (org?.commission_duration_months) setDurationMonths(org.commission_duration_months);

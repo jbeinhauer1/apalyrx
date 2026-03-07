@@ -64,7 +64,7 @@ export default function PartnersLayout({
         .from("partner_users")
         .select("first_name, last_name, email, role, is_apaly_team")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
       if (partnerUser) {
         setUser({

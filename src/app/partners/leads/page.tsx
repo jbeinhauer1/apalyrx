@@ -46,16 +46,17 @@ export default function LeadsPipelinePage() {
         .from("partner_users")
         .select("is_apaly_team, organization_id")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
-      setIsAdmin(pu?.is_apaly_team || false);
+      if (!pu) { setLoading(false); return; }
+      setIsAdmin(pu.is_apaly_team || false);
 
       let query = supabase
         .from("leads")
         .select("*")
         .order("submitted_at", { ascending: false });
 
-      if (!pu?.is_apaly_team && pu?.organization_id) {
+      if (!pu.is_apaly_team && pu.organization_id) {
         query = query.eq("organization_id", pu.organization_id);
       }
 

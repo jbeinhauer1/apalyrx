@@ -26,7 +26,7 @@ export default function AdminLayout({
         .from("partner_users")
         .select("is_apaly_team")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
       if (!pu?.is_apaly_team) {
         router.push("/partners/dashboard");

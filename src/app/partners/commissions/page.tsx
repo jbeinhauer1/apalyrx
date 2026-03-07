@@ -32,16 +32,17 @@ export default function CommissionsPage() {
         .from("partner_users")
         .select("is_apaly_team, organization_id")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
-      setIsAdmin(pu?.is_apaly_team || false);
+      if (!pu) { setLoading(false); return; }
+      setIsAdmin(pu.is_apaly_team || false);
 
       let query = supabase
         .from("commission_entries")
         .select("*, lead:leads(prospect_company_name)")
         .order("period_month", { ascending: false });
 
-      if (!pu?.is_apaly_team && pu?.organization_id) {
+      if (!pu.is_apaly_team && pu.organization_id) {
         query = query.eq("organization_id", pu.organization_id);
       }
 
