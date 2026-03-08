@@ -202,7 +202,7 @@ export default function PartnerSignupPage() {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 max-w-md w-full text-center">
           <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
           <h2 className="text-xl font-bold text-[#102a4c] mb-2">
-            Application Submitted
+            Account Created
           </h2>
           <p className="text-sm text-gray-600 leading-relaxed">
             Check your email to verify your account. Once verified and approved
@@ -520,7 +520,7 @@ export default function PartnerSignupPage() {
                 disabled={loading || !confirmed}
                 className="px-6 py-2.5 bg-[#ff5e00] text-white font-semibold rounded-lg hover:bg-[#ff5e00]/90 transition-colors text-sm disabled:opacity-50"
               >
-                {loading ? "Submitting..." : "Submit Application"}
+                {loading ? "Submitting..." : "Create Account"}
               </button>
             )}
           </div>

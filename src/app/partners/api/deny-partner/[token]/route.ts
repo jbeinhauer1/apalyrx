@@ -51,8 +51,8 @@ export async function GET(
   if (org.status !== "pending") {
     return htmlPage(`
       <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
-      <h1>Application Denied</h1>
-      <p><strong>${org.company_name}</strong> has been denied.<br/>The applicant has been notified by email.</p>
+      <h1>Account Not Activated</h1>
+      <p><strong>${org.company_name}</strong> has been denied.<br/>The partner has been notified by email.</p>
     `);
   }
 
@@ -110,8 +110,8 @@ export async function POST(
   if (org.status !== "pending") {
     return htmlPage(`
       <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
-      <h1>Application Denied</h1>
-      <p><strong>${org.company_name}</strong> has been denied.<br/>The applicant has been notified by email.</p>
+      <h1>Account Not Activated</h1>
+      <p><strong>${org.company_name}</strong> has been denied.<br/>The partner has been notified by email.</p>
     `);
   }
 
@@ -159,7 +159,7 @@ export async function POST(
 
   return htmlPage(`
     <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
-    <h1>Application Denied</h1>
-    <p><strong>${org.company_name}</strong> has been denied.<br/>The applicant has been notified by email.${reason ? `<br/><br/><strong>Reason:</strong> ${reason}` : ""}</p>
+    <h1>Account Not Activated</h1>
+    <p><strong>${org.company_name}</strong> has been denied.<br/>The partner has been notified by email.${reason ? `<br/><br/><strong>Reason:</strong> ${reason}` : ""}</p>
   `);
 }

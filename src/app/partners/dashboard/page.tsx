@@ -305,7 +305,7 @@ export default function DashboardPage() {
               { done: data.emailVerified, label: "Verify email", hint: "Check your inbox for a verification link" },
               { done: data.hasProfile, label: "Complete org profile", hint: "Add your company details", link: "/partners/profile" },
               { done: data.hasBanking, label: "Add banking info", hint: "Required for commission payments", link: "/partners/profile" },
-              { done: data.orgStatus === "active", label: "Awaiting ApalyRx approval", hint: "We'll review your application shortly" },
+              { done: data.orgStatus === "active", label: "Awaiting ApalyRx approval", hint: "We'll review your account shortly" },
             ].map((step, i) => (
               <div key={i} className="flex items-start gap-3">
                 {step.done ? (

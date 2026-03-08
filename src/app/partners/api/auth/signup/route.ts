@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
         email,
         ein,
         partnerId: org.id,
-        appliedAt: new Date().toISOString(),
+        registeredAt: new Date().toISOString(),
         approveUrl: `https://www.apalyrx.com/partners/api/approve-partner/${approvalToken}`,
         denyUrl: `https://www.apalyrx.com/partners/api/deny-partner/${approvalToken}`,
       });

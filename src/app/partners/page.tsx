@@ -198,7 +198,7 @@ function LoginContent() {
                   href="/partners/signup"
                   className="text-sm font-medium text-[#ff5e00] hover:text-[#ff5e00]/80 transition-colors"
                 >
-                  Apply to become a partner &rarr;
+                  Create your partner account &rarr;
                 </Link>
               </div>
             </>

@@ -56,7 +56,7 @@ export function emailConfirmationEmail(data: {
         Hi ${data.contactName},
       </p>
       <p style="font-size:14px;color:#374151;line-height:1.6;">
-        Thanks for applying to the ApalyRx Channel Partner Program. Please verify your email address to continue.
+        Welcome to the ApalyRx Channel Partner Program. Please verify your email address to continue.
       </p>
       <div style="margin:24px 0;">
         ${ctaButton("Verify Email", data.confirmationUrl)}
@@ -75,20 +75,20 @@ export function newPartnerSignupEmail(data: {
   email: string;
   ein?: string;
   partnerId: string;
-  appliedAt: string;
+  registeredAt: string;
   approveUrl: string;
   denyUrl: string;
 }) {
   return {
-    subject: `New Channel Partner Application — ${data.companyName}`,
+    subject: `New Channel Partner Account — ${data.companyName}`,
     html: emailWrapper(`
-      <h2 style="color:#102a4c;margin:0 0 16px;">New Partner Application</h2>
+      <h2 style="color:#102a4c;margin:0 0 16px;">New Partner Account</h2>
       <table style="width:100%;font-size:14px;color:#374151;">
         <tr><td style="padding:6px 0;font-weight:bold;width:140px;">Contact:</td><td>${data.contactName}</td></tr>
         <tr><td style="padding:6px 0;font-weight:bold;">Company:</td><td>${data.companyName}</td></tr>
         <tr><td style="padding:6px 0;font-weight:bold;">Email:</td><td>${data.email}</td></tr>
         ${data.ein ? `<tr><td style="padding:6px 0;font-weight:bold;">EIN:</td><td>${data.ein}</td></tr>` : ""}
-        <tr><td style="padding:6px 0;font-weight:bold;">Applied:</td><td>${data.appliedAt}</td></tr>
+        <tr><td style="padding:6px 0;font-weight:bold;">Registered:</td><td>${data.registeredAt}</td></tr>
       </table>
       <div style="margin-top:24px;">
         ${ctaButton("Approve Partner", data.approveUrl, "#16a34a")}
@@ -96,7 +96,7 @@ export function newPartnerSignupEmail(data: {
         ${ctaButton("Deny Partner", data.denyUrl, "#dc2626")}
       </div>
       <div style="margin-top:16px;">
-        <a href="${baseUrl}/partners/admin/partners/${data.partnerId}" style="font-size:12px;color:#6b7280;text-decoration:underline;">View full application in portal</a>
+        <a href="${baseUrl}/partners/admin/partners/${data.partnerId}" style="font-size:12px;color:#6b7280;text-decoration:underline;">View account details in portal</a>
       </div>
     `),
   };
@@ -126,18 +126,18 @@ export function partnerApprovedEmail(data: {
   };
 }
 
-// Template 2b: Partner Application Denied (to partner)
+// Template 2b: Partner Account Not Activated (to partner)
 export function partnerDeniedEmail(data: {
   contactName: string;
   reason?: string;
 }) {
   return {
-    subject: "ApalyRx Partner Application Update",
+    subject: "ApalyRx Partner Account Update",
     html: emailWrapper(`
-      <h2 style="color:#102a4c;margin:0 0 16px;">Application Update</h2>
+      <h2 style="color:#102a4c;margin:0 0 16px;">Account Update</h2>
       <p style="font-size:14px;color:#374151;line-height:1.6;">
         Hi ${data.contactName},<br><br>
-        Thank you for your interest in the ApalyRx Channel Partner Program. After review, we are unable to approve your application at this time.
+        Thank you for your interest in the ApalyRx Channel Partner Program. After review, we are unable to activate your account at this time.
         ${data.reason ? `<br><br><strong>Reason:</strong> ${data.reason}` : ""}
         <br><br>
         If you have questions, please contact us at partners@apalyrx.com.
