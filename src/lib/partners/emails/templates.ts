@@ -76,6 +76,8 @@ export function newPartnerSignupEmail(data: {
   ein?: string;
   partnerId: string;
   appliedAt: string;
+  approveUrl: string;
+  denyUrl: string;
 }) {
   return {
     subject: `New Channel Partner Application — ${data.companyName}`,
@@ -89,7 +91,12 @@ export function newPartnerSignupEmail(data: {
         <tr><td style="padding:6px 0;font-weight:bold;">Applied:</td><td>${data.appliedAt}</td></tr>
       </table>
       <div style="margin-top:24px;">
-        ${ctaButton("Review Application", `${baseUrl}/partners/admin/partners/${data.partnerId}`)}
+        ${ctaButton("Approve Partner", data.approveUrl, "#16a34a")}
+        &nbsp;&nbsp;
+        ${ctaButton("Deny Partner", data.denyUrl, "#dc2626")}
+      </div>
+      <div style="margin-top:16px;">
+        <a href="${baseUrl}/partners/admin/partners/${data.partnerId}" style="font-size:12px;color:#6b7280;text-decoration:underline;">View full application in portal</a>
       </div>
     `),
   };
@@ -115,6 +122,26 @@ export function partnerApprovedEmail(data: {
       <div style="margin-top:24px;">
         ${ctaButton("Go to Your Dashboard", `${baseUrl}/partners/dashboard`)}
       </div>
+    `),
+  };
+}
+
+// Template 2b: Partner Application Denied (to partner)
+export function partnerDeniedEmail(data: {
+  contactName: string;
+  reason?: string;
+}) {
+  return {
+    subject: "ApalyRx Partner Application Update",
+    html: emailWrapper(`
+      <h2 style="color:#102a4c;margin:0 0 16px;">Application Update</h2>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        Hi ${data.contactName},<br><br>
+        Thank you for your interest in the ApalyRx Channel Partner Program. After review, we are unable to approve your application at this time.
+        ${data.reason ? `<br><br><strong>Reason:</strong> ${data.reason}` : ""}
+        <br><br>
+        If you have questions, please contact us at partners@apalyrx.com.
+      </p>
     `),
   };
 }

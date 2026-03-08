@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { createPartnerAdminClient } from "@/lib/partners/supabase/admin";
 import { generateUniquePartnerCode } from "@/lib/partners/partner-code";
@@ -54,8 +55,11 @@ export async function POST(request: NextRequest) {
     const userId = linkData.user.id;
     const confirmationUrl = linkData.properties.action_link;
 
-    // Generate unique partner code
+    // Generate unique partner code and approval token
     const partnerCode = await generateUniquePartnerCode();
+    const approvalToken = crypto.randomBytes(32).toString("hex");
+    const tokenExpires = new Date();
+    tokenExpires.setDate(tokenExpires.getDate() + 7);
 
     // Create partner organization
     const { data: org, error: orgError } = await supabase
@@ -71,6 +75,8 @@ export async function POST(request: NextRequest) {
         website: website || null,
         notification_email: notificationEmail || email,
         status: "pending",
+        approval_token: approvalToken,
+        approval_token_expires_at: tokenExpires.toISOString(),
       })
       .select("id")
       .single();
@@ -105,7 +111,7 @@ export async function POST(request: NextRequest) {
       html: confirmEmail.html,
     });
 
-    // Send notification to ApalyRx team
+    // Send notification to ApalyRx team with one-click approve/deny
     const notifyEmails = await getNotificationEmails("new_partner_signup");
     if (notifyEmails.length > 0) {
       const emailContent = newPartnerSignupEmail({
@@ -115,6 +121,8 @@ export async function POST(request: NextRequest) {
         ein,
         partnerId: org.id,
         appliedAt: new Date().toISOString(),
+        approveUrl: `https://www.apalyrx.com/partners/api/approve-partner/${approvalToken}`,
+        denyUrl: `https://www.apalyrx.com/partners/api/deny-partner/${approvalToken}`,
       });
       await sendEmail({
         to: notifyEmails,
