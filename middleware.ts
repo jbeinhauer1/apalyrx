@@ -26,8 +26,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Check if this is a referral link (4-char partner code pattern)
-  if (/^\/partners\/[A-Z0-9]{4}$/i.test(pathname)) {
+  // Check if this is a referral link (partner slug like /partners/acme-benefits)
+  const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth"];
+  const slugMatch = pathname.match(/^\/partners\/([^/]+)$/);
+  if (slugMatch && !knownSubpaths.includes(slugMatch[1])) {
     return NextResponse.next();
   }
 

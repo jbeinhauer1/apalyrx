@@ -10,6 +10,8 @@ import {
   Mail,
   Clock,
   Send,
+  UserCheck,
+  X,
 } from "lucide-react";
 
 interface Lead {
@@ -76,10 +78,23 @@ export default function LeadDetailPage() {
   const [loading, setLoading] = useState(true);
   const [newNote, setNewNote] = useState("");
   const [submittingNote, setSubmittingNote] = useState(false);
+  const [isApalyTeam, setIsApalyTeam] = useState(false);
+  const [showCustomerModal, setShowCustomerModal] = useState(false);
+  const [agreementDate, setAgreementDate] = useState("");
+  const [customerNotes, setCustomerNotes] = useState("");
+  const [markingCustomer, setMarkingCustomer] = useState(false);
+
   async function loadData() {
     const supabase = createPartnerClient();
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
+
+    const { data: pu } = await supabase
+      .from("partner_users")
+      .select("is_apaly_team")
+      .eq("user_id", session.user.id)
+      .maybeSingle();
+    setIsApalyTeam(pu?.is_apaly_team || false);
 
     const [leadRes, actRes, commRes] = await Promise.all([
       supabase.from("leads").select("*").eq("id", leadId).single(),
@@ -130,6 +145,26 @@ export default function LeadDetailPage() {
     loadData();
   }
 
+  async function markAsCustomer() {
+    if (!agreementDate) return;
+    setMarkingCustomer(true);
+    try {
+      const res = await fetch("/partners/api/admin/leads/customer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ leadId, agreementDate, notes: customerNotes }),
+      });
+      if (res.ok) {
+        setShowCustomerModal(false);
+        setAgreementDate("");
+        setCustomerNotes("");
+        loadData();
+      }
+    } finally {
+      setMarkingCustomer(false);
+    }
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -163,7 +198,70 @@ export default function LeadDetailPage() {
             </span>
           </div>
         </div>
+        {isApalyTeam && lead.status === "qualified" && (
+          <button
+            onClick={() => setShowCustomerModal(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition-colors"
+          >
+            <UserCheck className="w-4 h-4" />
+            Mark as Customer
+          </button>
+        )}
       </div>
+
+      {/* Mark as Customer Modal */}
+      {showCustomerModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-[#102a4c]">Mark as Customer</h3>
+              <button onClick={() => setShowCustomerModal(false)} className="text-gray-400 hover:text-gray-600">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <p className="text-sm text-gray-600 mb-4">
+              Mark <strong>{lead.prospect_company_name}</strong> as a customer. This will start the commission term.
+            </p>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Agreement Date *</label>
+                <input
+                  type="date"
+                  required
+                  value={agreementDate}
+                  onChange={(e) => setAgreementDate(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+                <textarea
+                  rows={3}
+                  value={customerNotes}
+                  onChange={(e) => setCustomerNotes(e.target.value)}
+                  placeholder="Optional notes..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500"
+                />
+              </div>
+              <div className="flex gap-3 justify-end">
+                <button
+                  onClick={() => setShowCustomerModal(false)}
+                  className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={markAsCustomer}
+                  disabled={!agreementDate || markingCustomer}
+                  className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 disabled:opacity-50 transition-colors"
+                >
+                  {markingCustomer ? "Processing..." : "Confirm"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Info grid */}
       <div className="bg-white rounded-xl border border-gray-200 p-5">

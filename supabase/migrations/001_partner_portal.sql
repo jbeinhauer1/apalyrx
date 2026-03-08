@@ -1,7 +1,7 @@
 -- Partner Organizations
 CREATE TABLE partner_organizations (
   id                          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  partner_code                varchar(4) UNIQUE NOT NULL,
+  partner_code                varchar(50) UNIQUE NOT NULL,
   company_name                text NOT NULL,
   ein                         varchar(10),
   address                     text,

@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     const { data: org } = await supabase
       .from("partner_organizations")
       .select("id, company_name, notification_email, status")
-      .eq("partner_code", partnerCode.toUpperCase())
+      .eq("partner_code", partnerCode)
       .single();
 
     if (!org || org.status !== "active") {
@@ -46,21 +46,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check EIN duplicate
+    // Check EIN duplicate across both tables
     if (ein) {
-      const { data: existingLead } = await supabase
-        .from("leads")
-        .select("id")
-        .eq("prospect_ein", ein)
-        .limit(1)
-        .single();
+      const [orgRes, leadRes] = await Promise.all([
+        supabase.from("partner_organizations").select("id", { count: "exact", head: true }).eq("ein", ein),
+        supabase.from("leads").select("id", { count: "exact", head: true }).eq("prospect_ein", ein),
+      ]);
 
-      if (existingLead) {
+      if ((orgRes.count || 0) > 0 || (leadRes.count || 0) > 0) {
         return NextResponse.json(
-          {
-            error:
-              "This company is already in our system. Please contact your ApalyRx representative.",
-          },
+          { error: "This EIN is already registered in the ApalyRx system. Contact partners@apalyrx.com for assistance." },
           { status: 409 }
         );
       }

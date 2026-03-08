@@ -15,7 +15,7 @@ const LIVES_OPTIONS = [
 
 export default function ReferralFormPage() {
   const params = useParams();
-  const partnerCode = (params.partnerCode as string).toUpperCase();
+  const partnerCode = params.partnerCode as string;
 
   const [partnerName, setPartnerName] = useState<string | null>(null);
   const [invalid, setInvalid] = useState(false);

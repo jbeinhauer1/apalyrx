@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createPartnerClient } from "@/lib/partners/supabase/client";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, UserCheck } from "lucide-react";
 
 interface Lead {
   id: string;
@@ -34,6 +34,8 @@ export default function AdminLeadsPage() {
   const [denyReason, setDenyReason] = useState<Record<string, string>>({});
   const [showDenyInput, setShowDenyInput] = useState<string | null>(null);
   const [processing, setProcessing] = useState<string | null>(null);
+  const [showCustomerInput, setShowCustomerInput] = useState<string | null>(null);
+  const [customerDate, setCustomerDate] = useState<Record<string, string>>({});
 
   async function loadLeads() {
     const supabase = createPartnerClient();
@@ -80,6 +82,21 @@ export default function AdminLeadsPage() {
     });
     if (res.ok) {
       setShowDenyInput(null);
+      await loadLeads();
+    }
+    setProcessing(null);
+  }
+
+  async function markCustomer(leadId: string) {
+    if (!customerDate[leadId]) return;
+    setProcessing(leadId);
+    const res = await fetch("/partners/api/admin/leads/customer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ leadId, agreementDate: customerDate[leadId] }),
+    });
+    if (res.ok) {
+      setShowCustomerInput(null);
       await loadLeads();
     }
     setProcessing(null);
@@ -213,6 +230,35 @@ export default function AdminLeadsPage() {
                               >
                                 <XCircle className="w-3.5 h-3.5" />
                                 Deny
+                              </button>
+                            )}
+                          </>
+                        )}
+                        {lead.status === "qualified" && (
+                          <>
+                            {showCustomerInput === lead.id ? (
+                              <div className="flex items-center gap-1">
+                                <input
+                                  type="date"
+                                  value={customerDate[lead.id] || ""}
+                                  onChange={(e) => setCustomerDate(p => ({ ...p, [lead.id]: e.target.value }))}
+                                  className="px-2 py-1 border rounded text-xs"
+                                />
+                                <button
+                                  onClick={() => markCustomer(lead.id)}
+                                  disabled={processing === lead.id || !customerDate[lead.id]}
+                                  className="text-xs text-green-600 font-medium disabled:opacity-50"
+                                >
+                                  Confirm
+                                </button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() => setShowCustomerInput(lead.id)}
+                                className="flex items-center gap-1 text-xs text-green-600 hover:text-green-800"
+                              >
+                                <UserCheck className="w-3.5 h-3.5" />
+                                Customer
                               </button>
                             )}
                           </>

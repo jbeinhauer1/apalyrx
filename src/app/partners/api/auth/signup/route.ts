@@ -48,16 +48,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check for duplicate EIN
+    // Check for duplicate EIN across both tables
     if (ein) {
-      const { count: einCount } = await supabase
-        .from("partner_organizations")
-        .select("id", { count: "exact", head: true })
-        .eq("ein", ein);
+      const [orgRes, leadRes] = await Promise.all([
+        supabase.from("partner_organizations").select("id", { count: "exact", head: true }).eq("ein", ein),
+        supabase.from("leads").select("id", { count: "exact", head: true }).eq("prospect_ein", ein),
+      ]);
 
-      if ((einCount || 0) > 0) {
+      if ((orgRes.count || 0) > 0 || (leadRes.count || 0) > 0) {
         return NextResponse.json(
-          { error: "A partner account for this organization already exists. Contact partners@apalyrx.com for assistance." },
+          { error: "This EIN is already registered in the ApalyRx system. Contact partners@apalyrx.com for assistance." },
           { status: 409 }
         );
       }
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
     const confirmationUrl = linkData.properties.action_link;
 
     // Generate unique partner code and approval token
-    const partnerCode = await generateUniquePartnerCode();
+    const partnerCode = await generateUniquePartnerCode(companyName);
     const approvalToken = crypto.randomBytes(32).toString("hex");
     const tokenExpires = new Date();
     tokenExpires.setDate(tokenExpires.getDate() + 7);

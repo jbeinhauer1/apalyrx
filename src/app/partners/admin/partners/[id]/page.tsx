@@ -269,7 +269,7 @@ export default function AdminPartnerDetailPage() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-medium text-gray-500 mb-1">Partner Code</label>
-            <input type="text" value={org.partner_code} onChange={(e) => setOrg({ ...org, partner_code: e.target.value.toUpperCase() })} className={inputClass} maxLength={4} />
+            <input type="text" value={org.partner_code} onChange={(e) => setOrg({ ...org, partner_code: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "") })} className={inputClass} maxLength={50} />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-500 mb-1">Company Name</label>

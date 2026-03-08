@@ -8,10 +8,13 @@ export async function POST(request: NextRequest) {
   }
 
   const supabase = createPartnerAdminClient();
-  const { count } = await supabase
-    .from("partner_organizations")
-    .select("id", { count: "exact", head: true })
-    .eq("ein", ein.trim());
+  const trimmed = ein.trim();
 
-  return NextResponse.json({ available: (count || 0) === 0 });
+  const [orgRes, leadRes] = await Promise.all([
+    supabase.from("partner_organizations").select("id", { count: "exact", head: true }).eq("ein", trimmed),
+    supabase.from("leads").select("id", { count: "exact", head: true }).eq("prospect_ein", trimmed),
+  ]);
+
+  const found = (orgRes.count || 0) > 0 || (leadRes.count || 0) > 0;
+  return NextResponse.json({ available: !found });
 }

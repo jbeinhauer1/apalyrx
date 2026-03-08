@@ -500,7 +500,7 @@ export default function PartnerSignupPage() {
                   </div>
                   {einStatus === "taken" ? (
                     <p className="text-xs text-red-600 mt-1">
-                      A partner account for this organization already exists. Contact partners@apalyrx.com for assistance.
+                      This EIN is already registered in the ApalyRx system. Contact partners@apalyrx.com for assistance.
                     </p>
                   ) : (
                     fieldErrors.ein && fieldErrors.ein !== "__taken__" && (

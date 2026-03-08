@@ -28,15 +28,20 @@ interface UserInfo {
   lastName: string;
   role: UserRole;
   isApalyTeam: boolean;
+  companyName: string;
 }
 
 // Public pages that don't show sidebar
 const publicPaths = ["/partners", "/partners/signup"];
 
+const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth"];
+
 function isPublicPage(pathname: string) {
   if (publicPaths.includes(pathname)) return true;
   if (pathname.startsWith("/partners/signup/")) return true;
-  if (/^\/partners\/[A-Z0-9]{4}$/i.test(pathname)) return true;
+  // Referral link: /partners/[slug] where slug is not a known route
+  const slugMatch = pathname.match(/^\/partners\/([^/]+)$/);
+  if (slugMatch && !knownSubpaths.includes(slugMatch[1])) return true;
   return false;
 }
 
@@ -62,17 +67,29 @@ export default function PartnersLayout({
       }
       const { data: partnerUser } = await supabase
         .from("partner_users")
-        .select("first_name, last_name, email, role, is_apaly_team")
+        .select("first_name, last_name, email, role, is_apaly_team, organization_id")
         .eq("user_id", session.user.id)
         .maybeSingle();
 
       if (partnerUser) {
+        let companyName = "";
+        if (partnerUser.is_apaly_team) {
+          companyName = "ApalyRx";
+        } else if (partnerUser.organization_id) {
+          const { data: org } = await supabase
+            .from("partner_organizations")
+            .select("company_name")
+            .eq("id", partnerUser.organization_id)
+            .maybeSingle();
+          companyName = org?.company_name || "";
+        }
         setUser({
           email: partnerUser.email,
           firstName: partnerUser.first_name || "",
           lastName: partnerUser.last_name || "",
           role: partnerUser.role as UserRole,
           isApalyTeam: partnerUser.is_apaly_team || false,
+          companyName,
         });
       }
       setLoading(false);
@@ -144,7 +161,7 @@ export default function PartnersLayout({
           {user && !isPublic && (
             <div className="flex items-center gap-4">
               <span className="text-sm text-white/80 hidden sm:inline">
-                {user.firstName} {user.lastName}
+                {user.companyName && <>{user.companyName} <span className="text-white/40">|</span> </>}{user.firstName} {user.lastName}
               </span>
               <button
                 onClick={handleLogout}

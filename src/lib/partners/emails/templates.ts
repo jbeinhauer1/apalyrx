@@ -273,3 +273,27 @@ export function leadExpiryWarningEmail(data: {
     `),
   };
 }
+
+// --- Lead marked as customer ---
+export function leadMarkedAsCustomerEmail(data: {
+  partnerContactName: string;
+  prospectCompanyName: string;
+  commissionStart: string;
+  commissionEnd: string;
+}) {
+  return {
+    subject: `🎉 ${data.prospectCompanyName} is now an ApalyRx customer!`,
+    html: emailWrapper(`
+      <h2 style="color:#102a4c;margin:0 0 16px;">New Customer Confirmed</h2>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        Hi ${data.partnerContactName},<br><br>
+        Great news! <strong>${data.prospectCompanyName}</strong> is now an active ApalyRx customer.<br><br>
+        Your commission term runs from <strong>${data.commissionStart}</strong> to <strong>${data.commissionEnd}</strong>.<br><br>
+        You can view your commission details in the partner portal.
+      </p>
+      <div style="margin-top:24px;">
+        ${ctaButton("View Commissions", `${baseUrl}/partners/commissions`)}
+      </div>
+    `),
+  };
+}
