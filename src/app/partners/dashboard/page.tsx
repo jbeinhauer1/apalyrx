@@ -55,24 +55,45 @@ export default function DashboardPage() {
     async function load() {
       try {
         const supabase = createPartnerClient();
+
+        // DEBUG: Check auth state
         const { data: { session } } = await supabase.auth.getSession();
+        const { data: { user: authUser }, error: authError } = await supabase.auth.getUser();
+        console.log("=== DASHBOARD DEBUG ===");
+        console.log("getSession() session?.user?.id:", session?.user?.id);
+        console.log("getUser() user?.id:", authUser?.id);
+        console.log("getUser() error:", authError);
+        console.log("Supabase URL:", process.env.NEXT_PUBLIC_PARTNER_SUPABASE_URL);
+
         if (!session) {
+          console.log("DEBUG: No session found, aborting");
           setError("No active session. Please log in again.");
           return;
         }
 
-        const { data: pu, error: puError } = await supabase
+        // DEBUG: Run the exact query and log everything
+        console.log("DEBUG: Querying partner_users where user_id =", session.user.id);
+        const { data: pu, error: puError, status, statusText } = await supabase
           .from("partner_users")
           .select("organization_id, is_apaly_team, role")
           .eq("user_id", session.user.id)
           .maybeSingle();
 
+        console.log("DEBUG: partner_users response:", { data: pu, error: puError, status, statusText });
+
         if (puError) {
+          console.error("DEBUG: partner_users query error:", puError);
           setError("Failed to load user profile. Please try again.");
           return;
         }
 
         if (!pu) {
+          console.log("DEBUG: partner_users returned null — no row matched user_id:", session.user.id);
+          // Also try a raw count to see if ANY rows exist
+          const { count, error: countErr } = await supabase
+            .from("partner_users")
+            .select("*", { count: "exact", head: true });
+          console.log("DEBUG: total partner_users rows visible:", count, "error:", countErr);
           setError("Your user profile was not found. Please contact support.");
           return;
         }
