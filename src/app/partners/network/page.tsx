@@ -20,6 +20,7 @@ export default function NetworkPage() {
   const [loading, setLoading] = useState(true);
   const [partnerCode, setPartnerCode] = useState("");
   const [copied, setCopied] = useState(false);
+  const [copiedReferral, setCopiedReferral] = useState(false);
   const [showInvite, setShowInvite] = useState(false);
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviteCompany, setInviteCompany] = useState("");
@@ -143,30 +144,59 @@ export default function NetworkPage() {
     <div className="max-w-6xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-[#102a4c]">Network</h1>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => { navigator.clipboard.writeText(signupLink); setCopied(true); setTimeout(() => setCopied(false), 2000); }}
-            className="flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50"
-          >
-            {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-            {copied ? "Copied" : "Copy Signup Link"}
-          </button>
-          <button
-            onClick={() => setShowInvite(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-[#ff5e00] text-white rounded-lg text-sm font-semibold hover:bg-[#ff5e00]/90"
-          >
-            <Plus className="w-4 h-4" />
-            Invite Sub-Organization
-          </button>
-        </div>
+        <button
+          onClick={() => setShowInvite(true)}
+          className="flex items-center gap-2 px-4 py-2 bg-[#ff5e00] text-white rounded-lg text-sm font-semibold hover:bg-[#ff5e00]/90"
+        >
+          <Plus className="w-4 h-4" />
+          Invite Sub-Organization
+        </button>
       </div>
 
-      {/* Signup link display */}
-      <div className="bg-white rounded-xl border border-gray-200 p-4">
-        <p className="text-xs text-gray-500 mb-2">Share this link to invite organizations to join your network:</p>
-        <code className="block bg-gray-50 px-3 py-2 rounded-lg text-sm border border-gray-200 text-[#102a4c]">
-          {signupLink}
-        </code>
+      {/* Links section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {/* Sub-org signup link */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 className="text-sm font-semibold text-[#102a4c] mb-2">Your Sub-Organization Signup Link</h3>
+          <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+            Share this link with other benefits consulting firms or sales organizations you work with.
+            When they sign up using this link, their account will be linked to your partner network,
+            allowing you to track their leads and commissions in one place.
+          </p>
+          <code className="block bg-gray-50 px-3 py-2 rounded-lg text-xs border border-gray-200 text-[#102a4c] mb-3 break-all">
+            {signupLink}
+          </code>
+          <button
+            onClick={() => { navigator.clipboard.writeText(signupLink); setCopied(true); setTimeout(() => setCopied(false), 2000); }}
+            className="flex items-center gap-1 px-3 py-1.5 border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50"
+          >
+            {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+            {copied ? "Copied" : "Copy Link"}
+          </button>
+          <p className="text-[11px] text-orange-600 mt-3 leading-relaxed">
+            Note: This link is for partner organizations only — not for employer prospects.
+            To refer an employer prospect, use your referral link instead.
+          </p>
+        </div>
+
+        {/* Employer referral link */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 className="text-sm font-semibold text-[#102a4c] mb-2">Your Employer Referral Link</h3>
+          <p className="text-xs text-gray-500 mb-3 leading-relaxed">
+            Share this link with employer prospects. When they fill out the form,
+            you&apos;ll be automatically credited as the referring partner.
+          </p>
+          <code className="block bg-gray-50 px-3 py-2 rounded-lg text-xs border border-gray-200 text-[#102a4c] mb-3 break-all">
+            {`https://www.apalyrx.com/partners/${partnerCode}`}
+          </code>
+          <button
+            onClick={() => { navigator.clipboard.writeText(`https://www.apalyrx.com/partners/${partnerCode}`); setCopiedReferral(true); setTimeout(() => setCopiedReferral(false), 2000); }}
+            className="flex items-center gap-1 px-3 py-1.5 border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50"
+          >
+            {copiedReferral ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+            {copiedReferral ? "Copied" : "Copy Link"}
+          </button>
+        </div>
       </div>
 
       {message && (
