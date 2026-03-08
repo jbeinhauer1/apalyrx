@@ -35,6 +35,34 @@ export async function POST(request: NextRequest) {
 
     const supabase = createPartnerAdminClient();
 
+    // Check for duplicate email
+    const { count: emailCount } = await supabase
+      .from("partner_users")
+      .select("id", { count: "exact", head: true })
+      .eq("email", email);
+
+    if ((emailCount || 0) > 0) {
+      return NextResponse.json(
+        { error: "An account with this email address already exists. Please sign in or contact partners@apalyrx.com for help." },
+        { status: 409 }
+      );
+    }
+
+    // Check for duplicate EIN
+    if (ein) {
+      const { count: einCount } = await supabase
+        .from("partner_organizations")
+        .select("id", { count: "exact", head: true })
+        .eq("ein", ein);
+
+      if ((einCount || 0) > 0) {
+        return NextResponse.json(
+          { error: "A partner account for this organization already exists. Contact partners@apalyrx.com for assistance." },
+          { status: 409 }
+        );
+      }
+    }
+
     // Create auth user and generate email confirmation link in one step.
     // generateLink creates the user AND returns an action_link we control.
     const { data: linkData, error: linkError } =
