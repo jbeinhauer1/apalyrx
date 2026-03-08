@@ -32,7 +32,7 @@ export async function GET(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Look up org by token — token is nulled after first use
+  // Look up org by token
   const { data: org } = await supabase
     .from("partner_organizations")
     .select("id, company_name, status, approval_token_expires_at")
@@ -40,7 +40,6 @@ export async function GET(
     .eq("status", "pending")
     .maybeSingle();
 
-  // No match: token already used or doesn't exist
   if (!org) {
     return htmlPage(`
       <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
@@ -50,7 +49,6 @@ export async function GET(
     `);
   }
 
-  // Token expired
   if (
     org.approval_token_expires_at &&
     new Date(org.approval_token_expires_at) < new Date()
@@ -63,11 +61,18 @@ export async function GET(
     `);
   }
 
-  // Show denial form
+  // INVALIDATE TOKEN FIRST — prevents the approve link from working
+  await supabase
+    .from("partner_organizations")
+    .update({ approval_token: null, approval_token_expires_at: null })
+    .eq("id", org.id);
+
+  // Show denial form — use orgId (not token) since token is now invalidated
   return htmlPage(`
     <h1>Deny Partner</h1>
     <p style="margin-bottom:16px;"><strong>${org.company_name}</strong></p>
     <form method="POST" action="/partners/api/deny-partner/${token}">
+      <input type="hidden" name="orgId" value="${org.id}" />
       <textarea name="reason" placeholder="Reason for denial (optional)"></textarea>
       <br/>
       <button type="submit" class="deny-btn">Confirm Denial</button>
@@ -75,25 +80,30 @@ export async function GET(
   `);
 }
 
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { token: string } }
-) {
-  const { token } = params;
+export async function POST(request: NextRequest) {
   const supabase = createPartnerAdminClient();
 
   const formData = await request.formData();
   const reason = (formData.get("reason") as string) || "";
+  const orgId = formData.get("orgId") as string;
 
-  // Look up org by token — must be pending
+  // Look up org by ID — token is already invalidated, use orgId from form
+  if (!orgId) {
+    return htmlPage(`
+      <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
+      <h1>Action Already Completed</h1>
+      <p>This action has already been completed. To make changes to this partner account, log in to the Admin Portal.</p>
+      <a href="/partners/admin/partners" class="admin-btn">Go to Admin Portal</a>
+    `);
+  }
+
   const { data: org } = await supabase
     .from("partner_organizations")
-    .select("id, company_name, status, notification_email")
-    .eq("approval_token", token)
+    .select("id, company_name, notification_email, status")
+    .eq("id", orgId)
     .eq("status", "pending")
     .maybeSingle();
 
-  // No match: token already used or doesn't exist
   if (!org) {
     return htmlPage(`
       <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
@@ -103,15 +113,13 @@ export async function POST(
     `);
   }
 
-  // Process denial and invalidate token
+  // Process denial
   const now = new Date().toISOString();
 
   await supabase
     .from("partner_organizations")
     .update({
       status: "denied",
-      approval_token: null,
-      approval_token_expires_at: null,
       updated_at: now,
     })
     .eq("id", org.id);
@@ -123,7 +131,6 @@ export async function POST(
     metadata: { reason, via: "email_link" },
   });
 
-  // Send denial email to partner
   const { data: partnerUser } = await supabase
     .from("partner_users")
     .select("first_name, email")

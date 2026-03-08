@@ -29,7 +29,7 @@ export async function GET(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Look up org by token — token is nulled after first use, so no match = already used
+  // Look up org by token
   const { data: org } = await supabase
     .from("partner_organizations")
     .select("id, company_name, partner_code, notification_email, status, approval_token_expires_at")
@@ -37,7 +37,6 @@ export async function GET(
     .eq("status", "pending")
     .maybeSingle();
 
-  // No match: token already used or doesn't exist
   if (!org) {
     return htmlPage(
       "Action Already Completed",
@@ -46,7 +45,6 @@ export async function GET(
     );
   }
 
-  // Token expired
   if (
     org.approval_token_expires_at &&
     new Date(org.approval_token_expires_at) < new Date()
@@ -58,7 +56,13 @@ export async function GET(
     );
   }
 
-  // Process approval and invalidate token
+  // INVALIDATE TOKEN FIRST — prevents the deny link from working
+  await supabase
+    .from("partner_organizations")
+    .update({ approval_token: null, approval_token_expires_at: null })
+    .eq("id", org.id);
+
+  // Now process approval
   const now = new Date().toISOString();
 
   await supabase
@@ -67,8 +71,6 @@ export async function GET(
       status: "active",
       setup_complete: true,
       approved_at: now,
-      approval_token: null,
-      approval_token_expires_at: null,
       updated_at: now,
     })
     .eq("id", org.id);
@@ -80,7 +82,6 @@ export async function GET(
     metadata: { via: "email_link" },
   });
 
-  // Send approval email to partner
   const { data: partnerUser } = await supabase
     .from("partner_users")
     .select("first_name, email")
