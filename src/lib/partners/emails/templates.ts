@@ -43,6 +43,31 @@ function ctaButton(
   return `<a href="${url}" style="display:inline-block;background:${color};color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:14px;">${text}</a>`;
 }
 
+// Template 0: Email Confirmation (to new partner)
+export function emailConfirmationEmail(data: {
+  contactName: string;
+  confirmationUrl: string;
+}) {
+  return {
+    subject: "Verify Your ApalyRx Partner Account",
+    html: emailWrapper(`
+      <h2 style="color:#102a4c;margin:0 0 16px;">Verify Your Email</h2>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        Hi ${data.contactName},
+      </p>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        Thanks for applying to the ApalyRx Channel Partner Program. Please verify your email address to continue.
+      </p>
+      <div style="margin:24px 0;">
+        ${ctaButton("Verify Email", data.confirmationUrl)}
+      </div>
+      <p style="font-size:12px;color:#6b7280;line-height:1.5;">
+        If you didn&rsquo;t create this account, you can safely ignore this email.
+      </p>
+    `),
+  };
+}
+
 // Template 1: New Partner Signup Alert (to ApalyRx)
 export function newPartnerSignupEmail(data: {
   companyName: string;

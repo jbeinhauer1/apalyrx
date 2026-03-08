@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { createPartnerAdminClient } from "@/lib/partners/supabase/admin";
 import { generateUniquePartnerCode } from "@/lib/partners/partner-code";
 import { sendEmail, getNotificationEmails } from "@/lib/partners/emails/send";
-import { newPartnerSignupEmail } from "@/lib/partners/emails/templates";
+import {
+  newPartnerSignupEmail,
+  emailConfirmationEmail,
+} from "@/lib/partners/emails/templates";
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,17 +34,25 @@ export async function POST(request: NextRequest) {
 
     const supabase = createPartnerAdminClient();
 
-    // Create auth user
-    const { data: authData, error: authError } =
-      await supabase.auth.admin.createUser({
+    // Create auth user and generate email confirmation link in one step.
+    // generateLink creates the user AND returns an action_link we control.
+    const { data: linkData, error: linkError } =
+      await supabase.auth.admin.generateLink({
+        type: "signup",
         email,
         password,
-        email_confirm: false,
+        options: {
+          redirectTo:
+            "https://www.apalyrx.com/partners/api/auth/callback",
+        },
       });
 
-    if (authError) {
-      return NextResponse.json({ error: authError.message }, { status: 400 });
+    if (linkError) {
+      return NextResponse.json({ error: linkError.message }, { status: 400 });
     }
+
+    const userId = linkData.user.id;
+    const confirmationUrl = linkData.properties.action_link;
 
     // Generate unique partner code
     const partnerCode = await generateUniquePartnerCode();
@@ -70,7 +81,7 @@ export async function POST(request: NextRequest) {
 
     // Create partner user
     const { error: userError } = await supabase.from("partner_users").insert({
-      user_id: authData.user.id,
+      user_id: userId,
       organization_id: org.id,
       role: "partner_admin",
       first_name: firstName,
@@ -82,6 +93,17 @@ export async function POST(request: NextRequest) {
     if (userError) {
       return NextResponse.json({ error: userError.message }, { status: 500 });
     }
+
+    // Send confirmation email to the new partner
+    const confirmEmail = emailConfirmationEmail({
+      contactName: firstName,
+      confirmationUrl,
+    });
+    await sendEmail({
+      to: email,
+      subject: confirmEmail.subject,
+      html: confirmEmail.html,
+    });
 
     // Send notification to ApalyRx team
     const notifyEmails = await getNotificationEmails("new_partner_signup");
