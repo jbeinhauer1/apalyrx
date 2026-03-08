@@ -22,51 +22,63 @@ export async function POST(request: NextRequest) {
 
   let successCount = 0;
   let errorCount = 0;
-  const errors: Array<{ ein: string; error: string }> = [];
+  const errors: Array<{ partnerCode: string; error: string }> = [];
+
+  // Pre-fetch orgs by partner_code
+  const partnerCodes = Array.from(new Set(rows.map((r: { partnerCode: string }) => r.partnerCode))) as string[];
+  const { data: orgs } = await admin
+    .from("partner_organizations")
+    .select("id, partner_code, commission_rate")
+    .in("partner_code", partnerCodes);
+  const orgByCode = Object.fromEntries((orgs || []).map(o => [o.partner_code, o]));
 
   for (const row of rows) {
     try {
-      // Find lead by EIN
-      const { data: lead } = await admin
-        .from("leads")
-        .select("id, organization_id")
-        .eq("prospect_ein", row.ein)
-        .eq("status", "customer")
-        .single();
-
-      if (!lead) {
-        errors.push({ ein: row.ein, error: "Customer not found" });
+      const org = orgByCode[row.partnerCode];
+      if (!org) {
+        errors.push({ partnerCode: row.partnerCode, error: "Partner code not found" });
         errorCount++;
         continue;
       }
 
-      // Get partner's commission rate
-      const { data: org } = await admin
-        .from("partner_organizations")
-        .select("commission_rate")
-        .eq("id", lead.organization_id)
-        .single();
-
-      const rate = Number(org?.commission_rate || 0);
-      const total = Number(row.programAdminFee) + Number(row.valueBased);
-      const commission = total * (rate / 100);
+      // Try to find lead by EIN + org for linking
+      let leadId: string | null = null;
+      if (row.customerEin) {
+        const { data: lead } = await admin
+          .from("leads")
+          .select("id")
+          .eq("prospect_ein", row.customerEin)
+          .eq("organization_id", org.id)
+          .eq("status", "customer")
+          .maybeSingle();
+        leadId = lead?.id || null;
+      }
 
       await admin.from("commission_entries").insert({
-        lead_id: lead.id,
-        organization_id: lead.organization_id,
+        lead_id: leadId,
+        organization_id: org.id,
         period_month: row.periodMonth,
-        program_admin_fee: row.programAdminFee,
-        value_based_fee: row.valueBased,
-        commission_rate_applied: rate,
-        commission_amount: commission,
+        program_admin_fee: row.apalyrxFee,
+        value_based_fee: 0,
+        commission_rate_applied: row.commissionRate,
+        commission_amount: row.commissionAmount,
         import_source: "csv",
         import_batch_id: batchId,
         created_by: pu.id,
+        partner_code: row.partnerCode,
+        customer_name: row.customerName || null,
+        script_id: row.scriptId || null,
+        drug_ndc: row.drugNdc || null,
+        drug_brand_name: row.drugBrandName || null,
+        drug_generic_name: row.drugGenericName || null,
+        fulfillment_date: row.fulfillmentDate || null,
+        apalyrx_fee: row.apalyrxFee,
+        commission_rate_snapshot: row.commissionRate,
       });
 
       successCount++;
     } catch (err) {
-      errors.push({ ein: row.ein, error: String(err) });
+      errors.push({ partnerCode: row.partnerCode, error: String(err) });
       errorCount++;
     }
   }

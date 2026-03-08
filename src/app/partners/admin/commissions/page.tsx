@@ -5,16 +5,26 @@ import { createPartnerClient } from "@/lib/partners/supabase/client";
 import { Upload, FileText, AlertCircle, CheckCircle } from "lucide-react";
 
 interface PreviewRow {
-  ein: string;
+  partnerCode: string;
+  customerEin: string;
+  customerName: string;
   periodMonth: string;
-  programAdminFee: number;
-  valueBased: number;
-  customerName?: string;
+  scriptId: string;
+  drugNdc: string;
+  drugBrandName: string;
+  drugGenericName: string;
+  fulfillmentDate: string;
+  apalyrxFee: number;
+  commissionRate: number;
+  commissionAmount: number;
+  // resolved
   partnerName?: string;
-  rate?: number;
-  commission?: number;
+  orgId?: string;
+  leadId?: string;
   error?: string;
 }
+
+const CSV_COLUMNS = "partner_code,customer_ein,customer_name,period_month,script_id,drug_ndc,drug_brand_name,drug_generic_name,fulfillment_date,apalyrx_fee,commission_rate,commission_amount";
 
 export default function AdminCommissionsPage() {
   const [tab, setTab] = useState<"csv" | "webhook">("csv");
@@ -26,49 +36,65 @@ export default function AdminCommissionsPage() {
   async function parseFile(f: File) {
     const text = await f.text();
     const lines = text.trim().split("\n");
-    const header = lines[0].toLowerCase();
-    if (!header.includes("customer_ein")) {
-      alert("Invalid CSV format. Expected columns: customer_ein, period_month, program_admin_fee, value_based_fee");
+    const header = lines[0].toLowerCase().replace(/\r/g, "");
+    if (!header.includes("partner_code")) {
+      alert("Invalid CSV format. Expected columns: " + CSV_COLUMNS);
       return;
     }
 
+    const cols = header.split(",").map(c => c.trim());
+    const idx = (name: string) => cols.indexOf(name);
+
     const supabase = createPartnerClient();
 
-    // Get all customer leads for matching
-    const { data: leads } = await supabase
-      .from("leads")
-      .select("id, prospect_ein, prospect_company_name, organization_id")
-      .eq("status", "customer");
-
+    // Get orgs by partner_code for matching
     const { data: orgs } = await supabase
       .from("partner_organizations")
-      .select("id, company_name, commission_rate");
+      .select("id, partner_code, company_name, commission_rate");
 
-    const orgMap = Object.fromEntries((orgs || []).map(o => [o.id, o]));
+    const orgByCode = Object.fromEntries((orgs || []).map(o => [o.partner_code, o]));
+
+    // Get customer leads for EIN matching
+    const { data: leads } = await supabase
+      .from("leads")
+      .select("id, prospect_ein, organization_id")
+      .eq("status", "customer");
 
     const rows: PreviewRow[] = [];
     for (let i = 1; i < lines.length; i++) {
-      const cols = lines[i].split(",").map(c => c.trim());
-      if (cols.length < 4) continue;
-      const [ein, period, adminFee, vbFee] = cols;
-      const lead = leads?.find(l => l.prospect_ein === ein);
-      if (!lead) {
-        rows.push({ ein, periodMonth: period, programAdminFee: Number(adminFee), valueBased: Number(vbFee), error: "EIN not found" });
-      } else {
-        const org = orgMap[lead.organization_id];
-        const rate = Number(org?.commission_rate || 0);
-        const total = Number(adminFee) + Number(vbFee);
-        rows.push({
-          ein,
-          periodMonth: period,
-          programAdminFee: Number(adminFee),
-          valueBased: Number(vbFee),
-          customerName: lead.prospect_company_name,
-          partnerName: org?.company_name,
-          rate,
-          commission: total * (rate / 100),
-        });
+      const vals = lines[i].replace(/\r/g, "").split(",").map(c => c.trim().replace(/^"|"$/g, ""));
+      if (vals.length < 4) continue;
+
+      const get = (name: string) => vals[idx(name)] || "";
+
+      const partnerCode = get("partner_code");
+      const customerEin = get("customer_ein");
+      const customerName = get("customer_name");
+      const periodMonth = get("period_month");
+      const scriptId = get("script_id");
+      const drugNdc = get("drug_ndc");
+      const drugBrandName = get("drug_brand_name");
+      const drugGenericName = get("drug_generic_name");
+      const fulfillmentDate = get("fulfillment_date");
+      const apalyrxFee = Number(get("apalyrx_fee")) || 0;
+      const commissionRate = Number(get("commission_rate")) || 0;
+      const commissionAmount = Number(get("commission_amount")) || 0;
+
+      const org = orgByCode[partnerCode];
+      if (!org) {
+        rows.push({ partnerCode, customerEin, customerName, periodMonth, scriptId, drugNdc, drugBrandName, drugGenericName, fulfillmentDate, apalyrxFee, commissionRate, commissionAmount, error: `Partner code "${partnerCode}" not found` });
+        continue;
       }
+
+      // Try to match lead by EIN + org
+      const lead = leads?.find(l => l.prospect_ein === customerEin && l.organization_id === org.id);
+
+      rows.push({
+        partnerCode, customerEin, customerName, periodMonth, scriptId, drugNdc, drugBrandName, drugGenericName, fulfillmentDate, apalyrxFee, commissionRate, commissionAmount,
+        partnerName: org.company_name,
+        orgId: org.id,
+        leadId: lead?.id,
+      });
     }
     setPreview(rows);
     setResult(null);
@@ -116,11 +142,12 @@ export default function AdminCommissionsPage() {
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="flex items-center gap-3 mb-4">
               <Upload className="w-5 h-5 text-[#ff5e00]" />
-              <h3 className="font-bold text-[#102a4c]">Upload CSV</h3>
+              <h3 className="font-bold text-[#102a4c]">Upload Script-Level CSV</h3>
             </div>
-            <p className="text-xs text-gray-500 mb-4">
-              Expected format: <code className="bg-gray-100 px-1 rounded">customer_ein,period_month,program_admin_fee,value_based_fee</code>
-            </p>
+            <p className="text-xs text-gray-500 mb-2">Expected columns:</p>
+            <code className="block bg-gray-50 px-3 py-2 rounded-lg text-xs border border-gray-200 mb-4 overflow-x-auto">
+              {CSV_COLUMNS}
+            </code>
             <input
               type="file"
               accept=".csv"
@@ -147,36 +174,38 @@ export default function AdminCommissionsPage() {
                 </button>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full text-sm">
+                <table className="w-full text-xs">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="text-left px-3 py-2 font-medium text-gray-500">EIN</th>
-                      <th className="text-left px-3 py-2 font-medium text-gray-500">Customer</th>
-                      <th className="text-left px-3 py-2 font-medium text-gray-500">Partner</th>
-                      <th className="text-left px-3 py-2 font-medium text-gray-500">Period</th>
-                      <th className="text-right px-3 py-2 font-medium text-gray-500">Admin Fee</th>
-                      <th className="text-right px-3 py-2 font-medium text-gray-500">VB Fee</th>
-                      <th className="text-right px-3 py-2 font-medium text-gray-500">Rate</th>
-                      <th className="text-right px-3 py-2 font-medium text-gray-500">Commission</th>
-                      <th className="text-left px-3 py-2 font-medium text-gray-500">Status</th>
+                      <th className="text-left px-2 py-2 font-medium text-gray-500">Partner</th>
+                      <th className="text-left px-2 py-2 font-medium text-gray-500">EIN</th>
+                      <th className="text-left px-2 py-2 font-medium text-gray-500">Customer</th>
+                      <th className="text-left px-2 py-2 font-medium text-gray-500">Period</th>
+                      <th className="text-left px-2 py-2 font-medium text-gray-500">Script</th>
+                      <th className="text-left px-2 py-2 font-medium text-gray-500">Drug</th>
+                      <th className="text-right px-2 py-2 font-medium text-gray-500">Fee</th>
+                      <th className="text-right px-2 py-2 font-medium text-gray-500">Rate</th>
+                      <th className="text-right px-2 py-2 font-medium text-gray-500">Commission</th>
+                      <th className="text-left px-2 py-2 font-medium text-gray-500">Status</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     {preview.map((row, i) => (
                       <tr key={i} className={row.error ? "bg-red-50" : ""}>
-                        <td className="px-3 py-2 font-mono text-xs">{row.ein}</td>
-                        <td className="px-3 py-2">{row.customerName || "-"}</td>
-                        <td className="px-3 py-2">{row.partnerName || "-"}</td>
-                        <td className="px-3 py-2">{row.periodMonth}</td>
-                        <td className="px-3 py-2 text-right">${row.programAdminFee.toFixed(2)}</td>
-                        <td className="px-3 py-2 text-right">${row.valueBased.toFixed(2)}</td>
-                        <td className="px-3 py-2 text-right">{row.rate ? `${row.rate}%` : "-"}</td>
-                        <td className="px-3 py-2 text-right font-medium">{row.commission ? `$${row.commission.toFixed(2)}` : "-"}</td>
-                        <td className="px-3 py-2">
+                        <td className="px-2 py-2">{row.partnerName || row.partnerCode}</td>
+                        <td className="px-2 py-2 font-mono">{row.customerEin}</td>
+                        <td className="px-2 py-2">{row.customerName || "-"}</td>
+                        <td className="px-2 py-2">{row.periodMonth}</td>
+                        <td className="px-2 py-2 font-mono">{row.scriptId || "-"}</td>
+                        <td className="px-2 py-2">{row.drugBrandName || row.drugGenericName || "-"}</td>
+                        <td className="px-2 py-2 text-right">${row.apalyrxFee.toFixed(2)}</td>
+                        <td className="px-2 py-2 text-right">{row.commissionRate}%</td>
+                        <td className="px-2 py-2 text-right font-medium">${row.commissionAmount.toFixed(2)}</td>
+                        <td className="px-2 py-2">
                           {row.error ? (
-                            <span className="flex items-center gap-1 text-red-600 text-xs"><AlertCircle className="w-3 h-3" />{row.error}</span>
+                            <span className="flex items-center gap-1 text-red-600"><AlertCircle className="w-3 h-3" />{row.error}</span>
                           ) : (
-                            <span className="text-green-600 text-xs"><CheckCircle className="w-3 h-3 inline" /> Ready</span>
+                            <span className="text-green-600"><CheckCircle className="w-3 h-3 inline" /> Ready</span>
                           )}
                         </td>
                       </tr>
@@ -205,10 +234,18 @@ export default function AdminCommissionsPage() {
             <label className="text-xs font-medium text-gray-500 mb-1 block">Expected JSON Schema</label>
             <pre className="bg-gray-50 px-3 py-2 rounded-lg text-xs border border-gray-200 overflow-x-auto">
 {`{
+  "partner_code": "acme-health",
   "customer_ein": "12-3456789",
+  "customer_name": "Example Corp",
   "period_month": "2026-03",
-  "program_admin_fee": 1250.00,
-  "value_based_fee": 750.00
+  "script_id": "RX-12345",
+  "drug_ndc": "12345-678-90",
+  "drug_brand_name": "BrandName",
+  "drug_generic_name": "generic_name",
+  "fulfillment_date": "2026-03-15",
+  "apalyrx_fee": 125.00,
+  "commission_rate": 10.0,
+  "commission_amount": 12.50
 }`}
             </pre>
           </div>
