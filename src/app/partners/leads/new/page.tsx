@@ -18,6 +18,7 @@ export default function NewLeadPage() {
   const [error, setError] = useState("");
   const [orgActive, setOrgActive] = useState<boolean | null>(null);
   const [partnerCode, setPartnerCode] = useState("");
+  const [partnerUserId, setPartnerUserId] = useState("");
   const [einStatus, setEinStatus] = useState<"idle" | "checking" | "unique" | "duplicate">("idle");
 
   const [form, setForm] = useState({
@@ -37,10 +38,11 @@ export default function NewLeadPage() {
       if (!session) return;
       const { data: pu } = await supabase
         .from("partner_users")
-        .select("organization_id")
+        .select("id, organization_id")
         .eq("user_id", session.user.id)
         .maybeSingle();
       if (!pu) return;
+      setPartnerUserId(pu.id);
       const { data: org } = await supabase
         .from("partner_organizations")
         .select("status, partner_code")
@@ -87,7 +89,7 @@ export default function NewLeadPage() {
       const res = await fetch("/partners/api/referral", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, partnerCode }),
+        body: JSON.stringify({ ...form, partnerCode, submittedByUserId: partnerUserId || undefined }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Submission failed");

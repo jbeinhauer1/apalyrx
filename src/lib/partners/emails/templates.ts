@@ -274,7 +274,36 @@ export function leadExpiryWarningEmail(data: {
   };
 }
 
-// Template 8: Sub-Organization Invite (to invitee)
+// Template 8: Prospect Consent Confirmation (to prospect)
+export function prospectConsentEmail(data: {
+  prospectName: string;
+  partnerCompanyName: string;
+  confirmUrl: string;
+}) {
+  return {
+    subject: "Confirm Your Referral to ApalyRx",
+    html: emailWrapper(`
+      <h2 style="color:#102a4c;margin:0 0 16px;">Confirm Your Referral</h2>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        Hi ${data.prospectName},
+      </p>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        <strong>${data.partnerCompanyName}</strong> has submitted your organization as a prospect for the ApalyRx prescription drug savings program.
+      </p>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        Please confirm that you consent to this referral. This helps us ensure all parties are aligned before proceeding.
+      </p>
+      <div style="margin:24px 0;">
+        ${ctaButton("Confirm Referral", data.confirmUrl)}
+      </div>
+      <p style="font-size:12px;color:#6b7280;line-height:1.5;">
+        If you did not expect this email or do not wish to proceed, you can safely ignore it. This link expires in 30 days.
+      </p>
+    `),
+  };
+}
+
+// Template 9: Sub-Organization Invite (to invitee)
 export function subOrgInviteEmail(data: {
   parentCompanyName: string;
   inviterName: string;

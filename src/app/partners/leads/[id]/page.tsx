@@ -32,6 +32,8 @@ interface Lead {
   commission_start_date: string | null;
   commission_end_date: string | null;
   denial_reason: string | null;
+  assigned_to_user_id: string | null;
+  prospect_confirmed_at: string | null;
 }
 
 interface Activity {
@@ -59,6 +61,7 @@ const STATUS_COLORS: Record<string, string> = {
   customer: "bg-green-100 text-green-800",
   expired: "bg-gray-100 text-gray-600",
   denied: "bg-red-100 text-red-800",
+  disputed: "bg-orange-100 text-orange-800",
 };
 
 const ACTIVITY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -85,6 +88,7 @@ export default function LeadDetailPage() {
   const [markingCustomer, setMarkingCustomer] = useState(false);
   const [feeSchedules, setFeeSchedules] = useState<{ id: string; name: string; is_default: boolean }[]>([]);
   const [selectedFeeScheduleId, setSelectedFeeScheduleId] = useState("");
+  const [assignedUserName, setAssignedUserName] = useState("");
 
   async function loadData() {
     const supabase = createPartnerClient();
@@ -126,6 +130,17 @@ export default function LeadDetailPage() {
     setLead(leadRes.data);
     setActivities(actRes.data || []);
     setCommissions(commRes.data || []);
+
+    // Fetch assigned user name
+    if (leadRes.data?.assigned_to_user_id) {
+      const { data: assignedUser } = await supabase
+        .from("partner_users")
+        .select("first_name, last_name")
+        .eq("id", leadRes.data.assigned_to_user_id)
+        .maybeSingle();
+      if (assignedUser) setAssignedUserName(`${assignedUser.first_name} ${assignedUser.last_name}`);
+    }
+
     setLoading(false);
   }
 
@@ -207,8 +222,17 @@ export default function LeadDetailPage() {
             <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
               lead.submission_source === "referral_link" ? "bg-purple-100 text-purple-700" : "bg-gray-100 text-gray-600"
             }`}>
-              {lead.submission_source === "referral_link" ? "Referral" : "Manual"}
+              {lead.submission_source === "referral_link" ? "Referral" : lead.submission_source === "portal" ? "Portal" : "Manual"}
             </span>
+            {lead.prospect_confirmed_at ? (
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-700">
+                Prospect Confirmed
+              </span>
+            ) : (
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-500">
+                Awaiting Confirmation
+              </span>
+            )}
           </div>
         </div>
         {isApalyTeam && lead.status === "qualified" && (
@@ -308,6 +332,12 @@ export default function LeadDetailPage() {
             <div><span className="text-gray-500">Est. Lives:</span> <span className="text-[#102a4c] font-medium">{lead.prospect_estimated_lives}</span></div>
           )}
           <div><span className="text-gray-500">Submitted:</span> <span className="text-[#102a4c] font-medium">{new Date(lead.submitted_at).toLocaleDateString()}</span></div>
+          {assignedUserName && (
+            <div><span className="text-gray-500">Submitted By:</span> <span className="text-[#102a4c] font-medium">{assignedUserName}</span></div>
+          )}
+          {lead.prospect_confirmed_at && (
+            <div><span className="text-gray-500">Prospect Confirmed:</span> <span className="text-[#102a4c] font-medium">{new Date(lead.prospect_confirmed_at).toLocaleDateString()}</span></div>
+          )}
           {lead.prospect_notes && (
             <div className="sm:col-span-2"><span className="text-gray-500">Notes:</span> <span className="text-[#102a4c]">{lead.prospect_notes}</span></div>
           )}

@@ -5,6 +5,7 @@ import { sendEmail, getNotificationEmails } from "@/lib/partners/emails/send";
 import {
   newLeadApprovalEmail,
   leadSubmittedToPartnerEmail,
+  prospectConsentEmail,
 } from "@/lib/partners/emails/templates";
 
 const baseUrl = "https://www.apalyrx.com";
@@ -21,6 +22,7 @@ export async function POST(request: NextRequest) {
       phone,
       estimatedLives,
       message,
+      submittedByUserId,
     } = body;
 
     if (!partnerCode || !companyName || !contactName || !contactEmail) {
@@ -61,17 +63,21 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Generate approval token
+    // Generate approval token + prospect consent token
     const approvalToken = crypto.randomBytes(32).toString("hex");
     const tokenExpiry = new Date();
     tokenExpiry.setDate(tokenExpiry.getDate() + 7);
 
-    // Create lead
+    const consentToken = crypto.randomBytes(32).toString("hex");
+    const consentExpiry = new Date();
+    consentExpiry.setDate(consentExpiry.getDate() + 30);
+
+    // Create lead with attribution
     const { data: lead, error: leadError } = await supabase
       .from("leads")
       .insert({
         organization_id: org.id,
-        submission_source: "referral_link",
+        submission_source: submittedByUserId ? "portal" : "referral_link",
         prospect_company_name: companyName,
         prospect_ein: ein || null,
         prospect_contact_name: contactName,
@@ -82,6 +88,9 @@ export async function POST(request: NextRequest) {
         status: "pending",
         approval_token: approvalToken,
         approval_token_expires_at: tokenExpiry.toISOString(),
+        assigned_to_user_id: submittedByUserId || null,
+        prospect_consent_token: consentToken,
+        prospect_consent_token_expires_at: consentExpiry.toISOString(),
       })
       .select("id")
       .single();
@@ -137,6 +146,21 @@ export async function POST(request: NextRequest) {
         })
       );
     }
+
+    // Email to prospect for consent confirmation
+    const consentUrl = `${baseUrl}/partners/api/confirm-prospect/${consentToken}`;
+    const consentEmail = prospectConsentEmail({
+      prospectName: contactName,
+      partnerCompanyName: org.company_name,
+      confirmUrl: consentUrl,
+    });
+    emailPromises.push(
+      sendEmail({
+        to: contactEmail,
+        subject: consentEmail.subject,
+        html: consentEmail.html,
+      })
+    );
 
     await Promise.allSettled(emailPromises);
 
