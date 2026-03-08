@@ -274,6 +274,32 @@ export function leadExpiryWarningEmail(data: {
   };
 }
 
+// Template 8: Sub-Organization Invite (to invitee)
+export function subOrgInviteEmail(data: {
+  parentCompanyName: string;
+  inviterName: string;
+  inviteUrl: string;
+}) {
+  return {
+    subject: `You're invited to join the ApalyRx Partner Program via ${data.parentCompanyName}`,
+    html: emailWrapper(`
+      <h2 style="color:#102a4c;margin:0 0 16px;">Partner Program Invitation</h2>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        ${data.inviterName} at <strong>${data.parentCompanyName}</strong> has invited you to join the ApalyRx Channel Partner Program as a sub-organization.
+      </p>
+      <p style="font-size:14px;color:#374151;line-height:1.6;">
+        As a sub-organization partner, you'll be able to submit leads, track commissions, and access the full partner portal.
+      </p>
+      <div style="margin:24px 0;">
+        ${ctaButton("Accept Invitation", data.inviteUrl)}
+      </div>
+      <p style="font-size:12px;color:#6b7280;line-height:1.5;">
+        This invitation expires in 30 days. If you didn&rsquo;t expect this email, you can safely ignore it.
+      </p>
+    `),
+  };
+}
+
 // --- Lead marked as customer ---
 export function leadMarkedAsCustomerEmail(data: {
   partnerContactName: string;

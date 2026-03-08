@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { Suspense, useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { CheckCircle, Eye, EyeOff, Loader2, Check } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { CheckCircle, Eye, EyeOff, Loader2, Check, Building2 } from "lucide-react";
 
 const US_STATES = [
   "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY",
@@ -61,6 +62,44 @@ function validateZip(value: string): string | null {
 }
 
 export default function PartnerSignupPage() {
+  return (
+    <Suspense fallback={<div className="min-h-[calc(100vh-64px)] flex items-center justify-center"><div className="w-8 h-8 border-4 border-[#ff5e00] border-t-transparent rounded-full animate-spin" /></div>}>
+      <SignupContent />
+    </Suspense>
+  );
+}
+
+function SignupContent() {
+  const searchParams = useSearchParams();
+  const inviteToken = searchParams.get("invite") || "";
+  const ref = searchParams.get("ref") || "";
+
+  // Invite validation state
+  const [inviteInfo, setInviteInfo] = useState<{ parentCompanyName: string } | null>(null);
+  const [inviteError, setInviteError] = useState("");
+  const [inviteLoading, setInviteLoading] = useState(!!inviteToken);
+
+  // Validate invite token on mount
+  useEffect(() => {
+    if (!inviteToken) return;
+    async function validateInvite() {
+      try {
+        const res = await fetch(`/partners/api/invite-suborg?token=${inviteToken}`);
+        if (res.ok) {
+          const data = await res.json();
+          setInviteInfo({ parentCompanyName: data.parentCompanyName });
+        } else {
+          const data = await res.json();
+          setInviteError(data.error || "Invalid invite link");
+        }
+      } catch {
+        setInviteError("Failed to validate invite");
+      }
+      setInviteLoading(false);
+    }
+    validateInvite();
+  }, [inviteToken]);
+
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -282,7 +321,7 @@ export default function PartnerSignupPage() {
       const res = await fetch("/partners/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, ...(inviteToken ? { inviteToken } : {}), ...(ref ? { ref } : {}) }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Registration failed");
@@ -339,9 +378,46 @@ export default function PartnerSignupPage() {
     return <p className="text-xs text-red-600 mt-1">{fieldErrors[field]}</p>;
   }
 
+  if (inviteLoading) {
+    return (
+      <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-gray-50 p-4">
+        <div className="w-8 h-8 border-4 border-[#ff5e00] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (inviteError) {
+    return (
+      <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-gray-50 p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 max-w-md w-full text-center">
+          <h2 className="text-xl font-bold text-[#102a4c] mb-2">Invalid Invite</h2>
+          <p className="text-sm text-gray-600">{inviteError}</p>
+          <Link href="/partners/signup" className="inline-block mt-4 text-sm text-[#ff5e00] hover:underline font-medium">
+            Sign up without an invite &rarr;
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-[calc(100vh-64px)] bg-gray-50 py-12 px-4">
       <div className="max-w-lg mx-auto">
+        {/* Invite Banner */}
+        {inviteInfo && (
+          <div className="mb-6 bg-blue-50 border border-blue-200 rounded-xl p-4 flex items-start gap-3">
+            <Building2 className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-sm font-medium text-blue-900">
+                You&apos;ve been invited by <strong>{inviteInfo.parentCompanyName}</strong>
+              </p>
+              <p className="text-xs text-blue-700 mt-1">
+                Complete the form below to join as a sub-organization partner.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Progress */}
         <div className="flex items-center justify-center gap-2 mb-8">
           {[1, 2, 3].map((s) => (

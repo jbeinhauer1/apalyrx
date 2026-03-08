@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { createPartnerClient } from "@/lib/partners/supabase/client";
-import { Save, Plus, Trash2, Lock } from "lucide-react";
+import { Save, Plus, Trash2, Lock, Copy, Check } from "lucide-react";
 
-type Tab = "profile" | "banking" | "team";
+type Tab = "profile" | "banking" | "team" | "network";
 
 interface OrgData {
   id: string;
@@ -49,9 +49,15 @@ export default function ProfilePage() {
   });
   const [showBankForm, setShowBankForm] = useState(false);
 
-  // Invite form
+  // Invite form (team)
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviteRole, setInviteRole] = useState("partner_user");
+
+  // Sub-org invite
+  const [subOrgEmail, setSubOrgEmail] = useState("");
+  const [subOrgCompany, setSubOrgCompany] = useState("");
+  const [subOrgInviting, setSubOrgInviting] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -177,7 +183,7 @@ export default function ProfilePage() {
 
       {/* Tabs */}
       <div className="flex gap-1 bg-gray-100 p-1 rounded-lg">
-        {(["profile", "banking", "team"] as Tab[]).map((t) => (
+        {(["profile", "banking", "team", ...(isAdmin ? ["network" as Tab] : [])] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => { setTab(t); setMessage(""); }}
@@ -365,6 +371,95 @@ export default function ProfilePage() {
               </div>
             </div>
           )}
+        </div>
+      )}
+      {/* Network Tab */}
+      {tab === "network" && isAdmin && (
+        <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-6">
+          {/* Shareable signup link */}
+          <div>
+            <h3 className="text-sm font-semibold text-[#102a4c] mb-2">Sub-Organization Signup Link</h3>
+            <p className="text-xs text-gray-500 mb-3">
+              Share this link with organizations you want to bring into your network. They&apos;ll be linked as sub-organizations under your account.
+            </p>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                readOnly
+                value={`https://www.apalyrx.com/partners/signup?ref=${org.partner_code}`}
+                className={`flex-1 ${inputClass} bg-gray-50 text-xs`}
+              />
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(`https://www.apalyrx.com/partners/signup?ref=${org.partner_code}`);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className="flex items-center gap-1 px-4 py-2.5 bg-[#102a4c] text-white rounded-lg text-sm hover:bg-[#102a4c]/90"
+              >
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copied ? "Copied" : "Copy"}
+              </button>
+            </div>
+          </div>
+
+          {/* Direct invite */}
+          <div className="border-t border-gray-200 pt-6">
+            <h3 className="text-sm font-semibold text-[#102a4c] mb-2">Invite Sub-Organization</h3>
+            <p className="text-xs text-gray-500 mb-3">
+              Send a direct invitation email. They&apos;ll receive a personalized link to register.
+            </p>
+            <div className="space-y-3">
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={subOrgEmail}
+                  onChange={(e) => setSubOrgEmail(e.target.value)}
+                  placeholder="Contact email"
+                  className={`flex-1 ${inputClass}`}
+                />
+              </div>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={subOrgCompany}
+                  onChange={(e) => setSubOrgCompany(e.target.value)}
+                  placeholder="Company name (optional)"
+                  className={`flex-1 ${inputClass}`}
+                />
+                <button
+                  onClick={async () => {
+                    if (!subOrgEmail) { setMessage("Email is required."); return; }
+                    setSubOrgInviting(true);
+                    setMessage("");
+                    try {
+                      const res = await fetch("/partners/api/invite-suborg", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email: subOrgEmail, companyName: subOrgCompany }),
+                      });
+                      const data = await res.json();
+                      if (res.ok) {
+                        setMessage("Invitation sent!");
+                        setSubOrgEmail("");
+                        setSubOrgCompany("");
+                      } else {
+                        setMessage(data.error || "Failed to send invite.");
+                      }
+                    } catch {
+                      setMessage("Failed to send invite.");
+                    }
+                    setSubOrgInviting(false);
+                  }}
+                  disabled={subOrgInviting || !subOrgEmail}
+                  className="flex items-center gap-1 px-4 py-2.5 bg-[#ff5e00] text-white rounded-lg text-sm font-semibold hover:bg-[#ff5e00]/90 disabled:opacity-50"
+                >
+                  <Plus className="w-4 h-4" />
+                  {subOrgInviting ? "Sending..." : "Send Invite"}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
