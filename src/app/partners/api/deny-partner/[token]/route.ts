@@ -15,6 +15,7 @@ body{margin:0;padding:0;background:#f4f5f7;font-family:Arial,sans-serif;display:
 textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;resize:vertical;min-height:80px;box-sizing:border-box;}
 .deny-btn{display:inline-block;background:#dc2626;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:bold;cursor:pointer;margin-top:12px;}
 .deny-btn:hover{background:#b91c1c;}
+.admin-btn{display:inline-block;margin-top:20px;padding:10px 24px;background:#ff5e00;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;}
 h1{color:#102a4c;font-size:24px;margin:0 0 12px;}
 p{color:#6b7280;font-size:14px;line-height:1.6;}
 </style></head>
@@ -31,32 +32,25 @@ export async function GET(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Look up org by token — don't filter by status so we can handle
-  // both pending (show form) and already-denied (show confirmation)
+  // Look up org by token — token is nulled after first use
   const { data: org } = await supabase
     .from("partner_organizations")
     .select("id, company_name, status, approval_token_expires_at")
     .eq("approval_token", token)
+    .eq("status", "pending")
     .maybeSingle();
 
+  // No match: token already used or doesn't exist
   if (!org) {
     return htmlPage(`
       <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
-      <h1>Invalid or Expired Link</h1>
-      <p>This link has already been used or has expired.</p>
+      <h1>Action Already Completed</h1>
+      <p>This action has already been completed. To make changes to this partner account, log in to the Admin Portal.</p>
+      <a href="/partners/admin/partners" class="admin-btn">Go to Admin Portal</a>
     `);
   }
 
-  // Already processed — show confirmation instead of error
-  if (org.status !== "pending") {
-    return htmlPage(`
-      <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
-      <h1>Account Not Activated</h1>
-      <p><strong>${org.company_name}</strong> has been denied.<br/>The partner has been notified by email.</p>
-    `);
-  }
-
-  // Check expiration
+  // Token expired
   if (
     org.approval_token_expires_at &&
     new Date(org.approval_token_expires_at) < new Date()
@@ -64,7 +58,8 @@ export async function GET(
     return htmlPage(`
       <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
       <h1>Link Expired</h1>
-      <p>This approval link has expired. Please review the partner in the admin portal.</p>
+      <p>This link has expired. Log in to the Admin Portal to manage this partner account.</p>
+      <a href="/partners/admin/partners" class="admin-btn">Go to Admin Portal</a>
     `);
   }
 
@@ -87,47 +82,40 @@ export async function POST(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Parse form data
   const formData = await request.formData();
   const reason = (formData.get("reason") as string) || "";
 
-  // Look up org by token without status filter
+  // Look up org by token — must be pending
   const { data: org } = await supabase
     .from("partner_organizations")
     .select("id, company_name, status, notification_email")
     .eq("approval_token", token)
+    .eq("status", "pending")
     .maybeSingle();
 
+  // No match: token already used or doesn't exist
   if (!org) {
     return htmlPage(`
       <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
-      <h1>Invalid or Expired Link</h1>
-      <p>This link has already been used or has expired.</p>
+      <h1>Action Already Completed</h1>
+      <p>This action has already been completed. To make changes to this partner account, log in to the Admin Portal.</p>
+      <a href="/partners/admin/partners" class="admin-btn">Go to Admin Portal</a>
     `);
   }
 
-  // Already processed — show confirmation (idempotent)
-  if (org.status !== "pending") {
-    return htmlPage(`
-      <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
-      <h1>Account Not Activated</h1>
-      <p><strong>${org.company_name}</strong> has been denied.<br/>The partner has been notified by email.</p>
-    `);
-  }
+  // Process denial and invalidate token
+  const now = new Date().toISOString();
 
-  const now = new Date();
-
-  // Update partner status — keep approval_token so GET can show confirmation
   await supabase
     .from("partner_organizations")
     .update({
       status: "denied",
+      approval_token: null,
       approval_token_expires_at: null,
-      updated_at: now.toISOString(),
+      updated_at: now,
     })
     .eq("id", org.id);
 
-  // Log to audit
   await logAudit({
     action: "DENY_PARTNER",
     targetType: "partner_organization",
@@ -135,7 +123,7 @@ export async function POST(
     metadata: { reason, via: "email_link" },
   });
 
-  // Get partner contact info
+  // Send denial email to partner
   const { data: partnerUser } = await supabase
     .from("partner_users")
     .select("first_name, email")
@@ -143,7 +131,6 @@ export async function POST(
     .eq("role", "partner_admin")
     .maybeSingle();
 
-  // Send denial email to partner
   const notifyEmail = org.notification_email || partnerUser?.email;
   if (notifyEmail) {
     const emailContent = partnerDeniedEmail({
@@ -159,7 +146,8 @@ export async function POST(
 
   return htmlPage(`
     <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
-    <h1>Account Not Activated</h1>
+    <h1>Partner Denied</h1>
     <p><strong>${org.company_name}</strong> has been denied.<br/>The partner has been notified by email.${reason ? `<br/><br/><strong>Reason:</strong> ${reason}` : ""}</p>
+    <a href="/partners/admin/partners" class="admin-btn">Go to Admin Portal</a>
   `);
 }

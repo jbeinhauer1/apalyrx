@@ -14,6 +14,7 @@ function htmlPage(title: string, message: string, success: boolean) {
     <div style="font-size:48px;margin-bottom:16px;">${success ? "&#10003;" : "&#10060;"}</div>
     <h1 style="color:#102a4c;font-size:24px;margin:0 0 12px;">${title}</h1>
     <p style="color:#6b7280;font-size:14px;line-height:1.6;">${message}</p>
+    <a href="/partners/admin/partners" style="display:inline-block;margin-top:20px;padding:10px 24px;background:#ff5e00;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;">Go to Admin Portal</a>
   </div>
 </body>
 </html>`,
@@ -28,73 +29,50 @@ export async function GET(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Look up org by token — don't filter by status so we can handle
-  // both pending (process) and already-approved (show confirmation)
+  // Look up org by token — token is nulled after first use, so no match = already used
   const { data: org } = await supabase
     .from("partner_organizations")
     .select("id, company_name, partner_code, notification_email, status, approval_token_expires_at")
     .eq("approval_token", token)
+    .eq("status", "pending")
     .maybeSingle();
 
+  // No match: token already used or doesn't exist
   if (!org) {
     return htmlPage(
-      "Invalid or Expired Link",
-      "This approval link has already been used or has expired.",
+      "Action Already Completed",
+      "This action has already been completed. To make changes to this partner account, log in to the Admin Portal.",
       false
     );
   }
 
-  // Already processed — show appropriate message based on current status
-  if (org.status !== "pending") {
-    if (org.status === "denied") {
-      return htmlPage(
-        "Account Previously Denied",
-        "This account was previously denied. To activate this partner, please log in to the admin portal and activate their account manually.",
-        false
-      );
-    }
-    return htmlPage(
-      "Partner Already Approved",
-      `<strong>${org.company_name}</strong> has already been approved.`,
-      true
-    );
-  }
-
-  // Check expiration
+  // Token expired
   if (
     org.approval_token_expires_at &&
     new Date(org.approval_token_expires_at) < new Date()
   ) {
     return htmlPage(
       "Link Expired",
-      "This approval link has expired. Please review the partner in the admin portal.",
+      "This link has expired. Log in to the Admin Portal to manage this partner account.",
       false
     );
   }
 
-  // Get partner contact info
-  const { data: partnerUser } = await supabase
-    .from("partner_users")
-    .select("first_name, last_name, email")
-    .eq("organization_id", org.id)
-    .eq("role", "partner_admin")
-    .maybeSingle();
+  // Process approval and invalidate token
+  const now = new Date().toISOString();
 
-  const now = new Date();
-
-  // Approve the partner — keep approval_token so revisits show confirmation
   await supabase
     .from("partner_organizations")
     .update({
       status: "active",
       setup_complete: true,
-      approved_at: now.toISOString(),
+      approved_at: now,
+      approval_token: null,
       approval_token_expires_at: null,
-      updated_at: now.toISOString(),
+      updated_at: now,
     })
     .eq("id", org.id);
 
-  // Log to audit
   await logAudit({
     action: "APPROVE_PARTNER",
     targetType: "partner_organization",
@@ -103,6 +81,13 @@ export async function GET(
   });
 
   // Send approval email to partner
+  const { data: partnerUser } = await supabase
+    .from("partner_users")
+    .select("first_name, email")
+    .eq("organization_id", org.id)
+    .eq("role", "partner_admin")
+    .maybeSingle();
+
   const notifyEmail = org.notification_email || partnerUser?.email;
   if (notifyEmail) {
     const emailContent = partnerApprovedEmail({
