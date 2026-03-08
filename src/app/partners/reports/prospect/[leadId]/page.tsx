@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Download, Eye, Pencil } from "lucide-react";
+import { createPartnerClient } from "@/lib/partners/supabase/client";
 import Link from "next/link";
 import { calculateApalyFee } from "@/lib/partners/utils/feeCalculator";
 
@@ -36,6 +37,7 @@ interface Tier {
 
 export default function ProspectReportPage() {
   const params = useParams();
+  const router = useRouter();
   const leadId = params.leadId as string;
 
   const [loading, setLoading] = useState(true);
@@ -52,6 +54,28 @@ export default function ProspectReportPage() {
   const [generating, setGenerating] = useState(false);
 
   const loadData = useCallback(async () => {
+    // Gate behind active partner status
+    const supabase = createPartnerClient();
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      const { data: pu } = await supabase
+        .from("partner_users")
+        .select("organization_id, is_apaly_team")
+        .eq("user_id", session.user.id)
+        .maybeSingle();
+      if (pu && !pu.is_apaly_team && pu.organization_id) {
+        const { data: org } = await supabase
+          .from("partner_organizations")
+          .select("status")
+          .eq("id", pu.organization_id)
+          .maybeSingle();
+        if (org?.status !== "active") {
+          router.replace("/partners/dashboard?msg=reports_requires_active");
+          return;
+        }
+      }
+    }
+
     const res = await fetch(`/partners/api/reports/prospect?leadId=${leadId}`);
     if (!res.ok) {
       const data = await res.json();
@@ -66,7 +90,7 @@ export default function ProspectReportPage() {
     setDiseases(data.diseases);
     setTiers(data.tiers);
     setLoading(false);
-  }, [leadId]);
+  }, [leadId, router]);
 
   useEffect(() => { loadData(); }, [loadData]);
 

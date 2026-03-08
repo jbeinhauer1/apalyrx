@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { createPartnerClient } from "@/lib/partners/supabase/client";
 import {
   CheckCircle,
@@ -39,10 +40,14 @@ interface DashboardData {
 }
 
 export default function DashboardPage() {
+  const searchParams = useSearchParams();
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const redirectMsg = searchParams.get("msg") === "reports_requires_active"
+    ? "Prospect Reports are only available for approved partners. Complete your account setup to gain access."
+    : null;
 
   useEffect(() => {
     let timedOut = false;
@@ -290,6 +295,13 @@ export default function DashboardPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold text-[#102a4c]">Dashboard</h1>
+
+      {redirectMsg && (
+        <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-center gap-2 text-sm text-orange-800">
+          <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+          {redirectMsg}
+        </div>
+      )}
 
       {/* Setup Wizard */}
       {!data.setupComplete && (

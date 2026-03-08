@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { createPartnerClient } from "@/lib/partners/supabase/client";
 import { FileText } from "lucide-react";
 
@@ -19,12 +20,38 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export default function ReportsPage() {
+  const router = useRouter();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       const supabase = createPartnerClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+
+      const { data: pu } = await supabase
+        .from("partner_users")
+        .select("organization_id, is_apaly_team")
+        .eq("user_id", session.user.id)
+        .maybeSingle();
+
+      if (!pu) { setLoading(false); return; }
+
+      // Apaly team can always access
+      if (!pu.is_apaly_team && pu.organization_id) {
+        const { data: org } = await supabase
+          .from("partner_organizations")
+          .select("status")
+          .eq("id", pu.organization_id)
+          .maybeSingle();
+
+        if (org?.status !== "active") {
+          router.replace("/partners/dashboard?msg=reports_requires_active");
+          return;
+        }
+      }
+
       const { data } = await supabase
         .from("leads")
         .select("id, prospect_company_name, prospect_estimated_lives, status, submitted_at")
@@ -34,7 +61,7 @@ export default function ReportsPage() {
       setLoading(false);
     }
     load();
-  }, []);
+  }, [router]);
 
   if (loading) {
     return (
