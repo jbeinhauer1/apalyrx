@@ -14,7 +14,6 @@ export async function middleware(request: NextRequest) {
   const publicPartnerPaths = [
     "/partners/signup",
     "/partners/api/",
-    "/partners/auth/callback",
   ];
 
   // Exact match for /partners (login page)
