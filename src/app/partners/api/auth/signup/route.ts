@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
         password,
         options: {
           redirectTo:
-            "https://www.apalyrx.com/partners/auth/callback",
+            "https://www.apalyrx.com/partners/api/auth/callback",
         },
       });
 
