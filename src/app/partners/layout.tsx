@@ -22,6 +22,7 @@ import {
   Calculator,
   BarChart3,
   ExternalLink,
+  Network,
 } from "lucide-react";
 
 type UserRole = "super_admin" | "apaly_staff" | "partner_admin" | "partner_user" | null;
@@ -39,7 +40,7 @@ interface UserInfo {
 // Public pages that don't show sidebar
 const publicPaths = ["/partners", "/partners/signup"];
 
-const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth","reports"];
+const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth","reports","network"];
 
 function isPublicPage(pathname: string) {
   if (publicPaths.includes(pathname)) return true;
@@ -116,6 +117,7 @@ export default function PartnersLayout({
     { href: "/partners/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/partners/leads", label: "Leads", icon: FileText },
     { href: "/partners/commissions", label: "Commissions", icon: DollarSign },
+    { href: "/partners/network", label: "Network", icon: Network },
     ...(user?.orgStatus === "active" ? [{ href: "/partners/reports", label: "Prospect Reports", icon: BarChart3 }] : []),
     { href: "/partners/profile", label: "My Profile", icon: User },
   ];
