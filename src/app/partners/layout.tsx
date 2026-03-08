@@ -19,6 +19,9 @@ import {
   X,
   Plus,
   Pill,
+  Calculator,
+  BarChart3,
+  ExternalLink,
 } from "lucide-react";
 
 type UserRole = "super_admin" | "apaly_staff" | "partner_admin" | "partner_user" | null;
@@ -30,12 +33,13 @@ interface UserInfo {
   role: UserRole;
   isApalyTeam: boolean;
   companyName: string;
+  orgStatus: string;
 }
 
 // Public pages that don't show sidebar
 const publicPaths = ["/partners", "/partners/signup"];
 
-const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth"];
+const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth","reports"];
 
 function isPublicPage(pathname: string) {
   if (publicPaths.includes(pathname)) return true;
@@ -74,15 +78,18 @@ export default function PartnersLayout({
 
       if (partnerUser) {
         let companyName = "";
+        let orgStatus = "";
         if (partnerUser.is_apaly_team) {
           companyName = "ApalyRx";
+          orgStatus = "active";
         } else if (partnerUser.organization_id) {
           const { data: org } = await supabase
             .from("partner_organizations")
-            .select("company_name")
+            .select("company_name, status")
             .eq("id", partnerUser.organization_id)
             .maybeSingle();
           companyName = org?.company_name || "";
+          orgStatus = org?.status || "";
         }
         setUser({
           email: partnerUser.email,
@@ -91,6 +98,7 @@ export default function PartnersLayout({
           role: partnerUser.role as UserRole,
           isApalyTeam: partnerUser.is_apaly_team || false,
           companyName,
+          orgStatus,
         });
       }
       setLoading(false);
@@ -108,6 +116,7 @@ export default function PartnersLayout({
     { href: "/partners/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/partners/leads", label: "Leads", icon: FileText },
     { href: "/partners/commissions", label: "Commissions", icon: DollarSign },
+    ...(user?.orgStatus === "active" ? [{ href: "/partners/reports", label: "Prospect Reports", icon: BarChart3 }] : []),
     { href: "/partners/profile", label: "My Profile", icon: User },
   ];
 
@@ -211,6 +220,16 @@ export default function PartnersLayout({
                     Submit Lead
                   </Link>
                 )}
+                <a
+                  href="/calculator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 mt-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                >
+                  <Calculator className="w-4 h-4" />
+                  Commission Calculator
+                  <ExternalLink className="w-3 h-3 ml-auto text-gray-400" />
+                </a>
               </nav>
             </aside>
 
@@ -252,6 +271,16 @@ export default function PartnersLayout({
                         Submit Lead
                       </Link>
                     )}
+                    <a
+                      href="/calculator"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 mt-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                    >
+                      <Calculator className="w-4 h-4" />
+                      Commission Calculator
+                      <ExternalLink className="w-3 h-3 ml-auto text-gray-400" />
+                    </a>
                   </nav>
                 </aside>
               </div>

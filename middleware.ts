@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Check if this is a referral link (partner slug like /partners/acme-benefits)
-  const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth"];
+  const knownSubpaths = ["dashboard","leads","commissions","profile","admin","signup","api","auth","reports"];
   const slugMatch = pathname.match(/^\/partners\/([^/]+)$/);
   if (slugMatch && !knownSubpaths.includes(slugMatch[1])) {
     return NextResponse.next();
