@@ -18,6 +18,7 @@ import {
   Menu,
   X,
   Plus,
+  Pill,
 } from "lucide-react";
 
 type UserRole = "super_admin" | "apaly_staff" | "partner_admin" | "partner_user" | null;
@@ -119,6 +120,7 @@ export default function PartnersLayout({
 
   const superAdminExtra = [
     { href: "/partners/admin/commissions", label: "Commission Import", icon: Upload },
+    { href: "/partners/admin/program-settings", label: "Program Settings", icon: Pill },
     { href: "/partners/admin/settings", label: "Settings", icon: Settings },
   ];
 
