@@ -11,7 +11,7 @@ function htmlPage(title: string, message: string, success: boolean) {
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title></head>
 <body style="margin:0;padding:0;background:#f4f5f7;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;">
   <div style="background:#fff;border-radius:12px;padding:48px;max-width:480px;width:90%;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-    <div style="font-size:48px;margin-bottom:16px;">${success ? "✅" : "❌"}</div>
+    <div style="font-size:48px;margin-bottom:16px;">${success ? "&#10003;" : "&#10060;"}</div>
     <h1 style="color:#102a4c;font-size:24px;margin:0 0 12px;">${title}</h1>
     <p style="color:#6b7280;font-size:14px;line-height:1.6;">${message}</p>
   </div>
@@ -28,12 +28,12 @@ export async function GET(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Validate token
+  // Look up org by token — don't filter by status so we can handle
+  // both pending (process) and already-approved (show confirmation)
   const { data: org } = await supabase
     .from("partner_organizations")
-    .select("id, company_name, partner_code, notification_email, approval_token_expires_at")
+    .select("id, company_name, partner_code, notification_email, status, approval_token_expires_at")
     .eq("approval_token", token)
-    .eq("status", "pending")
     .maybeSingle();
 
   if (!org) {
@@ -41,6 +41,15 @@ export async function GET(
       "Invalid or Expired Link",
       "This approval link has already been used or has expired.",
       false
+    );
+  }
+
+  // Already processed — show confirmation instead of error
+  if (org.status !== "pending") {
+    return htmlPage(
+      "Partner Already Approved",
+      `<strong>${org.company_name}</strong> has already been approved.`,
+      true
     );
   }
 
@@ -66,14 +75,13 @@ export async function GET(
 
   const now = new Date();
 
-  // Approve the partner
+  // Approve the partner — keep approval_token so revisits show confirmation
   await supabase
     .from("partner_organizations")
     .update({
       status: "active",
       setup_complete: true,
       approved_at: now.toISOString(),
-      approval_token: null,
       approval_token_expires_at: null,
       updated_at: now.toISOString(),
     })

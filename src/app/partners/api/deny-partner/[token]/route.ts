@@ -16,7 +16,7 @@ textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;font
 .deny-btn{display:inline-block;background:#dc2626;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:bold;cursor:pointer;margin-top:12px;}
 .deny-btn:hover{background:#b91c1c;}
 h1{color:#102a4c;font-size:24px;margin:0 0 12px;}
-p{color:#6b7280;font-size:14px;}
+p{color:#6b7280;font-size:14px;line-height:1.6;}
 </style></head>
 <body><div class="card">${content}</div></body>
 </html>`,
@@ -31,12 +31,12 @@ export async function GET(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Validate token — GET only reads, never consumes
+  // Look up org by token — don't filter by status so we can handle
+  // both pending (show form) and already-denied (show confirmation)
   const { data: org } = await supabase
     .from("partner_organizations")
-    .select("id, company_name, approval_token_expires_at")
+    .select("id, company_name, status, approval_token_expires_at")
     .eq("approval_token", token)
-    .eq("status", "pending")
     .maybeSingle();
 
   if (!org) {
@@ -47,6 +47,16 @@ export async function GET(
     `);
   }
 
+  // Already processed — show confirmation instead of error
+  if (org.status !== "pending") {
+    return htmlPage(`
+      <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
+      <h1>Application Denied</h1>
+      <p><strong>${org.company_name}</strong> has been denied.<br/>The applicant has been notified by email.</p>
+    `);
+  }
+
+  // Check expiration
   if (
     org.approval_token_expires_at &&
     new Date(org.approval_token_expires_at) < new Date()
@@ -58,7 +68,7 @@ export async function GET(
     `);
   }
 
-  // Render denial form — explicit action with full path
+  // Show denial form
   return htmlPage(`
     <h1>Deny Partner</h1>
     <p style="margin-bottom:16px;"><strong>${org.company_name}</strong></p>
@@ -81,12 +91,11 @@ export async function POST(
   const formData = await request.formData();
   const reason = (formData.get("reason") as string) || "";
 
-  // Validate token
+  // Look up org by token without status filter
   const { data: org } = await supabase
     .from("partner_organizations")
-    .select("id, company_name, notification_email")
+    .select("id, company_name, status, notification_email")
     .eq("approval_token", token)
-    .eq("status", "pending")
     .maybeSingle();
 
   if (!org) {
@@ -97,14 +106,22 @@ export async function POST(
     `);
   }
 
+  // Already processed — show confirmation (idempotent)
+  if (org.status !== "pending") {
+    return htmlPage(`
+      <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
+      <h1>Application Denied</h1>
+      <p><strong>${org.company_name}</strong> has been denied.<br/>The applicant has been notified by email.</p>
+    `);
+  }
+
   const now = new Date();
 
-  // Update partner status and consume token (single-use)
+  // Update partner status — keep approval_token so GET can show confirmation
   await supabase
     .from("partner_organizations")
     .update({
       status: "suspended",
-      approval_token: null,
       approval_token_expires_at: null,
       updated_at: now.toISOString(),
     })
@@ -142,7 +159,7 @@ export async function POST(
 
   return htmlPage(`
     <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
-    <h1>Partner Application Denied</h1>
-    <p><strong>${org.company_name}</strong> has been denied and notified.${reason ? `<br/><br/><strong>Reason:</strong> ${reason}` : ""}</p>
+    <h1>Application Denied</h1>
+    <p><strong>${org.company_name}</strong> has been denied.<br/>The applicant has been notified by email.${reason ? `<br/><br/><strong>Reason:</strong> ${reason}` : ""}</p>
   `);
 }
