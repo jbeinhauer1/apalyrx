@@ -280,6 +280,7 @@ export function leadMarkedAsCustomerEmail(data: {
   prospectCompanyName: string;
   commissionStart: string;
   commissionEnd: string;
+  feeScheduleName?: string;
 }) {
   return {
     subject: `🎉 ${data.prospectCompanyName} is now an ApalyRx customer!`,
@@ -288,7 +289,7 @@ export function leadMarkedAsCustomerEmail(data: {
       <p style="font-size:14px;color:#374151;line-height:1.6;">
         Hi ${data.partnerContactName},<br><br>
         Great news! <strong>${data.prospectCompanyName}</strong> is now an active ApalyRx customer.<br><br>
-        Your commission term runs from <strong>${data.commissionStart}</strong> to <strong>${data.commissionEnd}</strong>.<br><br>
+        Your commission term runs from <strong>${data.commissionStart}</strong> to <strong>${data.commissionEnd}</strong>.${data.feeScheduleName ? `<br><br><strong>Fee Schedule:</strong> ${data.feeScheduleName}` : ""}<br><br>
         You can view your commission details in the partner portal.
       </p>
       <div style="margin-top:24px;">

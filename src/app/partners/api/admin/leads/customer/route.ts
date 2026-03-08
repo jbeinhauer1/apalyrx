@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
   if (!pu?.is_apaly_team) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  const { leadId, agreementDate, notes } = await request.json();
+  const { leadId, agreementDate, notes, feeScheduleId } = await request.json();
   if (!leadId || !agreementDate) {
     return NextResponse.json({ error: "Lead ID and agreement date are required" }, { status: 400 });
   }
@@ -55,20 +55,44 @@ export async function POST(request: NextRequest) {
   const startStr = startDate.toISOString().split("T")[0];
   const endStr = endDate.toISOString().split("T")[0];
 
+  // Resolve fee schedule: use provided ID, or fall back to default
+  let fsId = feeScheduleId;
+  if (!fsId) {
+    const { data: defaultFs } = await admin
+      .from("fee_schedules")
+      .select("id")
+      .eq("is_default", true)
+      .maybeSingle();
+    fsId = defaultFs?.id || null;
+  }
+
+  // Fetch fee schedule name for email
+  let feeScheduleName = "";
+  if (fsId) {
+    const { data: fsData } = await admin
+      .from("fee_schedules")
+      .select("name")
+      .eq("id", fsId)
+      .maybeSingle();
+    feeScheduleName = fsData?.name || "";
+  }
+
   // Update lead
   await admin
     .from("leads")
     .update({
       status: "customer",
       customer_since: agreementDate,
+      customer_agreement_date: agreementDate,
       commission_start_date: startStr,
       commission_end_date: endStr,
+      fee_schedule_id: fsId,
       updated_at: now,
     })
     .eq("id", lead.id);
 
   // Log activity
-  const activityContent = `Marked as customer. Agreement date: ${startStr}. Commission term: ${startStr} to ${endStr}.${notes ? ` Notes: ${notes}` : ""}`;
+  const activityContent = `Marked as customer. Agreement date: ${startStr}. Commission term: ${startStr} to ${endStr}.${feeScheduleName ? ` Fee schedule: ${feeScheduleName}.` : ""}${notes ? ` Notes: ${notes}` : ""}`;
   await admin.from("lead_activity").insert({
     lead_id: lead.id,
     author_id: pu.id,
@@ -88,6 +112,8 @@ export async function POST(request: NextRequest) {
       agreementDate,
       commissionStart: startStr,
       commissionEnd: endStr,
+      feeScheduleId: fsId,
+      feeScheduleName,
       notes,
     },
   });
@@ -107,6 +133,7 @@ export async function POST(request: NextRequest) {
       prospectCompanyName: lead.prospect_company_name,
       commissionStart: startStr,
       commissionEnd: endStr,
+      feeScheduleName,
     });
     await sendEmail({
       to: notifyEmail,

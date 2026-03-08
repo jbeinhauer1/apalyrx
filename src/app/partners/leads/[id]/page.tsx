@@ -83,6 +83,8 @@ export default function LeadDetailPage() {
   const [agreementDate, setAgreementDate] = useState("");
   const [customerNotes, setCustomerNotes] = useState("");
   const [markingCustomer, setMarkingCustomer] = useState(false);
+  const [feeSchedules, setFeeSchedules] = useState<{ id: string; name: string; is_default: boolean }[]>([]);
+  const [selectedFeeScheduleId, setSelectedFeeScheduleId] = useState("");
 
   async function loadData() {
     const supabase = createPartnerClient();
@@ -95,6 +97,17 @@ export default function LeadDetailPage() {
       .eq("user_id", session.user.id)
       .maybeSingle();
     setIsApalyTeam(pu?.is_apaly_team || false);
+
+    if (pu?.is_apaly_team) {
+      const { data: fsList } = await supabase
+        .from("fee_schedules")
+        .select("id, name, is_default")
+        .eq("status", "active")
+        .order("name");
+      setFeeSchedules(fsList || []);
+      const defaultFs = (fsList || []).find((f: { is_default: boolean }) => f.is_default);
+      if (defaultFs) setSelectedFeeScheduleId(defaultFs.id);
+    }
 
     const [leadRes, actRes, commRes] = await Promise.all([
       supabase.from("leads").select("*").eq("id", leadId).single(),
@@ -152,7 +165,7 @@ export default function LeadDetailPage() {
       const res = await fetch("/partners/api/admin/leads/customer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ leadId, agreementDate, notes: customerNotes }),
+        body: JSON.stringify({ leadId, agreementDate, notes: customerNotes, feeScheduleId: selectedFeeScheduleId }),
       });
       if (res.ok) {
         setShowCustomerModal(false);
@@ -232,6 +245,23 @@ export default function LeadDetailPage() {
                   onChange={(e) => setAgreementDate(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500"
                 />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Fee Schedule *</label>
+                <select
+                  value={selectedFeeScheduleId}
+                  onChange={(e) => setSelectedFeeScheduleId(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500"
+                >
+                  {feeSchedules.map((fs) => (
+                    <option key={fs.id} value={fs.id}>
+                      {fs.name}{fs.is_default ? " (Default)" : ""}
+                    </option>
+                  ))}
+                </select>
+                <a href="/partners/admin/program-settings" target="_blank" rel="noopener noreferrer" className="text-xs text-[#ff5e00] hover:underline mt-1 inline-block">
+                  Create New Fee Schedule
+                </a>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
