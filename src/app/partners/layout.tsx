@@ -117,9 +117,8 @@ export default function PartnersLayout({
     { href: "/partners/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/partners/leads", label: "Leads", icon: FileText },
     { href: "/partners/commissions", label: "Commissions", icon: DollarSign },
-    { href: "/partners/network", label: "Network", icon: Network },
     ...(user?.orgStatus === "active" ? [{ href: "/partners/reports", label: "Prospect Reports", icon: BarChart3 }] : []),
-    { href: "/partners/profile", label: "My Profile", icon: User },
+    { href: "/partners/network", label: "Network", icon: Network },
   ];
 
   const adminNavItems = [
@@ -194,7 +193,7 @@ export default function PartnersLayout({
           <>
             {/* Desktop sidebar */}
             <aside className="hidden lg:flex flex-col w-60 bg-white border-r border-gray-200 min-h-[calc(100vh-64px)] sticky top-16">
-              <nav className="flex-1 p-4 space-y-1">
+              <nav className="flex-1 p-4 space-y-1 flex flex-col">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
@@ -214,24 +213,40 @@ export default function PartnersLayout({
                   );
                 })}
                 {!user.isApalyTeam && (
+                  <>
+                    <a
+                      href="/calculator"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 mt-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                    >
+                      <Calculator className="w-4 h-4" />
+                      Commission Calculator
+                      <ExternalLink className="w-3 h-3 ml-auto text-gray-400" />
+                    </a>
+                    <Link
+                      href="/partners/leads/new"
+                      className="flex items-center gap-2 mt-2 px-3 py-2.5 bg-[#ff5e00] text-white rounded-lg text-sm font-semibold hover:bg-[#ff5e00]/90 transition-colors"
+                    >
+                      <Plus className="w-4 h-4" />
+                      Submit Lead
+                    </Link>
+                  </>
+                )}
+                <div className="flex-1" />
+                {!user.isApalyTeam && (
                   <Link
-                    href="/partners/leads/new"
-                    className="flex items-center gap-2 mt-4 px-3 py-2.5 bg-[#ff5e00] text-white rounded-lg text-sm font-semibold hover:bg-[#ff5e00]/90 transition-colors"
+                    href="/partners/profile"
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      pathname === "/partners/profile" || pathname.startsWith("/partners/profile/")
+                        ? "bg-[#ff5e00]/10 text-[#ff5e00]"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
                   >
-                    <Plus className="w-4 h-4" />
-                    Submit Lead
+                    <User className="w-4 h-4" />
+                    My Profile
                   </Link>
                 )}
-                <a
-                  href="/calculator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 mt-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
-                >
-                  <Calculator className="w-4 h-4" />
-                  Commission Calculator
-                  <ExternalLink className="w-3 h-3 ml-auto text-gray-400" />
-                </a>
               </nav>
             </aside>
 
@@ -264,25 +279,39 @@ export default function PartnersLayout({
                       );
                     })}
                     {!user.isApalyTeam && (
-                      <Link
-                        href="/partners/leads/new"
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="flex items-center gap-2 mt-4 px-3 py-2.5 bg-[#ff5e00] text-white rounded-lg text-sm font-semibold hover:bg-[#ff5e00]/90 transition-colors"
-                      >
-                        <Plus className="w-4 h-4" />
-                        Submit Lead
-                      </Link>
+                      <>
+                        <a
+                          href="/calculator"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 mt-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                        >
+                          <Calculator className="w-4 h-4" />
+                          Commission Calculator
+                          <ExternalLink className="w-3 h-3 ml-auto text-gray-400" />
+                        </a>
+                        <Link
+                          href="/partners/leads/new"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center gap-2 mt-2 px-3 py-2.5 bg-[#ff5e00] text-white rounded-lg text-sm font-semibold hover:bg-[#ff5e00]/90 transition-colors"
+                        >
+                          <Plus className="w-4 h-4" />
+                          Submit Lead
+                        </Link>
+                        <Link
+                          href="/partners/profile"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`flex items-center gap-3 mt-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                            pathname === "/partners/profile" || pathname.startsWith("/partners/profile/")
+                              ? "bg-[#ff5e00]/10 text-[#ff5e00]"
+                              : "text-gray-600 hover:bg-gray-100"
+                          }`}
+                        >
+                          <User className="w-4 h-4" />
+                          My Profile
+                        </Link>
+                      </>
                     )}
-                    <a
-                      href="/calculator"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 mt-2 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
-                    >
-                      <Calculator className="w-4 h-4" />
-                      Commission Calculator
-                      <ExternalLink className="w-3 h-3 ml-auto text-gray-400" />
-                    </a>
                   </nav>
                 </aside>
               </div>
