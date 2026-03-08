@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle, Eye, EyeOff } from "lucide-react";
+import { useState, useRef, useCallback } from "react";
+import Link from "next/link";
+import { CheckCircle, Eye, EyeOff, Loader2, Check } from "lucide-react";
 
 const US_STATES = [
   "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY",
@@ -85,6 +86,64 @@ export default function PartnerSignupPage() {
   });
   const [confirmed, setConfirmed] = useState(false);
 
+  // Async uniqueness validation state
+  const [emailStatus, setEmailStatus] = useState<"idle" | "checking" | "available" | "taken">("idle");
+  const [einStatus, setEinStatus] = useState<"idle" | "checking" | "available" | "taken">("idle");
+  const emailTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const einTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const checkEmailAvailability = useCallback(async (email: string) => {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailStatus("idle");
+      return;
+    }
+    setEmailStatus("checking");
+    try {
+      const res = await fetch("/partners/api/validate/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      setEmailStatus(data.available ? "available" : "taken");
+      if (!data.available) {
+        setFieldErrors((prev) => ({ ...prev, email: "__taken__" }));
+      } else {
+        setFieldErrors((prev) => ({ ...prev, email: undefined }));
+      }
+    } catch {
+      setEmailStatus("idle");
+    }
+  }, []);
+
+  const checkEinAvailability = useCallback(async (ein: string) => {
+    if (!ein || !/^\d{2}-\d{7}$/.test(ein)) {
+      setEinStatus("idle");
+      return;
+    }
+    setEinStatus("checking");
+    try {
+      const res = await fetch("/partners/api/validate/ein", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ein }),
+      });
+      const data = await res.json();
+      setEinStatus(data.available ? "available" : "taken");
+      if (!data.available) {
+        setFieldErrors((prev) => ({ ...prev, ein: "__taken__" }));
+      } else {
+        setFieldErrors((prev) => {
+          const next = { ...prev };
+          if (next.ein === "__taken__") next.ein = undefined;
+          return next;
+        });
+      }
+    } catch {
+      setEinStatus("idle");
+    }
+  }, []);
+
   function update(field: keyof FormData, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
     // Clear field error on change
@@ -93,6 +152,18 @@ export default function PartnerSignupPage() {
     }
     if (field === "email" && !form.notificationEmail) {
       setForm((prev) => ({ ...prev, notificationEmail: value }));
+    }
+
+    // Debounced uniqueness checks
+    if (field === "email") {
+      setEmailStatus("idle");
+      if (emailTimer.current) clearTimeout(emailTimer.current);
+      emailTimer.current = setTimeout(() => checkEmailAvailability(value.trim()), 500);
+    }
+    if (field === "ein") {
+      setEinStatus("idle");
+      if (einTimer.current) clearTimeout(einTimer.current);
+      einTimer.current = setTimeout(() => checkEinAvailability(value.trim()), 500);
     }
   }
 
@@ -103,8 +174,18 @@ export default function PartnerSignupPage() {
   function validateFieldOnBlur(field: keyof FormData) {
     const value = form[field].trim();
     switch (field) {
+      case "email":
+        if (!value) {
+          setFieldError("email", "Email is required.");
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          setFieldError("email", "Please enter a valid email address.");
+        } else {
+          checkEmailAvailability(value);
+        }
+        break;
       case "ein":
         setFieldError("ein", validateEin(value));
+        if (!validateEin(value)) checkEinAvailability(value);
         break;
       case "phone":
         setFieldError("phone", validatePhone(value));
@@ -132,6 +213,18 @@ export default function PartnerSignupPage() {
       setError("Please fill in all required fields.");
       return false;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setError("Please enter a valid email address.");
+      return false;
+    }
+    if (emailStatus === "taken") {
+      setError("This email is already registered.");
+      return false;
+    }
+    if (emailStatus === "checking") {
+      setError("Please wait while we verify your email.");
+      return false;
+    }
     if (form.password.length < 8) {
       setError("Password must be at least 8 characters.");
       return false;
@@ -148,6 +241,7 @@ export default function PartnerSignupPage() {
     if (!form.companyName.trim()) errors.companyName = "Company name is required.";
     const einErr = validateEin(form.ein.trim());
     if (einErr) errors.ein = einErr;
+    if (einStatus === "taken") errors.ein = "__taken__";
     if (!form.address.trim()) errors.address = "Address is required.";
     if (!form.city.trim()) errors.city = "City is required.";
     if (!form.state) errors.state = "State is required.";
@@ -157,6 +251,10 @@ export default function PartnerSignupPage() {
     if (phoneErr) errors.phone = phoneErr;
 
     setFieldErrors(errors);
+    if (einStatus === "checking") {
+      setError("Please wait while we verify your EIN.");
+      return false;
+    }
     const hasErrors = Object.values(errors).some(Boolean);
     if (hasErrors) {
       setError("Please fix the errors below.");
@@ -293,7 +391,31 @@ export default function PartnerSignupPage() {
                 </div>
                 <div>
                   <RequiredLabel text="Email" />
-                  <input type="email" required value={form.email} onChange={(e) => update("email", e.target.value)} className={inputClass} />
+                  <div className="relative">
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => update("email", e.target.value)}
+                      onBlur={() => validateFieldOnBlur("email")}
+                      className={emailStatus === "taken" || fieldErrors.email ? inputErrorClass + " pr-9" : inputClass + " pr-9"}
+                    />
+                    {emailStatus === "checking" && (
+                      <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 animate-spin" />
+                    )}
+                    {emailStatus === "available" && (
+                      <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500" />
+                    )}
+                  </div>
+                  {emailStatus === "taken" && (
+                    <p className="text-xs text-red-600 mt-1">
+                      An account with this email already exists.{" "}
+                      <Link href="/partners" className="text-[#ff5e00] hover:underline font-medium">Sign in instead?</Link>
+                    </p>
+                  )}
+                  {fieldErrors.email && fieldErrors.email !== "__taken__" && (
+                    <p className="text-xs text-red-600 mt-1">{fieldErrors.email}</p>
+                  )}
                 </div>
                 <div>
                   <RequiredLabel text="Password" />
@@ -360,15 +482,31 @@ export default function PartnerSignupPage() {
                 </div>
                 <div>
                   <RequiredLabel text="EIN" />
-                  <input
-                    type="text"
-                    value={form.ein}
-                    onChange={(e) => update("ein", formatEin(e.target.value))}
-                    onBlur={() => validateFieldOnBlur("ein")}
-                    className={fieldInputClass("ein")}
-                    placeholder="XX-XXXXXXX"
-                  />
-                  <FieldError field="ein" />
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={form.ein}
+                      onChange={(e) => update("ein", formatEin(e.target.value))}
+                      onBlur={() => validateFieldOnBlur("ein")}
+                      className={(einStatus === "taken" || (fieldErrors.ein && fieldErrors.ein !== "__taken__") ? inputErrorClass : fieldInputClass("ein")) + " pr-9"}
+                      placeholder="XX-XXXXXXX"
+                    />
+                    {einStatus === "checking" && (
+                      <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 animate-spin" />
+                    )}
+                    {einStatus === "available" && (
+                      <Check className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-500" />
+                    )}
+                  </div>
+                  {einStatus === "taken" ? (
+                    <p className="text-xs text-red-600 mt-1">
+                      A partner account for this organization already exists. Contact partners@apalyrx.com for assistance.
+                    </p>
+                  ) : (
+                    fieldErrors.ein && fieldErrors.ein !== "__taken__" && (
+                      <p className="text-xs text-red-600 mt-1">{fieldErrors.ein}</p>
+                    )
+                  )}
                 </div>
                 <div>
                   <RequiredLabel text="Address" />
@@ -510,7 +648,11 @@ export default function PartnerSignupPage() {
             {step < 3 ? (
               <button
                 onClick={nextStep}
-                className="px-6 py-2.5 bg-[#ff5e00] text-white font-semibold rounded-lg hover:bg-[#ff5e00]/90 transition-colors text-sm"
+                disabled={
+                  (step === 1 && (emailStatus === "checking" || emailStatus === "taken")) ||
+                  (step === 2 && (einStatus === "checking" || einStatus === "taken"))
+                }
+                className="px-6 py-2.5 bg-[#ff5e00] text-white font-semibold rounded-lg hover:bg-[#ff5e00]/90 transition-colors text-sm disabled:opacity-50"
               >
                 Next &rarr;
               </button>
