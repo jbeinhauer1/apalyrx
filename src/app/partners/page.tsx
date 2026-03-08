@@ -58,7 +58,7 @@ function LoginContent() {
     const { error: authError } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/partners/api/auth/callback?redirect=${redirect}`,
+        emailRedirectTo: "https://www.apalyrx.com/partners/api/auth/callback",
       },
     });
     if (authError) {
