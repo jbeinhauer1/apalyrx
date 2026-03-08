@@ -14,7 +14,10 @@
       "Bash(curl:*)",
       "Bash(mkdir:*)",
       "Bash(npx supabase:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(npx tsc:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
