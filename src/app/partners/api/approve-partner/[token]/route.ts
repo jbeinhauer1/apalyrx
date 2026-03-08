@@ -44,8 +44,15 @@ export async function GET(
     );
   }
 
-  // Already processed — show confirmation instead of error
+  // Already processed — show appropriate message based on current status
   if (org.status !== "pending") {
+    if (org.status === "denied") {
+      return htmlPage(
+        "Account Previously Denied",
+        "This account was previously denied. To activate this partner, please log in to the admin portal and activate their account manually.",
+        false
+      );
+    }
     return htmlPage(
       "Partner Already Approved",
       `<strong>${org.company_name}</strong> has already been approved.`,

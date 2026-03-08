@@ -121,7 +121,7 @@ export async function POST(
   await supabase
     .from("partner_organizations")
     .update({
-      status: "suspended",
+      status: "denied",
       approval_token_expires_at: null,
       updated_at: now.toISOString(),
     })

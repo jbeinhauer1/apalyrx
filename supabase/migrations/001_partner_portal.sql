@@ -9,7 +9,7 @@ CREATE TABLE partner_organizations (
   state                       text,
   zip                         text,
   website                     text,
-  status                      text DEFAULT 'pending' CHECK (status IN ('pending','active','suspended')),
+  status                      text DEFAULT 'pending' CHECK (status IN ('pending','active','suspended','denied')),
   commission_rate             decimal(5,2),
   commission_duration_months  integer DEFAULT 12,
   notification_email          text,

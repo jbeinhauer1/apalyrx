@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { createPartnerClient } from "@/lib/partners/supabase/client";
 import { Save, Eye, EyeOff, Lock } from "lucide-react";
 
@@ -26,14 +26,19 @@ interface Org {
 
 export default function AdminPartnerDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const partnerId = params.id as string;
 
   const [org, setOrg] = useState<Org | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [actionLoading, setActionLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error">("success");
   const [unmasked, setUnmasked] = useState<string | null>(null);
   const [unmasking, setUnmasking] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState("");
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -48,6 +53,11 @@ export default function AdminPartnerDetailPage() {
     }
     load();
   }, [partnerId]);
+
+  function showMsg(text: string, type: "success" | "error" = "success") {
+    setMessage(text);
+    setMessageType(type);
+  }
 
   async function saveChanges() {
     if (!org) return;
@@ -72,24 +82,64 @@ export default function AdminPartnerDetailPage() {
       })
       .eq("id", org.id);
 
-    setMessage(error ? error.message : "Saved.");
+    showMsg(error ? error.message : "Saved.", error ? "error" : "success");
     setSaving(false);
   }
 
-  async function updateStatus(newStatus: string) {
+  async function partnerAction(action: string, reason?: string) {
     if (!org) return;
-    const supabase = createPartnerClient();
-    await supabase
-      .from("partner_organizations")
-      .update({
-        status: newStatus,
-        ...(newStatus === "active" ? { approved_at: new Date().toISOString() } : {}),
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", org.id);
+    setActionLoading(true);
+    setMessage("");
 
-    setOrg({ ...org, status: newStatus });
-    setMessage(`Status updated to ${newStatus}.`);
+    const res = await fetch("/partners/api/admin/partners", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action, partnerId: org.id, reason }),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      showMsg(data.error || "Action failed.", "error");
+      setActionLoading(false);
+      return;
+    }
+
+    if (data.deleted) {
+      showMsg("Partner deleted.", "success");
+      setTimeout(() => router.push("/partners/admin/partners"), 1500);
+    } else if (data.status) {
+      setOrg({ ...org, status: data.status });
+      showMsg(`Status updated to ${data.status}.`, "success");
+    }
+    setActionLoading(false);
+  }
+
+  async function handleApprove() {
+    if (!confirm("Approve this partner? They will be notified by email.")) return;
+    await partnerAction("approve");
+  }
+
+  async function handleDeny() {
+    const reason = prompt("Reason for denial (optional):");
+    if (reason === null) return; // cancelled
+    await partnerAction("deny", reason);
+  }
+
+  async function handleSuspend() {
+    if (!confirm("Suspend this partner? They will lose access to the portal but their data will be preserved.")) return;
+    await partnerAction("suspend");
+  }
+
+  async function handleActivate() {
+    if (!confirm("Activate this partner account?")) return;
+    await partnerAction("activate");
+  }
+
+  async function handleDelete() {
+    if (!org || deleteConfirm !== org.company_name) return;
+    setShowDeleteDialog(false);
+    setDeleteConfirm("");
+    await partnerAction("delete");
   }
 
   async function unmaskAccount() {
@@ -99,7 +149,7 @@ export default function AdminPartnerDetailPage() {
     if (res.ok) {
       const data = await res.json();
       setUnmasked(data.accountNumber);
-      setTimeout(() => setUnmasked(null), 60000); // auto-remask after 60s
+      setTimeout(() => setUnmasked(null), 60000);
     }
     setUnmasking(false);
   }
@@ -126,6 +176,7 @@ export default function AdminPartnerDetailPage() {
         <span className={`px-3 py-1 rounded-full text-xs font-bold capitalize ${
           org.status === "active" ? "bg-green-100 text-green-800" :
           org.status === "pending" ? "bg-yellow-100 text-yellow-800" :
+          org.status === "denied" ? "bg-orange-100 text-orange-800" :
           "bg-red-100 text-red-800"
         }`}>
           {org.status}
@@ -133,30 +184,84 @@ export default function AdminPartnerDetailPage() {
       </div>
 
       {message && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-sm text-green-700">{message}</div>
+        <div className={`rounded-lg p-3 text-sm ${
+          messageType === "error"
+            ? "bg-red-50 border border-red-200 text-red-700"
+            : "bg-green-50 border border-green-200 text-green-700"
+        }`}>{message}</div>
       )}
 
       {/* Status Control */}
       <div className="bg-white rounded-xl border border-gray-200 p-5">
         <h3 className="font-bold text-[#102a4c] mb-3">Status Control</h3>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {org.status === "pending" && (
-            <button onClick={() => updateStatus("active")} className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700">
-              Approve Partner
-            </button>
-          )}
-          {org.status !== "active" && org.status !== "pending" && (
-            <button onClick={() => updateStatus("active")} className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700">
-              Activate
-            </button>
+            <>
+              <button onClick={handleApprove} disabled={actionLoading} className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 disabled:opacity-50">
+                Approve
+              </button>
+              <button onClick={handleDeny} disabled={actionLoading} className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 disabled:opacity-50">
+                Deny
+              </button>
+            </>
           )}
           {org.status === "active" && (
-            <button onClick={() => updateStatus("suspended")} className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700">
-              Suspend
-            </button>
+            <>
+              <button onClick={handleSuspend} disabled={actionLoading} className="px-4 py-2 bg-orange-500 text-white rounded-lg text-sm font-semibold hover:bg-orange-600 disabled:opacity-50">
+                Suspend
+              </button>
+              <button onClick={() => setShowDeleteDialog(true)} disabled={actionLoading} className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 disabled:opacity-50">
+                Delete
+              </button>
+            </>
+          )}
+          {(org.status === "suspended" || org.status === "denied") && (
+            <>
+              <button onClick={handleActivate} disabled={actionLoading} className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 disabled:opacity-50">
+                Activate
+              </button>
+              <button onClick={() => setShowDeleteDialog(true)} disabled={actionLoading} className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 disabled:opacity-50">
+                Delete
+              </button>
+            </>
           )}
         </div>
       </div>
+
+      {/* Delete Confirmation Dialog */}
+      {showDeleteDialog && (
+        <div className="bg-red-50 border border-red-300 rounded-xl p-5">
+          <h3 className="font-bold text-red-800 mb-2">Delete Partner</h3>
+          <p className="text-sm text-red-700 mb-3">
+            This will permanently delete the partner organization, all user accounts, and their Supabase auth accounts. This cannot be undone.
+          </p>
+          <p className="text-sm text-red-700 mb-3">
+            Type <strong>{org.company_name}</strong> to confirm:
+          </p>
+          <input
+            type="text"
+            value={deleteConfirm}
+            onChange={(e) => setDeleteConfirm(e.target.value)}
+            className="w-full px-3 py-2 border border-red-300 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-red-400"
+            placeholder={org.company_name}
+          />
+          <div className="flex gap-2">
+            <button
+              onClick={handleDelete}
+              disabled={deleteConfirm !== org.company_name || actionLoading}
+              className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 disabled:opacity-50"
+            >
+              {actionLoading ? "Deleting..." : "Confirm Delete"}
+            </button>
+            <button
+              onClick={() => { setShowDeleteDialog(false); setDeleteConfirm(""); }}
+              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-300"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Org Details */}
       <div className="bg-white rounded-xl border border-gray-200 p-5 space-y-4">

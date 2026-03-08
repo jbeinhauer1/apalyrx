@@ -22,11 +22,13 @@ const STATUS_COLORS: Record<string, string> = {
   pending: "bg-yellow-100 text-yellow-800",
   active: "bg-green-100 text-green-800",
   suspended: "bg-red-100 text-red-800",
+  denied: "bg-orange-100 text-orange-800",
 };
 
 export default function AdminPartnersPage() {
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
+  const [actionLoading, setActionLoading] = useState<string | null>(null);
 
   useEffect(() => {
     async function load() {
@@ -67,6 +69,23 @@ export default function AdminPartnersPage() {
     load();
   }, []);
 
+  async function handleAction(partnerId: string, action: string, confirmMsg: string) {
+    if (!confirm(confirmMsg)) return;
+    setActionLoading(partnerId);
+    const res = await fetch("/partners/api/admin/partners", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action, partnerId }),
+    });
+    const data = await res.json();
+    if (res.ok && data.status) {
+      setPartners(prev => prev.map(p => p.id === partnerId ? { ...p, status: data.status } : p));
+    } else if (!res.ok) {
+      alert(data.error || "Action failed.");
+    }
+    setActionLoading(null);
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -93,6 +112,7 @@ export default function AdminPartnersPage() {
                 <th className="text-right px-4 py-3 font-medium text-gray-500">Qualified</th>
                 <th className="text-right px-4 py-3 font-medium text-gray-500">Comm. Total</th>
                 <th className="text-right px-4 py-3 font-medium text-gray-500">Comm. YTD</th>
+                <th className="text-left px-4 py-3 font-medium text-gray-500">Actions</th>
                 <th className="text-left px-4 py-3 font-medium text-gray-500"></th>
               </tr>
             </thead>
@@ -112,6 +132,28 @@ export default function AdminPartnersPage() {
                   <td className="px-4 py-3 text-right">{p.qualified_count}</td>
                   <td className="px-4 py-3 text-right">${(p.total_commission || 0).toFixed(2)}</td>
                   <td className="px-4 py-3 text-right">${(p.ytd_commission || 0).toFixed(2)}</td>
+                  <td className="px-4 py-3">
+                    <div className="flex gap-1.5">
+                      {actionLoading === p.id ? (
+                        <span className="text-xs text-gray-400">Working...</span>
+                      ) : (
+                        <>
+                          {p.status === "pending" && (
+                            <>
+                              <button onClick={() => handleAction(p.id, "approve", "Approve this partner? They will be notified by email.")} className="px-2 py-0.5 text-xs font-medium bg-green-600 text-white rounded hover:bg-green-700">Approve</button>
+                              <button onClick={() => handleAction(p.id, "deny", "Deny this partner?")} className="px-2 py-0.5 text-xs font-medium bg-red-600 text-white rounded hover:bg-red-700">Deny</button>
+                            </>
+                          )}
+                          {p.status === "active" && (
+                            <button onClick={() => handleAction(p.id, "suspend", "Suspend this partner?")} className="px-2 py-0.5 text-xs font-medium bg-orange-500 text-white rounded hover:bg-orange-600">Suspend</button>
+                          )}
+                          {(p.status === "suspended" || p.status === "denied") && (
+                            <button onClick={() => handleAction(p.id, "activate", "Activate this partner?")} className="px-2 py-0.5 text-xs font-medium bg-green-600 text-white rounded hover:bg-green-700">Activate</button>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  </td>
                   <td className="px-4 py-3">
                     <Link href={`/partners/admin/partners/${p.id}`} className="text-[#ff5e00] hover:underline text-xs font-medium">
                       Manage
