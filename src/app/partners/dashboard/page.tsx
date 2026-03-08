@@ -157,9 +157,10 @@ export default function DashboardPage() {
             return;
           }
 
+          // RLS handles visibility (own org + sub-orgs for parent orgs)
           const [leads, commissions] = await Promise.all([
-            supabase.from("leads").select("id, status, acceptance_deadline").eq("organization_id", org.id),
-            supabase.from("commission_entries").select("commission_amount, period_month").eq("organization_id", org.id),
+            supabase.from("leads").select("id, status, acceptance_deadline"),
+            supabase.from("commission_entries").select("commission_amount, period_month"),
           ]);
 
           const now = new Date();

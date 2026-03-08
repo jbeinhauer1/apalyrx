@@ -8,6 +8,7 @@ import { Plus, Search } from "lucide-react";
 
 interface Lead {
   id: string;
+  organization_id: string;
   prospect_company_name: string;
   prospect_ein: string;
   prospect_contact_name: string;
@@ -17,7 +18,7 @@ interface Lead {
   submitted_at: string;
   acceptance_deadline: string | null;
   commission_end_date: string | null;
-  partner_name?: string;
+  organization?: { company_name: string } | null;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -26,6 +27,7 @@ const STATUS_COLORS: Record<string, string> = {
   customer: "bg-green-100 text-green-800",
   expired: "bg-gray-100 text-gray-600",
   denied: "bg-red-100 text-red-800",
+  disputed: "bg-orange-100 text-orange-800",
 };
 
 export default function LeadsPipelinePage() {
@@ -51,16 +53,11 @@ export default function LeadsPipelinePage() {
       if (!pu) { setLoading(false); return; }
       setIsAdmin(pu.is_apaly_team || false);
 
-      let query = supabase
+      // RLS handles visibility (own org + sub-orgs for parent orgs)
+      const { data } = await supabase
         .from("leads")
-        .select("*")
+        .select("*, organization:partner_organizations(company_name)")
         .order("submitted_at", { ascending: false });
-
-      if (!pu.is_apaly_team && pu.organization_id) {
-        query = query.eq("organization_id", pu.organization_id);
-      }
-
-      const { data } = await query;
       setLeads(data || []);
       setLoading(false);
     }
@@ -169,10 +166,15 @@ export default function LeadsPipelinePage() {
                       <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
                         lead.submission_source === "referral_link"
                           ? "bg-purple-100 text-purple-700"
+                          : lead.submission_source === "portal"
+                          ? "bg-blue-100 text-blue-700"
                           : "bg-gray-100 text-gray-600"
                       }`}>
-                        {lead.submission_source === "referral_link" ? "Referral" : "Manual"}
+                        {lead.submission_source === "referral_link" ? "Referral" : lead.submission_source === "portal" ? "Portal" : "Manual"}
                       </span>
+                      {lead.organization?.company_name && (
+                        <div className="text-[10px] text-gray-400 mt-0.5">{lead.organization.company_name}</div>
+                      )}
                     </td>
                     <td className="px-4 py-3">
                       <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium capitalize ${STATUS_COLORS[lead.status] || ""}`}>

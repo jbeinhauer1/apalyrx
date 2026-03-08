@@ -37,16 +37,11 @@ export default function CommissionsPage() {
       if (!pu) { setLoading(false); return; }
       setIsAdmin(pu.is_apaly_team || false);
 
-      let query = supabase
+      // RLS handles visibility (own org + sub-orgs for parent orgs)
+      const { data } = await supabase
         .from("commission_entries")
         .select("*, lead:leads(prospect_company_name)")
         .order("period_month", { ascending: false });
-
-      if (!pu.is_apaly_team && pu.organization_id) {
-        query = query.eq("organization_id", pu.organization_id);
-      }
-
-      const { data } = await query;
       setEntries(data || []);
       setLoading(false);
     }
