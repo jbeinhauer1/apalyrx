@@ -78,16 +78,27 @@ export function newPartnerSignupEmail(data: {
   registeredAt: string;
   approveUrl: string;
   denyUrl: string;
+  parentOrgName?: string;
 }) {
+  const subOrgBanner = data.parentOrgName
+    ? `<div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:6px;padding:12px 16px;margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:bold;color:#92400e;">Sub-Organization Signup</div>
+        <div style="font-size:14px;color:#78350f;margin-top:4px;">Sub-Org: <strong>${data.companyName}</strong></div>
+        <div style="font-size:14px;color:#78350f;">Invited by: <strong>${data.parentOrgName}</strong></div>
+      </div>`
+    : "";
+
   return {
-    subject: `New Channel Partner Account — ${data.companyName}`,
+    subject: `New Channel Partner Account — ${data.companyName}${data.parentOrgName ? ` (sub-org of ${data.parentOrgName})` : ""}`,
     html: emailWrapper(`
       <h2 style="color:#102a4c;margin:0 0 16px;">New Partner Account</h2>
+      ${subOrgBanner}
       <table style="width:100%;font-size:14px;color:#374151;">
         <tr><td style="padding:6px 0;font-weight:bold;width:140px;">Contact:</td><td>${data.contactName}</td></tr>
         <tr><td style="padding:6px 0;font-weight:bold;">Company:</td><td>${data.companyName}</td></tr>
         <tr><td style="padding:6px 0;font-weight:bold;">Email:</td><td>${data.email}</td></tr>
         ${data.ein ? `<tr><td style="padding:6px 0;font-weight:bold;">EIN:</td><td>${data.ein}</td></tr>` : ""}
+        ${data.parentOrgName ? `<tr><td style="padding:6px 0;font-weight:bold;">Parent Org:</td><td>${data.parentOrgName}</td></tr>` : ""}
         <tr><td style="padding:6px 0;font-weight:bold;">Registered:</td><td>${data.registeredAt}</td></tr>
       </table>
       <div style="margin-top:24px;">

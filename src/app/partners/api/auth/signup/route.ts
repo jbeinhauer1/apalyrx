@@ -172,7 +172,7 @@ export async function POST(request: NextRequest) {
       const notifyEmails = await getNotificationEmails("new_partner_signup");
       if (notifyEmails.length > 0) {
         const emailContent = newPartnerSignupEmail({
-          companyName: `${companyName}${parentName ? ` (sub-org of ${parentName})` : ""}`,
+          companyName,
           contactName: `${firstName} ${lastName}`,
           email,
           ein,
@@ -180,6 +180,7 @@ export async function POST(request: NextRequest) {
           registeredAt: new Date().toISOString(),
           approveUrl: `https://www.apalyrx.com/partners/api/approve-partner/${approvalToken}`,
           denyUrl: `https://www.apalyrx.com/partners/api/deny-partner/${approvalToken}`,
+          parentOrgName: parentName || undefined,
         });
         await sendEmail({ to: notifyEmails, subject: emailContent.subject, html: emailContent.html });
       }
@@ -266,7 +267,7 @@ export async function POST(request: NextRequest) {
     const notifyEmails = await getNotificationEmails("new_partner_signup");
     if (notifyEmails.length > 0) {
       const emailContent = newPartnerSignupEmail({
-        companyName: `${companyName}${parentName ? ` (sub-org of ${parentName})` : ""}`,
+        companyName,
         contactName: `${firstName} ${lastName}`,
         email,
         ein,
@@ -274,6 +275,7 @@ export async function POST(request: NextRequest) {
         registeredAt: new Date().toISOString(),
         approveUrl: `https://www.apalyrx.com/partners/api/approve-partner/${approvalToken}`,
         denyUrl: `https://www.apalyrx.com/partners/api/deny-partner/${approvalToken}`,
+        parentOrgName: parentName || undefined,
       });
       await sendEmail({
         to: notifyEmails,
