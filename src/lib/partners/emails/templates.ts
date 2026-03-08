@@ -14,8 +14,8 @@ function emailWrapper(content: string): string {
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;max-width:600px;width:100%;">
         <tr>
           <td style="background:#102a4c;padding:24px 32px;">
-            <span style="color:#ffffff;font-size:20px;font-weight:bold;">ApalyRx</span>
-            <span style="color:#ff5e00;font-size:14px;margin-left:8px;">Partner Portal</span>
+            <img src="https://www.apalyrx.com/apalyrx-logo-white-orange.png" alt="ApalyRx" width="120" height="33" style="display:inline-block;height:33px;width:auto;vertical-align:middle;">
+            <span style="color:#ff5e00;font-size:14px;margin-left:8px;vertical-align:middle;">Partner Portal</span>
           </td>
         </tr>
         <tr>
