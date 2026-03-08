@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import Image from "next/image";
 import { createPartnerClient } from "@/lib/partners/supabase/client";
 import { CheckCircle } from "lucide-react";
 
@@ -128,12 +127,10 @@ export default function ReferralFormPage() {
     <div className="min-h-[calc(100vh-64px)] bg-gray-50 py-12 px-4">
       <div className="max-w-lg mx-auto">
         <div className="text-center mb-8">
-          <Image
-            src="/apalyrx-logo-navy-orange.png"
+          <img
+            src="https://www.apalyrx.com/apalyrx-logo-full-color.png"
             alt="ApalyRx"
-            width={160}
-            height={44}
-            className="h-11 w-auto mx-auto mb-4"
+            style={{ height: "40px", width: "auto", display: "block", margin: "0 auto 16px" }}
           />
           <p className="text-sm text-gray-600">
             You&apos;ve been referred by{" "}
