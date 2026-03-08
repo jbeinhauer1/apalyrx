@@ -13,8 +13,8 @@ function htmlPage(content: string) {
 body{margin:0;padding:0;background:#f4f5f7;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;}
 .card{background:#fff;border-radius:12px;padding:48px;max-width:480px;width:90%;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.1);}
 textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;resize:vertical;min-height:80px;box-sizing:border-box;}
-button{background:#dc2626;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:bold;cursor:pointer;margin-top:12px;}
-button:hover{background:#b91c1c;}
+.deny-btn{display:inline-block;background:#dc2626;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:bold;cursor:pointer;margin-top:12px;}
+.deny-btn:hover{background:#b91c1c;}
 h1{color:#102a4c;font-size:24px;margin:0 0 12px;}
 p{color:#6b7280;font-size:14px;}
 </style></head>
@@ -31,7 +31,7 @@ export async function GET(
   const { token } = params;
   const supabase = createPartnerAdminClient();
 
-  // Validate token
+  // Validate token — GET only reads, never consumes
   const { data: org } = await supabase
     .from("partner_organizations")
     .select("id, company_name, approval_token_expires_at")
@@ -41,7 +41,7 @@ export async function GET(
 
   if (!org) {
     return htmlPage(`
-      <div style="font-size:48px;margin-bottom:16px;">❌</div>
+      <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
       <h1>Invalid or Expired Link</h1>
       <p>This link has already been used or has expired.</p>
     `);
@@ -52,19 +52,20 @@ export async function GET(
     new Date(org.approval_token_expires_at) < new Date()
   ) {
     return htmlPage(`
-      <div style="font-size:48px;margin-bottom:16px;">❌</div>
+      <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
       <h1>Link Expired</h1>
       <p>This approval link has expired. Please review the partner in the admin portal.</p>
     `);
   }
 
+  // Render denial form — explicit action with full path
   return htmlPage(`
     <h1>Deny Partner</h1>
     <p style="margin-bottom:16px;"><strong>${org.company_name}</strong></p>
-    <form method="POST">
+    <form method="POST" action="/partners/api/deny-partner/${token}">
       <textarea name="reason" placeholder="Reason for denial (optional)"></textarea>
       <br/>
-      <button type="submit">Confirm Denial</button>
+      <button type="submit" class="deny-btn">Confirm Denial</button>
     </form>
   `);
 }
@@ -90,7 +91,7 @@ export async function POST(
 
   if (!org) {
     return htmlPage(`
-      <div style="font-size:48px;margin-bottom:16px;">❌</div>
+      <div style="font-size:48px;margin-bottom:16px;">&#10060;</div>
       <h1>Invalid or Expired Link</h1>
       <p>This link has already been used or has expired.</p>
     `);
@@ -98,7 +99,7 @@ export async function POST(
 
   const now = new Date();
 
-  // Update partner status
+  // Update partner status and consume token (single-use)
   await supabase
     .from("partner_organizations")
     .update({
@@ -140,8 +141,8 @@ export async function POST(
   }
 
   return htmlPage(`
-    <div style="font-size:48px;margin-bottom:16px;">✓</div>
-    <h1>Partner Denied</h1>
-    <p><strong>${org.company_name}</strong> has been denied.${reason ? ` Reason: ${reason}` : ""}</p>
+    <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
+    <h1>Partner Application Denied</h1>
+    <p><strong>${org.company_name}</strong> has been denied and notified.${reason ? `<br/><br/><strong>Reason:</strong> ${reason}` : ""}</p>
   `);
 }
