@@ -111,7 +111,7 @@ const dbiCards = [
   {
     icon: GitCompare,
     title: "Compare",
-    desc: "Use the framework in your next PBM review or RFP evaluation. Ask every finalist: can you demonstrate independent routing and decision-level documentation?",
+    desc: "Use the framework in your next PBM review or RFP evaluation. Ask every finalist: Can you demonstrate independent routing and decision-level documentation?",
   },
   {
     icon: FileText,
@@ -152,12 +152,12 @@ const faqItems = [
   {
     question: "How do I position this to my clients?",
     answer:
-      "Frame it as a fiduciary best practice: independent verification of high-cost drug routing decisions. Your client is not replacing their PBM, they are adding a layer of accountability and documentation that strengthens their program and protects their fiduciary position. If their PBM\u2019s routing is already optimal, the documentation proves it.",
+      "Frame it as a fiduciary best practice, independent verification of high-cost drug routing decisions. Your client is not replacing their PBM, they are adding a layer of accountability and documentation that strengthens their program and protects their fiduciary position. If their PBM\u2019s routing is already optimal, the documentation proves it.",
   },
   {
     question: "What if the client\u2019s PBM pushes back?",
     answer:
-      "Many PBMs are choosing to offer ApalyRx as part of their own program, independent routing strengthens their client relationships. Position it to the PBM as a competitive advantage: their pharmacies are always in the evaluation, and when they win, there is independent proof. PBMs that embrace this proactively are in a stronger position than those that resist it.",
+      "Many PBMs are choosing to offer ApalyRx as part of their own program, independent routing strengthens their client relationships. Position it to the PBM as a competitive advantage, their pharmacies are always in the evaluation, and when they win, there is independent proof. PBMs that embrace this proactively are in a stronger position than those that resist it.",
   },
   {
     question: "What is my role in the implementation?",

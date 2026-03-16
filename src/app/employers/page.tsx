@@ -79,7 +79,7 @@ const solutionCards = [
     subtitle: "Access Direct, Net Preferred Pricing",
     stat: "20-40%",
     statLabel: "cost reduction",
-    desc: "ApalyRx focuses on the highest-impact medications: often approximately 30 drugs that represent 40-50% of pharmacy spend. Every prescription independently routed to the lowest net cost across all available channels.",
+    desc: "ApalyRx focuses on the highest-impact medications, often approximately 30 drugs that represent 40-50% of pharmacy spend. Every prescription independently routed to the lowest net cost across all available channels.",
   },
   {
     icon: Settings,
@@ -131,12 +131,12 @@ const howItWorksSteps = [
   {
     num: 5,
     title: "Independent Routing to Lowest Net Cost",
-    desc: "Every in-scope prescription is evaluated across all available channels: PBM specialty, PBM mail, retail, manufacturer-direct, and independent pharmacy, and routed in real time to the lowest net cost",
+    desc: "Every in-scope prescription is evaluated across all available channels: specialty, mail order, retail, manufacturer-direct, and independent pharmacy, and routed in real time to the lowest net cost",
   },
   {
     num: 6,
     title: "Collection & Settlement",
-    desc: "ApalyRx collects member cost share, reports to accumulators, submits charges as medical claims to your TPA, and settles with suppliers via ACH: closed-loop financial reconciliation",
+    desc: "ApalyRx collects member cost share, reports to accumulators, submits charges as medical claims to your TPA, and settles with suppliers via ACH, closed-loop financial reconciliation",
   },
   {
     num: 7,
@@ -153,7 +153,7 @@ const capabilities = [
   { icon: FileText, text: "Member platform + communications + concierge support workflows" },
   { icon: Shield, text: "Billed through claims (member cost share + employer portion + supplier ACH settlement)" },
   { icon: BarChart3, text: "Decision-level records and reporting dashboards for every script" },
-  { icon: Zap, text: "Future-proof: add new drugs, biosimilars, categories as markets evolve" },
+  { icon: Zap, text: "Future-proof, add new drugs, biosimilars, categories as markets evolve" },
   { icon: ArrowRightLeft, text: "Drug optimization, brand to biosimilar conversion" },
   { icon: FileCheck, text: "Fiduciary-grade documentation meeting ERISA prudent expert and CAA audit requirements" },
 ];
@@ -236,7 +236,7 @@ const faqItems = [
   {
     question: "Does ApalyRx help with ERISA and CAA fiduciary requirements?",
     answer:
-      "Yes. The Consolidated Appropriations Act of 2026 designates PBMs as ERISA covered service providers with significant noncompliance penalties. Plan fiduciaries face personal liability for drug benefit decisions. ApalyRx produces decision-level documentation for every in-scope prescription: showing which channels were evaluated, what rules were applied, and why the winning channel was selected. This provides fiduciary-grade proof that can be presented to auditors, regulators, and beneficiaries.",
+      "Yes. The Consolidated Appropriations Act of 2026 designates PBMs as ERISA covered service providers with significant noncompliance penalties. Plan fiduciaries face personal liability for drug benefit decisions. ApalyRx produces decision-level documentation for every in-scope prescription, showing which channels were evaluated, what rules were applied, and why the winning channel was selected. This provides fiduciary-grade proof that can be presented to auditors, regulators, and beneficiaries.",
   },
 ];
 

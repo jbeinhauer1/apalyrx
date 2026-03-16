@@ -168,7 +168,7 @@ const faqItems = [
   {
     question: "What happens when our channel wins the routing?",
     answer:
-      "The prescription fills through your pharmacy as normal. The difference is that the decision is now independently documented: showing which channels were evaluated, what the pricing was, and why your channel was selected. This is valuable documentation for your client relationships.",
+      "The prescription fills through your pharmacy as normal. The difference is that the decision is now independently documented, showing which channels were evaluated, what the pricing was, and why your channel was selected. This is valuable documentation for your client relationships.",
   },
   {
     question: "What about our rebate arrangements?",
