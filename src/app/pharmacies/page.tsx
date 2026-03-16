@@ -78,7 +78,7 @@ const solutionCards = [
     subtitle: "From a Growing Platform",
     stat: "500K+",
     statLabel: "lives today",
-    desc: "As PBMs, employers, health plans, and manufacturers deploy programs through ApalyRx, prescriptions flow to independent pharmacy partners. You receive volume because your pricing and service earned it. The platform currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline: every new client means more prescriptions routed to independent pharmacies.",
+    desc: "As PBMs, employers, health plans, and manufacturers deploy programs through ApalyRx, prescriptions flow to independent pharmacy partners. You receive volume because your pricing and service earned it. The platform currently serves 500K+ covered lives with growth to 1M+ by Q2 and 5M+ in the pipeline, every new client means more prescriptions routed to independent pharmacies.",
   },
   {
     icon: DollarSign,
@@ -129,7 +129,7 @@ const whyDifferentCards = [
   {
     icon: Eye,
     title: "Full Transparency",
-    desc: "You see the reimbursement before you fill. The economics are agreed upon upfront. There is no hidden spread between what the plan pays and what you receive. ApalyRx passes through the actual cost: your dispensing fee is your dispensing fee.",
+    desc: "You see the reimbursement before you fill. The economics are agreed upon upfront. There is no hidden spread between what the plan pays and what you receive. ApalyRx passes through the actual cost, your dispensing fee is your dispensing fee.",
   },
   {
     icon: Ban,
@@ -173,7 +173,7 @@ const faqItems = [
   {
     question: "What types of prescriptions will I receive through ApalyRx?",
     answer:
-      "ApalyRx programs typically focus on high-cost, high-variability medications: approximately 30 drugs that represent 40% or more of employer and health plan pharmacy spend. These are often specialty and branded medications where net cost differences across channels are significant. As the platform grows and more clients deploy programs, the scope of medications routed to pharmacy partners expands.",
+      "ApalyRx programs typically focus on high-cost, high-variability medications, approximately 30 drugs that represent 40% or more of employer and health plan pharmacy spend. These are often specialty and branded medications where net cost differences across channels are significant. As the platform grows and more clients deploy programs, the scope of medications routed to pharmacy partners expands.",
   },
   {
     question: "How is reimbursement calculated?",
@@ -191,7 +191,7 @@ const faqItems = [
       "ApalyRx provides the technology integration for prescription intake, routing confirmation, and fulfillment coordination. Specific requirements will be reviewed during onboarding. The integration is designed to work with your existing pharmacy management systems without requiring major technology investments.",
   },
   {
-    question: "Can I participate in both roles: dispensing and pharmacy of record?",
+    question: "Can I participate in both roles, dispensing and pharmacy of record?",
     answer:
       "Yes. Many ApalyRx pharmacy partners serve in both capacities. For some programs and products, you will be the dispensing pharmacy filling prescriptions directly. For manufacturer-direct programs, you may serve as pharmacy of record. Your role depends on the specific program, product, and routing outcome.",
   },
@@ -257,7 +257,7 @@ export default function PharmaciesPage() {
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             ApalyRx partners with independent community pharmacies to fulfill prescriptions that are
             independently routed to the lowest net cost. As PBMs, employers, health plans, and
-            manufacturers deploy programs through ApalyRx, a growing stream of prescriptions flows to
+            manufacturers deploy programs through ApalyRx, a growing stream of prescriptions flow to
             independent pharmacy partners, with transparent reimbursement, fair dispensing fees, and
             no retroactive adjustments. Your pharmacy earns volume because your pricing and service
             earned it, not because of channel ownership or steering.
@@ -449,7 +449,7 @@ export default function PharmaciesPage() {
                 Manufacturer-Direct Model
               </p>
               <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-                In manufacturer-direct programs, you serve as the pharmacy of record: the licensed
+                In manufacturer-direct programs, you serve as the pharmacy of record, the licensed
                 pharmacist in the workflow. You conduct drug utilization review, verify the
                 prescription, and provide clinical oversight. The physical product ships directly to
                 the member from the manufacturer&apos;s designated logistics provider or a

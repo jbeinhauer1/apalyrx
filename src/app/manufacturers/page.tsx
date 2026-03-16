@@ -143,7 +143,7 @@ const faqItems = [
   {
     question: "Will this create unpredictable share or switching dynamics?",
     answer:
-      "ApalyRx programs operate with defined commitment windows: typically 12 months. Volume is predictable because programs are configured with specific employer populations, drug scope, and channel rules. You have full visibility into program participation.",
+      "ApalyRx programs operate with defined commitment windows, typically 12 months. Volume is predictable because programs are configured with specific employer populations, drug scope, and channel rules. You have full visibility into program participation.",
   },
   {
     question: "Will this disrupt our PBM relationships?",
