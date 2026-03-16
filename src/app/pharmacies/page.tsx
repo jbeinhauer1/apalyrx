@@ -213,7 +213,7 @@ const faqItems = [
   {
     question: "What about manufacturer-direct models that currently bypass local pharmacies?",
     answer:
-      "This is one of the most important reasons to become an ApalyRx pharmacy partner. Manufacturer-direct programs like LillyDirect and NovoCare typically contract with one or two nationally licensed mail-order pharmacies, cutting local independents out entirely. ApalyRx\u2019s model is different: we bring manufacturer-direct programs to local independent pharmacies through the pharmacy of record structure. You provide the clinical oversight; the product ships from manufacturer logistics. Without this model, those prescriptions go to a mail-order pharmacy that has no relationship with the patient or the community.",
+      "This is one of the most important reasons to become an ApalyRx pharmacy partner. Manufacturer-direct programs like LillyDirect and NovoCare typically contract with one or two nationally licensed mail-order pharmacies, cutting local independents out entirely. ApalyRx\u2019s model is different, we bring manufacturer-direct programs to local independent pharmacies through the pharmacy of record structure. You provide the clinical oversight; the product ships from manufacturer logistics. Without this model, those prescriptions go to a mail-order pharmacy that has no relationship with the patient or the community.",
   },
   {
     question: "What is Drug Benefit Integrity and why does it matter for my pharmacy?",
