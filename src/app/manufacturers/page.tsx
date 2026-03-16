@@ -80,7 +80,7 @@ const solutionCards = [
     subtitle: "Parallel Pathway, Zero Disruption",
     stat: "0%",
     statLabel: "disruption",
-    desc: "ApalyRx operates as a parallel employer pathway alongside existing PBM contracts. Your PBM relationships stay intact. Direct-to-employer programs run through ApalyRx independently: scoped, documented, and structurally separate from PBM adjudication.",
+    desc: "ApalyRx operates as a parallel employer pathway alongside existing PBM contracts. Your PBM relationships stay intact. Direct-to-employer programs run through ApalyRx independently, scoped, documented, and structurally separate from PBM adjudication.",
   },
   {
     icon: Users,
@@ -96,7 +96,7 @@ const solutionCards = [
     subtitle: "Transparent Pass-Through Economics",
     stat: "100%",
     statLabel: "your control",
-    desc: "You set competitive direct pricing under your commercial terms. ApalyRx passes it through transparently to the plan: no spread, no markup on drug cost. Every transaction generates a decision-level record showing why your channel was selected, giving employers documented proof of program value.",
+    desc: "You set competitive direct pricing under your commercial terms. ApalyRx passes it through transparently to the plan, no spread, no markup on drug cost. Every transaction generates a decision-level record showing why your channel was selected, giving employers documented proof of program value.",
   },
 ];
 
@@ -131,7 +131,7 @@ const complianceCards = [
   { icon: Eye, text: "Pricing visible only to authorized parties" },
   { icon: FileCheck, text: "Audit logs, controlled access, structured governance" },
   { icon: Shield, text: "HIPAA compliant, SOC 2 Type II controls" },
-  { icon: Lock, text: "No channel disruption: parallel pathway preserving existing contracts" },
+  { icon: Lock, text: "No channel disruption, parallel pathway preserving existing contracts" },
 ];
 
 const complianceCardsRow2 = [
@@ -153,7 +153,7 @@ const faqItems = [
   {
     question: "Do we lose control of pricing?",
     answer:
-      "You set your own pricing under your commercial terms. ApalyRx passes it through transparently: no spread, no markup on drug cost. Pricing is visible only to authorized parties with contractual protections and structured governance.",
+      "You set your own pricing under your commercial terms. ApalyRx passes it through transparently, no spread, no markup on drug cost. Pricing is visible only to authorized parties with contractual protections and structured governance.",
   },
   {
     question: "What operational burden does this create for us?",
@@ -222,7 +222,7 @@ export default function ManufacturersPage() {
             <span className="font-heading">For Manufacturers</span>
           </div>
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
-            Employer Direct: Operationally Simple
+            Employer Direct - Operationally Simple
           </h1>
           <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
             Without Disrupting Your Existing Channel Strategy
