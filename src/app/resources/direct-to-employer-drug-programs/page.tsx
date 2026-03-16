@@ -25,19 +25,19 @@ const faqItems = [
   {
     question: 'What does "Direct-to-Employer" (DTE) mean in pharmacy benefits?',
     answer:
-      "DTE is a model where manufacturer pricing reaches employer-sponsored health plans through infrastructure that bypasses traditional PBM adjudication. In practice, most manufacturers do not contract directly with individual employers - they work through benefit administrators that facilitate a compliant DTE model. The employer gets a negotiated price, and the transaction is integrated into the benefit so member cost-share applies to deductibles and accumulators.",
+      "DTE is a model where manufacturer pricing reaches employer-sponsored health plans through infrastructure that bypasses traditional PBM adjudication. In practice, most manufacturers do not contract directly with individual employers: they work through benefit administrators that facilitate a compliant DTE model. The employer gets a negotiated price, and the transaction is integrated into the benefit so member cost-share applies to deductibles and accumulators.",
   },
   {
     question:
       "Do manufacturers contract directly with employers in DTE programs?",
     answer:
-      "Usually not. Most manufacturers avoid direct contracts with individual employers because doing so risks creating channel conflict with their existing PBM relationships - the same PBMs that control formulary access for the manufacturer's broader portfolio. Instead, manufacturers typically work through benefit administrators that can facilitate DTE pricing while handling eRx intake, eligibility, cost-share, accumulator reporting, and claims settlement on behalf of the employer plan.",
+      "Usually not. Most manufacturers avoid direct contracts with individual employers because doing so risks creating channel conflict with their existing PBM relationships: the same PBMs that control formulary access for the manufacturer's broader portfolio. Instead, manufacturers typically work through benefit administrators that can facilitate DTE pricing while handling eRx intake, eligibility, cost-share, accumulator reporting, and claims settlement on behalf of the employer plan.",
   },
   {
     question:
       "What is the difference between a DTE clinical vendor and DTE benefit infrastructure?",
     answer:
-      "A DTE clinical vendor provides clinical program management - prior authorization, adherence monitoring, patient onboarding, outcomes tracking - but does not integrate the transaction into the employer's benefit. DTE benefit infrastructure handles the operational requirements to make the transaction part of the covered benefit: eRx intake, eligibility verification, cost-share collection, accumulator reporting, claims settlement, and supplier payment. Clinical management and benefit infrastructure are complementary but distinct - and without the infrastructure, the program is still outside the plan.",
+      "A DTE clinical vendor provides clinical program management: prior authorization, adherence monitoring, patient onboarding, outcomes tracking, but does not integrate the transaction into the employer's benefit. DTE benefit infrastructure handles the operational requirements to make the transaction part of the covered benefit: eRx intake, eligibility verification, cost-share collection, accumulator reporting, claims settlement, and supplier payment. Clinical management and benefit infrastructure are complementary but distinct, and without the infrastructure, the program is still outside the plan.",
   },
   {
     question: "How is DTE different from DTC and DTP?",
@@ -57,12 +57,12 @@ const faqItems = [
   {
     question: "How does ApalyRx enable DTE programs?",
     answer:
-      "ApalyRx provides the turn-key infrastructure to bring DTE programs inside the benefit - eRx intake, eligibility verification, cost-share collection, accumulator reporting, claims settlement through either the TPA or PBM, and supplier settlement. It evaluates DTE alongside all other channels in real time and documents every routing decision.",
+      "ApalyRx provides the turn-key infrastructure to bring DTE programs inside the benefit: eRx intake, eligibility verification, cost-share collection, accumulator reporting, claims settlement through either the TPA or PBM, and supplier settlement. It evaluates DTE alongside all other channels in real time and documents every routing decision.",
   },
   {
     question: "What is the Pharmacy of Record model?",
     answer:
-      "In a Pharmacy of Record (POR) structure, an independent community pharmacy performs clinical functions - drug utilization review, patient counseling, medication therapy management - while the physical medication ships from the manufacturer's logistics network. The pharmacy earns a POR fee for clinical services.",
+      "In a Pharmacy of Record (POR) structure, an independent community pharmacy performs clinical functions: drug utilization review, patient counseling, medication therapy management, while the physical medication ships from the manufacturer's logistics network. The pharmacy earns a POR fee for clinical services.",
   },
   {
     question: "Is DTE compliant with ERISA and CAA 2026?",
@@ -106,9 +106,9 @@ export default function DTEPage() {
           </h1>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             The pharmaceutical supply chain is changing. Manufacturers are building direct channels
-            to reach patients - and increasingly, to reach the employers who fund their benefits.
+            to reach patients, and increasingly, to reach the employers who fund their benefits.
             But most of what the market calls &quot;Direct-to-Employer&quot; today is clinical program
-            management layered on top of manufacturer pricing - not true benefit integration. For
+            management layered on top of manufacturer pricing, not true benefit integration. For
             employers managing pharmacy spend, understanding this distinction is critical.
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function DTEPage() {
               prices, typically through a dedicated website or coupon program. Examples include
               TrumpRx, GoodRx manufacturer pricing, and manufacturer copay cards. The consumer pays
               cash or uses a coupon. The transaction sits entirely outside the employer-sponsored
-              benefit - it does not apply to deductibles or out-of-pocket maximums, and it is
+              benefit: it does not apply to deductibles or out-of-pocket maximums, and it is
               invisible to the plan.
             </p>
 
@@ -159,16 +159,16 @@ export default function DTEPage() {
               <p>
                 DTE programs bring manufacturer pricing inside employer-sponsored health plans,
                 bypassing traditional PBM adjudication for targeted drug categories. Unlike DTC and
-                DTP, the transaction is integrated into the benefit - member cost-share applies to
+                DTP, the transaction is integrated into the benefit: member cost-share applies to
                 deductibles and accumulators, and the plan sponsor has visibility into the actual
                 cost.
               </p>
               <p>
                 In practice, most manufacturers will not contract directly with individual employers.
-                Doing so risks creating channel conflict with their existing PBM relationships - the
+                Doing so risks creating channel conflict with their existing PBM relationships: the
                 same PBMs that control formulary access for the manufacturer&apos;s broader portfolio.
                 Instead, manufacturers typically work through benefit administrators that can
-                facilitate a compliant DTE model - handling eRx intake, eligibility, cost-share,
+                facilitate a compliant DTE model: handling eRx intake, eligibility, cost-share,
                 accumulator reporting, and claims settlement on behalf of the employer plan while
                 maintaining the manufacturer&apos;s pricing structure.
               </p>
@@ -195,7 +195,7 @@ export default function DTEPage() {
                   PBM economics no longer serve manufacturer interests in every category.
                 </strong>{" "}
                 For high-cost specialty and GLP-1 medications, manufacturers have found that PBM
-                formulary placement - which traditionally required large rebates - is not the only
+                formulary placement, which traditionally required large rebates, is not the only
                 path to market access. Direct channels offer an alternative that can be more
                 cost-effective for the manufacturer while delivering a lower net price to the
                 employer and patient.
@@ -205,7 +205,7 @@ export default function DTEPage() {
                   Regulatory tailwinds are accelerating direct models.
                 </strong>{" "}
                 In January 2026, HHS issued guidance clarifying that manufacturers can offer
-                lower-cost drugs directly to patients - including Medicare and Medicaid enrollees -
+                lower-cost drugs directly to patients, including Medicare and Medicaid enrollees,
                 in a manner that is low risk under the federal anti-kickback statute. The
                 Consolidated Appropriations Act of 2026 requires 100% rebate pass-through, which
                 reduces the financial advantage of rebate-heavy PBM arrangements. TrumpRx launched
@@ -214,9 +214,9 @@ export default function DTEPage() {
               <p>
                 <strong className="text-[#0F1C2E]">The economics are compelling.</strong> When a
                 manufacturer sells a GLP-1 medication through the traditional PBM channel, the
-                employer&apos;s net cost after rebate may still be $750+ per month - and that
+                employer&apos;s net cost after rebate may still be $750+ per month, and that
                 number is difficult to verify in real time. Through a DTE program, the manufacturer
-                might offer the same medication at ~$550 with no rebate - a lower net cost with
+                might offer the same medication at ~$550 with no rebate: a lower net cost with
                 complete price transparency and no reconciliation required.
               </p>
             </div>
@@ -237,7 +237,7 @@ export default function DTEPage() {
                   Clinical management is not benefit integration.
                 </strong>{" "}
                 Many vendors marketed as &quot;DTE&quot; provide clinical program management -
-                prior authorization, adherence monitoring, patient onboarding - but do not integrate
+                prior authorization, adherence monitoring, patient onboarding, but do not integrate
                 the transaction into the employer&apos;s benefit. Clinical wrapping does not make a
                 program part of the benefit. Without eRx intake, cost-share collection, accumulator
                 reporting, and claims settlement, the program is still outside the plan.
@@ -245,7 +245,7 @@ export default function DTEPage() {
               <p>
                 <strong className="text-[#0F1C2E]">Accumulator disconnection.</strong> If a
                 member&apos;s cost-share for a DTE prescription does not apply to their deductible or
-                out-of-pocket maximum, the member is effectively paying twice - once for the DTE
+                out-of-pocket maximum, the member is effectively paying twice: once for the DTE
                 medication and again toward a deductible that does not reflect their actual spending.
               </p>
               <p>
@@ -276,7 +276,7 @@ export default function DTEPage() {
               What Infrastructure Is Required to Bring DTE Inside the Benefit
             </h2>
             <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
-              For DTE to work as a true benefit integration - not just a cash-pay workaround -
+              For DTE to work as a true benefit integration, not just a cash-pay workaround,
               several operational components must be in place:
             </p>
             <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
@@ -298,20 +298,20 @@ export default function DTEPage() {
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Accumulator reporting.</strong> The member&apos;s
-                cost-share must be reported to the plan&apos;s accumulators - deductible, out-of-pocket
-                maximum - so it is reflected in their benefit status across all providers.
+                cost-share must be reported to the plan&apos;s accumulators: deductible, out-of-pocket
+                maximum, so it is reflected in their benefit status across all providers.
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Claims settlement.</strong> The plan&apos;s
                 portion must be settled through either the TPA&apos;s medical claims system or the
-                PBM&apos;s pharmacy claims system - depending on the employer&apos;s plan
+                PBM&apos;s pharmacy claims system, depending on the employer&apos;s plan
                 administration model. Both paths require data continuity, stop-loss reporting, and
                 financial reconciliation.
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Supplier settlement.</strong> Payment to the
                 manufacturer or its logistics partner must be processed with transparent,
-                pass-through economics - no spread, no retained margin.
+                pass-through economics: no spread, no retained margin.
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Decision-level documentation.</strong> For each
@@ -349,15 +349,15 @@ export default function DTEPage() {
               <p>
                 An alternative model preserves independent pharmacy involvement through a Pharmacy
                 of Record (POR) structure. In this model, the independent pharmacy performs the
-                clinical functions - drug utilization review, patient counseling, medication therapy
-                management - while the physical product ships from the manufacturer&apos;s logistics
+                clinical functions: drug utilization review, patient counseling, medication therapy
+                management, while the physical product ships from the manufacturer&apos;s logistics
                 network. The pharmacy earns a POR fee for clinical services rather than a dispensing
                 margin.
               </p>
               <p>
                 This structure keeps independent pharmacies inside the DTE supply chain, maintains
                 the patient-pharmacist relationship, and ensures clinical oversight at the local
-                level - while still delivering the cost advantages of manufacturer-direct pricing.
+                level, while still delivering the cost advantages of manufacturer-direct pricing.
               </p>
             </div>
           </div>
@@ -377,14 +377,14 @@ export default function DTEPage() {
                   Drug Benefit Integrity (DBI)
                 </Link>{" "}
                 standard requires that manufacturer-direct programs be evaluated alongside all other
-                channels at the point of decision - not treated as a separate, out-of-benefit
+                channels at the point of decision, not treated as a separate, out-of-benefit
                 program. This is DBI&apos;s third requirement.
               </p>
               <p>
                 When DTE programs are integrated into the routing evaluation, the plan sponsor can
                 see the actual net cost comparison: DTE price vs. PBM specialty price vs. PBM mail
                 price vs. retail price. The routing decision is documented, and the plan sponsor has
-                proof that the selected channel - whether DTE or not - was the lowest net cost
+                proof that the selected channel, whether DTE or not, was the lowest net cost
                 option.
               </p>
               <p>

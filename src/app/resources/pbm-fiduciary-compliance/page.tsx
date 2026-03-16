@@ -10,7 +10,7 @@ import { Scale, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "PBM Fiduciary Compliance: How Employers Can Prove Prudent Oversight",
   description:
-    "CAA 2026, the DOL proposed rule, and ERISA litigation are raising the bar on pharmacy benefit oversight. A practical guide to PBM fiduciary compliance - what plan sponsors must do, what documentation satisfies prudence, and how decision-level verification closes the gap between transparency and integrity.",
+    "CAA 2026, the DOL proposed rule, and ERISA litigation are raising the bar on pharmacy benefit oversight. A practical guide to PBM fiduciary compliance: what plan sponsors must do, what documentation satisfies prudence, and how decision-level verification closes the gap between transparency and integrity.",
   openGraph: {
     title: "PBM Fiduciary Compliance Guide for Employers | ApalyRx",
     description:
@@ -40,7 +40,7 @@ const faqItems = [
   {
     question: "How does decision-level verification help with fiduciary compliance?",
     answer:
-      "It provides per-prescription evidence that each routing decision was evaluated across all channels and directed to the lowest net cost. This is the strongest form of fiduciary documentation - specific, auditable proof rather than aggregate PBM reports.",
+      "It provides per-prescription evidence that each routing decision was evaluated across all channels and directed to the lowest net cost. This is the strongest form of fiduciary documentation: specific, auditable proof rather than aggregate PBM reports.",
   },
   {
     question: "Can I be sued for how my PBM routes prescriptions?",
@@ -92,7 +92,7 @@ export default function PBMFiduciaryCompliancePage() {
             Consolidated Appropriations Act of 2026 now treats PBMs as covered service providers
             under ERISA. The Department of Labor has proposed requiring detailed PBM compensation
             disclosures. State laws are imposing fiduciary duties on PBMs directly. And ERISA
-            litigation against plan sponsors - J&amp;J, Wells Fargo, JPMorgan - is accelerating. For
+            litigation against plan sponsors: J&amp;J, Wells Fargo, JPMorgan, is accelerating. For
             self-funded employers, the question is no longer whether to oversee PBM arrangements,
             but how to prove that oversight is happening.
           </p>
@@ -132,8 +132,8 @@ export default function PBMFiduciaryCompliancePage() {
               DOL Proposed Rule on PBM Disclosure
             </h3>
             <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-              The Department of Labor has proposed requiring PBMs - and affiliated brokers and
-              consultants - to disclose detailed information about their direct and indirect
+              The Department of Labor has proposed requiring PBMs, and affiliated brokers and
+              consultants, to disclose detailed information about their direct and indirect
               compensation to plan fiduciaries. The rule would also strengthen audit rights, giving
               plan fiduciaries the ability to verify whether PBM disclosures match actual revenue
               and compensation practices.
@@ -158,7 +158,7 @@ export default function PBMFiduciaryCompliancePage() {
               Recent lawsuits have put plan sponsors on notice. In the J&amp;J case, an
               employee-participant alleged the company breached fiduciary duties by allowing its PBM
               to steer prescriptions to PBM-owned mail-order pharmacies at inflated prices. The
-              Wells Fargo case raised similar allegations - the PBM charged the plan up to 15 times
+              Wells Fargo case raised similar allegations: the PBM charged the plan up to 15 times
               the cash price for covered drugs. JPMorgan faces claims that it failed to monitor PBM
               contracts despite having access to market benchmarks. These cases signal that courts
               are increasingly willing to scrutinize plan sponsors&apos; PBM oversight practices.
@@ -175,27 +175,27 @@ export default function PBMFiduciaryCompliancePage() {
             </p>
             <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">Loyalty</strong> - Act solely in the interest of
+                <strong className="text-[#0F1C2E]">Loyalty</strong>: Act solely in the interest of
                 plan participants and beneficiaries.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Prudence</strong> - Use care, skill, and
+                <strong className="text-[#0F1C2E]">Prudence</strong>: Use care, skill, and
                 diligence that a prudent person in a similar situation would exercise. This is a
-                process standard, not an outcome standard - the question is whether the
+                process standard, not an outcome standard: the question is whether the
                 fiduciary&apos;s decision-making process was reasonable, not whether the outcome was
                 optimal.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Reasonableness</strong> - Ensure that fees and
+                <strong className="text-[#0F1C2E]">Reasonableness</strong>: Ensure that fees and
                 compensation paid for plan services are reasonable.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Plan compliance</strong> - Follow the terms of
+                <strong className="text-[#0F1C2E]">Plan compliance</strong>: Follow the terms of
                 plan documents.
               </p>
               <p>
                 For pharmacy benefits specifically, these duties translate into concrete obligations.
-                Plan sponsors must actively monitor PBM performance - not just at contract
+                Plan sponsors must actively monitor PBM performance, not just at contract
                 negotiation, but on an ongoing basis. They must evaluate whether PBM compensation is
                 reasonable in light of services provided. They must assess whether routing decisions
                 serve the plan&apos;s interest. And they must document their oversight activities.
@@ -219,7 +219,7 @@ export default function PBMFiduciaryCompliancePage() {
               <p>
                 CAA 2026 and the DOL proposed rule give plan sponsors more visibility into PBM
                 operations than ever before. Semiannual reporting, compensation disclosure, rebate
-                pass-through requirements - these are meaningful reforms.
+                pass-through requirements: these are meaningful reforms.
               </p>
               <p>
                 But visibility alone does not satisfy fiduciary prudence. Receiving a report is not
@@ -234,7 +234,7 @@ export default function PBMFiduciaryCompliancePage() {
                 verify that the statements are accurate and that internal controls are functioning.
               </p>
               <p>
-                Pharmacy benefits have the statements - PBM reports, rebate reconciliations,
+                Pharmacy benefits have the statements: PBM reports, rebate reconciliations,
                 performance guarantees. What they lack is the independent verification.
               </p>
             </div>
@@ -269,7 +269,7 @@ export default function PBMFiduciaryCompliancePage() {
                 </h3>
                 <p className="font-body text-lg text-muted-foreground leading-relaxed">
                   Under CAA 2026, PBMs must provide detailed reporting. Plan sponsors must actually
-                  review these reports - receiving them is not sufficient. Assess drug-level pricing,
+                  review these reports: receiving them is not sufficient. Assess drug-level pricing,
                   spread between plan charges and pharmacy reimbursement, rebate amounts, and total
                   PBM compensation.
                 </p>
@@ -280,8 +280,8 @@ export default function PBMFiduciaryCompliancePage() {
                   3. Conduct Independent Audits
                 </h3>
                 <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                  PBM self-reporting is necessary but not sufficient. Engage independent auditors -
-                  not auditors recommended by the PBM - to verify that reported data matches actual
+                  PBM self-reporting is necessary but not sufficient. Engage independent auditors,
+                  not auditors recommended by the PBM, to verify that reported data matches actual
                   claims, rebates, and compensation. Audit rights should be exercised regularly, not
                   just when problems are suspected.
                 </p>
@@ -322,7 +322,7 @@ export default function PBMFiduciaryCompliancePage() {
                   6. Document Everything
                 </h3>
                 <p className="font-body text-lg text-muted-foreground leading-relaxed">
-                  Maintain a record of all fiduciary activities - PBM reviews, audit findings,
+                  Maintain a record of all fiduciary activities: PBM reviews, audit findings,
                   contract negotiations, vendor evaluations, and corrective actions. In ERISA
                   litigation, the court evaluates the process the fiduciary followed, not just the
                   outcome achieved. A well-documented oversight process is the strongest defense.
@@ -348,12 +348,12 @@ export default function PBMFiduciaryCompliancePage() {
                 (proving decisions were sound). For each prescription, it provides:
               </p>
               <p>
-                A record of every channel evaluated - including channels the PBM may have excluded
-                from its own analysis. The actual net cost in each channel - not an estimate, not an
-                average, but the real cost based on current pricing. The rules that were applied -
+                A record of every channel evaluated, including channels the PBM may have excluded
+                from its own analysis. The actual net cost in each channel, not an estimate, not an
+                average, but the real cost based on current pricing. The rules that were applied:
                 formulary status, prior authorization requirements, cost-share design. The routing
-                rationale - why the selected channel was chosen. A complete financial reconciliation
-                - what was billed, what was paid, what the member contributed.
+                rationale: why the selected channel was chosen. A complete financial reconciliation:
+                what was billed, what was paid, what the member contributed.
               </p>
               <p>
                 This documentation exists at the individual prescription level, not in aggregate. It
@@ -394,7 +394,7 @@ export default function PBMFiduciaryCompliancePage() {
           </h2>
           <p className="font-body text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             ApalyRx provides independent, decision-level verification for every high-cost
-            prescription - the documentation plan sponsors need to demonstrate prudent oversight.
+            prescription: the documentation plan sponsors need to demonstrate prudent oversight.
           </p>
           <Link
             href="/contact"

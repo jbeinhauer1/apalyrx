@@ -43,13 +43,13 @@ const problemCards = [
     icon: MessageSquare,
     num: 1,
     title: "Consultant Pressure",
-    desc: "Benefits consultants are putting alternative PBM models on every finalist slate. Transparent PBM options, direct-to-employer programs, and carve-out models are all being evaluated. The question is no longer just about pricing - it is about structural accountability.",
+    desc: "Benefits consultants are putting alternative PBM models on every finalist slate. Transparent PBM options, direct-to-employer programs, and carve-out models are all being evaluated. The question is no longer just about pricing: it is about structural accountability.",
   },
   {
     icon: FileText,
     num: 2,
     title: "Documentation Demands",
-    desc: "Employers are asking for documentation beyond aggregate reporting. They want decision-level proof that each high-cost prescription was routed to the lowest net cost - not a summary showing total spend went down. The shift is from reporting to verification.",
+    desc: "Employers are asking for documentation beyond aggregate reporting. They want decision-level proof that each high-cost prescription was routed to the lowest net cost, not a summary showing total spend went down. The shift is from reporting to verification.",
   },
   {
     icon: Scale,
@@ -61,7 +61,7 @@ const problemCards = [
     icon: Shield,
     num: 4,
     title: "Fiduciary Scrutiny",
-    desc: "Plan fiduciaries face personal liability for drug benefit decisions. They are asking their PBMs to demonstrate - through independent means - that routing was optimal. The PBMs that can answer this question proactively will retain and win clients. Those that cannot will be defending the gap.",
+    desc: "Plan fiduciaries face personal liability for drug benefit decisions. They are asking their PBMs to demonstrate, through independent means, that routing was optimal. The PBMs that can answer this question proactively will retain and win clients. Those that cannot will be defending the gap.",
   },
 ];
 
@@ -72,7 +72,7 @@ const solutionCards = [
     subtitle: "Real-Time All-Channel Evaluation",
     stat: "100%",
     statLabel: "independent",
-    desc: "ApalyRx evaluates every in-scope prescription across all available channels in real time - including your PBM\u2019s own specialty, mail, and retail pharmacies, plus manufacturer-direct programs and independent pharmacies. The routing is based on actual net cost. Your channel can win on merit - and when it does, there is independent proof.",
+    desc: "ApalyRx evaluates every in-scope prescription across all available channels in real time, including your PBM\u2019s own specialty, mail, and retail pharmacies, plus manufacturer-direct programs and independent pharmacies. The routing is based on actual net cost. Your channel can win on merit, and when it does, there is independent proof.",
   },
   {
     icon: FileCheck,
@@ -80,7 +80,7 @@ const solutionCards = [
     subtitle: "Audit-Ready by Default",
     stat: "Every",
     statLabel: "script",
-    desc: "Every prescription generates a decision-level record: which channels were compared, what rules were applied, why the winning channel was selected, and the net cost components. This is the documentation your clients\u2019 fiduciaries need - produced automatically, not assembled after the fact.",
+    desc: "Every prescription generates a decision-level record: which channels were compared, what rules were applied, why the winning channel was selected, and the net cost components. This is the documentation your clients\u2019 fiduciaries need, produced automatically, not assembled after the fact.",
   },
   {
     icon: Users,
@@ -88,7 +88,7 @@ const solutionCards = [
     subtitle: "Strengthen Renewal Conversations",
     stat: "0",
     statLabel: "disruption",
-    desc: "Offering independent routing and decision-level documentation proactively demonstrates that you welcome scrutiny. In renewal conversations, this is the strongest possible position - your clients get the verification they need without leaving your program.",
+    desc: "Offering independent routing and decision-level documentation proactively demonstrates that you welcome scrutiny. In renewal conversations, this is the strongest possible position: your clients get the verification they need without leaving your program.",
   },
   {
     icon: Zap,
@@ -96,7 +96,7 @@ const solutionCards = [
     subtitle: "Win Against Alternative Models",
     stat: "First",
     statLabel: "mover",
-    desc: "When consultants evaluate your program against other PBMs, direct employer models, and carve-out alternatives, having a real-time independent routing layer already in place sets you apart. You are not defending your model - you are demonstrating structural integrity that competitors cannot match.",
+    desc: "When consultants evaluate your program against other PBMs, direct employer models, and carve-out alternatives, having a real-time independent routing layer already in place sets you apart. You are not defending your model, you are demonstrating structural integrity that competitors cannot match.",
   },
 ];
 
@@ -104,12 +104,12 @@ const howItWorksSteps = [
   {
     num: 1,
     title: "Scope the Program",
-    desc: "Together we identify the approximately 30 high-cost medications that typically account for 40% or more of employer and health plan pharmacy spend - where net cost variability across channels is greatest and the impact of optimized routing is most significant.",
+    desc: "Together we identify the approximately 30 high-cost medications that typically account for 40% or more of employer and health plan pharmacy spend, where net cost variability across channels is greatest and the impact of optimized routing is most significant.",
   },
   {
     num: 2,
     title: "Technical Integration",
-    desc: "ApalyRx connects to your existing data flows - eligibility feeds, accumulator files, and claims reporting pathways. Integration is technical and straightforward. Your team works with ours to establish the data connection.",
+    desc: "ApalyRx connects to your existing data flows: eligibility feeds, accumulator files, and claims reporting pathways. Integration is technical and straightforward. Your team works with ours to establish the data connection.",
   },
   {
     num: 3,
@@ -119,12 +119,12 @@ const howItWorksSteps = [
   {
     num: 4,
     title: "Real-Time All-Channel Routing",
-    desc: "Every in-scope prescription is evaluated across all available channels in real time - your PBM specialty, your PBM mail, retail, manufacturer-direct, and independent pharmacies. The prescription routes to the lowest net cost. Your channel is always in the evaluation - and wins when it offers the best price.",
+    desc: "Every in-scope prescription is evaluated across all available channels in real time: your PBM specialty, your PBM mail, retail, manufacturer-direct, and independent pharmacies. The prescription routes to the lowest net cost. Your channel is always in the evaluation, and wins when it offers the best price.",
   },
   {
     num: 5,
     title: "Documentation & Reporting",
-    desc: "Every routing decision generates a decision-level record. Your clients receive documentation showing channels compared, rules applied, routing rationale, and net cost components - for every script, not a sample. You receive program-level reporting on routing outcomes, channel performance, and cost impact.",
+    desc: "Every routing decision generates a decision-level record. Your clients receive documentation showing channels compared, rules applied, routing rationale, and net cost components, for every script, not a sample. You receive program-level reporting on routing outcomes, channel performance, and cost impact.",
   },
 ];
 
@@ -142,7 +142,7 @@ const valueCards = [
   {
     icon: Scale,
     title: "Regulatory Readiness",
-    desc: "CAA reporting requirements, FTC enforcement, and DOL proposed rules are all moving toward greater PBM accountability. Independent routing and decision-level documentation positions you ahead of these requirements - rather than scrambling to meet them after the fact.",
+    desc: "CAA reporting requirements, FTC enforcement, and DOL proposed rules are all moving toward greater PBM accountability. Independent routing and decision-level documentation positions you ahead of these requirements, rather than scrambling to meet them after the fact.",
   },
 ];
 
@@ -156,19 +156,19 @@ const timelineMilestones = [
 
 const faqItems = [
   {
-    question: "Does ApalyRx replace us the PBM?",
+    question: "Does ApalyRx replace us as the PBM?",
     answer:
       "No. You continue to manage formularies, process claims, and administer the benefit. ApalyRx operates as a real-time routing layer for a targeted set of high-cost medications. Everything else stays in your existing flow and control.",
   },
   {
     question: "Will our pharmacies still be in the evaluation?",
     answer:
-      "Yes. ApalyRx evaluates every in-scope prescription across all available channels - including your PBM\u2019s own specialty, mail, and retail pharmacies. Your channel can win on merit. When it offers the lowest net cost, it wins - and there is independent documentation to prove it.",
+      "Yes. ApalyRx evaluates every in-scope prescription across all available channels, including your PBM\u2019s own specialty, mail, and retail pharmacies. Your channel can win on merit. When it offers the lowest net cost, it wins, and there is independent documentation to prove it.",
   },
   {
     question: "What happens when our channel wins the routing?",
     answer:
-      "The prescription fills through your pharmacy as normal. The difference is that the decision is now independently documented - showing which channels were evaluated, what the pricing was, and why your channel was selected. This is valuable documentation for your client relationships.",
+      "The prescription fills through your pharmacy as normal. The difference is that the decision is now independently documented: showing which channels were evaluated, what the pricing was, and why your channel was selected. This is valuable documentation for your client relationships.",
   },
   {
     question: "What about our rebate arrangements?",
@@ -178,27 +178,27 @@ const faqItems = [
   {
     question: "How do our clients access this?",
     answer:
-      "You offer ApalyRx as part of your program. Your clients see it as a capability of your PBM - independent routing and documentation included in their relationship with you. ApalyRx operates in the background. Your brand stays front and center.",
+      "You offer ApalyRx as part of your program. Your clients see it as a capability of your PBM: independent routing and documentation included in their relationship with you. ApalyRx operates in the background. Your brand stays front and center.",
   },
   {
     question: "What does the client experience look like?",
     answer:
-      "Clients receive decision-level documentation for every in-scope prescription - channels compared, rules applied, routing rationale, and net cost components. They also receive program-level reporting on cost impact, channel performance, and utilization. Their members receive a concierge experience with clear costs, status tracking, and home delivery.",
+      "Clients receive decision-level documentation for every in-scope prescription: channels compared, rules applied, routing rationale, and net cost components. They also receive program-level reporting on cost impact, channel performance, and utilization. Their members receive a concierge experience with clear costs, status tracking, and home delivery.",
   },
   {
     question: "How much work is this for our team?",
     answer:
-      "Implementation requires technical integration - eligibility feeds, accumulator files, and claims reporting pathways. ApalyRx handles operations, member experience, fulfillment orchestration, and reporting. After go-live, your team receives reporting and can manage program parameters. Day-to-day operations are handled by ApalyRx.",
+      "Implementation requires technical integration: eligibility feeds, accumulator files, and claims reporting pathways. ApalyRx handles operations, member experience, fulfillment orchestration, and reporting. After go-live, your team receives reporting and can manage program parameters. Day-to-day operations are handled by ApalyRx.",
   },
   {
     question: "What drugs are included?",
     answer:
-      "ApalyRx targets approximately 30 high-cost medications that typically account for 40% or more of employer and health plan pharmacy spend - where net cost variability across channels is greatest. These are the drugs where independent routing has the most impact. You have full control over which drugs are in scope.",
+      "ApalyRx targets approximately 30 high-cost medications that typically account for 40% or more of employer and health plan pharmacy spend, where net cost variability across channels is greatest. These are the drugs where independent routing has the most impact. You have full control over which drugs are in scope.",
   },
   {
     question: "How does this relate to Drug Benefit Integrity?",
     answer:
-      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx meets all five requirements. By offering ApalyRx as part of your program, you are demonstrating alignment with the DBI standard - a competitive differentiator as consultants and employers increasingly evaluate PBMs on structural integrity, not just pricing. Learn more at drugbenefitintegrity.com.",
+      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx meets all five requirements. By offering ApalyRx as part of your program, you are demonstrating alignment with the DBI standard: a competitive differentiator as consultants and employers increasingly evaluate PBMs on structural integrity, not just pricing. Learn more at drugbenefitintegrity.com.",
   },
 ];
 
@@ -236,9 +236,8 @@ export default function PBMsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             ApalyRx works alongside your program to give clients what they are increasingly asking
-            for - real-time, independent routing of high-cost prescriptions to the lowest net cost,
-            with decision-level documentation for every script. Your PBM continues to manage
-            formularies, negotiate contracts, and administer the benefit. ApalyRx adds a structural
+            for: real-time, independent routing of high-cost prescriptions to the lowest net cost,
+            with decision-level documentation for every script. Your PBM continues to administer the benefit. ApalyRx adds a structural
             layer that makes your program stronger.
           </p>
           <Link
@@ -270,7 +269,7 @@ export default function PBMsPage() {
               Your Clients Are Asking Harder Questions
             </h2>
             <p className="font-body text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              The expectations facing PBMs are shifting - and the PBMs that move first will define
+              The expectations facing PBMs are shifting, and the PBMs that move first will define
               the standard.
             </p>
           </div>
@@ -282,9 +281,6 @@ export default function PBMsPage() {
                 className="relative bg-white rounded-xl p-6 md:p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl group"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-t-xl" />
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
-                  {card.num}
-                </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 p-3 rounded-xl bg-red-100 group-hover:bg-red-500 transition-colors duration-300">
                     <card.icon className="h-6 w-6 text-red-600 group-hover:text-white transition-colors duration-300" />
@@ -305,7 +301,7 @@ export default function PBMsPage() {
           <div className="text-center mt-12">
             <p className="inline-block font-heading text-base md:text-lg font-semibold text-white bg-[#0F1C2E] px-8 py-4 rounded-xl shadow-lg">
               The PBMs that adopt independent routing proactively will define the next generation of
-              client trust - rather than reacting to mandates.
+              client trust, rather than reacting to mandates.
             </p>
           </div>
         </div>
@@ -325,7 +321,7 @@ export default function PBMsPage() {
               What ApalyRx Adds to Your Program
             </h2>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              ApalyRx complements your PBM - it does not replace it
+              ApalyRx complements your PBM: it does not replace it
             </p>
           </div>
 
@@ -515,7 +511,7 @@ export default function PBMsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Tell us about your program and client base. We will show you how ApalyRx integrates with
-            your existing workflows - strengthening client relationships with independent routing and
+            your existing workflows, strengthening client relationships with independent routing and
             decision-level documentation for every high-cost prescription.
           </p>
           <Link

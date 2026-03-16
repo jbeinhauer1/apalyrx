@@ -10,7 +10,7 @@ import { Route, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "What Is Lowest Net Cost Prescription Routing?",
   description:
-    "Lowest net cost prescription routing evaluates every fulfillment channel - PBM specialty, PBM mail, retail, manufacturer-direct, independent pharmacy - in real time to identify the actual lowest cost for each prescription. Learn how it works, why retrospective analysis falls short, and what decision-level documentation means.",
+    "Lowest net cost prescription routing evaluates every fulfillment channel: PBM specialty, PBM mail, retail, manufacturer-direct, independent pharmacy, in real time to identify the actual lowest cost for each prescription. Learn how it works, why retrospective analysis falls short, and what decision-level documentation means.",
   openGraph: {
     title: "What Is Lowest Net Cost Prescription Routing? | ApalyRx",
     description:
@@ -25,12 +25,12 @@ const faqItems = [
   {
     question: 'What is "lowest net cost" in pharmacy benefits?',
     answer:
-      "Lowest net cost means the final amount the plan pays for a prescription after all pricing adjustments - acquisition cost, fees, rebates, and discounts. It is the actual financial impact on the plan, not the list price or the member's cost-share.",
+      "Lowest net cost means the final amount the plan pays for a prescription after all pricing adjustments: acquisition cost, fees, rebates, and discounts. It is the actual financial impact on the plan, not the list price or the member's cost-share.",
   },
   {
     question: "How is lowest net cost routing different from what my PBM does?",
     answer:
-      "Most PBMs evaluate cost within their own channels - their specialty pharmacy, mail-order pharmacy, and contracted retail network. Lowest net cost routing evaluates all available channels, including manufacturer-direct programs and independent pharmacies, in real time at the point of decision.",
+      "Most PBMs evaluate cost within their own channels: their specialty pharmacy, mail-order pharmacy, and contracted retail network. Lowest net cost routing evaluates all available channels, including manufacturer-direct programs and independent pharmacies, in real time at the point of decision.",
   },
   {
     question: "Why does real-time matter?",
@@ -50,7 +50,7 @@ const faqItems = [
   {
     question: "How does this help with fiduciary compliance?",
     answer:
-      "Decision-level documentation provides the specific, per-script evidence plan fiduciaries need to demonstrate prudent oversight under ERISA and CAA 2026 - proof that each prescription was independently evaluated across all channels and routed to the lowest net cost.",
+      "Decision-level documentation provides the specific, per-script evidence plan fiduciaries need to demonstrate prudent oversight under ERISA and CAA 2026: proof that each prescription was independently evaluated across all channels and routed to the lowest net cost.",
   },
 ];
 
@@ -88,7 +88,7 @@ export default function LowestNetCostRoutingPage() {
             What Is Lowest Net Cost Prescription Routing?
           </h1>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            &quot;Lowest net cost&quot; is one of the most frequently used - and least precisely defined -
+            &quot;Lowest net cost&quot; is one of the most frequently used, and least precisely defined,
             terms in pharmacy benefits. Every PBM claims to deliver it. Every employer wants it. But
             what does it actually mean to route a prescription to the lowest net cost, and how can a
             plan sponsor prove it happened?
@@ -114,7 +114,7 @@ export default function LowestNetCostRoutingPage() {
                 Net cost is not the same as list price. A drug with a $1,000 list price and a $600
                 rebate has a net cost of $400 to the plan. A different drug with a $450 list price
                 and no rebate has a net cost of $450. In this case, the more expensive list-price
-                drug is actually the lower net-cost option - but only if the rebate is fully passed
+                drug is actually the lower net-cost option, but only if the rebate is fully passed
                 through to the plan.
               </p>
               <p>
@@ -143,20 +143,20 @@ export default function LowestNetCostRoutingPage() {
             </p>
             <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">PBM Specialty Pharmacy</strong> - The PBM&apos;s
+                <strong className="text-[#0F1C2E]">PBM Specialty Pharmacy</strong>: The PBM&apos;s
                 owned or affiliated specialty pharmacy, typically used for high-cost medications
                 requiring special handling, clinical monitoring, or prior authorization.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">PBM Mail-Order Pharmacy</strong> - The PBM&apos;s
+                <strong className="text-[#0F1C2E]">PBM Mail-Order Pharmacy</strong>: The PBM&apos;s
                 mail-order operation, usually offering 90-day fills at negotiated rates.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Retail Pharmacy</strong> - Chain and independent
+                <strong className="text-[#0F1C2E]">Retail Pharmacy</strong>: Chain and independent
                 pharmacies where members fill prescriptions in person.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Manufacturer-Direct Programs</strong> - Copay
+                <strong className="text-[#0F1C2E]">Manufacturer-Direct Programs</strong>: Copay
                 programs, patient assistance programs, and direct pricing offered by drug
                 manufacturers, including{" "}
                 <Link
@@ -168,7 +168,7 @@ export default function LowestNetCostRoutingPage() {
                 .
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Independent Community Pharmacy</strong> -
+                <strong className="text-[#0F1C2E]">Independent Community Pharmacy</strong>:
                 Independently owned pharmacies that are not affiliated with PBMs, insurers, or group
                 purchasing organizations.
               </p>
@@ -193,14 +193,14 @@ export default function LowestNetCostRoutingPage() {
             <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
               <p>
                 <strong className="text-[#0F1C2E]">Real-time routing</strong> means the evaluation
-                happens at the point of decision - when the prescription is received and before it
+                happens at the point of decision: when the prescription is received and before it
                 is filled. The system evaluates all channels, compares net costs, and routes the
                 prescription to the lowest-cost option. The decision is made before the member
                 receives the medication.
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Retrospective analysis</strong> means the
-                evaluation happens after the fact - in a quarterly review, an annual audit, or a PBM
+                evaluation happens after the fact: in a quarterly review, an annual audit, or a PBM
                 performance report. The prescription has already been filled. The plan has already
                 paid. The analysis can identify that a lower-cost option existed, but it cannot
                 change the outcome.
@@ -233,8 +233,8 @@ export default function LowestNetCostRoutingPage() {
             <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
               <p>
                 <strong className="text-[#0F1C2E]">Lowest compared to what?</strong> If the
-                comparison only includes the PBM&apos;s own channels - its specialty pharmacy, its
-                mail-order pharmacy, its contracted retail network - the evaluation is incomplete.
+                comparison only includes the PBM&apos;s own channels: its specialty pharmacy, its
+                mail-order pharmacy, its contracted retail network, the evaluation is incomplete.
                 Manufacturer-direct pricing and independent pharmacy options may offer lower costs
                 but are not included in the comparison.
               </p>
@@ -281,7 +281,7 @@ export default function LowestNetCostRoutingPage() {
                 <li>Which channel was selected and why</li>
                 <li>The member&apos;s cost-share amount and how it was calculated</li>
                 <li>
-                  The financial reconciliation - what the plan paid, what the member paid, what was
+                  The financial reconciliation: what the plan paid, what the member paid, what was
                   billed
                 </li>
               </ul>
@@ -294,7 +294,7 @@ export default function LowestNetCostRoutingPage() {
               <p>
                 This level of documentation is standard in other financial systems. Securities
                 trades have execution reports. Insurance claims have adjudication records. Pharmacy
-                benefit decisions - which can involve thousands of dollars per prescription - have
+                benefit decisions, which can involve thousands of dollars per prescription, have
                 historically had nothing comparable.
               </p>
             </div>

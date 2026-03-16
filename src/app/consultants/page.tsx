@@ -27,7 +27,7 @@ import {
 export const metadata: Metadata = {
   title: "PBM Evaluation & Drug Benefit Integrity for Benefits Consultants",
   description:
-    "Move client conversations from PBM pricing comparisons to structural accountability. Introduce the Drug Benefit Integrity standard - independent verification that every prescription routing decision is made in the plan's interest. Differentiate your advisory practice.",
+    "Move client conversations from PBM pricing comparisons to structural accountability. Introduce the Drug Benefit Integrity standard: independent verification that every prescription routing decision is made in the plan's interest. Differentiate your advisory practice.",
   openGraph: {
     title: "Drug Benefit Integrity for Benefits Consultants | ApalyRx",
     description:
@@ -51,7 +51,7 @@ const problemCards = [
     icon: BarChart3,
     num: 2,
     title: "Aggregate Reporting",
-    desc: "PBM reports show totals - total spend, total rebates, overall generic fill rates. They do not show a decision-level record for each prescription: which channels were evaluated, what the actual net cost was at each, and why the winning channel was selected.",
+    desc: "PBM reports show totals: total spend, total rebates, overall generic fill rates. They do not show a decision-level record for each prescription: which channels were evaluated, what the actual net cost was at each, and why the winning channel was selected.",
   },
   {
     icon: Scale,
@@ -63,7 +63,7 @@ const problemCards = [
     icon: Repeat,
     num: 4,
     title: "Same Conversation Every Cycle",
-    desc: "Every renewal, you compare PBM proposals on price, rebates, and service. The proposals look similar. The guarantees are structured similarly. You are competing on the same axis as every other consultant - and your clients are not getting structurally better outcomes.",
+    desc: "Every renewal, you compare PBM proposals on price, rebates, and service. The proposals look similar. The guarantees are structured similarly. You are competing on the same axis as every other consultant, and your clients are not getting structurally better outcomes.",
   },
 ];
 
@@ -74,7 +74,7 @@ const solutionCards = [
     subtitle: "Alongside Any PBM",
     stat: "Every",
     statLabel: "script",
-    desc: "Recommend ApalyRx as a routing layer that works alongside your client\u2019s current PBM. Their high-cost prescriptions get real-time lowest-net-cost routing across all channels - PBM specialty, PBM mail, manufacturer-direct, and independent pharmacy - with decision-level documentation for every script.",
+    desc: "Recommend ApalyRx as a routing layer that works alongside your client\u2019s current PBM. Their high-cost prescriptions get real-time lowest-net-cost routing across all channels: specialty, mail order, manufacturer-direct, and independent pharmacy, with decision-level documentation for every script.",
   },
   {
     icon: Shield,
@@ -82,7 +82,7 @@ const solutionCards = [
     subtitle: "Documentation Your Clients Need",
     stat: "100%",
     statLabel: "documented",
-    desc: "In an environment of increasing fiduciary scrutiny, recommending independent routing and decision-level documentation demonstrates your commitment to your client\u2019s best interest. Every routing decision is recorded - channels compared, rules applied, rationale documented. This is the proof fiduciaries need.",
+    desc: "In an environment of increasing fiduciary scrutiny, recommending independent routing and decision-level documentation demonstrates your commitment to your client\u2019s best interest. Every routing decision is recorded, channels compared, rules applied, rationale documented. This is the proof fiduciaries need.",
   },
   {
     icon: Award,
@@ -90,7 +90,7 @@ const solutionCards = [
     subtitle: "Define the New Standard",
     stat: "First",
     statLabel: "mover",
-    desc: "Be the consultant who introduces real-time independent routing to your market. The first consultants to adopt this approach will define how their clients evaluate pharmacy benefits - shifting the conversation from pricing comparisons to structural integrity.",
+    desc: "Be the consultant who introduces real-time independent routing to your market. The consultants who adopt this approach will define how their clients evaluate pharmacy benefits, shifting the conversation from pricing comparisons to structural integrity.",
   },
   {
     icon: TrendingUp,
@@ -98,7 +98,7 @@ const solutionCards = [
     subtitle: "Measurable Impact",
     stat: "20-40%",
     statLabel: "savings",
-    desc: "Independent routing across all channels consistently identifies lower-cost options for high-cost medications. Your clients see real savings - typically 20-40% on in-scope drugs - with transparent, pass-through economics and no hidden spread. The results speak for themselves.",
+    desc: "Independent routing across all channels consistently identifies lower-cost options for high-cost medications. Your clients see real savings, typically 20-40% on in-scope drugs, with transparent, pass-through economics and no hidden spread. The results speak for themselves.",
   },
 ];
 
@@ -129,7 +129,7 @@ const whyCards = [
   {
     icon: Zap,
     title: "Regulatory Tailwinds",
-    desc: "The CAA, FTC enforcement, and DOL proposed rules are all pushing toward independent verification of drug benefit decisions. Consultants who introduce these concepts now are positioned as forward-thinking advisors - not reactive order-takers.",
+    desc: "The CAA, FTC enforcement, and DOL proposed rules are all pushing toward independent verification of drug benefit decisions. Consultants who introduce these concepts now are positioned as forward-thinking advisors, not reactive order-takers.",
   },
   {
     icon: Users,
@@ -139,7 +139,7 @@ const whyCards = [
   {
     icon: Lock,
     title: "Competitive Moat",
-    desc: "Once you introduce the DBI standard to your clients, it becomes part of how they evaluate PBMs going forward. You are not selling a point solution - you are establishing a structural expectation that keeps you at the center of every renewal conversation.",
+    desc: "Once you introduce the DBI standard to your clients, it becomes part of how they evaluate PBMs going forward. You are not selling a point solution, you are establishing a structural expectation that keeps you at the center of every renewal conversation.",
   },
 ];
 
@@ -147,22 +147,22 @@ const faqItems = [
   {
     question: "Does this require my client to change PBMs?",
     answer:
-      "No. ApalyRx works alongside any PBM. The PBM continues to manage formularies, negotiate contracts, and administer the benefit. ApalyRx adds an independent routing layer for high-cost medications - typically about 30 drugs representing 40% or more of pharmacy spend. The rest of the benefit stays exactly as it is.",
+      "No. ApalyRx works alongside any PBM. The PBM continues to manage formularies, negotiate contracts, and administer the benefit. ApalyRx adds an independent routing layer for high-cost medications, typically about 30 drugs representing 40% or more of pharmacy spend. The rest of the benefit stays exactly as it is.",
   },
   {
     question: "How do I position this to my clients?",
     answer:
-      "Frame it as a fiduciary best practice: independent verification of high-cost drug routing decisions. Your client is not replacing their PBM - they are adding a layer of accountability and documentation that strengthens their program and protects their fiduciary position. If their PBM\u2019s routing is already optimal, the documentation proves it.",
+      "Frame it as a fiduciary best practice: independent verification of high-cost drug routing decisions. Your client is not replacing their PBM, they are adding a layer of accountability and documentation that strengthens their program and protects their fiduciary position. If their PBM\u2019s routing is already optimal, the documentation proves it.",
   },
   {
     question: "What if the client\u2019s PBM pushes back?",
     answer:
-      "Many PBMs are choosing to offer ApalyRx as part of their own program - independent routing strengthens their client relationships. Position it to the PBM as a competitive advantage: their pharmacies are always in the evaluation, and when they win, there is independent proof. PBMs that embrace this proactively are in a stronger position than those that resist it.",
+      "Many PBMs are choosing to offer ApalyRx as part of their own program, independent routing strengthens their client relationships. Position it to the PBM as a competitive advantage: their pharmacies are always in the evaluation, and when they win, there is independent proof. PBMs that embrace this proactively are in a stronger position than those that resist it.",
   },
   {
     question: "What is my role in the implementation?",
     answer:
-      "You introduce the concept and make the recommendation. ApalyRx handles all implementation - technical integration, member experience, operations, and reporting. You receive program-level reporting to share with your client. There is no operational burden on your team.",
+      "You introduce the concept and make the recommendation. ApalyRx handles all implementation, technical integration, member experience, operations, and reporting. You receive program-level reporting to share with your client. There is no operational burden on your team.",
   },
   {
     question: "How does this affect my compensation or PBM override arrangements?",
@@ -177,12 +177,12 @@ const faqItems = [
   {
     question: "What results should I tell my clients to expect?",
     answer:
-      "Independent routing across all channels consistently identifies lower-cost options for high-cost medications - typically 20-40% savings on in-scope drugs. Clients also receive decision-level documentation for every prescription, fiduciary-grade reporting, and an improved member experience with concierge support and home delivery.",
+      "Independent routing across all channels consistently identifies lower-cost options for high-cost medications, typically 20-40% savings on in-scope drugs. Clients also receive decision-level documentation for every prescription, fiduciary-grade reporting, and an improved member experience with concierge support and home delivery.",
   },
   {
     question: "What is Drug Benefit Integrity?",
     answer:
-      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx is the only entity that meets all five. The DBI Framework gives you a structured, defensible way to evaluate any PBM program - and to document that evaluation for your client\u2019s fiduciary records. Learn more at drugbenefitintegrity.com.",
+      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx is the only entity that meets all five. The DBI Framework gives you a structured, defensible way to evaluate any PBM program, and to document that evaluation for your client\u2019s fiduciary records. Learn more at drugbenefitintegrity.com.",
   },
 ];
 
@@ -220,8 +220,8 @@ export default function ConsultantsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             Real-time independent routing gives benefits consultants a structural standard that moves
-            the conversation beyond pricing, rebates, and service levels. Can the PBM demonstrate -
-            through an independent party - that each high-cost prescription was routed to the lowest
+            the conversation beyond pricing, rebates, and service levels. Can the PBM demonstrate,
+            through an independent party, that each high-cost prescription was routed to the lowest
             net cost? If not, there is a gap your client should know about.
           </p>
           <Link
@@ -264,9 +264,6 @@ export default function ConsultantsPage() {
                 className="relative bg-white rounded-xl p-6 md:p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl group"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-t-xl" />
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
-                  {card.num}
-                </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 p-3 rounded-xl bg-red-100 group-hover:bg-red-500 transition-colors duration-300">
                     <card.icon className="h-6 w-6 text-red-600 group-hover:text-white transition-colors duration-300" />
@@ -370,7 +367,7 @@ export default function ConsultantsPage() {
               The DBI Framework is a free, one-page evaluation tool with five binary requirements.
               Use it in RFP evaluations, PBM reviews, and strategy meetings. It gives you a
               structured, defensible way to evaluate whether a pharmacy benefit program has structural
-              integrity - and to document that evaluation for your client&apos;s fiduciary records.
+              integrity, and to document that evaluation for your client&apos;s fiduciary records.
             </p>
           </div>
 
@@ -465,7 +462,7 @@ export default function ConsultantsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Tell us about your client base and how you approach PBM evaluations. We will show you how
-            ApalyRx fits alongside your clients&apos; existing programs - and how the DBI Framework
+            ApalyRx fits alongside your clients&apos; existing programs, and how the DBI Framework
             can become part of your evaluation toolkit.
           </p>
           <Link

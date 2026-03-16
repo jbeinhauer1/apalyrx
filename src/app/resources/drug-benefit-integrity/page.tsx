@@ -39,7 +39,7 @@ const faqItems = [
   {
     question: "How is DBI different from PBM transparency?",
     answer:
-      "Transparency means seeing the data - rebate reports, spread pricing disclosures, compensation summaries. DBI means independently verifying that each prescription routing decision was optimal. Transparency shows you what happened. DBI proves the decision was sound.",
+      "Transparency means seeing the data: rebate reports, spread pricing disclosures, compensation summaries. DBI means independently verifying that each prescription routing decision was optimal. Transparency shows you what happened. DBI proves the decision was sound.",
   },
   {
     question: "Who created the DBI standard?",
@@ -54,7 +54,7 @@ const faqItems = [
   {
     question: "How does DBI help with ERISA fiduciary compliance?",
     answer:
-      "ERISA requires plan fiduciaries to act prudently and in the best interest of plan participants. DBI provides decision-level documentation for every prescription - the specific evidence plan sponsors need to demonstrate that each benefit decision was independently verified as optimal.",
+      "ERISA requires plan fiduciaries to act prudently and in the best interest of plan participants. DBI provides decision-level documentation for every prescription: the specific evidence plan sponsors need to demonstrate that each benefit decision was independently verified as optimal.",
   },
   {
     question: "What are the five requirements of DBI?",
@@ -80,8 +80,8 @@ const fiveRequirements = [
     num: "1",
     title: "Real-Time Routing to Lowest Net Cost Across All Channels",
     content: [
-      "Every in-scope prescription must be evaluated across all available fulfillment channels at the point of decision - not retrospectively, not in an annual audit, and not by sampling. The channels evaluated must include PBM specialty, PBM mail-order, retail pharmacy, manufacturer-direct programs, and independent pharmacy.",
-      "The routing decision must be based on actual net cost after all discounts, fees, and rebates - not list price, not AWP, not an estimated average.",
+      "Every in-scope prescription must be evaluated across all available fulfillment channels at the point of decision, not retrospectively, not in an annual audit, and not by sampling. The channels evaluated must include PBM specialty, PBM mail-order, retail pharmacy, manufacturer-direct programs, and independent pharmacy.",
+      "The routing decision must be based on actual net cost after all discounts, fees, and rebates, not list price, not AWP, not an estimated average.",
     ],
     why: "Retrospective analysis can identify patterns, but it cannot change the decision that was already made. Real-time routing ensures the lowest-cost channel is selected before the prescription is filled, not after.",
   },
@@ -90,7 +90,7 @@ const fiveRequirements = [
     num: "2",
     title: "Pharmacy-Licensed Operator With No Channel Ownership",
     content: [
-      "The entity performing the routing evaluation must hold appropriate pharmacy licensure and must have no ownership interest in any dispensing channel - no retail pharmacies, no mail-order pharmacies, no specialty pharmacies, no infusion centers.",
+      "The entity performing the routing evaluation must hold appropriate pharmacy licensure and must have no ownership interest in any dispensing channel: no retail pharmacies, no mail-order pharmacies, no specialty pharmacies, no infusion centers.",
     ],
     why: "If the routing entity owns a pharmacy, it has a financial incentive to route prescriptions to its own channel regardless of cost. Structural independence eliminates this conflict at the entity level, not just the transaction level.",
   },
@@ -99,7 +99,7 @@ const fiveRequirements = [
     num: "3",
     title: "Manufacturer-Direct Programs Built Into the Benefit",
     content: [
-      "Manufacturer copay programs, patient assistance programs, and direct pricing must be evaluated alongside traditional channels as part of the routing decision - not treated as out-of-benefit workarounds.",
+      "Manufacturer copay programs, patient assistance programs, and direct pricing must be evaluated alongside traditional channels as part of the routing decision, not treated as out-of-benefit workarounds.",
     ],
     why: "Manufacturers invest billions in programs designed to lower costs for patients and plans. But these programs typically sit outside PBM adjudication, invisible to the benefit. If manufacturer-direct options are not included in the routing evaluation, the \"lowest net cost\" calculation is incomplete by definition.",
   },
@@ -110,7 +110,7 @@ const fiveRequirements = [
     content: [
       "Prescriptions that are dispensed through a retail pharmacy must be filled by independently owned community pharmacies that have no vertical ties to PBMs, insurers, or group purchasing organizations.",
     ],
-    why: "Independent pharmacies face below-cost reimbursement, retroactive clawbacks, and network exclusion from vertically integrated PBMs. Requiring independent pharmacy fulfillment ensures that the dispensing channel has no financial relationship with the entity that manages the benefit. It also addresses the pharmacy desert crisis - nearly 30% of independent pharmacies closed between 2010 and 2021.",
+    why: "Independent pharmacies face below-cost reimbursement, retroactive clawbacks, and network exclusion from vertically integrated PBMs. Requiring independent pharmacy fulfillment ensures that the dispensing channel has no financial relationship with the entity that manages the benefit. It also addresses the pharmacy desert crisis: nearly 30% of independent pharmacies closed between 2010 and 2021.",
   },
   {
     icon: FileCheck,
@@ -119,7 +119,7 @@ const fiveRequirements = [
     content: [
       "Every routing decision must produce a complete, auditable record documenting: which channels were evaluated, what the net cost was in each channel, which program rules were applied, why the selected channel was chosen, and the complete financial reconciliation.",
     ],
-    why: "This is the proof mechanism. Without decision-level documentation, there is no way to independently verify that any individual prescription was routed optimally. Aggregate reporting - \"we saved the plan 20% overall\" - cannot demonstrate that each decision was sound. Decision-level records provide the granular, per-script evidence that plan fiduciaries need to demonstrate prudent oversight under ERISA and the Consolidated Appropriations Act.",
+    why: "This is the proof mechanism. Without decision-level documentation, there is no way to independently verify that any individual prescription was routed optimally. Aggregate reporting, \"we saved the plan 20% overall\", cannot demonstrate that each decision was sound. Decision-level records provide the granular, per-script evidence that plan fiduciaries need to demonstrate prudent oversight under ERISA and the Consolidated Appropriations Act.",
   },
 ];
 
@@ -158,7 +158,7 @@ export default function DrugBenefitIntegrityPage() {
           </h1>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Drug Benefit Integrity is an independent standard with five structural requirements for
-            ensuring that pharmacy benefit decisions are made in the plan&apos;s interest - not the
+            ensuring that pharmacy benefit decisions are made in the plan&apos;s interest, not the
             vendor&apos;s, the channel&apos;s, or the intermediary&apos;s. It establishes a framework for
             verifying that each prescription routing decision is independently documented,
             structurally sound, and free of conflicting financial interest.
@@ -196,7 +196,7 @@ export default function DrugBenefitIntegrityPage() {
               </p>
               <p>
                 These are meaningful reforms. But they address visibility, not verification. They
-                tell plan sponsors what happened - they do not prove that what happened was in the
+                tell plan sponsors what happened: they do not prove that what happened was in the
                 plan&apos;s interest.
               </p>
             </div>
@@ -219,7 +219,7 @@ export default function DrugBenefitIntegrityPage() {
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Investment advisors</strong> must demonstrate
-                &quot;best execution&quot; - independent documentation that each transaction was routed to
+                &quot;best execution&quot;: independent documentation that each transaction was routed to
                 achieve the most favorable terms for the client.
               </p>
               <p>
@@ -227,7 +227,7 @@ export default function DrugBenefitIntegrityPage() {
                 entity managing deposits cannot also certify its own compliance.
               </p>
               <p>
-                Pharmacy benefits - a system larger than many of these financial markets - has no
+                Pharmacy benefits, a system larger than many of these financial markets, has no
                 structural equivalent. Plan sponsors receive reports from the same entity that made
                 the decisions being reported. There is no independent verification layer.
               </p>
@@ -242,7 +242,7 @@ export default function DrugBenefitIntegrityPage() {
             </h2>
             <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10">
               DBI is defined by five structural requirements. All five must be met simultaneously.
-              Meeting four out of five is not sufficient - each requirement exists because the
+              Meeting four out of five is not sufficient: each requirement exists because the
               others depend on it.
             </p>
 
@@ -285,8 +285,8 @@ export default function DrugBenefitIntegrityPage() {
               <p>
                 <strong className="text-[#0F1C2E]">Transparency</strong> means the plan sponsor can
                 see the data: spread pricing disclosures, rebate reports, compensation summaries,
-                formulary details. Transparency reforms - including CAA 2026, the DOL proposed rule,
-                and state PBM laws - are significant and necessary. They give plan sponsors more
+                formulary details. Transparency reforms, including CAA 2026, the DOL proposed rule,
+                and state PBM laws, are significant and necessary. They give plan sponsors more
                 visibility than they have ever had.
               </p>
               <p>
@@ -297,7 +297,7 @@ export default function DrugBenefitIntegrityPage() {
               </p>
               <p>
                 <strong className="text-[#0F1C2E]">Integrity</strong> means an independent entity
-                verifies that each decision was made in the plan&apos;s interest - in real time, at the
+                verifies that each decision was made in the plan&apos;s interest, in real time, at the
                 point of decision, with no financial interest in the outcome. The verification is
                 structural, not contractual. It does not depend on the vendor&apos;s willingness to
                 cooperate or the plan sponsor&apos;s ability to negotiate better contract language.
@@ -331,8 +331,8 @@ export default function DrugBenefitIntegrityPage() {
               </p>
               <p>
                 ApalyRx does not own pharmacies. It does not retain rebates. It does not operate
-                mail-order or specialty dispensing. Its routing decisions are structurally independent
-                - the evaluation has no financial interest in the outcome.
+                mail-order or specialty dispensing. Its routing decisions are structurally independent:
+                the evaluation has no financial interest in the outcome.
               </p>
             </div>
           </div>
@@ -361,7 +361,7 @@ export default function DrugBenefitIntegrityPage() {
               <p>
                 <strong className="text-[#0F1C2E]">ERISA fiduciary duty</strong> requires plan
                 sponsors to act with prudence and in the best interest of plan participants. DBI
-                provides the decision-level evidence that demonstrates prudent oversight - not just
+                provides the decision-level evidence that demonstrates prudent oversight, not just
                 that the plan sponsor asked for transparency, but that each benefit decision was
                 independently verified as optimal.
               </p>

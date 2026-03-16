@@ -43,25 +43,25 @@ const problemCards = [
     icon: EyeOff,
     num: 1,
     title: "Contract-Driven Access",
-    desc: "Preferred access is determined upstream through PBM contracting and rebate economics - not clinical value. Your products compete on deal structure rather than outcomes, and your direct pricing programs sit outside the benefit where plans cannot see them.",
+    desc: "Preferred access is determined upstream through PBM contracting and rebate economics, not clinical value. Your products compete on deal structure rather than outcomes, and your direct pricing programs sit outside the benefit where plans cannot see them.",
   },
   {
     icon: TrendingDown,
     num: 2,
     title: "Market Share Pressure",
-    desc: "Preferred positioning shifts based on rebate renegotiations and formulary changes outside your control. Even when your product offers the best net cost, the plan has no independent way to verify that - and no infrastructure to route to you directly.",
+    desc: "Preferred positioning shifts based on rebate renegotiations and formulary changes outside your control. Even when your product offers the best net cost, the plan has no independent way to verify that, and no infrastructure to route to you directly.",
   },
   {
     icon: Wrench,
     num: 3,
     title: "No Infrastructure for Direct-to-Employer",
-    desc: "Launching a direct-to-employer program requires eRx intake, eligibility validation, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. Most manufacturers do not have this infrastructure - and building it is not your core business.",
+    desc: "Launching a direct-to-employer program requires eRx intake, eligibility validation, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. Most manufacturers do not have this infrastructure, and building it is not your core business.",
   },
   {
     icon: AlertTriangle,
     num: 4,
     title: "Channel Considerations",
-    desc: "Manufacturers want to serve employer demand directly but hesitate due to channel complexity and existing contractual relationships. A parallel pathway that preserves PBM relationships while opening direct access - with documented proof of program value - has not existed until now.",
+    desc: "Manufacturers want to serve employer demand directly but hesitate due to channel complexity and existing contractual relationships. A parallel pathway that preserves PBM relationships while opening direct access, with documented proof of program value, has not existed until now.",
   },
 ];
 
@@ -72,7 +72,7 @@ const solutionCards = [
     subtitle: "Complete End-to-End Infrastructure",
     stat: "90 days",
     statLabel: "to launch",
-    desc: "ApalyRx provides the full operating layer: eRx intake, program rules and conversion logic, eligibility validation, cost-share collection, accumulator reporting, medical-claim billing, and automated supplier settlement via ACH. Your programs run like a seamless benefit - not a parallel vendor workflow.",
+    desc: "ApalyRx provides the full operating layer: eRx intake, program rules and conversion logic, eligibility validation, cost-share collection, accumulator reporting, medical-claim billing, and automated supplier settlement via ACH. Your programs run like a seamless benefit, not a parallel vendor workflow.",
   },
   {
     icon: Shield,
@@ -80,7 +80,7 @@ const solutionCards = [
     subtitle: "Parallel Pathway, Zero Disruption",
     stat: "0%",
     statLabel: "disruption",
-    desc: "ApalyRx operates as a parallel employer pathway alongside existing PBM contracts. Your PBM relationships stay intact. Direct-to-employer programs run through ApalyRx independently - scoped, documented, and structurally separate from PBM adjudication.",
+    desc: "ApalyRx operates as a parallel employer pathway alongside existing PBM contracts. Your PBM relationships stay intact. Direct-to-employer programs run through ApalyRx independently: scoped, documented, and structurally separate from PBM adjudication.",
   },
   {
     icon: Users,
@@ -88,7 +88,7 @@ const solutionCards = [
     subtitle: "Access Employer Lives at Scale",
     stat: "500K+",
     statLabel: "lives today",
-    desc: "Access 500K+ covered lives today through ApalyRx\u2019s employer and health plan network - with growth to 1M+ by Q2 and 5M+ in pipeline. ApalyRx aggregates employer demand so you reach eligible patients through a documented benefit channel, not a fragmented cash-pay workaround.",
+    desc: "Access 500K+ covered lives today through ApalyRx\u2019s employer and health plan network, with growth to 1M+ by Q2 and 5M+ in pipeline. ApalyRx aggregates employer demand so you reach eligible patients through a documented benefit channel, not a fragmented cash-pay workaround.",
   },
   {
     icon: TrendingDown,
@@ -96,7 +96,7 @@ const solutionCards = [
     subtitle: "Transparent Pass-Through Economics",
     stat: "100%",
     statLabel: "your control",
-    desc: "You set competitive direct pricing under your commercial terms. ApalyRx passes it through transparently to the plan - no spread, no markup on drug cost. Every transaction generates a decision-level record showing why your channel was selected, giving employers documented proof of program value.",
+    desc: "You set competitive direct pricing under your commercial terms. ApalyRx passes it through transparently to the plan: no spread, no markup on drug cost. Every transaction generates a decision-level record showing why your channel was selected, giving employers documented proof of program value.",
   },
 ];
 
@@ -131,11 +131,11 @@ const complianceCards = [
   { icon: Eye, text: "Pricing visible only to authorized parties" },
   { icon: FileCheck, text: "Audit logs, controlled access, structured governance" },
   { icon: Shield, text: "HIPAA compliant, SOC 2 Type II controls" },
-  { icon: Lock, text: "No channel disruption - parallel pathway preserving existing contracts" },
+  { icon: Lock, text: "No channel disruption: parallel pathway preserving existing contracts" },
 ];
 
 const complianceCardsRow2 = [
-  { icon: BarChart3, text: "Decision-level records for every prescription - channels compared, rules applied, routing rationale" },
+  { icon: BarChart3, text: "Decision-level records for every prescription: channels compared, rules applied, routing rationale" },
   { icon: FileText, text: "Fiduciary-grade documentation supporting employer ERISA and CAA audit requirements" },
 ];
 
@@ -143,22 +143,22 @@ const faqItems = [
   {
     question: "Will this create unpredictable share or switching dynamics?",
     answer:
-      "ApalyRx programs operate with defined commitment windows - typically 12 months. Volume is predictable because programs are configured with specific employer populations, drug scope, and channel rules. You have full visibility into program participation.",
+      "ApalyRx programs operate with defined commitment windows: typically 12 months. Volume is predictable because programs are configured with specific employer populations, drug scope, and channel rules. You have full visibility into program participation.",
   },
   {
     question: "Will this disrupt our PBM relationships?",
     answer:
-      "No. ApalyRx operates as a parallel employer pathway that is structurally separate from PBM adjudication. Your PBM contracts remain intact. Programs are scoped, documented, and do not interfere with existing formulary or rebate arrangements. Many PBMs are choosing to offer ApalyRx as part of their own program - independent routing strengthens their client relationships.",
+      "No. ApalyRx operates as a parallel employer pathway that is structurally separate from PBM adjudication. Your PBM contracts remain intact. Programs are scoped, documented, and do not interfere with existing formulary or rebate arrangements. Many PBMs are choosing to offer ApalyRx as part of their own program: independent routing strengthens their client relationships.",
   },
   {
     question: "Do we lose control of pricing?",
     answer:
-      "You set your own pricing under your commercial terms. ApalyRx passes it through transparently - no spread, no markup on drug cost. Pricing is visible only to authorized parties with contractual protections and structured governance.",
+      "You set your own pricing under your commercial terms. ApalyRx passes it through transparently: no spread, no markup on drug cost. Pricing is visible only to authorized parties with contractual protections and structured governance.",
   },
   {
     question: "What operational burden does this create for us?",
     answer:
-      "Minimal. ApalyRx provides turnkey execution - benefit configuration, eRx intake, eligibility validation, program rules, fulfillment orchestration, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. You supply product and define program parameters. We handle everything else - including decision-level documentation.",
+      "Minimal. ApalyRx provides turnkey execution: benefit configuration, eRx intake, eligibility validation, program rules, fulfillment orchestration, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. You supply product and define program parameters. We handle everything else, including decision-level documentation.",
   },
   {
     question: "Do we have to contract with hundreds of individual employers?",
@@ -168,12 +168,12 @@ const faqItems = [
   {
     question: "How do you handle appropriate use without creating PA/UM friction?",
     answer:
-      "ApalyRx supports configurable clinical guardrails - light-touch PA/UM workflows, conversion logic, and eligibility criteria that you and the employer define. The goal is appropriate use with minimal friction for prescribers and members.",
+      "ApalyRx supports configurable clinical guardrails: light-touch PA/UM workflows, conversion logic, and eligibility criteria that you and the employer define. The goal is appropriate use with minimal friction for prescribers and members.",
   },
   {
     question: "What is the member and prescriber experience?",
     answer:
-      "Members receive a true benefit experience - clear costs, status tracking, concierge support, and home delivery. Prescribers use standard e-prescribing to send prescriptions to ApalyRx. No new portals, no additional steps for routine prescribing. The experience is designed to feel like a premium benefit, not a workaround.",
+      "Members receive a true benefit experience: clear costs, status tracking, concierge support, and home delivery. Prescribers use standard e-prescribing to send prescriptions to ApalyRx. No new portals, no additional steps for routine prescribing. The experience is designed to feel like a premium benefit, not a workaround.",
   },
   {
     question: "How do you handle compliance, privacy, and data sharing?",
@@ -183,7 +183,7 @@ const faqItems = [
   {
     question: "Can this scale beyond a pilot?",
     answer:
-      "ApalyRx has been operating since 2018 and serves Fortune 500 employers. The platform is built for scale - multi-product, multi-employer, multi-program - with automated operations that do not require linear headcount growth.",
+      "ApalyRx has been operating since 2018 and serves Fortune 500 employers. The platform is built for scale: multi-product, multi-employer, multi-program, with automated operations that do not require linear headcount growth.",
   },
   {
     question: "What proof do you have of employer adoption?",
@@ -198,7 +198,7 @@ const faqItems = [
   {
     question: "How does this relate to Drug Benefit Integrity?",
     answer:
-      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx meets all five - including evaluating manufacturer-direct programs inside the benefit rather than leaving them invisible to the plan. For manufacturers, this means your programs are evaluated on merit alongside all other channels, and every routing decision is independently documented. When your program offers the best net cost, there is proof. Learn more at drugbenefitintegrity.com.",
+      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx meets all five, including evaluating manufacturer-direct programs inside the benefit rather than leaving them invisible to the plan. For manufacturers, this means your programs are evaluated on merit alongside all other channels, and every routing decision is independently documented. When your program offers the best net cost, there is proof. Learn more at drugbenefitintegrity.com.",
   },
 ];
 
@@ -222,13 +222,13 @@ export default function ManufacturersPage() {
             <span className="font-heading">For Manufacturers</span>
           </div>
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
-            Employer Direct - Operationally Simple
+            Employer Direct: Operationally Simple
           </h1>
           <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
             Without Disrupting Your Existing Channel Strategy
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-            ApalyRx is the operational layer for manufacturer direct-to-employer programs -
+            ApalyRx is the operational layer for manufacturer direct-to-employer programs:
             configurable rules, eRx intake, real-time fulfillment routing, medical claims settlement,
             accumulator reporting, and decision-level documentation. Your programs run inside the
             benefit, not outside it.
@@ -270,9 +270,6 @@ export default function ManufacturersPage() {
                 className="relative bg-white rounded-xl p-6 md:p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl group"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-t-xl" />
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
-                  {card.num}
-                </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 p-3 rounded-xl bg-red-100 group-hover:bg-red-500 transition-colors duration-300">
                     <card.icon className="h-6 w-6 text-red-600 group-hover:text-white transition-colors duration-300" />
@@ -314,7 +311,7 @@ export default function ManufacturersPage() {
               Why Manufacturers Use ApalyRx
             </h2>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              The infrastructure you&apos;d have to build - but don&apos;t have to
+              The infrastructure you&apos;d have to build, but don&apos;t have to
             </p>
           </div>
 
@@ -485,7 +482,7 @@ export default function ManufacturersPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             Tell us about your product portfolio and employer-direct objectives. We will show you how
-            ApalyRx can operationalize your programs at scale - with transparent economics,
+            ApalyRx can operationalize your programs at scale, with transparent economics,
             decision-level documentation, and access to a growing network of employer and health plan
             clients.
           </p>
