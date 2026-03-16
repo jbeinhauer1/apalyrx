@@ -160,7 +160,7 @@ const whyCards = [
   {
     icon: GitMerge,
     title: "Independent",
-    desc: "No ownership in any dispensing channel. Routing decisions are structurally independent: the evaluation has no financial interest in the outcome.",
+    desc: "No ownership in any dispensing channel. Routing decisions are structurally independent, the evaluation has no financial interest in the outcome.",
   },
   {
     icon: Zap,
@@ -210,7 +210,7 @@ export default function HomePage() {
         />
         <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
           <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
-            Direct Drug Access: Simplified.
+            Direct Drug Access - Simplified.
           </h1>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             The drug program operating system with configurable rules, real-time eRx routing to the lowest net cost across all channels, medical claims settlement, decision-level reporting, and VIP member experience, built to work alongside your PBM and TPA with full structural independence.

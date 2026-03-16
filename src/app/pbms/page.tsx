@@ -43,7 +43,7 @@ const problemCards = [
     icon: MessageSquare,
     num: 1,
     title: "Consultant Pressure",
-    desc: "Benefits consultants are putting alternative PBM models on every finalist slate. Transparent PBM options, direct-to-employer programs, and carve-out models are all being evaluated. The question is no longer just about pricing: it is about structural accountability.",
+    desc: "Benefits consultants are putting alternative PBM models on every finalist slate. Transparent PBM options, direct-to-employer programs, and carve-out models are all being evaluated. The question is no longer just about pricing, it is about structural accountability.",
   },
   {
     icon: FileText,
@@ -88,7 +88,7 @@ const solutionCards = [
     subtitle: "Strengthen Renewal Conversations",
     stat: "0",
     statLabel: "disruption",
-    desc: "Offering independent routing and decision-level documentation proactively demonstrates that you welcome scrutiny. In renewal conversations, this is the strongest possible position: your clients get the verification they need without leaving your program.",
+    desc: "Offering independent routing and decision-level documentation proactively demonstrates that you welcome scrutiny. In renewal conversations, this is the strongest possible position, your clients get the verification they need without leaving your program.",
   },
   {
     icon: Zap,
@@ -236,7 +236,7 @@ export default function PBMsPage() {
           </p>
           <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
             ApalyRx works alongside your program to give clients what they are increasingly asking
-            for: real-time, independent routing of high-cost prescriptions to the lowest net cost,
+            for, real-time, independent routing of high-cost prescriptions to the lowest net cost,
             with decision-level documentation for every script. Your PBM continues to administer the benefit. ApalyRx adds a structural
             layer that makes your program stronger.
           </p>
@@ -321,7 +321,7 @@ export default function PBMsPage() {
               What ApalyRx Adds to Your Program
             </h2>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              ApalyRx complements your PBM: it does not replace it
+              ApalyRx complements your PBM, it does not replace it
             </p>
           </div>
 

@@ -50,7 +50,7 @@ const problemCards = [
     icon: EyeOff,
     num: 1,
     title: "Opaque Pricing",
-    desc: "Rebate structures are completely opaque: you never know your true net cost until months later, if ever. No independent party verifies that each prescription reached the lowest available price.",
+    desc: "Rebate structures are completely opaque, you never know your true net cost until months later, if ever. No independent party verifies that each prescription reached the lowest available price.",
   },
   {
     icon: Lock,
@@ -62,7 +62,7 @@ const problemCards = [
     icon: DollarSign,
     num: 3,
     title: "Limited Access to Best Pricing",
-    desc: "You can\u2019t access manufacturer-direct pricing or direct-to-consumer rates: those programs sit outside PBM adjudication, invisible to your benefit. Billions in manufacturer value goes unrecognized.",
+    desc: "You can\u2019t access manufacturer-direct pricing or direct-to-consumer rates, those programs sit outside PBM adjudication, invisible to your benefit. Billions in manufacturer value goes unrecognized.",
   },
   {
     icon: UserX,
@@ -95,7 +95,7 @@ const solutionCards = [
     subtitle: "No PBM or TPA Rip-and-Replace",
     stat: "0",
     statLabel: "disruption",
-    desc: "ApalyRx works alongside your PBM and TPA: carved-out drugs run through ApalyRx with independent routing and documentation; everything else stays in your existing pharmacy benefit flow.",
+    desc: "ApalyRx works alongside your PBM and TPA, carved-out drugs run through ApalyRx with independent routing and documentation; everything else stays in your existing pharmacy benefit flow.",
   },
   {
     icon: Zap,
@@ -154,7 +154,7 @@ const capabilities = [
   { icon: Shield, text: "Billed through claims (member cost share + employer portion + supplier ACH settlement)" },
   { icon: BarChart3, text: "Decision-level records and reporting dashboards for every script" },
   { icon: Zap, text: "Future-proof: add new drugs, biosimilars, categories as markets evolve" },
-  { icon: ArrowRightLeft, text: "Drug optimization: brand to biosimilar conversion" },
+  { icon: ArrowRightLeft, text: "Drug optimization, brand to biosimilar conversion" },
   { icon: FileCheck, text: "Fiduciary-grade documentation meeting ERISA prudent expert and CAA audit requirements" },
 ];
 
@@ -181,7 +181,7 @@ const faqItems = [
   {
     question: "Our PBM reports very low 'net' GLP-1 costs - can Apaly still help?",
     answer:
-      "Yes. Claim files can show \u2018net\u2019 costs differently depending on rebate timing, guarantees, and fee allocations. We provide an all-in comparison based on reconciled data. More importantly, ApalyRx provides independent, decision-level documentation for every prescription: showing which channels were evaluated and why the winning channel was selected. If your current routing is already optimal, the documentation proves it. If it is not, the savings speak for themselves.",
+      "Yes. Claim files can show \u2018net\u2019 costs differently depending on rebate timing, guarantees, and fee allocations. We provide an all-in comparison based on reconciled data. More importantly, ApalyRx provides independent, decision-level documentation for every prescription, showing which channels were evaluated and why the winning channel was selected. If your current routing is already optimal, the documentation proves it. If it is not, the savings speak for themselves.",
   },
   {
     question: "How does the routing actually work?",
@@ -191,7 +191,7 @@ const faqItems = [
   {
     question: "What drugs does ApalyRx focus on?",
     answer:
-      "ApalyRx focuses on the highest-impact medications: typically approximately 30 high-cost drugs that represent 40-50% of employer pharmacy spend. These are the drugs where net cost varies most across channels and where optimized routing has the greatest financial impact. The platform extends to additional therapeutic categories as your program evolves.",
+      "ApalyRx focuses on the highest-impact medications, typically approximately 30 high-cost drugs that represent 40-50% of employer pharmacy spend. These are the drugs where net cost varies most across channels and where optimized routing has the greatest financial impact. The platform extends to additional therapeutic categories as your program evolves.",
   },
   {
     question: "What does the member experience look like?",
@@ -221,12 +221,12 @@ const faqItems = [
   {
     question: "Will this conflict with our existing PBM contract or guarantees?",
     answer:
-      "ApalyRx does not require replacing your PBM. We implement carved-out programs with a clear scope and documentation so your PBM can continue managing the remainder of the pharmacy benefit. We support a structured review of relevant contract provisions and coordinate implementation steps to keep the program compliant. Many PBMs are choosing to offer ApalyRx as part of their own program: independent routing strengthens their client relationships rather than conflicting with them.",
+      "ApalyRx does not require replacing your PBM. We implement carved-out programs with a clear scope and documentation so your PBM can continue managing the remainder of the pharmacy benefit. We support a structured review of relevant contract provisions and coordinate implementation steps to keep the program compliant. Many PBMs are choosing to offer ApalyRx as part of their own program, independent routing strengthens their client relationships rather than conflicting with them.",
   },
   {
     question: "Is ApalyRx pharmacy-licensed?",
     answer:
-      "Yes. ApalyRx is a pharmacy-licensed operator with no ownership in any dispensing channel. This structural independence ensures that routing decisions are made solely based on lowest net cost: the evaluation has no financial interest in the outcome.",
+      "Yes. ApalyRx is a pharmacy-licensed operator with no ownership in any dispensing channel. This structural independence ensures that routing decisions are made solely based on lowest net cost, the evaluation has no financial interest in the outcome.",
   },
   {
     question: "What is Drug Benefit Integrity and how does it relate to ApalyRx?",

@@ -49,7 +49,7 @@ const problemCards = [
     icon: TrendingDown,
     num: 1,
     title: "Reimbursement Below Acquisition Cost",
-    desc: "Independent pharmacies are increasingly reimbursed less than what they paid their wholesaler for the same medication. When MAC pricing adjusts without notice and reimbursement rates lag behind acquisition costs, every fill can become a loss. One industry study found that roughly 75% of claims examined were insufficient to cover pharmacy labor and drug costs. The result: dispensing the very prescriptions your patients need can threaten your business.",
+    desc: "Independent pharmacies are increasingly reimbursed less than what they paid their wholesaler for the same medication. When MAC pricing adjusts without notice and reimbursement rates lag behind acquisition costs, every fill can become a loss. One industry study found that roughly 75% of claims examined were insufficient to cover pharmacy labor and drug costs. The result, dispensing the very prescriptions your patients need can threaten your business.",
   },
   {
     icon: DollarSign,
