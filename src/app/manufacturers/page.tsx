@@ -1,496 +1,478 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import FaqAccordion from "@/components/FaqAccordion";
 import WebPageSchema from "@/components/WebPageSchema";
 import FaqSchema from "@/components/FaqSchema";
-import {
-  Rocket,
-  EyeOff,
-  TrendingDown,
-  Wrench,
-  AlertTriangle,
-  CheckCircle2,
-  Settings,
-  Shield,
-  Users,
-  Upload,
-  Truck,
-  Eye,
-  FileCheck,
-  Lock,
-  BarChart3,
-  FileText,
-} from "lucide-react";
+import CredentialStrip from "@/components/CredentialStrip";
+import ManufacturerFaq from "@/components/ManufacturerFaq";
 
 export const metadata: Metadata = {
   title: "Direct-to-Employer Drug Program Infrastructure for Manufacturers",
   description:
-    "Deploy copay programs, patient assistance, and direct pricing into employer-sponsored benefits at scale. Turn-key infrastructure for eRx intake, eligibility verification, cost-share collection, accumulator reporting, and medical-claim billing. No need to build the plumbing.",
+    "ApalyRx provides the operational, regulatory, and technology infrastructure for manufacturer direct-to-employer programs. Your product, your pricing, your commercial strategy. ApalyRx is the platform that makes it executable at scale.",
   openGraph: {
     title: "Direct-to-Employer Drug Program Infrastructure | ApalyRx",
     description:
-      "Bring manufacturer copay programs and direct pricing inside employer benefits at scale. Turn-key eRx intake, eligibility, billing, and settlement infrastructure.",
+      "Complete operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation.",
     url: "https://www.apalyrx.com/manufacturers",
     siteName: "ApalyRx",
     type: "website",
   },
 };
 
-/* ─── Data ─── */
-
-const problemCards = [
+const operationalRows = [
   {
-    icon: EyeOff,
-    num: 1,
-    title: "Contract-Driven Access",
-    desc: "Preferred access is determined upstream through PBM contracting and rebate economics, not clinical value. Your products compete on deal structure rather than outcomes, and your direct pricing programs sit outside the benefit where plans cannot see them.",
+    requirement: "3PL Fulfillment Relationship",
+    resolution: "ApalyRx contracts and manages the 3PL. The manufacturer ships to one designated address on the existing monthly bulk cadence, identical to any distributor shipment. No 3PL negotiation, contract management, or operational oversight required.",
   },
   {
-    icon: TrendingDown,
-    num: 2,
-    title: "Market Share Pressure",
-    desc: "Preferred positioning shifts based on rebate renegotiations and formulary changes outside your control. Even when your product offers the best net cost, the plan has no independent way to verify that, and no infrastructure to route to you directly.",
+    requirement: "Per-Script DSCSA T3 Documentation",
+    resolution: "The manufacturer provides bulk serialization data per current procedures. The ApalyRx patent-pending Distribution Engine generates and retains all per-script T3 documentation automatically. No manufacturer system builds required.",
   },
   {
-    icon: Wrench,
-    num: 3,
-    title: "No Infrastructure for Direct-to-Employer",
-    desc: "Launching a direct-to-employer program requires eRx intake, eligibility validation, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. Most manufacturers do not have this infrastructure, and building it is not your core business.",
+    requirement: "Employer-Direct Pricing and MFN Compliance",
+    resolution: "WAC is preserved across all channels. A per-drug program rebate defined in the supply agreement is applied as a line deduction on the monthly invoice. One invoice, one rebate line, one payment. No new pricing tier, no MFN exposure.",
   },
   {
-    icon: AlertTriangle,
-    num: 4,
-    title: "Channel Considerations",
-    desc: "Manufacturers want to serve employer demand directly but hesitate due to channel complexity and existing contractual relationships. A parallel pathway that preserves PBM relationships while opening direct access, with documented proof of program value, has not existed until now.",
-  },
-];
-
-const solutionCards = [
-  {
-    icon: Settings,
-    title: "Operate at Scale",
-    subtitle: "Complete End-to-End Infrastructure",
-    stat: "90 days",
-    statLabel: "to launch",
-    desc: "ApalyRx provides the full operating layer: eRx intake, program rules and conversion logic, eligibility validation, cost-share collection, accumulator reporting, medical-claim billing, and automated supplier settlement via ACH. Your programs run like a seamless benefit, not a parallel vendor workflow.",
+    requirement: "Pharmacy Credentialing Across 50 States",
+    resolution: "ApalyRx LLC maintains written delegation agreements with all participating pharmacies of record. ApalyRx manages credentialing nationally. No pharmacy relationships to establish or manage.",
   },
   {
-    icon: Shield,
-    title: "Preserve Your PBM Channel",
-    subtitle: "Parallel Pathway, Zero Disruption",
-    stat: "0%",
-    statLabel: "disruption",
-    desc: "ApalyRx operates as a parallel employer pathway alongside existing PBM contracts. Your PBM relationships stay intact. Direct-to-employer programs run through ApalyRx independently, scoped, documented, and structurally separate from PBM adjudication.",
+    requirement: "Cold Chain and Fulfillment Logistics",
+    resolution: "ApalyRx manages all fulfillment from the 3PL ship-to address forward: temperature controls, last-mile delivery, and pharmacy pickup routing. Physical risk during custody and transit is covered by cargo insurance maintained in the ApalyRx-3PL agreement.",
   },
   {
-    icon: Users,
-    title: "Demand Aggregation",
-    subtitle: "Access Employer Lives at Scale",
-    stat: "500K+",
-    statLabel: "lives today",
-    desc: "Access 500K+ covered lives today through ApalyRx\u2019s employer and health plan network, with growth to 1M+ by Q2 and 5M+ in pipeline. ApalyRx aggregates employer demand so you reach eligible patients through a documented benefit channel, not a fragmented cash-pay workaround.",
+    requirement: "Direct Employer Contracts",
+    resolution: "The manufacturer's only counterparty is ApalyRx. There are no direct employer health plan relationships to establish or defend. Employer demand is transmitted by proxy through ApalyRx as the authorized channel operator, exactly as PBM contracts contemplate.",
   },
   {
-    icon: TrendingDown,
-    title: "Set Your Price",
-    subtitle: "Transparent Pass-Through Economics",
-    stat: "100%",
-    statLabel: "your control",
-    desc: "You set competitive direct pricing under your commercial terms. ApalyRx passes it through transparently to the plan, no spread, no markup on drug cost. Every transaction generates a decision-level record showing why your channel was selected, giving employers documented proof of program value.",
+    requirement: "ERISA and Plan Sponsor Compliance",
+    resolution: "ApalyRx manages all health plan contracting, fee disclosure, and Consolidated Appropriations Act compliance obligations. The manufacturer's only plan-related document is the master supply agreement with ApalyRx.",
+  },
+  {
+    requirement: "Member-Level Sell-Through Data",
+    resolution: "Monthly dispense, adherence, prescriber attribution, and program performance reports delivered through the platform reporting portal. This is data the standard distributor channel structurally cannot provide: sell-through, not sell-in.",
   },
 ];
 
-const launchSteps = [
+const timelinePhases = [
   {
-    num: 1,
-    icon: Upload,
-    title: "Load Products & Pricing",
-    desc: "Upload your products and set pricing under your commercial terms. Define program parameters, conversion logic, and handling requirements. Full control over your economics.",
+    phase: "1",
+    months: "Months 1\u20132",
+    title: "Agreement and Commercial Framework",
+    bullets: ["Master supply agreement", "Technology services agreement for DSCSA engine", "Per-drug rebate schedule structured and documented"],
   },
   {
-    num: 2,
-    icon: Users,
-    title: "We Bring the Clients",
-    desc: "ApalyRx connects your programs with employer and health plan clients. Aggregated demand, no direct sales overhead. Your programs are evaluated inside the benefit alongside all other channels.",
+    phase: "2",
+    months: "Months 2\u20133",
+    title: "Platform Integration",
+    bullets: ["DSCSA engine integration with manufacturer serialization data", "JIT forecast calibration to first employer census", "3PL API integration and serialized inventory ingestion"],
   },
   {
-    num: 3,
-    icon: Settings,
-    title: "We Run the Operations",
-    desc: "Eligibility validation, program rules, PA/UM workflows, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. Turnkey operations with decision-level documentation for every prescription.",
+    phase: "3",
+    months: "Month 4",
+    title: "Inaugural Employer Launch",
+    bullets: ["First live deployment", "End-to-end operational validation: prescription flow, DSCSA documentation, invoicing, health plan reporting, member experience"],
   },
   {
-    num: 4,
-    icon: Truck,
-    title: "Turnkey Fulfillment",
-    desc: "Prescriptions routed to licensed independent partner pharmacies serving as pharmacy of record. Product shipped directly to the member via your designated logistics or third-party carrier. White-glove member experience with tracking and concierge support.",
-  },
-];
-
-const complianceCards = [
-  { icon: Eye, text: "Pricing visible only to authorized parties" },
-  { icon: FileCheck, text: "Audit logs, controlled access, structured governance" },
-  { icon: Shield, text: "HIPAA compliant, SOC 2 Type II controls" },
-  { icon: Lock, text: "No channel disruption, parallel pathway preserving existing contracts" },
-];
-
-const complianceCardsRow2 = [
-  { icon: BarChart3, text: "Decision-level records for every prescription: channels compared, rules applied, routing rationale" },
-  { icon: FileText, text: "Fiduciary-grade documentation supporting employer ERISA and CAA audit requirements" },
-];
-
-const faqItems = [
-  {
-    question: "Will this create unpredictable share or switching dynamics?",
-    answer:
-      "ApalyRx programs operate with defined commitment windows, typically 12 months. Volume is predictable because programs are configured with specific employer populations, drug scope, and channel rules. You have full visibility into program participation.",
+    phase: "4",
+    months: "Month 5",
+    title: "Review and Channel Preparation",
+    bullets: ["Performance review with manufacturer teams", "Reporting formats finalized", "Commercial team briefed on live channel for use in employer account discussions"],
   },
   {
-    question: "Will this disrupt our PBM relationships?",
-    answer:
-      "No. ApalyRx operates as a parallel employer pathway that is structurally separate from PBM adjudication. Your PBM contracts remain intact. Programs are scoped, documented, and do not interfere with existing formulary or rebate arrangements. Many PBMs are choosing to offer ApalyRx as part of their own program: independent routing strengthens their client relationships.",
+    phase: "5",
+    months: "Month 6",
+    title: "Scale",
+    bullets: ["Additional employer and health plan clients onboarded", "Monthly JIT cadence and consolidated reporting fully operational"],
   },
   {
-    question: "Do we lose control of pricing?",
-    answer:
-      "You set your own pricing under your commercial terms. ApalyRx passes it through transparently, no spread, no markup on drug cost. Pricing is visible only to authorized parties with contractual protections and structured governance.",
-  },
-  {
-    question: "What operational burden does this create for us?",
-    answer:
-      "Minimal. ApalyRx provides turnkey execution: benefit configuration, eRx intake, eligibility validation, program rules, fulfillment orchestration, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. You supply product and define program parameters. We handle everything else, including decision-level documentation.",
-  },
-  {
-    question: "Do we have to contract with hundreds of individual employers?",
-    answer:
-      "No. ApalyRx operates a scalable platform model. You contract with ApalyRx, and we manage the employer and health plan relationships. Your programs reach aggregated demand through a single operational integration.",
-  },
-  {
-    question: "How do you handle appropriate use without creating PA/UM friction?",
-    answer:
-      "ApalyRx supports configurable clinical guardrails: light-touch PA/UM workflows, conversion logic, and eligibility criteria that you and the employer define. The goal is appropriate use with minimal friction for prescribers and members.",
-  },
-  {
-    question: "What is the member and prescriber experience?",
-    answer:
-      "Members receive a true benefit experience: clear costs, status tracking, concierge support, and home delivery. Prescribers use standard e-prescribing to send prescriptions to ApalyRx. No new portals, no additional steps for routine prescribing. The experience is designed to feel like a premium benefit, not a workaround.",
-  },
-  {
-    question: "How do you handle compliance, privacy, and data sharing?",
-    answer:
-      "ApalyRx provides de-identified reporting and structured data governance. The platform is HIPAA compliant with SOC 2 Type II controls. Pricing is protected, access is controlled, and audit logs document every action.",
-  },
-  {
-    question: "Can this scale beyond a pilot?",
-    answer:
-      "ApalyRx has been operating since 2018 and serves Fortune 500 employers. The platform is built for scale: multi-product, multi-employer, multi-program, with automated operations that do not require linear headcount growth.",
-  },
-  {
-    question: "What proof do you have of employer adoption?",
-    answer:
-      "ApalyRx currently covers 500K+ lives, with growth to 1M+ by Q2 and 5M+ in the pipeline across employers, health plans, and PBMs. Employer demand for manufacturer-direct programs is accelerating as plans seek transparent, lowest-net-cost alternatives with independent documentation.",
-  },
-  {
-    question: "What does the pharmacy of record model look like?",
-    answer:
-      "In manufacturer-direct models, ApalyRx routes prescriptions to licensed independent partner pharmacies that serve as pharmacy of record. The pharmacist conducts drug utilization review and final dispense verification. Product is shipped directly to the member from your designated logistics provider or a third-party carrier. The pharmacy of record model provides the regulatory and clinical framework while your logistics handle physical fulfillment.",
-  },
-  {
-    question: "How does this relate to Drug Benefit Integrity?",
-    answer:
-      "Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring pharmacy benefit decisions are made in the plan\u2019s interest. ApalyRx meets all five, including evaluating manufacturer-direct programs inside the benefit rather than leaving them invisible to the plan. For manufacturers, this means your programs are evaluated on merit alongside all other channels, and every routing decision is independently documented. When your program offers the best net cost, there is proof. Learn more at drugbenefitintegrity.com.",
+    phase: "6",
+    months: "Ongoing",
+    title: "Growth",
+    bullets: ["Manufacturer commercial team references the live DTE channel with employer accounts", "Additional drug categories activated"],
   },
 ];
 
-/* ─── Page ─── */
+const faqSections = [
+  {
+    title: "Operations Team",
+    items: [
+      {
+        question: "Does this require new logistics or warehouse infrastructure?",
+        answer: "No. The manufacturer's one new operational step is shipping to an ApalyRx-designated 3PL facility rather than a distributor warehouse. ApalyRx owns and manages the 3PL relationship entirely. All documentation and downstream fulfillment are handled by ApalyRx.",
+      },
+      {
+        question: "Do we need new DSCSA systems?",
+        answer: "No. The manufacturer provides serialization data per current procedures. The ApalyRx platform handles all per-script T3 documentation as a technology service. No manufacturer system builds required.",
+      },
+      {
+        question: "Who manages cold chain during transit?",
+        answer: "The manufacturer ships to the ApalyRx-designated 3PL using existing cold chain protocols. ApalyRx bears responsibility for cold chain management from the 3PL forward. Cold chain standards are contractual obligations in the ApalyRx-3PL service agreement.",
+      },
+    ],
+  },
+  {
+    title: "Finance Team",
+    items: [
+      {
+        question: "How does revenue recognition work?",
+        answer: "Revenue is recognized at point of title transfer, confirmed home delivery or physical receipt at the participating pharmacy. This is a discrete, documentable event recorded by the ApalyRx platform. The monthly invoice reflects all title transfer events in the prior month.",
+      },
+      {
+        question: "What is our credit exposure?",
+        answer: "The manufacturer's counterparty is ApalyRx. Credit exposure is evaluated against ApalyRx as the contracting entity. The manufacturer has no direct financial relationship with any health plan.",
+      },
+      {
+        question: "How does this interact with gross-to-net?",
+        answer: "WAC is preserved. The per-drug program rebate is a separately documented supply agreement benefit. GTN for this channel is calculated as WAC minus the rebate, with no chargebacks, no distributor fees. Structurally cleaner than the standard rebate chain.",
+      },
+    ],
+  },
+  {
+    title: "Legal Team",
+    items: [
+      {
+        question: "Does this create new wholesale distribution obligations?",
+        answer: "No. The 3PL is a licensed third-party logistics provider, not a wholesale distributor. Custody transfer to the 3PL without title transfer does not trigger wholesale distribution requirements under DSCSA or state law.",
+      },
+      {
+        question: "Does the manufacturer contract with health plans?",
+        answer: "No. The manufacturer's only counterparty is ApalyRx. Employer demand is transmitted by proxy through ApalyRx as the authorized channel operator. The manufacturer has no direct employer relationships to establish or defend.",
+      },
+      {
+        question: "Will this trigger MFN provisions?",
+        answer: "The WAC with employer-direct program rebate structure is designed to avoid triggering MFN provisions. WAC is preserved across all channels. Manufacturer legal teams should validate the specific MFN language in their PBM contracts against this structure.",
+      },
+    ],
+  },
+  {
+    title: "Commercial and Market Access Team",
+    items: [
+      {
+        question: "Is this a pilot program?",
+        answer: "No. This is a live channel infrastructure built and operated by ApalyRx. 3PL fulfillment, DSCSA documentation systems, pharmacy credentialing across 50 states, and plan contracting are all operational today. The inaugural employer deployment is a live validation of a complete operational system, not a proof of concept.",
+      },
+      {
+        question: "How does this affect existing PBM relationships?",
+        answer: "The program is designed to function alongside existing PBM benefits. Health plans direct specific high-cost specialty drugs through the program while maintaining their PBM for the broader formulary. The manufacturer's existing formulary arrangements for all other drugs are unchanged.",
+      },
+      {
+        question: "What does the manufacturer gain that no other channel provides?",
+        answer: "Real-time member-level sell-through data, prescriber attribution, adherence metrics, and locked formulary position within employer-configured drug programs, combined with rebates applied at dispense rather than held 90 to 180 days by intermediaries.",
+      },
+    ],
+  },
+];
+
+// Flatten for schema
+const allFaqItems = faqSections.flatMap((s) => s.items);
 
 export default function ManufacturersPage() {
   return (
     <>
       <WebPageSchema
         title="ApalyRx for Manufacturers"
-        description="Turn-key operational infrastructure for manufacturer direct-to-employer drug programs. eRx intake, eligibility, fulfillment, billing, settlement, and decision-level documentation."
+        description="Complete operational infrastructure for manufacturer direct-to-employer drug programs."
         url="https://www.apalyrx.com/manufacturers"
       />
-      <FaqSchema items={faqItems} />
+      <FaqSchema items={allFaqItems} />
+
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative bg-[#0F1C2E] overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/4" />
-        <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/20">
-            <Rocket className="w-4 h-4" />
-            <span className="font-heading">For Manufacturers</span>
-          </div>
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
-            Employer Direct - Operationally Simple
+      <section className="relative bg-navy overflow-hidden">
+        <div
+          className="absolute top-0 right-0 w-[600px] h-[600px]"
+          style={{
+            background: "radial-gradient(circle at center, rgba(255,94,0,0.05), transparent 70%)",
+          }}
+        />
+        <div className="relative max-w-content mx-auto px-6 md:px-12 pt-[140px] md:pt-[180px] pb-16 md:pb-24">
+          <span className="font-sans text-eyebrow uppercase text-white/[0.35] block mb-5">
+            For Manufacturers
+          </span>
+          <div className="w-10 h-[2px] bg-orange mb-8" />
+          <h1 className="font-serif text-[34px] md:text-[46px] lg:text-[56px] text-white leading-[1.1] tracking-tighter-display max-w-[680px] mb-6">
+            Your DTE Channel. Built, Operational, Ready to Activate.
           </h1>
-          <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
-            Without Disrupting Your Existing Channel Strategy
-          </p>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-            ApalyRx is the operational layer for manufacturer direct-to-employer programs:
-            configurable rules, eRx intake, real-time fulfillment routing, medical claims settlement,
-            accumulator reporting, and decision-level documentation. Your programs run inside the
-            benefit, not outside it.
+          <p className="font-sans text-base md:text-lg text-white/[0.60] max-w-[600px] leading-body mb-10">
+            ApalyRx provides the operational, regulatory, and technology infrastructure for
+            manufacturer direct-to-employer programs. Your product, your pricing, your commercial
+            strategy. ApalyRx is the platform that makes it executable at scale.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+            className="font-sans text-btn bg-white text-navy hover:bg-white/90 px-6 py-2.5 transition-colors duration-200 inline-block"
           >
-            Request a Conversation
+            Schedule a Briefing
           </Link>
         </div>
       </section>
 
-      {/* ── SECTION 2: PROBLEM SECTION ── */}
-      <section className="relative bg-gradient-to-br from-red-50 via-orange-50 to-white py-16 md:py-24 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, #dc2626 0, #dc2626 1px, transparent 0, transparent 50%)",
-            backgroundSize: "20px 20px",
-          }}
-        />
-        <div className="relative max-w-content mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-              <AlertTriangle className="w-4 h-4" />
-              <span className="font-heading">The Current Problem</span>
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy leading-tight">
-              Why Manufacturers Lose Market Share
-            </h2>
-          </div>
+      {/* ── SECTION 2: CREDENTIAL STRIP ── */}
+      <CredentialStrip />
 
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {problemCards.map((card) => (
-              <div
-                key={card.title}
-                className="relative bg-white rounded-xl p-6 md:p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl group"
-              >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-t-xl" />
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 p-3 rounded-xl bg-red-100 group-hover:bg-red-500 transition-colors duration-300">
-                    <card.icon className="h-6 w-6 text-red-600 group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-xl md:text-2xl font-bold text-foreground mb-2">
-                      {card.title}
-                    </h3>
-                    <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
-                      {card.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="inline-block font-body text-sm md:text-base text-white bg-[#0F1C2E] rounded-full px-6 py-3">
-              💸 Result: Billions invested in patient access programs that remain{" "}
-              <span className="text-[#F26522] font-semibold">invisible to the benefit</span> - and
-              no operational infrastructure to change it.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 3: SOLUTION SECTION ── */}
-      <section className="relative bg-[#0F1C2E] text-white overflow-hidden py-16 md:py-24">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 -translate-x-1/2 translate-y-1/4" />
-        <div className="relative max-w-content mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/20">
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span className="font-heading">The ApalyRx Solution</span>
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
-              Why Manufacturers Use ApalyRx
-            </h2>
-            <p className="font-body text-base sm:text-lg text-white/70 max-w-3xl mx-auto">
-              The infrastructure you&apos;d have to build, but don&apos;t have to
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {solutionCards.map((card) => (
-              <div
-                key={card.title}
-                className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 hover:border-[#F26522]/50 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-[#F26522]/20">
-                    <card.icon className="w-5 h-5 text-[#F26522]" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-lg md:text-xl font-bold">{card.title}</h3>
-                    <p className="font-body text-sm text-white/50">{card.subtitle}</p>
-                  </div>
-                </div>
-                <div className="mb-4">
-                  <span className="font-heading text-4xl md:text-5xl font-bold text-[#F26522]">
-                    {card.stat}
-                  </span>
-                  <span className="font-body text-sm text-white/60 ml-2">{card.statLabel}</span>
-                </div>
-                <p className="font-body text-sm md:text-base text-white/70 leading-relaxed">
-                  {card.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="max-w-4xl mx-auto mt-10">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
-              <div className="flex items-center justify-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                <p className="font-body text-sm md:text-base text-white/80">
-                  Your products. Your pricing.{" "}
-                  <span className="text-[#F26522] font-semibold">Inside the benefit.</span> Fully
-                  documented.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 4: LAUNCH STEPS ── */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="max-w-content mx-auto px-4">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-white border border-border text-navy text-sm font-semibold px-4 py-2 rounded-full mb-6 shadow-card">
-              <Rocket className="w-4 h-4 text-[#F26522]" />
-              <span className="font-heading">Quick Launch</span>
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy leading-tight mb-4">
-              4-Step Launch Process
-            </h2>
-            <p className="font-body text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
-              From product upload to market access in weeks, not months
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-4">
-            {launchSteps.map((step, i) => (
-              <div key={step.num} className="relative">
-                <div className="group bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:border-[#F26522]/30 hover:shadow-xl transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#F26522] to-[#d45519] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg mb-4 group-hover:scale-110 transition-all duration-300">
-                    {step.num}
-                  </div>
-                  <div className="p-2 rounded-lg bg-[#F26522]/10 w-fit mb-3">
-                    <step.icon className="w-5 h-5 text-[#F26522]" />
-                  </div>
-                  <h3 className="font-heading text-lg font-bold text-navy mb-2">{step.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-                {/* Arrow connector */}
-                {i < launchSteps.length - 1 && (
-                  <div className="hidden lg:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 text-[#F26522]">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M5 10H15M15 10L10 5M15 10L10 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 5: COMPLIANCE SECTION ── */}
-      <section className="bg-[#0F1C2E]/5 py-16 md:py-24">
-        <div className="max-w-content mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-              <Shield className="w-4 h-4" />
-              <span className="font-heading">Enterprise Platform</span>
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy leading-tight">
-              Secure, Compliant, and Documented
-            </h2>
-          </div>
-
-          <div className="max-w-5xl mx-auto">
-            {/* Row 1: 4 cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-              {complianceCards.map((card, i) => (
-                <div
-                  key={i}
-                  className="group bg-white rounded-xl p-5 shadow-card border border-gray-100 hover:shadow-elevated hover:border-green-200 transition-all duration-300"
-                >
-                  <div className="p-2 rounded-lg bg-green-100 group-hover:bg-green-500 transition-all duration-300 w-fit mb-3">
-                    <card.icon className="w-5 h-5 text-green-600 group-hover:text-white transition-all duration-300" />
-                  </div>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    {card.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Row 2: 2 new cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-4">
-              {complianceCardsRow2.map((card, i) => (
-                <div
-                  key={i}
-                  className="group bg-white rounded-xl p-5 shadow-card border border-gray-100 hover:shadow-elevated hover:border-green-200 transition-all duration-300"
-                >
-                  <div className="p-2 rounded-lg bg-green-100 group-hover:bg-green-500 transition-all duration-300 w-fit mb-3">
-                    <card.icon className="w-5 h-5 text-green-600 group-hover:text-white transition-all duration-300" />
-                  </div>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    {card.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 6: FAQ ── */}
-      <section className="bg-[#f8f9fb] py-16 md:py-24">
-        <div className="max-w-content mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy leading-tight mb-4">
-              Common Manufacturer Questions
-            </h2>
-            <p className="font-body text-base sm:text-lg text-muted-foreground">
-              (and how ApalyRx addresses them)
-            </p>
-          </div>
-          <div className="max-w-2xl mx-auto">
-            <FaqAccordion items={faqItems} />
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 7: FINAL CTA ── */}
-      <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-            Launch Your Employer Direct Program
+      {/* ── SECTION 3: THE STRATEGIC DECISION ── */}
+      <section className="bg-off-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
+            The Strategic Decision
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display max-w-[680px] mb-8">
+            Does Your Organization Have a Direct-to-Employer Model?
           </h2>
-          <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
-            Turn-Key Infrastructure. Inside the Benefit. Fully Documented.
-          </p>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Tell us about your product portfolio and employer-direct objectives. We will show you how
-            ApalyRx can operationalize your programs at scale, with transparent economics,
-            decision-level documentation, and access to a growing network of employer and health plan
-            clients.
+          <div className="max-w-[740px] space-y-5 font-sans text-base text-text-secondary leading-body">
+            <p>
+              The employer-sponsored health plan market represents one of the most significant
+              untapped opportunities in pharmaceutical distribution. Self-funded employers bear
+              the direct cost of their members&apos; drug spend and are actively seeking
+              manufacturer-direct access that removes intermediary margin and replaces opacity
+              with accountability.
+            </p>
+            <p>
+              A direct-to-employer channel is not a concept that can be tested with a single
+              employer before committing resources. Every deployment uses the same core
+              infrastructure: 3PL fulfillment, DSCSA documentation systems, pharmacy
+              credentialing across 50 states, demand forecasting, and plan contracting. That
+              infrastructure must be operational before the first script is processed.
+            </p>
+            <p>
+              ApalyRx has built and operates that infrastructure. The question is not whether to
+              construct it. It is whether your organization chooses to access what is already
+              operational, or to watch other manufacturers establish the direct-to-employer
+              standard first.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4: WHAT YOU AVOID BUILDING ── */}
+      <section className="bg-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
+            The Operational Model
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display mb-12">
+            One New Ship-To Address.<br />
+            ApalyRx Handles Everything Else.
+          </h2>
+
+          {/* Table header */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-8 pb-4 border-b border-border mb-0">
+            <div className="font-sans text-xs uppercase tracking-eyebrow text-text-muted">
+              What the Channel Requires
+            </div>
+            <div className="font-sans text-xs uppercase tracking-eyebrow text-text-muted hidden md:block">
+              How ApalyRx Has Already Built It
+            </div>
+          </div>
+
+          {/* Rows */}
+          {operationalRows.map((row) => (
+            <div
+              key={row.requirement}
+              className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-8 py-6 border-b border-border"
+            >
+              <div className="font-serif text-base md:text-lg text-text-primary">
+                {row.requirement}
+              </div>
+              <div className="font-sans text-sm text-text-secondary leading-relaxed">
+                {row.resolution}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── SECTION 5: PLATFORM ARCHITECTURE ── */}
+      <section className="bg-navy">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          {/* Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
+            <div>
+              <span className="font-sans text-eyebrow uppercase text-white/[0.35] block mb-4">
+                Platform Architecture
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-white leading-[1.15] tracking-tight-display">
+                Three Engines. One Integrated System.
+              </h2>
+            </div>
+            <p className="font-sans text-base text-white/50 leading-body lg:pt-8">
+              Built on a patent-pending architecture that handles every function from prescription
+              intake to supplier payment. No existing distribution model, specialty pharmacy, or
+              compliance tool has combined these capabilities in a single platform.
+            </p>
+          </div>
+
+          {/* Three engines */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+            <div className="border-t border-white/[0.07] pt-8 pb-8 lg:pr-8">
+              <span className="font-serif text-xs text-orange tracking-[0.06em] block mb-4">01</span>
+              <h4 className="font-serif text-[19px] text-white leading-[1.3] mb-4">
+                Prescription and Member Engagement Engine
+              </h4>
+              <p className="font-sans text-sm text-white/[0.45] leading-relaxed">
+                Receives electronic prescriptions via NCPDP SCRIPT from any intake pathway.
+                Verifies member eligibility in real time. Initiates a single member interaction
+                via SMS for pharmacy selection and cost-share collection. Executes prescription
+                transfer. Initiates the four-event settlement sequence.
+              </p>
+            </div>
+            <div className="border-t border-white/[0.07] pt-8 pb-8 lg:px-8 lg:border-l">
+              <span className="font-serif text-xs text-orange tracking-[0.06em] block mb-4">02</span>
+              <h4 className="font-serif text-[19px] text-white leading-[1.3] mb-4">
+                Multi-Channel Lowest Net Cost Routing Engine
+              </h4>
+              <p className="font-sans text-sm text-white/[0.45] leading-relaxed">
+                Evaluates every in-scope prescription against all plan-activated supply channel
+                categories in real time: manufacturer-direct, standard PBM channel, platform
+                pharmacy supplier. Selects the lowest net cost option. This is a routing decision
+                across categorically distinct supply chain architectures, not a selection among
+                pharmacies within a single channel.
+              </p>
+            </div>
+            <div className="border-t border-white/[0.07] pt-8 pb-8 lg:pl-8 lg:border-l">
+              <span className="font-serif text-xs text-orange tracking-[0.06em] block mb-4">03</span>
+              <h4 className="font-serif text-[19px] text-white leading-[1.3] mb-4">
+                Distribution and DSCSA Compliance Engine (Patent Pending)
+              </h4>
+              <p className="font-sans text-sm text-white/[0.45] leading-relaxed">
+                Manages the serialized virtual pre-allocation pool for manufacturer-direct
+                custodial inventory. Generates DSCSA-compliant per-prescription T3 documentation
+                at the individual dispense level without a change-of-ownership trigger at the 3PL.
+                Administers just-in-time replenishment against the enrolled member census.
+                Provisional patent filed March 2026.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 6: COMMERCIAL STRUCTURE ── */}
+      <section className="bg-off-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
+            Commercial Structure
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display mb-10">
+            Transparent, Auditable Economics
+          </h2>
+
+          {/* 3-column stat grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12 pb-12 border-b border-border">
+            <div>
+              <div className="font-serif text-[32px] md:text-[38px] text-navy tracking-tight-display leading-none mb-2">
+                WAC Preserved
+              </div>
+              <p className="font-sans text-[13px] text-text-secondary">Across all channels</p>
+            </div>
+            <div>
+              <div className="font-serif text-[32px] md:text-[38px] text-navy tracking-tight-display leading-none mb-2">
+                One Counterparty
+              </div>
+              <p className="font-sans text-[13px] text-text-secondary">One invoice. One payment.</p>
+            </div>
+            <div>
+              <div className="font-serif text-[32px] md:text-[38px] text-navy tracking-tight-display leading-none mb-2">
+                &lt; 30 Days
+              </div>
+              <p className="font-sans text-[13px] text-text-secondary">Inventory dwell time at 3PL</p>
+            </div>
+          </div>
+
+          {/* 2-column body */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+            <div>
+              <h4 className="font-serif text-lg text-text-primary mb-3">Pricing mechanism</h4>
+              <p className="font-sans text-sm text-text-secondary leading-relaxed">
+                The manufacturer invoices at WAC. A per-drug employer-direct program rebate,
+                defined in the master supply agreement, is applied as a line deduction on the
+                monthly invoice. Net payment is WAC minus the rebate. This structure preserves
+                most-favored-nation integrity because manufacturer rebates are almost universally
+                excluded from MFN calculations under existing contracts.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg text-text-primary mb-3">Data exchange</h4>
+              <p className="font-sans text-sm text-text-secondary leading-relaxed">
+                ApalyRx provides monthly member-level utilization reporting, adherence metrics,
+                prescriber attribution, and program performance data through the platform portal.
+                This is sell-through visibility, actual dispense events at the member level, that
+                the traditional distributor channel structurally cannot provide.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 7: QUESTIONS BY TEAM ── */}
+      <section className="bg-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
+            Common Questions
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display mb-12">
+            Answers for Every Internal Stakeholder
+          </h2>
+
+          <div className="max-w-3xl">
+            <ManufacturerFaq sections={faqSections} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 8: LAUNCH TIMELINE ── */}
+      <section className="bg-off-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
+            Implementation
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display mb-12">
+            Operational in Six Months
+          </h2>
+
+          {/* Timeline */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+            {timelinePhases.map((phase) => (
+              <div key={phase.phase} className="border-t-2 border-orange pt-5">
+                <span className="font-serif text-xs text-orange tracking-[0.06em] block mb-1">
+                  Phase {phase.phase}
+                </span>
+                <span className="font-sans text-xs text-text-muted block mb-2">
+                  {phase.months}
+                </span>
+                <h4 className="font-serif text-base text-text-primary leading-[1.3] mb-3">
+                  {phase.title}
+                </h4>
+                <ul className="space-y-1.5">
+                  {phase.bullets.map((b, i) => (
+                    <li key={i} className="font-sans text-xs text-text-secondary leading-relaxed">
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 9: FINAL CTA ── */}
+      <section className="bg-navy">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24 text-center">
+          <span className="font-sans text-eyebrow uppercase text-white/[0.35] block mb-4">
+            Activate Your Channel
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-white leading-[1.15] tracking-tight-display max-w-[620px] mx-auto mb-6">
+            The Infrastructure Is Built. Activation Is the Only Remaining Step.
+          </h2>
+          <p className="font-sans text-base text-white/[0.55] max-w-[560px] mx-auto leading-body mb-10">
+            Contact us to discuss your portfolio, your existing distribution model, and the
+            fastest path to a live direct-to-employer deployment.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+            className="font-sans text-btn text-white border border-white/[0.45] hover:border-white hover:bg-white/[0.07] px-6 py-2.5 transition-colors duration-200 inline-block"
           >
-            Request a Conversation
+            Schedule a Briefing
           </Link>
         </div>
       </section>

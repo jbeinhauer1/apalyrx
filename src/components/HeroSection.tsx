@@ -13,30 +13,21 @@ export default function HeroSection({
   subtitle,
   primaryCta,
   secondaryCta,
-  pattern = "dots",
 }: HeroSectionProps) {
   return (
-    <section className="relative bg-[#0F1C2E] overflow-hidden">
-      {/* Background pattern */}
-      {pattern === "dots" ? (
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(242, 101, 34, 0.3) 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-      ) : (
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/4" />
-      )}
-
-      <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20">
+    <section className="relative bg-navy overflow-hidden">
+      <div
+        className="absolute top-0 right-0 w-[600px] h-[600px]"
+        style={{
+          background: "radial-gradient(circle at center, rgba(255,94,0,0.05), transparent 70%)",
+        }}
+      />
+      <div className="relative max-w-content mx-auto px-6 md:px-12 pt-[140px] md:pt-[180px] pb-16 md:pb-24">
         <div className="max-w-3xl">
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-bold text-white mb-6 text-balance">
+          <h1 className="font-serif text-[34px] md:text-[48px] lg:text-[60px] text-white leading-[1.1] tracking-tighter-display mb-6">
             {headline}
           </h1>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-2xl">
+          <p className="font-sans text-base md:text-lg text-white/[0.60] leading-body mb-10 max-w-[560px]">
             {subtitle}
           </p>
           {(primaryCta || secondaryCta) && (
@@ -44,7 +35,7 @@ export default function HeroSection({
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-lg px-8 py-6 rounded-lg transition-all duration-300"
+                  className="font-sans text-btn bg-white text-navy hover:bg-white/90 px-6 py-2.5 transition-colors duration-200 text-center"
                 >
                   {primaryCta.label}
                 </Link>
@@ -52,7 +43,7 @@ export default function HeroSection({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white border border-white/30 font-heading font-semibold text-lg px-8 py-6 rounded-lg transition-all duration-300"
+                  className="font-sans text-btn text-white border border-white/[0.45] hover:border-white hover:bg-white/[0.07] px-6 py-2.5 transition-colors duration-200 text-center"
                 >
                   {secondaryCta.label}
                 </Link>

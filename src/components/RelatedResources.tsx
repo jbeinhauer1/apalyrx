@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 const allResources = [
   {
@@ -29,7 +28,7 @@ export default function RelatedResources({ currentHref }: { currentHref: string 
 
   return (
     <div className="mb-16">
-      <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#0F1C2E] mb-8">
+      <h2 className="font-serif text-[28px] md:text-[32px] text-text-primary tracking-tight-display mb-8">
         Related Resources
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -37,16 +36,16 @@ export default function RelatedResources({ currentHref }: { currentHref: string 
           <Link
             key={resource.href}
             href={resource.href}
-            className="group bg-[#f8f9fb] rounded-xl border border-gray-200 p-6 hover:shadow-md hover:border-[#F26522]/30 transition-all duration-300"
+            className="group bg-off-white border border-border p-6 hover:border-navy/20 transition-all duration-200"
           >
-            <span className="inline-block font-heading text-[10px] font-semibold uppercase tracking-wider text-[#F26522] bg-[#F26522]/10 px-2.5 py-0.5 rounded-full mb-3">
+            <span className="font-sans text-eyebrow uppercase text-orange block mb-3">
               {resource.category}
             </span>
-            <h3 className="font-heading text-base font-bold text-[#0F1C2E] mb-3 group-hover:text-[#F26522] transition-colors duration-300 leading-snug">
+            <h3 className="font-serif text-base text-text-primary mb-3 group-hover:text-navy transition-colors duration-200 leading-snug">
               {resource.title}
             </h3>
-            <span className="inline-flex items-center gap-1.5 font-heading text-sm font-semibold text-[#F26522] group-hover:gap-2.5 transition-all duration-300">
-              Read <ArrowRight className="w-3.5 h-3.5" />
+            <span className="font-sans text-[13px] text-navy border-b border-border group-hover:border-navy pb-0.5 tracking-link transition-colors duration-200">
+              Read &rarr;
             </span>
           </Link>
         ))}

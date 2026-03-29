@@ -2,19 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --navy: #102a4c;
+  --navy-dark: #0a1e38;
+  --navy-deeper: #071428;
+  --orange: #ff5e00;
+  --white: #ffffff;
+  --off-white: #f8f7f4;
+  --text-primary: #1a1a1a;
+  --text-secondary: #5a5a5a;
+  --text-muted: #8a8a8a;
+  --border: rgba(16,42,76,0.10);
+  --border-dark: rgba(255,255,255,0.07);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  color: #333333;
-  background: #ffffff;
+  color: var(--text-secondary);
+  background: var(--white);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.78;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: normal;
+  color: var(--text-primary);
 }
 
 /* Animate on scroll */
@@ -42,3 +59,18 @@ body {
 .stagger-children.visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
 .stagger-children.visible > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+
+/* Accordion animation */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
+}
+
+.accordion-content.open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+  overflow: hidden;
+}

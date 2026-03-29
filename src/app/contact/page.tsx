@@ -5,13 +5,13 @@ import ContactForm from "@/components/ContactForm";
 import WebPageSchema from "@/components/WebPageSchema";
 
 export const metadata: Metadata = {
-  title: "Contact ApalyRx | Request a Conversation About Pharmacy Benefit Solutions",
+  title: "Contact ApalyRx | Schedule a Briefing",
   description:
-    "Talk to ApalyRx about reducing high-cost drug spend, independent prescription routing, manufacturer-direct programs, or the Drug Benefit Integrity standard. We'll show you real savings projections based on your population.",
+    "Contact ApalyRx to discuss manufacturer direct-to-employer programs, employer drug benefit optimization, or independent pharmacy partnerships. We will show you how the platform addresses your specific requirements.",
   openGraph: {
-    title: "Contact ApalyRx | Request a Conversation",
+    title: "Contact ApalyRx | Schedule a Briefing",
     description:
-      "Talk to us about reducing high-cost drug spend with independent prescription routing. We'll show you real savings projections based on your population.",
+      "Contact us to discuss your portfolio, your existing distribution model, and the fastest path to a live direct-to-employer deployment.",
     url: "https://www.apalyrx.com/contact",
     siteName: "ApalyRx",
     type: "website",
@@ -23,26 +23,26 @@ export default function ContactPage() {
     <>
       <WebPageSchema
         title="Contact ApalyRx"
-        description="Reach out to learn how ApalyRx provides real-time independent prescription routing for PBMs, employers, health plans, consultants, manufacturers, and pharmacies."
+        description="Schedule a briefing to discuss how ApalyRx provides direct-to-employer drug benefit infrastructure for manufacturers, employers, and independent pharmacies."
         url="https://www.apalyrx.com/contact"
       />
       <HeroSection
-        headline="Let's Talk"
-        subtitle="Whether you are a PBM, employer, health plan, consultant, manufacturer, or pharmacy, we welcome the conversation."
+        headline="Schedule a Briefing"
+        subtitle="Whether you are a manufacturer, employer, health plan, or pharmacy, we welcome the conversation."
       />
 
-      <section className="bg-[#f8f9fb]">
-        <div className="max-w-2xl mx-auto px-4 py-16 md:py-24">
-          <div className="bg-white border border-gray-200 rounded-lg p-5 sm:p-8 shadow-elevated">
+      <section className="bg-off-white">
+        <div className="max-w-2xl mx-auto px-6 md:px-12 py-16 md:py-24">
+          <div className="bg-white border border-border p-6 sm:p-10">
             <ContactForm />
           </div>
 
           <div className="mt-12 text-center space-y-4">
-            <p className="font-body text-muted-foreground">
+            <p className="font-sans text-sm text-text-secondary">
               Or reach us directly:{" "}
               <a
                 href="mailto:sales@apalyrx.com"
-                className="font-heading text-[#F26522] hover:text-orange-hover font-semibold transition-all duration-300"
+                className="font-sans text-navy border-b border-border hover:border-navy pb-0.5 transition-colors duration-200"
               >
                 sales@apalyrx.com
               </a>
@@ -50,7 +50,7 @@ export default function ContactPage() {
             <p>
               <Link
                 href="/resources/drug-benefit-integrity"
-                className="font-heading text-[#F26522] hover:text-orange-hover font-semibold transition-all duration-300"
+                className="font-sans text-[13px] text-navy border-b border-border hover:border-navy pb-0.5 tracking-link transition-colors duration-200"
               >
                 Learn about the Drug Benefit Integrity standard &rarr;
               </Link>

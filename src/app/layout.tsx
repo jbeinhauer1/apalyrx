@@ -1,32 +1,17 @@
 import type { Metadata } from "next";
-import { Quicksand, Open_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import SiteShell from "@/components/SiteShell";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 
-const quicksand = Quicksand({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-quicksand",
-});
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-  variable: "--font-opensans",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.apalyrx.com"),
   title: {
-    default: "ApalyRx | Direct Drug Access - Simplified",
+    default: "ApalyRx | Direct-to-Employer Drug Benefit Infrastructure",
     template: "%s | ApalyRx",
   },
   description:
-    "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
+    "ApalyRx provides the complete operational, regulatory, and technology infrastructure that makes manufacturer direct-to-employer programs executable at scale. Independent prescription routing to the lowest net cost with decision-level documentation for every script.",
   alternates: {
     canonical: "./",
   },
@@ -34,9 +19,9 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
   },
   openGraph: {
-    title: "ApalyRx | Direct Drug Access - Simplified",
+    title: "ApalyRx | Direct-to-Employer Drug Benefit Infrastructure",
     description:
-      "ApalyRx works alongside PBMs to independently route high-cost prescriptions in real time to the lowest net cost. Configurable rules, real-time eRx routing, medical claims settlement, and decision-level documentation.",
+      "ApalyRx provides the complete operational, regulatory, and technology infrastructure that makes manufacturer direct-to-employer programs executable at scale.",
     type: "website",
     locale: "en_US",
     siteName: "ApalyRx",
@@ -49,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${quicksand.variable} ${openSans.variable}`}>
+    <html lang="en">
       <head>
         {/* 1. Visitor Intelligence Tracking Pixel */}
         <Script id="visitor-intelligence" strategy="afterInteractive">{`
@@ -201,7 +186,7 @@ o.onload=function(){window.trackingFunctions.onLoad({appId:"66bb002f5b20eb02b9c7
 document.head.appendChild(o)}initApollo();
 `}</Script>
       </head>
-      <body className="font-body antialiased">
+      <body className="font-sans antialiased">
         <AnalyticsProvider>
           <SiteShell>{children}</SiteShell>
         </AnalyticsProvider>

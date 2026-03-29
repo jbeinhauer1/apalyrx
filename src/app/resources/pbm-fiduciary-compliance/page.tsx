@@ -70,7 +70,7 @@ export default function PBMFiduciaryCompliancePage() {
       <FaqSchema items={faqItems} />
 
       {/* Hero */}
-      <section className="relative bg-[#0F1C2E] overflow-hidden">
+      <section className="relative bg-navy overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -82,12 +82,12 @@ export default function PBMFiduciaryCompliancePage() {
         <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/20">
             <Scale className="w-4 h-4" />
-            <span className="font-heading">Compliance</span>
+            <span className="font-sans">Compliance</span>
           </div>
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-white mb-6">
             PBM Fiduciary Compliance
           </h1>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             The regulatory landscape for pharmacy benefits has shifted dramatically. The
             Consolidated Appropriations Act of 2026 now treats PBMs as covered service providers
             under ERISA. The Department of Labor has proposed requiring detailed PBM compensation
@@ -104,14 +104,14 @@ export default function PBMFiduciaryCompliancePage() {
         <div className="max-w-4xl mx-auto px-4 py-16 md:py-24">
           {/* The New Regulatory Landscape */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               The New Regulatory Landscape
             </h2>
 
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+            <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
               Consolidated Appropriations Act of 2026
             </h3>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed mb-8">
               <p>
                 Signed into law on February 3, 2026, the CAA 2026 includes the most significant PBM
                 reform provisions in decades. Key requirements for employer-sponsored plans include:
@@ -128,10 +128,10 @@ export default function PBMFiduciaryCompliancePage() {
               </p>
             </div>
 
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+            <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
               DOL Proposed Rule on PBM Disclosure
             </h3>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-8">
               The Department of Labor has proposed requiring PBMs, and affiliated brokers and
               consultants, to disclose detailed information about their direct and indirect
               compensation to plan fiduciaries. The rule would also strengthen audit rights, giving
@@ -139,10 +139,10 @@ export default function PBMFiduciaryCompliancePage() {
               and compensation practices.
             </p>
 
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+            <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
               State PBM Fiduciary Laws
             </h3>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-8">
               States are moving independently. California&apos;s SB 41, effective January 2026,
               imposes an explicit fiduciary duty on PBMs toward their payer clients, prohibits
               spread pricing, mandates rebate pass-through, and requires state licensure. Arkansas
@@ -151,10 +151,10 @@ export default function PBMFiduciaryCompliancePage() {
               cases, though ERISA preemption questions remain for self-funded employer plans.
             </p>
 
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+            <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
               ERISA Litigation
             </h3>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed">
               Recent lawsuits have put plan sponsors on notice. In the J&amp;J case, an
               employee-participant alleged the company breached fiduciary duties by allowing its PBM
               to steer prescriptions to PBM-owned mail-order pharmacies at inflated prices. The
@@ -167,30 +167,30 @@ export default function PBMFiduciaryCompliancePage() {
 
           {/* What Fiduciary Duty Actually Requires */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               What Fiduciary Duty Actually Requires
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-6">
               Under ERISA, plan fiduciaries must meet four core obligations:
             </p>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">Loyalty</strong>: Act solely in the interest of
+                <strong className="text-navy">Loyalty</strong>: Act solely in the interest of
                 plan participants and beneficiaries.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Prudence</strong>: Use care, skill, and
+                <strong className="text-navy">Prudence</strong>: Use care, skill, and
                 diligence that a prudent person in a similar situation would exercise. This is a
                 process standard, not an outcome standard: the question is whether the
                 fiduciary&apos;s decision-making process was reasonable, not whether the outcome was
                 optimal.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Reasonableness</strong>: Ensure that fees and
+                <strong className="text-navy">Reasonableness</strong>: Ensure that fees and
                 compensation paid for plan services are reasonable.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Plan compliance</strong>: Follow the terms of
+                <strong className="text-navy">Plan compliance</strong>: Follow the terms of
                 plan documents.
               </p>
               <p>
@@ -202,8 +202,8 @@ export default function PBMFiduciaryCompliancePage() {
               </p>
             </div>
 
-            <div className="my-10 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-5">
-              <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
+            <div className="my-10 border-l-4 border-[#F26522] bg-orange/5 px-6 py-5">
+              <p className="font-serif text-lg md:text-xl text-navy">
                 Outsourcing plan operations to a PBM does not eliminate fiduciary liability. Plan
                 sponsors remain responsible for overseeing their vendors.
               </p>
@@ -212,10 +212,10 @@ export default function PBMFiduciaryCompliancePage() {
 
           {/* The Gap Between Transparency and Compliance */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               The Gap Between Transparency and Compliance
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 CAA 2026 and the DOL proposed rule give plan sponsors more visibility into PBM
                 operations than ever before. Semiannual reporting, compensation disclosure, rebate
@@ -242,20 +242,20 @@ export default function PBMFiduciaryCompliancePage() {
 
           {/* A Practical Framework for Fiduciary Compliance */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               A Practical Framework for Fiduciary Compliance
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-8">
               Based on the current regulatory landscape and litigation trends, plan sponsors should
               consider the following framework:
             </p>
 
             <div className="space-y-10">
               <div>
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+                <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
                   1. Review and Renegotiate PBM Contracts
                 </h3>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-sans text-lg text-text-secondary leading-relaxed">
                   Ensure contracts include broad audit rights, unrestricted data access, compensation
                   disclosure requirements consistent with CAA 2026, and 100% rebate pass-through
                   language. Remove any provisions that limit the plan&apos;s ability to verify PBM
@@ -264,10 +264,10 @@ export default function PBMFiduciaryCompliancePage() {
               </div>
 
               <div>
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+                <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
                   2. Demand and Review Semiannual Reports
                 </h3>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-sans text-lg text-text-secondary leading-relaxed">
                   Under CAA 2026, PBMs must provide detailed reporting. Plan sponsors must actually
                   review these reports: receiving them is not sufficient. Assess drug-level pricing,
                   spread between plan charges and pharmacy reimbursement, rebate amounts, and total
@@ -276,10 +276,10 @@ export default function PBMFiduciaryCompliancePage() {
               </div>
 
               <div>
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+                <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
                   3. Conduct Independent Audits
                 </h3>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-sans text-lg text-text-secondary leading-relaxed">
                   PBM self-reporting is necessary but not sufficient. Engage independent auditors,
                   not auditors recommended by the PBM, to verify that reported data matches actual
                   claims, rebates, and compensation. Audit rights should be exercised regularly, not
@@ -288,16 +288,16 @@ export default function PBMFiduciaryCompliancePage() {
               </div>
 
               <div>
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+                <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
                   4. Evaluate Channel Independence
                 </h3>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-sans text-lg text-text-secondary leading-relaxed">
                   Assess whether your PBM&apos;s routing decisions are influenced by channel
                   ownership. If the PBM owns specialty, mail-order, and retail pharmacies, the plan
                   sponsor should verify that routing decisions are based on{" "}
                   <Link
                     href="/resources/lowest-net-cost-routing"
-                    className="text-[#F26522] hover:text-[#F26522]/80 font-semibold"
+                    className="text-orange hover:text-orange/80 font-semibold"
                   >
                     lowest net cost
                   </Link>{" "}
@@ -306,10 +306,10 @@ export default function PBMFiduciaryCompliancePage() {
               </div>
 
               <div>
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+                <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
                   5. Implement Decision-Level Verification
                 </h3>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-sans text-lg text-text-secondary leading-relaxed">
                   The strongest demonstration of fiduciary prudence is per-prescription documentation
                   showing that each routing decision was evaluated across all available channels and
                   directed to the lowest net cost option. This decision-level evidence provides the
@@ -318,10 +318,10 @@ export default function PBMFiduciaryCompliancePage() {
               </div>
 
               <div>
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+                <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
                   6. Document Everything
                 </h3>
-                <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                <p className="font-sans text-lg text-text-secondary leading-relaxed">
                   Maintain a record of all fiduciary activities: PBM reviews, audit findings,
                   contract negotiations, vendor evaluations, and corrective actions. In ERISA
                   litigation, the court evaluates the process the fiduciary followed, not just the
@@ -333,15 +333,15 @@ export default function PBMFiduciaryCompliancePage() {
 
           {/* How Decision-Level Verification Closes the Gap */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               How Decision-Level Verification Closes the Gap
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 Decision-level verification is the bridge between transparency (seeing data) and{" "}
                 <Link
                   href="/resources/drug-benefit-integrity"
-                  className="text-[#F26522] hover:text-[#F26522]/80 font-semibold"
+                  className="text-orange hover:text-orange/80 font-semibold"
                 >
                   integrity
                 </Link>{" "}
@@ -363,8 +363,8 @@ export default function PBMFiduciaryCompliancePage() {
               </p>
             </div>
 
-            <div className="my-10 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-5">
-              <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
+            <div className="my-10 border-l-4 border-[#F26522] bg-orange/5 px-6 py-5">
+              <p className="font-serif text-lg md:text-xl text-navy">
                 For plan fiduciaries, decision-level verification transforms compliance from
                 &quot;we trusted our PBM and reviewed their reports&quot; to &quot;we have
                 independent, per-decision proof that every high-cost prescription was routed to the
@@ -375,7 +375,7 @@ export default function PBMFiduciaryCompliancePage() {
 
           {/* FAQ */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-8">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-8">
               Frequently Asked Questions
             </h2>
             <FaqAccordion items={faqItems} />
@@ -387,18 +387,18 @@ export default function PBMFiduciaryCompliancePage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
+      <section className="bg-navy text-white py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">
             Strengthen Your Fiduciary Position
           </h2>
-          <p className="font-body text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="font-sans text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             ApalyRx provides independent, decision-level verification for every high-cost
             prescription: the documentation plan sponsors need to demonstrate prudent oversight.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+            className="inline-flex items-center justify-center bg-orange hover:bg-orange/90 text-white font-sans font-semibold text-base md:text-lg px-6 md:px-8 py-4 md:py-6 transition-all duration-300"
           >
             <CheckCircle2 className="w-5 h-5 mr-2" />
             Request a Conversation

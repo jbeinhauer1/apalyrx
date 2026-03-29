@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 
 interface FaqItem {
   question: string;
@@ -20,31 +19,37 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
   };
 
   return (
-    <div className="space-y-2">
+    <div>
       {items.map((item, i) => {
         const isOpen = openIndex === i;
         return (
           <div
             key={i}
-            className="bg-white rounded-lg border border-gray-200 px-4 py-1"
+            className="border-b border-border"
           >
             <button
               onClick={() => toggle(i)}
-              className="w-full flex items-center justify-between text-left font-heading text-sm font-medium py-3"
+              className="w-full flex items-center justify-between text-left py-5 group"
             >
-              <span>{item.question}</span>
-              <ChevronDown
-                className={`w-4 h-4 text-orange flex-shrink-0 ml-2 transition-transform duration-300 ${
-                  isOpen ? "rotate-180" : ""
+              <span className="font-serif text-base text-text-primary pr-4">
+                {item.question}
+              </span>
+              <span
+                className={`font-sans text-xl text-text-muted flex-shrink-0 transition-transform duration-300 ${
+                  isOpen ? "rotate-45" : ""
                 }`}
-              />
+              >
+                +
+              </span>
             </button>
             <div
               className="grid transition-all duration-300 ease-in-out"
               style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
             >
               <div className="overflow-hidden">
-                <p className="font-body text-gray-600 text-sm pb-3">{item.answer}</p>
+                <p className="font-sans text-sm text-text-secondary leading-body pb-5">
+                  {item.answer}
+                </p>
               </div>
             </div>
           </div>

@@ -1,42 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import SectionWrapper from "@/components/SectionWrapper";
 import OrganizationSchema from "@/components/OrganizationSchema";
-import {
-  Users,
-  Star,
-  TrendingDown,
-  AlertTriangle,
-  Building2,
-  Factory,
-  GitMerge,
-  MessageSquare,
-  Rocket,
-  Home,
-  ClipboardCheck,
-  Settings,
-  Send,
-  CheckCircle2,
-  Route,
-  Package,
-  DollarSign,
-  CreditCard,
-  BarChart3,
-  Zap,
-  FileCheck,
-  Puzzle,
-} from "lucide-react";
+import CredentialStrip from "@/components/CredentialStrip";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "ApalyRx | Independent Prescription Routing for Self-Funded Employers",
+    absolute: "ApalyRx | The Operating Layer for Manufacturer Direct-to-Employer Programs",
   },
   description:
-    "ApalyRx works alongside your PBM and TPA to independently route high-cost prescriptions to the lowest net cost in real time. Decision-level documentation for every script. Pharmacy-licensed. No channel ownership. Built on the Drug Benefit Integrity standard.",
+    "ApalyRx provides the complete operational, regulatory, and technology infrastructure that makes a manufacturer's direct-to-employer channel executable. Independent prescription routing to the lowest net cost with decision-level documentation.",
   openGraph: {
-    title: "ApalyRx | Independent Prescription Routing for Self-Funded Employers",
+    title: "ApalyRx | The Operating Layer for Manufacturer Direct-to-Employer Programs",
     description:
-      "Real-time prescription routing to the lowest net cost across all channels: PBM, specialty, mail, manufacturer-direct. Decision-level documentation for every script.",
+      "Complete operational, regulatory, and technology infrastructure for manufacturer direct-to-employer drug benefit programs.",
     url: "https://www.apalyrx.com",
     siteName: "ApalyRx",
     type: "website",
@@ -44,446 +20,276 @@ export const metadata: Metadata = {
   },
 };
 
-/* ─── Data ─── */
-
-const trustStats = [
-  { icon: Users, value: "500K+", label: "Covered Lives" },
-  { icon: Star, value: "88", label: "NPS Score" },
-  { icon: TrendingDown, value: "20%+", label: "Cost Reduction on High-Cost Drugs" },
-];
-
-const problemCards = [
-  {
-    icon: Building2,
-    audience: "Employers & Health Plans",
-    title: "Overpay by 20-40%",
-    desc: "Complex benefit structures, multiple pricing layers, and no independent way to verify that each prescription was routed to the lowest net cost across all available channels. Plan fiduciaries face personal liability for drug benefit decisions they cannot independently prove were optimal.",
-  },
-  {
-    icon: Factory,
-    audience: "Manufacturers",
-    title: "Lose Market Share",
-    desc: "Manufacturers invest billions in copay programs, patient assistance, and direct pricing, but these programs sit outside the benefit, with no way to evaluate them alongside traditional channels at the point of decision. Clinically valuable options go unused because no infrastructure exists to bring these programs inside the benefit at scale.",
-  },
-  {
-    icon: Users,
-    audience: "Members",
-    title: "Get Lost in Chaos",
-    desc: "Surprise costs, unclear requirements, poor experience. Members navigate between their doctor, insurance, and pharmacy with no coordination and no one helping them through the process.",
-  },
-];
-
-const stakeholders = [
-  {
-    icon: GitMerge,
-    iconBg: "bg-[#0F1C2E]",
-    borderColor: "border-l-[#0F1C2E]",
-    tag: "For PBMs",
-    title: "Strengthen Your Program With Independent Routing",
-    desc: "Add a real-time independent routing layer that evaluates every high-cost prescription across all channels, including your own pharmacies, and produces decision-level documentation for your clients.",
-    href: "/pbms",
-  },
-  {
-    icon: Building2,
-    iconBg: "bg-[#F26522]",
-    borderColor: "border-l-[#F26522]",
-    tag: "For Health Plans",
-    title: "Operate Targeted Drug Carve-Out Programs",
-    desc: "You select what drugs are included in your drug programs. Set your own program rules and controls. Access direct, pass-through, net pricing: no rebates, no hidden spread. Every routing decision independently documented with full audit trail.",
-    href: "/employers",
-  },
-  {
-    icon: MessageSquare,
-    iconBg: "bg-[#0F1C2E]",
-    borderColor: "border-l-[#0F1C2E]",
-    tag: "For Benefits Consultants",
-    title: "Change the PBM Conversation",
-    desc: "Move client evaluations from pricing comparisons to structural accountability and integrity. Introduce a standard that differentiates your advisory practice.",
-    href: "/consultants",
-  },
-  {
-    icon: Rocket,
-    iconBg: "bg-[#F26522]",
-    borderColor: "border-l-[#F26522]",
-    tag: "For Manufacturers",
-    title: "Turn-Key Direct-to-Employer Infrastructure",
-    desc: "Deploy direct-to-employer drug access programs at scale: eRx intake, eligibility, cost-share collection, accumulator reporting, medical-claim billing, and supplier settlement. No need to build the plumbing.",
-    href: "/manufacturers",
-  },
-  {
-    icon: Home,
-    iconBg: "bg-[#0F1C2E]",
-    borderColor: "border-l-[#0F1C2E]",
-    tag: "For Independent Pharmacies",
-    title: "New Revenue. Fair Reimbursement. No Clawbacks.",
-    desc: "Dispense prescriptions or serve as pharmacy of record in manufacturer-direct models. Fair reimbursement from a platform with no competing channel interests.",
-    href: "/pharmacies",
-  },
-];
-
-const howItWorksSteps = [
-  {
-    num: 1,
-    title: "Configure Programs & Pricing",
-    subtitle: "Set up your customized drug program",
-    bullets: [
-      { icon: ClipboardCheck, text: "Employers and health plans define drug programs: scope, eligibility, cost-share, PA requirements, and channel controls" },
-      { icon: Factory, text: "Manufacturers set direct net pricing for selected products into the routing evaluation" },
-      { icon: Settings, text: "Platform configured and ready to receive prescriptions through the e-prescribing workflow" },
-    ],
-  },
-  {
-    num: 2,
-    title: "Validate, Route & Fulfill",
-    subtitle: "Real-time all-channel eRx routing",
-    bullets: [
-      { icon: Send, text: "Prescriptions received directly through the e-prescribing workflow" },
-      { icon: CheckCircle2, text: "Every in-scope eRx evaluated across all available channels: specialty, mail order, retail, manufacturer-direct, and independent pharmacy" },
-      { icon: Route, text: "Routed in real time to the lowest net cost based on actual pricing across all channels" },
-      { icon: Package, text: "Fulfilled through independent community pharmacies or shipped direct to member in manufacturer-direct models" },
-    ],
-  },
-  {
-    num: 3,
-    title: "Collect, Pay & Report",
-    subtitle: "Closed-loop financials and decision-level records",
-    bullets: [
-      { icon: DollarSign, text: "Collect member cost share and report to plan accumulators" },
-      { icon: CreditCard, text: "Bill plan portion through medical claim to TPA for data continuity" },
-      { icon: Building2, text: "Pay suppliers via ACH with transparent, pass-through economics" },
-      { icon: BarChart3, text: "Decision-level record produced for every prescription: channels compared, rules applied, routing rationale, net cost components" },
-    ],
-  },
-];
-
-const whyCards = [
-  {
-    icon: GitMerge,
-    title: "Independent",
-    desc: "No ownership in any dispensing channel. Routing decisions are structurally independent, the evaluation has no financial interest in the outcome.",
-  },
-  {
-    icon: Zap,
-    title: "Real-Time",
-    desc: "Every prescription routed at the point of decision, not sampled retrospectively, not reported after the fact. Real-time all-channel evaluation.",
-  },
-  {
-    icon: FileCheck,
-    title: "Documented",
-    desc: "Decision-level records for every script: channels compared, rules applied, routing rationale, and closed-loop financial reconciliation. Audit-ready by default.",
-  },
-  {
-    icon: Puzzle,
-    title: "Compatible",
-    desc: "Works alongside your existing PBM and TPA. Carve out only the high-cost drugs where routing optimization has the greatest impact. Nothing else changes.",
-  },
-  {
-    icon: Factory,
-    title: "Manufacturer-Ready",
-    desc: "Turn-key infrastructure for manufacturer direct-to-employer programs: eRx intake, eligibility, billing, settlement, and accumulator reporting built in.",
-  },
-];
-
-const dbiRequirements = [
-  "Real-time routing to lowest net cost across all channels",
-  "Pharmacy-licensed operator with no channel ownership",
-  "Manufacturer-direct programs built into the benefit",
-  "Fulfilled through independent community pharmacies",
-  "Decision-level records for every script",
-];
-
-/* ─── Page ─── */
-
 export default function HomePage() {
   return (
     <>
       <OrganizationSchema />
+
       {/* ── SECTION 1: HERO ── */}
-      <section className="relative bg-[#0F1C2E] overflow-hidden">
+      <section className="relative bg-navy overflow-hidden">
+        {/* Subtle orange gradient in upper-right */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute top-0 right-0 w-[600px] h-[600px]"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(242, 101, 34, 0.3) 1px, transparent 0)",
-            backgroundSize: "40px 40px",
+            background: "radial-gradient(circle at center, rgba(255,94,0,0.05), transparent 70%)",
           }}
         />
-        <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
-            Direct Drug Access - Simplified.
+        <div className="relative max-w-content mx-auto px-6 md:px-12 pt-[140px] md:pt-[180px] pb-16 md:pb-24">
+          <span className="font-sans text-eyebrow uppercase text-white/[0.35] block mb-5">
+            Drug Benefit Infrastructure
+          </span>
+          {/* Orange rule */}
+          <div className="w-10 h-[2px] bg-orange mb-8" />
+          <h1 className="font-serif text-[34px] md:text-[48px] lg:text-[60px] text-white leading-[1.1] tracking-tighter-display max-w-[720px] mb-6">
+            The Operating Layer for Manufacturer Direct-to-Employer Programs
           </h1>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-            The drug program operating system with configurable rules, real-time eRx routing to the lowest net cost across all channels, medical claims settlement, decision-level reporting, and VIP member experience, built to work alongside your PBM and TPA with full structural independence.
+          <p className="font-sans text-base md:text-lg text-white/[0.60] max-w-[560px] leading-body mb-10">
+            ApalyRx provides the complete operational, regulatory, and technology infrastructure
+            that makes a manufacturer&apos;s direct-to-employer channel executable. Existing
+            distribution arrangements remain intact by architecture, not by workaround.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+              href="/manufacturers"
+              className="font-sans text-btn bg-white text-navy hover:bg-white/90 px-6 py-2.5 transition-colors duration-200 text-center"
             >
-              Request a Conversation
+              For Manufacturers
             </Link>
             <Link
-              href="#how-it-works"
-              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white border border-white/30 font-heading font-semibold text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+              href="/employers"
+              className="font-sans text-btn text-white border border-white/[0.45] hover:border-white hover:bg-white/[0.07] px-6 py-2.5 transition-colors duration-200 text-center"
             >
-              See How It Works
+              For Employers
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 2: TRUST BAR ── */}
-      <section className="bg-white border-b border-border">
-        <div className="max-w-content mx-auto px-4 py-10 md:py-14">
-          <p className="font-heading text-sm md:text-base text-muted-foreground text-center mb-8">
-            Trusted by employers and health plans covering 500K+ lives
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            {trustStats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="flex items-center justify-center mb-2">
-                  <stat.icon className="w-5 h-5 text-[#F26522] mr-2" />
-                  <span className="font-heading text-2xl md:text-3xl font-bold text-navy">
-                    {stat.value}
-                  </span>
-                </div>
-                <p className="font-body text-sm text-muted-foreground">{stat.label}</p>
+      {/* ── SECTION 2: CREDENTIAL STRIP ── */}
+      <CredentialStrip />
+
+      {/* ── SECTION 3: THE MARKET MOMENT ── */}
+      <section className="bg-off-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-24">
+            {/* Left column */}
+            <div>
+              <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
+                The Market Moment
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display mb-8">
+                The Direct-to-Employer Channel Is Taking Shape Now
+              </h2>
+              <div className="space-y-5 font-sans text-base text-text-secondary leading-body">
+                <p>
+                  The employer-sponsored health plan market represents 154 million Americans in
+                  self-funded plans. It is the only channel that does not require PBM formulary
+                  permission. Manufacturers who establish credible, compliant direct-to-employer
+                  infrastructure now will help define the standard.
+                </p>
+                <p>
+                  The legislative environment has shifted materially. Regulatory scrutiny of
+                  intermediary practices is at its highest point in a generation. The manufacturers
+                  who move now will be significantly better positioned than those who wait.
+                </p>
+                <p>
+                  ApalyRx has built the infrastructure. The question is not whether to build a
+                  direct-to-employer channel. It is whether your organization accesses what is
+                  already operational today.
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 3: THE PROBLEM ── */}
-      <section className="relative bg-gradient-to-br from-red-50 via-orange-50 to-white py-16 md:py-24 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, #dc2626 0, #dc2626 1px, transparent 0, transparent 50%)",
-            backgroundSize: "20px 20px",
-          }}
-        />
-        <div className="relative max-w-content mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-red-100 text-red-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-              <AlertTriangle className="w-4 h-4" />
-              <span className="font-heading">The Broken System</span>
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy leading-tight">
-              Employers Overpay. Manufacturers Lose. Members Suffer.
-            </h2>
-          </div>
 
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {problemCards.map((card) => (
-              <div
-                key={card.title}
-                className="group bg-white rounded-xl p-6 md:p-8 shadow-lg border border-red-100 hover:border-red-200 transition-all duration-300 relative overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-t-xl" />
-                <div className="p-3 rounded-xl bg-red-100 group-hover:bg-red-500 transition-all duration-300 w-fit mb-4">
-                  <card.icon className="w-7 h-7 text-red-600 group-hover:text-white transition-all duration-300" />
+            {/* Right column - stat stack */}
+            <div className="border-t lg:border-t-0 lg:border-l border-border pt-8 lg:pt-0 lg:pl-20">
+              <div className="space-y-0">
+                {/* Stat 1 */}
+                <div className="pb-8 border-b border-border">
+                  <div className="font-serif text-[40px] md:text-[46px] text-navy tracking-tight-display leading-none mb-3">
+                    40&ndash;60%
+                  </div>
+                  <p className="font-sans text-[13px] text-text-secondary max-w-[280px] leading-relaxed">
+                    of WAC captured by intermediaries in standard distribution. Wholesaler margin,
+                    PBM spread, specialty pharmacy fees, and rebate float.
+                  </p>
                 </div>
-                <p className="font-heading text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">
-                  {card.audience}
-                </p>
-                <h3 className="font-heading text-xl md:text-2xl font-bold text-navy mb-3">
-                  {card.title}
-                </h3>
-                <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
-                  {card.desc}
-                </p>
+                {/* Stat 2 */}
+                <div className="py-8 border-b border-border">
+                  <div className="font-serif text-[40px] md:text-[46px] text-navy tracking-tight-display leading-none mb-3">
+                    90&ndash;180 days
+                  </div>
+                  <p className="font-sans text-[13px] text-text-secondary max-w-[280px] leading-relaxed">
+                    rebates held by intermediaries before any portion reaches the employer plan
+                  </p>
+                </div>
+                {/* Stat 3 */}
+                <div className="pt-8">
+                  <div className="font-serif text-[40px] md:text-[46px] text-navy tracking-tight-display leading-none mb-3">
+                    154M
+                  </div>
+                  <p className="font-sans text-[13px] text-text-secondary max-w-[280px] leading-relaxed">
+                    Americans in self-funded employer plans. A channel that does not require
+                    formulary permission to access.
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="inline-block font-body text-sm md:text-base text-white bg-[#0F1C2E] rounded-full px-6 py-3">
-              <span className="text-[#F26522] font-semibold">ApalyRx</span> closes this gap with real-time independent routing, decision-level documentation, and turn-key manufacturer infrastructure
-            </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── SECTION 4: WHO WE SERVE ── */}
-      <SectionWrapper bg="white">
-        <div className="text-center mb-14 animate-fade-up">
-          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy mb-4 leading-tight">
+      <section className="bg-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
             Who We Serve
+          </span>
+          <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display mb-12">
+            Infrastructure Built for Two Parties.<br />
+            Designed for One Outcome.
           </h2>
-        </div>
 
-        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 stagger-children">
-          {stakeholders.map((s) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              className={`group bg-white rounded-xl p-6 shadow-lg border-l-4 ${s.borderColor} hover:shadow-xl transition-all duration-300`}
-            >
-              <div className={`p-2 rounded-lg ${s.iconBg} text-white w-fit mb-3`}>
-                <s.icon className="w-6 h-6" />
-              </div>
-              <p className="font-heading text-xs font-semibold text-[#F26522] uppercase tracking-wider mb-1">
-                {s.tag}
-              </p>
-              <h3 className="font-heading text-lg font-bold text-navy mb-2">{s.title}</h3>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
-                {s.desc}
-              </p>
-              <span className="font-heading text-[#F26522] font-semibold text-sm group-hover:translate-x-1 inline-block transition-transform duration-300">
-                Learn More &rarr;
+          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "2px", background: "rgba(16,42,76,0.10)" }}>
+            {/* Card 1 - Manufacturers */}
+            <div className="bg-white p-8 md:p-12">
+              <span className="font-sans text-eyebrow uppercase text-orange block mb-3">
+                For Manufacturers
               </span>
-            </Link>
-          ))}
+              <h3 className="font-serif text-[22px] md:text-[26px] text-text-primary leading-[1.2] tracking-tight-display mb-4">
+                Your DTE Channel. Built, Operational, Ready to Activate.
+              </h3>
+              <p className="font-sans text-base text-text-secondary leading-body mb-6">
+                ApalyRx provides the complete operating layer for manufacturer direct-to-employer
+                programs: eRx intake, eligibility, fulfillment routing, medical-claim billing,
+                accumulator reporting, and supplier settlement. Your existing channel arrangements
+                remain intact by architecture, not by workaround.
+              </p>
+              <Link
+                href="/manufacturers"
+                className="font-sans text-[13px] text-navy border-b border-border hover:border-navy pb-0.5 tracking-link transition-colors duration-200"
+              >
+                Manufacturer Infrastructure &rarr;
+              </Link>
+            </div>
+            {/* Card 2 - Employers */}
+            <div className="bg-off-white p-8 md:p-12">
+              <span className="font-sans text-eyebrow uppercase text-orange block mb-3">
+                For Employers &amp; Health Plans
+              </span>
+              <h3 className="font-serif text-[22px] md:text-[26px] text-text-primary leading-[1.2] tracking-tight-display mb-4">
+                Lowest Net Cost. Every Script. Full Audit Record.
+              </h3>
+              <p className="font-sans text-base text-text-secondary leading-body mb-6">
+                Configure targeted drug programs, access manufacturer-direct pricing inside your
+                benefit, and receive decision-level documentation for every routing decision. Works
+                alongside your existing PBM and TPA. Nothing changes except the cost and the
+                transparency.
+              </p>
+              <Link
+                href="/employers"
+                className="font-sans text-[13px] text-navy border-b border-border hover:border-navy pb-0.5 tracking-link transition-colors duration-200"
+              >
+                Employer Platform &rarr;
+              </Link>
+            </div>
+          </div>
         </div>
-      </SectionWrapper>
+      </section>
 
-      {/* ── SECTION 5: HOW IT WORKS ── */}
-      <section id="how-it-works" className="relative bg-[#0F1C2E] text-white overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 translate-x-1/2 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F26522] rounded-full blur-3xl opacity-10 -translate-x-1/2 translate-y-1/4" />
-        <div className="relative max-w-content mx-auto px-4 py-16 md:py-24">
-          <div className="text-center mb-14">
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
-              How It Works: Configure, Route, Settle
+      {/* ── SECTION 5: PLATFORM PILLARS ── */}
+      <section id="how-it-works" className="bg-navy">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          {/* Header - 2 column */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-14">
+            <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-white leading-[1.15] tracking-tight-display">
+              Built for Enterprise Scale and Compliance
             </h2>
-            <p className="font-body text-lg md:text-xl text-white/70">
-              A seamless process from prescription to delivery
+            <p className="font-sans text-base text-white/50 leading-body lg:pt-2">
+              ApalyRx is the only platform that meets all five Drug Benefit Integrity requirements
+              simultaneously. Real-time routing, no channel ownership, manufacturer-direct programs
+              inside the benefit, independent pharmacy fulfillment, and per-prescription
+              decision-level records.
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto space-y-6">
-            {howItWorksSteps.map((step) => (
-              <div
-                key={step.num}
-                className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 hover:border-[#F26522]/50 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="flex items-start gap-5">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#F26522] to-[#d45519] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition-all duration-300">
-                    {step.num}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-heading text-xl md:text-2xl font-bold mb-1">
-                      {step.title}
-                    </h3>
-                    <p className="font-body text-sm md:text-base text-white/50 mb-5">
-                      {step.subtitle}
-                    </p>
-                    <ul className="space-y-3">
-                      {step.bullets.map((bullet, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <div className="p-1.5 rounded-md bg-[#F26522]/20 flex-shrink-0 mt-0.5">
-                            <bullet.icon className="w-4 h-4 text-[#F26522]" />
-                          </div>
-                          <span className="font-body text-sm md:text-base text-white/70">
-                            {bullet.text}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom callout */}
-          <div className="max-w-4xl mx-auto mt-10">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
-              <p className="font-body text-sm md:text-base text-white/80">
-                Your PBM and plan stay untouched. ApalyRx operates alongside existing infrastructure, routing high-cost prescriptions to the lowest net cost and documenting every decision.
+          {/* Three pillars */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+            {/* Pillar 01 */}
+            <div className="border-t border-white/[0.07] pt-8 pb-8 lg:pr-8">
+              <span className="font-serif text-xs text-orange tracking-[0.06em] block mb-4">01</span>
+              <h4 className="font-serif text-[19px] text-white leading-[1.3] mb-4">
+                Existing Arrangements Protected by Architecture
+              </h4>
+              <p className="font-sans text-sm text-white/[0.45] leading-relaxed">
+                The manufacturer&apos;s only counterparty is ApalyRx. There are no direct employer
+                relationships to establish or defend. Existing channel relationships with distributors
+                and commercial partners are preserved by design through a commercial structure built
+                around a single contracted relationship, one counterparty, one monthly invoice, one
+                rebate line deduction.
+              </p>
+            </div>
+            {/* Pillar 02 */}
+            <div className="border-t border-white/[0.07] pt-8 pb-8 lg:px-8 lg:border-l">
+              <span className="font-serif text-xs text-orange tracking-[0.06em] block mb-4">02</span>
+              <h4 className="font-serif text-[19px] text-white leading-[1.3] mb-4">
+                Patent-Pending DSCSA Compliance in a Custody-Without-Title Model
+              </h4>
+              <p className="font-sans text-sm text-white/[0.45] leading-relaxed">
+                The only platform that generates per-prescription DSCSA T3 documentation in a
+                custody-without-title 3PL model without a standard change-of-ownership trigger.
+                No existing compliance tool, distributor, or specialty pharmacy has solved this.
+                No manufacturer system builds required. Provisional patent filed March 2026.
+              </p>
+            </div>
+            {/* Pillar 03 */}
+            <div className="border-t border-white/[0.07] pt-8 pb-8 lg:pl-8 lg:border-l">
+              <span className="font-serif text-xs text-orange tracking-[0.06em] block mb-4">03</span>
+              <h4 className="font-serif text-[19px] text-white leading-[1.3] mb-4">
+                One Ship-To Address. ApalyRx Handles Everything Else.
+              </h4>
+              <p className="font-sans text-sm text-white/[0.45] leading-relaxed">
+                The manufacturer ships bulk to the ApalyRx-designated 3PL on its existing monthly
+                cadence, identical to any distributor shipment. ApalyRx manages 3PL coordination,
+                pharmacy credentialing across all 50 states, DSCSA documentation, fulfillment
+                routing, and all downstream operations.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SECTION 6: WHY APALYRX ── */}
-      <SectionWrapper bg="light">
-        <div className="text-center mb-14 animate-fade-up">
-          <h2 className="font-heading text-3xl md:text-[2.5rem] font-bold text-navy mb-4 leading-tight">
-            Five Reasons to Choose ApalyRx
-          </h2>
-        </div>
-
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 stagger-children">
-          {whyCards.map((card) => (
-            <div
-              key={card.title}
-              className="group bg-white rounded-xl p-6 shadow-lg border border-gray-100 border-t-4 border-t-[#F26522] hover:border-[#F26522]/30 hover:shadow-xl transition-all duration-300"
-            >
-              <div className="p-3 rounded-lg bg-[#F26522] text-white w-fit mb-4">
-                <card.icon className="h-8 w-8" />
-              </div>
-              <h3 className="font-heading text-xl md:text-2xl font-semibold text-navy mb-3">
-                {card.title}
-              </h3>
-              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
-                {card.desc}
+      {/* ── SECTION 6: FINAL CTA ── */}
+      <section className="bg-off-white">
+        <div className="max-w-content mx-auto px-6 md:px-12 py-16 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div>
+              <span className="font-sans text-eyebrow uppercase text-orange block mb-4">
+                Get Started
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-text-primary leading-[1.15] tracking-tight-display mb-6">
+                This Is Not a Pilot Program. The Infrastructure Is Operational Today.
+              </h2>
+              <p className="font-sans text-base text-text-secondary leading-body">
+                ApalyRx has been operating since 2018 and serves Fortune 500 employers. The platform
+                is live, compliant, and ready to activate. Tell us which high-cost drugs are driving
+                your costs. We will show you how ApalyRx addresses them.
               </p>
             </div>
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ── SECTION 7: DBI STANDARD ── */}
-      <SectionWrapper bg="white">
-        <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
-            Built on the Drug Benefit Integrity Standard
-          </h2>
-          <p className="font-body text-base sm:text-lg text-muted-foreground mb-10 max-w-3xl mx-auto">
-            Drug Benefit Integrity (DBI) is an independent industry standard with five structural requirements for ensuring that pharmacy benefit decisions are made in the plan&apos;s interest. ApalyRx meets all five.
-          </p>
-        </div>
-
-        <div className="max-w-3xl mx-auto animate-fade-up">
-          <div className="divide-y divide-border">
-            {dbiRequirements.map((req, i) => (
-              <div key={i} className="flex items-start gap-4 py-4">
-                <CheckCircle2 className="w-7 h-7 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="font-body text-base md:text-lg text-navy font-medium">
-                  {req}
-                </span>
-              </div>
-            ))}
+            <div className="flex flex-col items-start lg:items-end gap-4">
+              <Link
+                href="/contact"
+                className="font-sans text-btn bg-navy hover:bg-navy-dark text-white px-6 py-2.5 transition-colors duration-200"
+              >
+                Schedule a Briefing
+              </Link>
+              <Link
+                href="/#how-it-works"
+                className="font-sans text-[13px] text-navy border-b border-border hover:border-navy pb-0.5 tracking-link transition-colors duration-200"
+              >
+                View the Platform &rarr;
+              </Link>
+            </div>
           </div>
-
-          <div className="text-center mt-8 mb-6">
-            <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
-              ApalyRx is the only entity that meets all five requirements.
-            </p>
-          </div>
-          <div className="text-center">
-            <Link
-              href="/resources/drug-benefit-integrity"
-              className="font-heading text-[#F26522] hover:text-[#F26522]/80 font-semibold transition-all duration-300"
-            >
-              Learn more about the DBI standard &rarr;
-            </Link>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* ── SECTION 8: FINAL CTA ── */}
-      <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-            Ready to Take Control?
-          </h2>
-          <p className="font-heading text-xl sm:text-2xl md:text-3xl text-[#F26522] font-semibold mb-6">
-            Let&apos;s Define Your Key Problem Drugs.
-          </p>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Tell us which drug categories are driving your costs. We will show you how ApalyRx can route those prescriptions to the lowest net cost alongside your existing PBM and TPA, with decision-level documentation for every script and real savings projections based on your population.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
-          >
-            Request a Conversation
-          </Link>
         </div>
       </section>
     </>

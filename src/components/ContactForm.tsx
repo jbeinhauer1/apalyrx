@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { CheckCircle2 } from "lucide-react";
 
 const roles = [
   "PBM / Health Plan",
@@ -54,11 +53,13 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="text-center py-16">
-        <div className="w-16 h-16 bg-[#0F1C2E] rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle2 className="w-8 h-8 text-white" />
+        <div className="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
         </div>
-        <h3 className="font-heading text-2xl font-bold text-navy mb-3">Thank you.</h3>
-        <p className="font-body text-lg text-muted-foreground">
+        <h3 className="font-serif text-2xl text-navy mb-3">Thank you.</h3>
+        <p className="font-sans text-lg text-text-secondary">
           We will be in touch within one business day.
         </p>
       </div>
@@ -67,9 +68,8 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Name */}
       <div>
-        <label htmlFor="name" className="block font-heading text-sm font-medium text-navy mb-1.5">
+        <label htmlFor="name" className="block font-sans text-sm text-text-primary mb-1.5">
           Name <span className="text-orange">*</span>
         </label>
         <input
@@ -77,13 +77,12 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
-          className="w-full px-4 h-11 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all duration-300 font-body text-body"
+          className="w-full px-4 h-11 border border-border focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none transition-all duration-200 font-sans text-text-primary"
         />
       </div>
 
-      {/* Email */}
       <div>
-        <label htmlFor="email" className="block font-heading text-sm font-medium text-navy mb-1.5">
+        <label htmlFor="email" className="block font-sans text-sm text-text-primary mb-1.5">
           Email <span className="text-orange">*</span>
         </label>
         <input
@@ -91,32 +90,30 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
-          className="w-full px-4 h-11 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all duration-300 font-body text-body"
+          className="w-full px-4 h-11 border border-border focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none transition-all duration-200 font-sans text-text-primary"
         />
       </div>
 
-      {/* Organization */}
       <div>
-        <label htmlFor="organization" className="block font-heading text-sm font-medium text-navy mb-1.5">
+        <label htmlFor="organization" className="block font-sans text-sm text-text-primary mb-1.5">
           Organization
         </label>
         <input
           type="text"
           id="organization"
           name="organization"
-          className="w-full px-4 h-11 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all duration-300 font-body text-body"
+          className="w-full px-4 h-11 border border-border focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none transition-all duration-200 font-sans text-text-primary"
         />
       </div>
 
-      {/* Role */}
       <div>
-        <label htmlFor="role" className="block font-heading text-sm font-medium text-navy mb-1.5">
+        <label htmlFor="role" className="block font-sans text-sm text-text-primary mb-1.5">
           Role
         </label>
         <select
           id="role"
           name="role"
-          className="w-full px-4 h-11 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all duration-300 font-body text-body bg-white"
+          className="w-full px-4 h-11 border border-border focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none transition-all duration-200 font-sans text-text-primary bg-white"
         >
           <option value="">Select your role</option>
           {roles.map((r) => (
@@ -127,27 +124,26 @@ export default function ContactForm() {
         </select>
       </div>
 
-      {/* Message */}
       <div>
-        <label htmlFor="message" className="block font-heading text-sm font-medium text-navy mb-1.5">
+        <label htmlFor="message" className="block font-sans text-sm text-text-primary mb-1.5">
           Message
         </label>
         <textarea
           id="message"
           name="message"
           rows={5}
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all duration-300 font-body text-body resize-vertical"
+          className="w-full px-4 py-3 border border-border focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none transition-all duration-200 font-sans text-text-primary resize-vertical"
         />
       </div>
 
       {status === "error" && (
-        <p className="font-body text-red-600 text-sm">{errorMsg}</p>
+        <p className="font-sans text-red-600 text-sm">{errorMsg}</p>
       )}
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full h-12 bg-[#0F1C2E] hover:bg-[#0F1C2E]/90 disabled:opacity-60 text-white font-heading font-semibold rounded-lg transition-all duration-300 text-[16px]"
+        className="w-full h-12 bg-navy hover:bg-navy-dark disabled:opacity-60 text-white font-sans text-btn transition-colors duration-200"
       >
         {status === "sending" ? "Sending..." : "Send Message"}
       </button>

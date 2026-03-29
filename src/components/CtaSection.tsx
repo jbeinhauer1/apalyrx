@@ -8,18 +8,18 @@ interface CtaSectionProps {
 
 export default function CtaSection({
   text,
-  buttonLabel = "Request a Conversation",
+  buttonLabel = "Schedule a Briefing",
   buttonHref = "/contact",
 }: CtaSectionProps) {
   return (
-    <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
-      <div className="max-w-3xl mx-auto px-4 text-center">
-        <p className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-balance">
+    <section className="bg-navy py-16 md:py-24">
+      <div className="max-w-content mx-auto px-6 md:px-12 text-center">
+        <p className="font-serif text-[28px] md:text-[36px] lg:text-[42px] text-white leading-[1.15] tracking-tight-display mb-10 max-w-[620px] mx-auto">
           {text}
         </p>
         <Link
           href={buttonHref}
-          className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-lg px-8 py-6 rounded-lg transition-all duration-300"
+          className="font-sans text-btn text-white border border-white/[0.45] hover:border-white hover:bg-white/[0.07] px-6 py-2.5 transition-colors duration-200 inline-block"
         >
           {buttonLabel}
         </Link>

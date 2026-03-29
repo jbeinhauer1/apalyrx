@@ -70,7 +70,7 @@ export default function LowestNetCostRoutingPage() {
       <FaqSchema items={faqItems} />
 
       {/* Hero */}
-      <section className="relative bg-[#0F1C2E] overflow-hidden">
+      <section className="relative bg-navy overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -82,12 +82,12 @@ export default function LowestNetCostRoutingPage() {
         <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/20">
             <Route className="w-4 h-4" />
-            <span className="font-heading">Education</span>
+            <span className="font-sans">Education</span>
           </div>
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-white mb-6">
             What Is Lowest Net Cost Prescription Routing?
           </h1>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             &quot;Lowest net cost&quot; is one of the most frequently used, and least precisely defined,
             terms in pharmacy benefits. Every PBM claims to deliver it. Every employer wants it. But
             what does it actually mean to route a prescription to the lowest net cost, and how can a
@@ -101,10 +101,10 @@ export default function LowestNetCostRoutingPage() {
         <div className="max-w-4xl mx-auto px-4 py-16 md:py-24">
           {/* Defining "Net Cost" */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               Defining &quot;Net Cost&quot;
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 The net cost of a prescription is the final amount the plan pays after all pricing
                 adjustments have been applied. This includes the drug acquisition cost, dispensing
@@ -133,42 +133,42 @@ export default function LowestNetCostRoutingPage() {
 
           {/* What "All Channels" Means */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               What &quot;All Channels&quot; Means
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-6">
               True lowest-net-cost routing requires evaluating every available fulfillment channel
               for each prescription. In today&apos;s pharmacy landscape, the relevant channels
               include:
             </p>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">PBM Specialty Pharmacy</strong>: The PBM&apos;s
+                <strong className="text-navy">PBM Specialty Pharmacy</strong>: The PBM&apos;s
                 owned or affiliated specialty pharmacy, typically used for high-cost medications
                 requiring special handling, clinical monitoring, or prior authorization.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">PBM Mail-Order Pharmacy</strong>: The PBM&apos;s
+                <strong className="text-navy">PBM Mail-Order Pharmacy</strong>: The PBM&apos;s
                 mail-order operation, usually offering 90-day fills at negotiated rates.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Retail Pharmacy</strong>: Chain and independent
+                <strong className="text-navy">Retail Pharmacy</strong>: Chain and independent
                 pharmacies where members fill prescriptions in person.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Manufacturer-Direct Programs</strong>: Copay
+                <strong className="text-navy">Manufacturer-Direct Programs</strong>: Copay
                 programs, patient assistance programs, and direct pricing offered by drug
                 manufacturers, including{" "}
                 <Link
                   href="/resources/direct-to-employer-drug-programs"
-                  className="text-[#F26522] hover:text-[#F26522]/80 font-semibold"
+                  className="text-orange hover:text-orange/80 font-semibold"
                 >
                   DTC, DTP, and DTE models
                 </Link>
                 .
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Independent Community Pharmacy</strong>:
+                <strong className="text-navy">Independent Community Pharmacy</strong>:
                 Independently owned pharmacies that are not affiliated with PBMs, insurers, or group
                 purchasing organizations.
               </p>
@@ -184,22 +184,22 @@ export default function LowestNetCostRoutingPage() {
 
           {/* Why "Real-Time" Matters */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               Why &quot;Real-Time&quot; Matters
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-6">
               Timing is the difference between routing and reporting.
             </p>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">Real-time routing</strong> means the evaluation
+                <strong className="text-navy">Real-time routing</strong> means the evaluation
                 happens at the point of decision: when the prescription is received and before it
                 is filled. The system evaluates all channels, compares net costs, and routes the
                 prescription to the lowest-cost option. The decision is made before the member
                 receives the medication.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Retrospective analysis</strong> means the
+                <strong className="text-navy">Retrospective analysis</strong> means the
                 evaluation happens after the fact: in a quarterly review, an annual audit, or a PBM
                 performance report. The prescription has already been filled. The plan has already
                 paid. The analysis can identify that a lower-cost option existed, but it cannot
@@ -213,8 +213,8 @@ export default function LowestNetCostRoutingPage() {
               </p>
             </div>
 
-            <div className="my-10 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-5">
-              <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
+            <div className="my-10 border-l-4 border-[#F26522] bg-orange/5 px-6 py-5">
+              <p className="font-serif text-lg md:text-xl text-navy">
                 The difference between real-time routing and retrospective analysis is the difference
                 between preventing overpayment and discovering it after the fact.
               </p>
@@ -223,37 +223,37 @@ export default function LowestNetCostRoutingPage() {
 
           {/* The Problem With Current "Lowest Net Cost" Claims */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               The Problem With Current &quot;Lowest Net Cost&quot; Claims
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-6">
               When a PBM reports that it delivered the &quot;lowest net cost&quot; for a client,
               several questions are worth asking:
             </p>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">Lowest compared to what?</strong> If the
+                <strong className="text-navy">Lowest compared to what?</strong> If the
                 comparison only includes the PBM&apos;s own channels: its specialty pharmacy, its
                 mail-order pharmacy, its contracted retail network, the evaluation is incomplete.
                 Manufacturer-direct pricing and independent pharmacy options may offer lower costs
                 but are not included in the comparison.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Lowest at what point in time?</strong> If the
+                <strong className="text-navy">Lowest at what point in time?</strong> If the
                 &quot;lowest net cost&quot; is calculated retrospectively after rebates and DIR fees
                 are reconciled, the actual cost at the point of dispensing may have been higher.
                 Retroactive adjustments can change the net cost months after the prescription was
                 filled.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Lowest for whom?</strong> A PBM that owns
+                <strong className="text-navy">Lowest for whom?</strong> A PBM that owns
                 pharmacies has a financial incentive to route prescriptions to its own channels, even
                 when an independent pharmacy or manufacturer-direct option is cheaper for the plan.
                 The PBM&apos;s &quot;lowest net cost&quot; may reflect the lowest cost within its
                 vertically integrated operation, not the lowest cost available in the market.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Who verified it?</strong> If the entity
+                <strong className="text-navy">Who verified it?</strong> If the entity
                 reporting &quot;lowest net cost&quot; is the same entity that made the routing
                 decision, the plan sponsor is relying on self-reported data. There is no independent
                 verification.
@@ -263,10 +263,10 @@ export default function LowestNetCostRoutingPage() {
 
           {/* What Decision-Level Documentation Looks Like */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               What Decision-Level Documentation Looks Like
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 Decision-level documentation is the evidence that lowest-net-cost routing actually
                 occurred. For each prescription, the documentation should include:
@@ -302,10 +302,10 @@ export default function LowestNetCostRoutingPage() {
 
           {/* How Lowest Net Cost Routing Supports Fiduciary Compliance */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               How Lowest Net Cost Routing Supports Fiduciary Compliance
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 Under ERISA, plan fiduciaries must act with prudence and in the best interest of
                 plan participants. The Consolidated Appropriations Act of 2026 requires plan
@@ -320,8 +320,8 @@ export default function LowestNetCostRoutingPage() {
               </p>
             </div>
 
-            <div className="my-10 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-5">
-              <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
+            <div className="my-10 border-l-4 border-[#F26522] bg-orange/5 px-6 py-5">
+              <p className="font-serif text-lg md:text-xl text-navy">
                 This is the difference between telling a court &quot;our PBM said they saved us
                 money&quot; and showing a court &quot;here is the documented proof that each
                 prescription was independently evaluated and routed to the lowest net cost.&quot;
@@ -331,7 +331,7 @@ export default function LowestNetCostRoutingPage() {
 
           {/* FAQ */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-8">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-8">
               Frequently Asked Questions
             </h2>
             <FaqAccordion items={faqItems} />
@@ -343,18 +343,18 @@ export default function LowestNetCostRoutingPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
+      <section className="bg-navy text-white py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">
             See Lowest Net Cost Routing in Action
           </h2>
-          <p className="font-body text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="font-sans text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             ApalyRx evaluates every in-scope prescription across all available channels in real time
             and documents every routing decision.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+            className="inline-flex items-center justify-center bg-orange hover:bg-orange/90 text-white font-sans font-semibold text-base md:text-lg px-6 md:px-8 py-4 md:py-6 transition-all duration-300"
           >
             <CheckCircle2 className="w-5 h-5 mr-2" />
             Request a Conversation

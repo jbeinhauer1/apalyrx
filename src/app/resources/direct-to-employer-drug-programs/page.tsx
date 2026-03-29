@@ -87,7 +87,7 @@ export default function DTEPage() {
       <FaqSchema items={faqItems} />
 
       {/* Hero */}
-      <section className="relative bg-[#0F1C2E] overflow-hidden">
+      <section className="relative bg-navy overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -99,12 +99,12 @@ export default function DTEPage() {
         <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/20">
             <Building2 className="w-4 h-4" />
-            <span className="font-heading">Education</span>
+            <span className="font-sans">Education</span>
           </div>
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-white mb-6">
             Direct-to-Employer Drug Programs (DTE)
           </h1>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             The pharmaceutical supply chain is changing. Manufacturers are building direct channels
             to reach patients, and increasingly, to reach the employers who fund their benefits.
             But most of what the market calls &quot;Direct-to-Employer&quot; today is clinical program
@@ -119,19 +119,19 @@ export default function DTEPage() {
         <div className="max-w-4xl mx-auto px-4 py-16 md:py-24">
           {/* Three Direct Channels */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               Three Direct Channels: DTC, DTP, and DTE
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-8">
               The industry uses three related but distinct terms for manufacturer-direct programs.
               Understanding the differences matters because each has different implications for
               employer plans, member experience, and benefit integration.
             </p>
 
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+            <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
               Direct-to-Consumer (DTC)
             </h3>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-8">
               DTC programs make medications available to individual consumers at manufacturer-set
               prices, typically through a dedicated website or coupon program. Examples include
               TrumpRx, GoodRx manufacturer pricing, and manufacturer copay cards. The consumer pays
@@ -140,10 +140,10 @@ export default function DTEPage() {
               invisible to the plan.
             </p>
 
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+            <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
               Direct-to-Patient (DTP)
             </h3>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-8">
               DTP programs add clinical services to the DTC model. The manufacturer or a partner
               provides telehealth for diagnosis and prescribing, then manages the prescription,
               shipping, patient support, and ongoing monitoring. LillyDirect and NovoCare are
@@ -152,10 +152,10 @@ export default function DTEPage() {
               programs currently sit outside the employer benefit.
             </p>
 
-            <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E] mb-4">
+            <h3 className="font-serif text-xl md:text-2xl text-navy mb-4">
               Direct-to-Employer (DTE)
             </h3>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed mb-8">
               <p>
                 DTE programs bring manufacturer pricing inside employer-sponsored health plans,
                 bypassing traditional PBM adjudication for targeted drug categories. Unlike DTC and
@@ -183,15 +183,15 @@ export default function DTEPage() {
 
           {/* Why Manufacturers Are Going Direct */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               Why Manufacturers Are Going Direct
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-6">
               Three forces are driving the shift toward direct channels:
             </p>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">
+                <strong className="text-navy">
                   PBM economics no longer serve manufacturer interests in every category.
                 </strong>{" "}
                 For high-cost specialty and GLP-1 medications, manufacturers have found that PBM
@@ -201,7 +201,7 @@ export default function DTEPage() {
                 employer and patient.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">
+                <strong className="text-navy">
                   Regulatory tailwinds are accelerating direct models.
                 </strong>{" "}
                 In January 2026, HHS issued guidance clarifying that manufacturers can offer
@@ -212,7 +212,7 @@ export default function DTEPage() {
                 in February 2026 with most-favored-nation pricing from major manufacturers.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">The economics are compelling.</strong> When a
+                <strong className="text-navy">The economics are compelling.</strong> When a
                 manufacturer sells a GLP-1 medication through the traditional PBM channel, the
                 employer&apos;s net cost after rebate may still be $750+ per month, and that
                 number is difficult to verify in real time. Through a DTE program, the manufacturer
@@ -224,16 +224,16 @@ export default function DTEPage() {
 
           {/* The Problem With Current DTE Models */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               The Problem With Current DTE Models
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-6">
               Most current DTE models have a critical gap: they exist outside the employer&apos;s
               benefit infrastructure. This creates several problems:
             </p>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">
+                <strong className="text-navy">
                   Clinical management is not benefit integration.
                 </strong>{" "}
                 Many vendors marketed as &quot;DTE&quot; provide clinical program management -
@@ -243,25 +243,25 @@ export default function DTEPage() {
                 reporting, and claims settlement, the program is still outside the plan.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Accumulator disconnection.</strong> If a
+                <strong className="text-navy">Accumulator disconnection.</strong> If a
                 member&apos;s cost-share for a DTE prescription does not apply to their deductible or
                 out-of-pocket maximum, the member is effectively paying twice: once for the DTE
                 medication and again toward a deductible that does not reflect their actual spending.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">No integration with plan administration.</strong>{" "}
+                <strong className="text-navy">No integration with plan administration.</strong>{" "}
                 DTE transactions that sit outside the TPA&apos;s claims system create data gaps. The
                 employer cannot see the full picture of its pharmacy spend. The TPA cannot
                 coordinate benefits. Stop-loss carriers cannot assess exposure.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">No independent verification.</strong> When a DTE
+                <strong className="text-navy">No independent verification.</strong> When a DTE
                 program claims to offer the &quot;lowest price,&quot; there is no independent mechanism to
                 verify that claim against all other available channels in real time. The employer is
                 trusting the manufacturer&apos;s assertion rather than seeing a comparative evaluation.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Pharmacy exclusion.</strong> Most
+                <strong className="text-navy">Pharmacy exclusion.</strong> Most
                 manufacturer-direct models use one or two nationally contracted mail-order
                 pharmacies. Independent community pharmacies are cut out of the supply chain
                 entirely, even though they are often the patient&apos;s preferred and most
@@ -272,57 +272,57 @@ export default function DTEPage() {
 
           {/* What Infrastructure Is Required */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               What Infrastructure Is Required to Bring DTE Inside the Benefit
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-6">
               For DTE to work as a true benefit integration, not just a cash-pay workaround,
               several operational components must be in place:
             </p>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
-                <strong className="text-[#0F1C2E]">eRx intake.</strong> The system must receive
+                <strong className="text-navy">eRx intake.</strong> The system must receive
                 prescriptions through the standard e-prescribing workflow (NCPDP SCRIPT), just like
                 any other pharmacy channel. Prescribers should not need to use a separate process.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Eligibility verification.</strong> The
+                <strong className="text-navy">Eligibility verification.</strong> The
                 member&apos;s benefit eligibility must be verified in real time against the employer&apos;s
                 plan enrollment data.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Cost-share calculation and collection.</strong>{" "}
+                <strong className="text-navy">Cost-share calculation and collection.</strong>{" "}
                 The member&apos;s cost-share (copay, coinsurance, deductible application) must be
                 calculated according to the plan&apos;s benefit design and collected at the point of
                 service.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Accumulator reporting.</strong> The member&apos;s
+                <strong className="text-navy">Accumulator reporting.</strong> The member&apos;s
                 cost-share must be reported to the plan&apos;s accumulators: deductible, out-of-pocket
                 maximum, so it is reflected in their benefit status across all providers.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Claims settlement.</strong> The plan&apos;s
+                <strong className="text-navy">Claims settlement.</strong> The plan&apos;s
                 portion must be settled through either the TPA&apos;s medical claims system or the
                 PBM&apos;s pharmacy claims system, depending on the employer&apos;s plan
                 administration model. Both paths require data continuity, stop-loss reporting, and
                 financial reconciliation.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Supplier settlement.</strong> Payment to the
+                <strong className="text-navy">Supplier settlement.</strong> Payment to the
                 manufacturer or its logistics partner must be processed with transparent,
                 pass-through economics: no spread, no retained margin.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Decision-level documentation.</strong> For each
+                <strong className="text-navy">Decision-level documentation.</strong> For each
                 prescription routed through a DTE channel, the system must document why that channel
                 was selected, what other channels were evaluated, and what the net cost comparison
                 showed.
               </p>
             </div>
 
-            <div className="my-10 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-5">
-              <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
+            <div className="my-10 border-l-4 border-[#F26522] bg-orange/5 px-6 py-5">
+              <p className="font-serif text-lg md:text-xl text-navy">
                 Without this infrastructure, DTE is just a manufacturer coupon dressed up as a
                 benefit. With it, DTE becomes a genuine channel option that can be evaluated
                 alongside PBM specialty, PBM mail, retail, and independent pharmacy.
@@ -332,10 +332,10 @@ export default function DTEPage() {
 
           {/* The Role of Independent Pharmacy */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               The Role of Independent Pharmacy in DTE
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 One of the most overlooked aspects of DTE is what happens at the pharmacy level. In
                 most manufacturer-direct models, the medication ships from the manufacturer&apos;s
@@ -364,15 +364,15 @@ export default function DTEPage() {
 
           {/* How DTE Relates to Drug Benefit Integrity */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               How DTE Relates to Drug Benefit Integrity
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 The{" "}
                 <Link
                   href="/resources/drug-benefit-integrity"
-                  className="text-[#F26522] hover:text-[#F26522]/80 font-semibold"
+                  className="text-orange hover:text-orange/80 font-semibold"
                 >
                   Drug Benefit Integrity (DBI)
                 </Link>{" "}
@@ -398,7 +398,7 @@ export default function DTEPage() {
 
           {/* FAQ */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-8">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-8">
               Frequently Asked Questions
             </h2>
             <FaqAccordion items={faqItems} />
@@ -410,18 +410,18 @@ export default function DTEPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
+      <section className="bg-navy text-white py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">
             Bring Manufacturer-Direct Programs Inside Your Benefit
           </h2>
-          <p className="font-body text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="font-sans text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             See how ApalyRx provides turn-key DTE infrastructure with real-time routing across all
             channels.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+            className="inline-flex items-center justify-center bg-orange hover:bg-orange/90 text-white font-sans font-semibold text-base md:text-lg px-6 md:px-8 py-4 md:py-6 transition-all duration-300"
           >
             <CheckCircle2 className="w-5 h-5 mr-2" />
             Request a Conversation

@@ -18,7 +18,11 @@
       "Bash(npx tsc:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(for file:*)",
+      "Bash(do)",
+      "Bash(node -e \":*)",
+      "Bash(done)"
     ]
   }
 }

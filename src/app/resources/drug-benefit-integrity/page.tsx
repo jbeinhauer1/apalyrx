@@ -139,7 +139,7 @@ export default function DrugBenefitIntegrityPage() {
       <FaqSchema items={faqItems} />
 
       {/* Hero */}
-      <section className="relative bg-[#0F1C2E] overflow-hidden">
+      <section className="relative bg-navy overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -151,12 +151,12 @@ export default function DrugBenefitIntegrityPage() {
         <div className="relative max-w-4xl mx-auto px-4 pt-28 sm:pt-32 md:pt-48 lg:pt-56 pb-12 md:pb-20 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full mb-6 border border-white/20">
             <Shield className="w-4 h-4" />
-            <span className="font-heading">Industry Standard</span>
+            <span className="font-sans">Industry Standard</span>
           </div>
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-white mb-6">
             Drug Benefit Integrity (DBI)
           </h1>
-          <p className="font-body text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Drug Benefit Integrity is an independent standard with five structural requirements for
             ensuring that pharmacy benefit decisions are made in the plan&apos;s interest, not the
             vendor&apos;s, the channel&apos;s, or the intermediary&apos;s. It establishes a framework for
@@ -171,10 +171,10 @@ export default function DrugBenefitIntegrityPage() {
         <div className="max-w-4xl mx-auto px-4 py-16 md:py-24">
           {/* Why the Industry Needs an Integrity Standard */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               Why the Industry Needs an Integrity Standard
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 Pharmacy benefits in the United States now exceed $650 billion annually. Three
                 vertically integrated companies process roughly 80% of all prescriptions, operating
@@ -202,28 +202,28 @@ export default function DrugBenefitIntegrityPage() {
             </div>
 
             {/* Callout */}
-            <div className="my-10 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-5">
-              <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
+            <div className="my-10 border-l-4 border-[#F26522] bg-orange/5 px-6 py-5">
+              <p className="font-serif text-lg md:text-xl text-navy">
                 Transparency tells you what happened. Integrity proves the decision was sound.
               </p>
             </div>
 
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 Every other major financial system has recognized this distinction:
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Securities markets</strong> require independent
+                <strong className="text-navy">Securities markets</strong> require independent
                 clearing and settlement. The entity executing a trade cannot also verify that the
                 trade was executed at the best available price.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Investment advisors</strong> must demonstrate
+                <strong className="text-navy">Investment advisors</strong> must demonstrate
                 &quot;best execution&quot;: independent documentation that each transaction was routed to
                 achieve the most favorable terms for the client.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Banking</strong> requires independent audits. The
+                <strong className="text-navy">Banking</strong> requires independent audits. The
                 entity managing deposits cannot also certify its own compliance.
               </p>
               <p>
@@ -237,10 +237,10 @@ export default function DrugBenefitIntegrityPage() {
 
           {/* The Five Requirements */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-4">
               The Five Requirements
             </h2>
-            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10">
+            <p className="font-sans text-lg text-text-secondary leading-relaxed mb-10">
               DBI is defined by five structural requirements. All five must be met simultaneously.
               Meeting four out of five is not sufficient: each requirement exists because the
               others depend on it.
@@ -250,21 +250,21 @@ export default function DrugBenefitIntegrityPage() {
               {fiveRequirements.map((req) => (
                 <div key={req.num}>
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#F26522]/10 flex items-center justify-center">
-                      <req.icon className="w-5 h-5 text-[#F26522]" />
+                    <div className="flex-shrink-0 w-10 h-10 bg-orange/10 flex items-center justify-center">
+                      <req.icon className="w-5 h-5 text-orange" />
                     </div>
-                    <h3 className="font-heading text-xl md:text-2xl font-bold text-[#0F1C2E]">
+                    <h3 className="font-serif text-xl md:text-2xl text-navy">
                       {req.num}. {req.title}
                     </h3>
                   </div>
-                  <div className="space-y-4 font-body text-lg text-muted-foreground leading-relaxed ml-14">
+                  <div className="space-y-4 font-sans text-lg text-text-secondary leading-relaxed ml-14">
                     {req.content.map((p, i) => (
                       <p key={i}>{p}</p>
                     ))}
                   </div>
-                  <div className="mt-4 ml-14 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-4">
-                    <p className="font-body text-base text-muted-foreground leading-relaxed">
-                      <strong className="text-[#0F1C2E]">Why this matters:</strong> {req.why}
+                  <div className="mt-4 ml-14 border-l-4 border-[#F26522] bg-orange/5 px-6 py-4">
+                    <p className="font-sans text-base text-text-secondary leading-relaxed">
+                      <strong className="text-navy">Why this matters:</strong> {req.why}
                     </p>
                   </div>
                 </div>
@@ -274,16 +274,16 @@ export default function DrugBenefitIntegrityPage() {
 
           {/* Transparency vs. Integrity */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               Transparency vs. Integrity
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 The distinction between transparency and integrity is the central insight behind
                 DBI.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Transparency</strong> means the plan sponsor can
+                <strong className="text-navy">Transparency</strong> means the plan sponsor can
                 see the data: spread pricing disclosures, rebate reports, compensation summaries,
                 formulary details. Transparency reforms, including CAA 2026, the DOL proposed rule,
                 and state PBM laws, are significant and necessary. They give plan sponsors more
@@ -296,7 +296,7 @@ export default function DrugBenefitIntegrityPage() {
                 pass-through. The PBM reports on its own compensation.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">Integrity</strong> means an independent entity
+                <strong className="text-navy">Integrity</strong> means an independent entity
                 verifies that each decision was made in the plan&apos;s interest, in real time, at the
                 point of decision, with no financial interest in the outcome. The verification is
                 structural, not contractual. It does not depend on the vendor&apos;s willingness to
@@ -304,8 +304,8 @@ export default function DrugBenefitIntegrityPage() {
               </p>
             </div>
 
-            <div className="my-10 border-l-4 border-[#F26522] bg-[#F26522]/5 rounded-r-lg px-6 py-5">
-              <p className="font-heading text-lg md:text-xl font-bold text-[#0F1C2E]">
+            <div className="my-10 border-l-4 border-[#F26522] bg-orange/5 px-6 py-5">
+              <p className="font-serif text-lg md:text-xl text-navy">
                 Transparency is necessary. Integrity is sufficient.
               </p>
             </div>
@@ -313,10 +313,10 @@ export default function DrugBenefitIntegrityPage() {
 
           {/* Who Meets the DBI Standard */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               Who Meets the DBI Standard
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 ApalyRx is currently the only entity that meets all five requirements of the Drug
                 Benefit Integrity standard.
@@ -339,34 +339,34 @@ export default function DrugBenefitIntegrityPage() {
 
           {/* How DBI Relates to Current Regulatory Reform */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-6">
               How DBI Relates to Current Regulatory Reform
             </h2>
-            <div className="space-y-5 font-body text-lg text-muted-foreground leading-relaxed">
+            <div className="space-y-5 font-sans text-lg text-text-secondary leading-relaxed">
               <p>
                 DBI is not a replacement for regulatory reform. It is complementary infrastructure.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">CAA 2026</strong> requires PBM compensation
+                <strong className="text-navy">CAA 2026</strong> requires PBM compensation
                 disclosure and rebate pass-through. DBI provides the independent verification layer
                 that proves the disclosed information is accurate and that routing decisions reflect
                 the plan&apos;s interest.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">The DOL proposed rule</strong> requires PBMs to
+                <strong className="text-navy">The DOL proposed rule</strong> requires PBMs to
                 disclose direct and indirect compensation. DBI provides the per-decision
                 documentation that allows plan sponsors to verify compensation disclosures against
                 actual routing behavior.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">ERISA fiduciary duty</strong> requires plan
+                <strong className="text-navy">ERISA fiduciary duty</strong> requires plan
                 sponsors to act with prudence and in the best interest of plan participants. DBI
                 provides the decision-level evidence that demonstrates prudent oversight, not just
                 that the plan sponsor asked for transparency, but that each benefit decision was
                 independently verified as optimal.
               </p>
               <p>
-                <strong className="text-[#0F1C2E]">State PBM laws</strong> (California SB 41,
+                <strong className="text-navy">State PBM laws</strong> (California SB 41,
                 Arkansas Act 1114, and others) impose fiduciary duties and transparency requirements
                 on PBMs. DBI provides the structural standard against which PBM compliance can be
                 measured.
@@ -376,7 +376,7 @@ export default function DrugBenefitIntegrityPage() {
 
           {/* FAQ Section */}
           <div className="mb-16">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F1C2E] mb-8">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-navy mb-8">
               Frequently Asked Questions
             </h2>
             <FaqAccordion items={faqItems} />
@@ -391,7 +391,7 @@ export default function DrugBenefitIntegrityPage() {
               href="https://drugbenefitintegrity.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-heading text-[#F26522] hover:text-[#F26522]/80 font-semibold transition-all duration-300"
+              className="font-sans text-orange hover:text-orange/80 font-semibold transition-all duration-300"
             >
               Visit drugbenefitintegrity.com for additional resources &rarr;
             </a>
@@ -400,18 +400,18 @@ export default function DrugBenefitIntegrityPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="bg-[#0F1C2E] text-white py-16 md:py-24">
+      <section className="bg-navy text-white py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">
             Learn How Drug Benefit Integrity Works in Practice
           </h2>
-          <p className="font-body text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="font-sans text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
             See how ApalyRx meets all five DBI requirements and produces decision-level
             documentation for every prescription.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-[#F26522] hover:bg-[#F26522]/90 text-white font-heading font-semibold shadow-lg text-base md:text-lg px-6 md:px-8 py-4 md:py-6 rounded-lg transition-all duration-300"
+            className="inline-flex items-center justify-center bg-orange hover:bg-orange/90 text-white font-sans font-semibold text-base md:text-lg px-6 md:px-8 py-4 md:py-6 transition-all duration-300"
           >
             <CheckCircle2 className="w-5 h-5 mr-2" />
             Request a Conversation
